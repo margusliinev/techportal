@@ -12,7 +12,7 @@ const Logo = () => {
 const Wrapper = styled.div`
     display: inline-flex;
     align-items: center;
-    width: 240px;
+    width: 245px;
     h3 {
         display: inline-block;
         color: var(--colorWhite);

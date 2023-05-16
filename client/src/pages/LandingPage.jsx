@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import LandingDark from '../assets/images/landing-dark.svg';
 import { Logo } from '../components';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
     return (
@@ -18,7 +19,9 @@ const LandingPage = () => {
                         extensive database of tech-centric jobs, Tech Portal is the go-to platform for developers seeking their next coding adventure.
                     </p>
                     <div className='btn-container'>
-                        <button className='btn'>Login / Register</button>
+                        <Link to={'/register'} className='btn'>
+                            Login / Register
+                        </Link>
                         <button className='btn'>Demo User</button>
                     </div>
                 </div>
@@ -66,7 +69,7 @@ const Wrapper = styled.div`
         display: flex;
         gap: 1rem;
     }
-    button {
+    .btn {
         font-size: 18px;
     }
     .landing-img {

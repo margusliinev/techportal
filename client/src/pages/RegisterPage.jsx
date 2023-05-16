@@ -41,12 +41,12 @@ const RegisterPage = () => {
                     <button type='submit' className='btn form-btn'>
                         Submit
                     </button>
-                    <p className='member-check'>
-                        {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+                    <div className='member-check'>
+                        {values.isMember ? <p>Not a member yet?</p> : <p>Already a member?</p>}
                         <button type='button' onClick={toggleMember} className='member-btn'>
                             {values.isMember ? 'Register' : 'Login'}
                         </button>
-                    </p>
+                    </div>
                 </form>
             </div>
         </Wrapper>
@@ -58,7 +58,6 @@ const Wrapper = styled.div`
         min-height: 100vh;
         display: grid;
         place-items: center;
-        margin-top: -3rem;
     }
 
     .form {
@@ -78,21 +77,19 @@ const Wrapper = styled.div`
     }
 
     .member-check {
-        display: flex;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    p {
-        margin: 0;
         margin-top: 1rem;
         text-align: center;
-        font-size: 1rem;
+        p {
+            display: inline;
+        }
+        p:nth-of-type(1) {
+            margin-right: 0.5rem;
+        }
     }
 
     .member-btn {
         background: transparent;
-        border: transparent;
+        border: none;
         color: var(--colorPrimary5);
         cursor: pointer;
         font-size: 1rem;

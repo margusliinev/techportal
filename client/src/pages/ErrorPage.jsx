@@ -24,13 +24,16 @@ const Wrapper = styled.div`
         min-height: 100vh;
         display: grid;
         place-items: center;
-        margin-top: -3rem;
-        text-align: center;
+        div {
+            text-align: center;
+        }
     }
     img {
+        height: unset;
         max-width: 600px;
         display: block;
         margin: 0 auto 2rem auto;
+        object-fit: contain;
     }
     h3 {
         margin-bottom: 0.5rem;
@@ -39,9 +42,8 @@ const Wrapper = styled.div`
     }
     p {
         margin-top: 0;
-        margin-bottom: 0.5rem;
         color: var(--colorFontSecondary);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 `;
 
