@@ -5,7 +5,9 @@ import { Logo } from '../components';
 const LandingPage = () => {
     return (
         <Wrapper>
-            <Logo />
+            <nav>
+                <Logo />
+            </nav>
             <div className='container'>
                 <div className='landing-info'>
                     <h1>
@@ -27,11 +29,22 @@ const LandingPage = () => {
 };
 
 const Wrapper = styled.div`
+    nav {
+        display: flex;
+        align-items: center;
+        height: 6rem;
+        width: 90vw;
+        margin: 0 auto;
+        max-width: var(--width-xl);
+    }
     .container {
         min-height: calc(100vh - 6rem);
         display: grid;
         place-items: center;
-        margin-top: -3rem;
+        .landing-info,
+        .landing-img {
+            margin-bottom: 6rem;
+        }
     }
     h1 {
         font-weight: 700;
@@ -46,7 +59,7 @@ const Wrapper = styled.div`
     p {
         color: var(--colorFontSecondary);
         line-height: 1.75;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
         max-width: 900px;
     }
     .btn-container {

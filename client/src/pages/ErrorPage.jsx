@@ -24,8 +24,8 @@ const Wrapper = styled.div`
         min-height: 100vh;
         display: grid;
         place-items: center;
-        text-align: center;
         margin-top: -3rem;
+        text-align: center;
     }
     img {
         max-width: 600px;

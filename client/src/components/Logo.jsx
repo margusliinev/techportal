@@ -9,15 +9,12 @@ const Logo = () => {
     );
 };
 
-const Wrapper = styled.nav`
-    display: flex;
+const Wrapper = styled.div`
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    max-width: var(--width-xl);
-    margin: 0 auto;
-    width: 90vw;
-    height: 6rem;
+    width: 240px;
     h3 {
+        display: inline-block;
         color: var(--colorWhite);
         background-color: #3b82f6;
         padding: 0.5rem;
@@ -25,8 +22,10 @@ const Wrapper = styled.nav`
         border-radius: var(--radius-md);
         font-family: 'Poppins';
         font-size: 2.5rem;
+        margin-right: 1rem;
     }
     h4 {
+        display: inline-block;
         color: var(--colorWhite);
     }
 `;
