@@ -6,12 +6,16 @@ const initialState = {
     name: '',
     email: '',
     password: '',
-    isMember: true,
+    isMember: false,
     showAlert: false,
 };
 
 const RegisterPage = () => {
     const [values, setValues] = useState(initialState);
+
+    const toggleMember = () => {
+        setValues({ ...values, isMember: !values.isMember });
+    };
 
     const handleChange = (e) => {
         console.log(e.target);
@@ -30,13 +34,19 @@ const RegisterPage = () => {
                         <Logo />
                     </div>
                     {values.showAlert ? <Alert /> : null}
-                    <h4 className='form-title'>Login</h4>
-                    <FormRow type={'text'} name={'name'} value={values.name} handleChange={handleChange} labelText={'name'} />
+                    <h4 className='form-title'>{values.isMember ? 'Login' : 'Register'}</h4>
+                    {!values.isMember && <FormRow type={'text'} name={'name'} value={values.name} handleChange={handleChange} labelText={'name'} />}
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
                     <FormRow type={'password'} name={'password'} value={values.password} handleChange={handleChange} labelText={'password'} />
                     <button type='submit' className='btn form-btn'>
                         Submit
                     </button>
+                    <p className='member-check'>
+                        {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+                        <button type='button' onClick={toggleMember} className='member-btn'>
+                            {values.isMember ? 'Register' : 'Login'}
+                        </button>
+                    </p>
                 </form>
             </div>
         </Wrapper>
@@ -67,18 +77,26 @@ const Wrapper = styled.div`
         font-weight: 500;
     }
 
-    /* p {
+    .member-check {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    p {
         margin: 0;
         margin-top: 1rem;
         text-align: center;
-    } */
-    /* .member-btn {
+        font-size: 1rem;
+    }
+
+    .member-btn {
         background: transparent;
         border: transparent;
         color: var(--colorPrimary5);
         cursor: pointer;
-        letter-spacing: var(--spacingWide);
-    } */
+        font-size: 1rem;
+    }
 `;
 
 export default RegisterPage;
