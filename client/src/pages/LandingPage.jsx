@@ -6,7 +6,7 @@ const LandingPage = () => {
     return (
         <Wrapper>
             <Logo />
-            <div className='container page'>
+            <div className='container'>
                 <div className='landing-info'>
                     <h1>
                         Job Portal For <span>Developers</span>
@@ -26,11 +26,11 @@ const LandingPage = () => {
     );
 };
 
-const Wrapper = styled.main`
-    .page {
+const Wrapper = styled.div`
+    .container {
         min-height: calc(100vh - 6rem);
         display: grid;
-        align-items: center;
+        place-items: center;
         margin-top: -3rem;
     }
     h1 {
@@ -61,7 +61,7 @@ const Wrapper = styled.main`
         height: unset;
     }
     @media (min-width: 1280px) {
-        .page {
+        .container {
             grid-template-columns: 1fr 1fr;
             column-gap: 3rem;
         }
