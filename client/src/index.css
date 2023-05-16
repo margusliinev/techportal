@@ -2,8 +2,12 @@
 /* ==================================================================================================== */
 
 @import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
+    --colorFont: #fff;
+    --colorFontSecondary: #cbd5e1;
+    --colorBackground: #333;
     --colorPrimary1: #dbeafe;
     --colorPrimary2: #bfdbfe;
     --colorPrimary3: #93c5fd;
@@ -13,15 +17,15 @@
     --colorPrimary7: #1d4ed8;
     --colorPrimary8: #1e40af;
     --colorPrimary9: #1e3a8a;
-    --colorGray1: #d9e2ec;
-    --colorGray2: #bcccdc;
-    --colorGray3: #9fb3c8;
-    --colorGray4: #829ab1;
-    --colorGray5: #627d98;
-    --colorGray6: #486581;
-    --colorGray7: #334e68;
-    --colorGray8: #243b53;
-    --colorGray9: #102a43;
+    --colorGray1: #f1f5f9;
+    --colorGray2: #e2e8f0;
+    --colorGray3: #cbd5e1;
+    --colorGray4: #94a3b8;
+    --colorGray5: #64748b;
+    --colorGray6: #475569;
+    --colorGray7: #334155;
+    --colorGray8: #1e293b;
+    --colorGray9: #0f172a;
     --colorSuccess: #198754;
     --colorDanger: #dc3545;
     --colorWarning: #ffc107;
@@ -61,6 +65,8 @@ html {
 }
 
 body {
+    background-color: var(--colorBackground);
+    color: var(--colorFont);
     font-family: var(--fontPrimary);
     line-height: 1.5;
 }
@@ -120,6 +126,12 @@ h6 {
 
 .btn:hover {
     background-color: var(--colorPrimary7);
+}
+
+.container {
+    max-width: var(--width-xl);
+    margin: 0 auto;
+    width: 90vw;
 }
 
 /* END */
