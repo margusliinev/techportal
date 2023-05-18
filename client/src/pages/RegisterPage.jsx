@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import { Logo, FormRow, Alert } from '../components';
+import { useState } from 'react';
+import { Logo, FormRow } from '../components';
 
 const initialState = {
     name: '',
     email: '',
     password: '',
     isMember: false,
-    showAlert: false,
 };
 
 const RegisterPage = () => {
@@ -33,7 +32,6 @@ const RegisterPage = () => {
                     <div className='form-logo'>
                         <Logo />
                     </div>
-                    {values.showAlert ? <Alert /> : null}
                     <h4 className='form-title'>{values.isMember ? 'Login' : 'Register'}</h4>
                     {!values.isMember && <FormRow type={'text'} name={'name'} value={values.name} handleChange={handleChange} labelText={'name'} />}
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
@@ -59,23 +57,21 @@ const Wrapper = styled.div`
         display: grid;
         place-items: center;
     }
-
     .form {
         border-top: 5px solid var(--colorPrimary5);
+        box-shadow: 0 0 10px 5px rgb(0 0 0 / 0.1);
     }
-
     .form-logo {
         display: grid;
         place-items: center;
         margin-bottom: 1.5rem;
     }
-
     .form-title {
-        text-align: center;
         margin-bottom: 0.5rem;
-        font-weight: 500;
     }
-
+    .form-btn {
+        margin-top: 2rem;
+    }
     .member-check {
         margin-top: 1rem;
         text-align: center;
@@ -86,7 +82,6 @@ const Wrapper = styled.div`
             margin-right: 0.5rem;
         }
     }
-
     .member-btn {
         background: transparent;
         border: none;

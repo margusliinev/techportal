@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import LandingDark from '../assets/images/landing-dark.svg';
+import LandingLight from '../assets/images/landing-light.svg';
 import { Logo } from '../components';
 import { Link } from 'react-router-dom';
 
@@ -22,10 +22,10 @@ const LandingPage = () => {
                         <Link to={'/register'} className='btn'>
                             Login / Register
                         </Link>
-                        <button className='btn'>Demo User</button>
+                        <button className='btn demo-btn'>Demo User</button>
                     </div>
                 </div>
-                <img src={LandingDark} alt='landing image' className='landing-img' />
+                <img src={LandingLight} alt='landing image' className='landing-img' />
             </div>
         </Wrapper>
     );
@@ -38,7 +38,7 @@ const Wrapper = styled.div`
         height: 6rem;
         width: 90vw;
         margin: 0 auto;
-        max-width: var(--width-xl);
+        max-width: var(--width-lg);
     }
     .container {
         min-height: calc(100vh - 6rem);
@@ -50,24 +50,28 @@ const Wrapper = styled.div`
         }
     }
     h1 {
-        font-weight: 700;
         margin-bottom: 1rem;
         line-height: 1.25;
-        color: var(--colorWhite);
+        color: var(--colorGray9);
         span {
             color: var(--colorPrimary5);
             display: block;
         }
     }
     p {
-        color: var(--colorFontSecondary);
+        color: var(--colorGray8);
         line-height: 1.75;
         margin-bottom: 0.5rem;
         max-width: 900px;
+        font-size: 18px;
     }
     .btn-container {
         display: flex;
         gap: 1rem;
+        margin-top: 1rem;
+        .demo-btn {
+            background-color: var(--colorGray6);
+        }
     }
     .btn {
         font-size: 18px;
@@ -76,7 +80,7 @@ const Wrapper = styled.div`
         display: none;
         height: unset;
     }
-    @media (min-width: 1280px) {
+    @media (min-width: 1024px) {
         .container {
             grid-template-columns: 1fr 1fr;
             column-gap: 3rem;

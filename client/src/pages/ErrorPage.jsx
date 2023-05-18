@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import error from '../assets/images/error-dark.svg';
+import error from '../assets/images/error-light.svg';
 import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
@@ -37,13 +37,16 @@ const Wrapper = styled.div`
     }
     h3 {
         margin-bottom: 0.5rem;
-        color: var(--colorFontSecondary);
+        color: var(--colorGray8);
         font-weight: 500;
     }
     p {
         margin-top: 0;
-        color: var(--colorFontSecondary);
+        color: var(--colorGray8);
         margin-bottom: 1rem;
+    }
+    .btn {
+        font-size: 18px;
     }
 `;
 

@@ -26,7 +26,7 @@ const Wrapper = styled.div`
     }
     h4 {
         display: inline-block;
-        color: var(--colorWhite);
+        color: var(--colorGray9);
     }
 `;
 
