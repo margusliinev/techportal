@@ -12,14 +12,14 @@ import { notFound } from './middleware/notFound.js';
 import router from './routes/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, '../../client/build')));
+app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 
 app.use(express.json());
 app.use(cors());
 app.use('/', router);
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));
 });
 
 app.use(errorHandler);
