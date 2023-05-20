@@ -32,12 +32,26 @@ const RegisterPage = () => {
                     <div className='form-logo'>
                         <Logo />
                     </div>
-                    <h4 className='form-title'>{values.isMember ? 'Login' : 'Register'}</h4>
                     {!values.isMember && <FormRow type={'text'} name={'name'} value={values.name} handleChange={handleChange} labelText={'name'} />}
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
-                    <FormRow type={'password'} name={'password'} value={values.password} handleChange={handleChange} labelText={'password'} />
+                    {values.isMember ? (
+                        <div className='form-row'>
+                            <div className='form-label-flex'>
+                                <label htmlFor='password' className='form-label'>
+                                    password
+                                </label>
+                                <a href='#' className='form-forgot-password'>
+                                    Forgot password?
+                                </a>
+                            </div>
+                            <input type='password' value={values.password} name='password' onChange={handleChange} className='form-input' />
+                            <p className='form-alert'></p>
+                        </div>
+                    ) : (
+                        <FormRow type={'password'} name={'password'} value={values.password} handleChange={handleChange} labelText={'password'} />
+                    )}
                     <button type='submit' className='btn form-btn'>
-                        Submit
+                        {values.isMember ? 'Sign In' : 'Create new account'}
                     </button>
                     <div className='member-check'>
                         {values.isMember ? <p>Not a member yet?</p> : <p>Already a member?</p>}
@@ -65,9 +79,6 @@ const Wrapper = styled.div`
         display: grid;
         place-items: center;
         margin-bottom: 1.5rem;
-    }
-    .form-title {
-        margin-bottom: 0.5rem;
     }
     .form-btn {
         margin-top: 2rem;
