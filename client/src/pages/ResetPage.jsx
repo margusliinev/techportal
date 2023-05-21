@@ -1,15 +1,13 @@
 import Wrapper from '../assets/Wrappers/Form';
 import { useState } from 'react';
-import { Logo, FormRow } from '../components';
+import { FormRow } from '../components';
 import { Link } from 'react-router-dom';
 
 const initialState = {
-    name: '',
     email: '',
-    password: '',
 };
 
-const RegisterPage = () => {
+const ResetPage = () => {
     const [values, setValues] = useState(initialState);
 
     const handleChange = (e) => {
@@ -25,19 +23,15 @@ const RegisterPage = () => {
         <Wrapper>
             <div className='container'>
                 <form className='form' onSubmit={handleSubmit}>
-                    <div className='form-logo'>
-                        <Logo />
-                    </div>
-                    <FormRow type={'text'} name={'name'} value={values.name} handleChange={handleChange} labelText={'name'} />
+                    <h5 className='reset-title'>Reset your password</h5>
+                    <p className='reset-description'>Enter the email address associated with your account and we'll send you a link to reset your password.</p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
-                    <FormRow type={'password'} name={'password'} value={values.password} handleChange={handleChange} labelText={'password'} />
                     <button type='submit' className='btn form-btn'>
-                        Create new account
+                        Continue
                     </button>
                     <div className='member-check'>
-                        <p>Already a member?</p>
-                        <Link to={'/login'} type='button' className='member-btn'>
-                            Login
+                        <Link to={'/login'} className='return-btn'>
+                            Return to Login
                         </Link>
                     </div>
                 </form>
@@ -46,4 +40,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default ResetPage;
