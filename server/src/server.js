@@ -1,18 +1,21 @@
-import express from 'express';
-const app = express();
 import dotenv from 'dotenv';
-dotenv.config();
+import express from 'express';
 import cors from 'cors';
 import 'express-async-errors';
-import { errorHandler } from './middleware/errorHandler.js';
-import { notFound } from './middleware/notFound.js';
-import router from './routes/index.js';
+import errorHandlerMiddleware from './middleware/errorHandler.js';
+import notFoundMiddleware from './middleware/notFound.js';
+import authRouter from './routes/authRoutes.js';
+import jobsRouter from './routes/jobsRoutes.js';
+
+dotenv.config();
+const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use('/', router);
-app.use(errorHandler);
-app.use(notFound);
+app.use('/', authRouter);
+app.use('/', jobsRouter);
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5000;
 
