@@ -28,12 +28,4 @@ const validatePassword = (password) => {
     return true;
 };
 
-const validateConfirmPassword = (password, confirmPassword) => {
-    if (password !== confirmPassword) {
-        return false;
-    }
-
-    return true;
-};
-
-export { validateUsername, validateEmail, validatePassword, validateConfirmPassword };
+export { validateUsername, validateEmail, validatePassword };

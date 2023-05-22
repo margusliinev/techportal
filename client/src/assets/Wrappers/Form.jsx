@@ -50,6 +50,25 @@ const Wrapper = styled.div`
         color: var(--colorGray7);
         margin-bottom: 1.5rem;
     }
+    .form-input-password-container {
+        position: relative;
+        display: grid;
+        align-items: center;
+    }
+    .password-toggle {
+        position: absolute;
+        right: 0.5rem;
+        display: grid;
+        font-size: 1.4rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--colorGray4);
+        transition: var(--transition);
+    }
+    .password-toggle:hover {
+        color: var(--colorGray6);
+    }
 `;
 
 export default Wrapper;
