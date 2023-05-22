@@ -11,18 +11,18 @@ const ResetPage = () => {
     const [values, setValues] = useState(initialState);
 
     const handleChange = (e) => {
-        console.log(e.target);
+        setValues({ ...values, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        console.log(values);
     };
 
     return (
         <Wrapper>
             <div className='container'>
-                <form className='form' onSubmit={handleSubmit}>
+                <form className='form' onSubmit={handleSubmit} noValidate>
                     <h5 className='reset-title'>Reset your password</h5>
                     <p className='reset-description'>Enter the email address associated with your account and we'll send you a link to reset your password.</p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />

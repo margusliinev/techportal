@@ -12,18 +12,18 @@ const LoginPage = () => {
     const [values, setValues] = useState(initialState);
 
     const handleChange = (e) => {
-        console.log(e.target);
+        setValues({ ...values, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        console.log(values);
     };
 
     return (
         <Wrapper>
             <div className='container'>
-                <form className='form' onSubmit={handleSubmit}>
+                <form className='form' onSubmit={handleSubmit} noValidate>
                     <div className='form-logo'>
                         <Logo />
                     </div>
@@ -44,7 +44,7 @@ const LoginPage = () => {
                         Sign In
                     </button>
                     <div className='member-check'>
-                        <p>Not a member yet?</p>
+                        <p>Don't have an account?</p>
                         <Link to={'/register'} className='member-btn'>
                             Register
                         </Link>

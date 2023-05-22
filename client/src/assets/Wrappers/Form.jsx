@@ -34,6 +34,7 @@ const Wrapper = styled.div`
         color: var(--colorPrimary5);
         cursor: pointer;
         font-size: 1rem;
+        font-weight: 500;
     }
     .return-btn {
         font-size: 0.875rem;
