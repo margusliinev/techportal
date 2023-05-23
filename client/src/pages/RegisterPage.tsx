@@ -5,46 +5,57 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { validateUsername, validateEmail, validatePassword } from '../utils/formValidation';
 
-const initialState = {
+interface values {
+    username: string;
+    email: string;
+    password: string;
+}
+
+const initialState: values = {
     username: '',
     email: '',
     password: '',
 };
 
 const RegisterPage = () => {
-    const [values, setValues] = useState(initialState);
-    const [showPassword, setShowPassword] = useState(false);
-    const [allowValidation, setAllowValidation] = useState(true);
+    const [values, setValues] = useState<values>(initialState);
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [allowValidation, setAllowValidation] = useState<boolean>(true);
 
-    const handlePasswordVisibility = (e) => {
+    const handlePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const nextElementSibling = e.currentTarget.nextElementSibling as HTMLInputElement;
         e.preventDefault();
-        e.currentTarget.nextElementSibling.focus();
+        nextElementSibling.focus();
         setAllowValidation(false);
         setTimeout(() => {
             setAllowValidation(true);
         }, 100);
         if (showPassword) {
-            e.currentTarget.nextElementSibling.type = 'password';
+            nextElementSibling.type = 'password';
         } else {
-            e.currentTarget.nextElementSibling.type = 'text';
+            nextElementSibling.type = 'text';
         }
         setShowPassword(!showPassword);
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const nextElementSibling = e.currentTarget.nextElementSibling as HTMLElement;
+        const parentElementSibling = e.currentTarget.parentElement?.nextElementSibling as HTMLElement;
         if (e.currentTarget.name === 'password') {
             e.currentTarget.classList.remove('form-input-error');
-            e.currentTarget.parentElement.nextElementSibling.textContent = '';
-            e.currentTarget.parentElement.nextElementSibling.classList.remove('form-alert-error');
+            parentElementSibling.textContent = '';
+            parentElementSibling.classList.remove('form-alert-error');
         } else {
             e.currentTarget.classList.remove('form-input-error');
-            e.currentTarget.nextElementSibling.textContent = '';
-            e.currentTarget.nextElementSibling.classList.remove('form-alert-error');
+            nextElementSibling.textContent = '';
+            nextElementSibling.classList.remove('form-alert-error');
         }
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const handleValidation = (e) => {
+    const handleValidation = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const nextElementSibling = e.currentTarget.nextElementSibling as HTMLElement;
+        const parentElementSibling = e.currentTarget.parentElement?.nextElementSibling as HTMLElement;
         if (allowValidation) {
             if (e.currentTarget.value === '') {
                 return;
@@ -52,40 +63,40 @@ const RegisterPage = () => {
             if (e.currentTarget.name === 'username') {
                 if (!validateUsername(values.username)) {
                     if (values.username.length < 3 || values.username.length > 16) {
-                        e.currentTarget.nextElementSibling.textContent = 'Username length: 3-16 characters.';
+                        nextElementSibling.textContent = 'Username length: 3-16 characters.';
                     } else {
-                        e.currentTarget.nextElementSibling.textContent = 'Username can only contain letters (A-Z) and numbers (0-9).';
+                        nextElementSibling.textContent = 'Username can only contain letters (A-Z) and numbers (0-9).';
                     }
                     e.currentTarget.classList.add('form-input-error');
-                    e.currentTarget.nextElementSibling.classList.add('form-alert-error');
+                    nextElementSibling.classList.add('form-alert-error');
                 }
             }
             if (e.currentTarget.name === 'email') {
                 if (!validateEmail(values.email)) {
-                    e.currentTarget.nextElementSibling.textContent = 'Please enter a valid email.';
                     e.currentTarget.classList.add('form-input-error');
-                    e.currentTarget.nextElementSibling.classList.add('form-alert-error');
+                    nextElementSibling.textContent = 'Please enter a valid email.';
+                    nextElementSibling.classList.add('form-alert-error');
                 }
             }
             if (e.currentTarget.name === 'password') {
                 if (!validatePassword(values.password)) {
                     if (values.password.length < 8) {
-                        e.currentTarget.parentElement.nextElementSibling.textContent = 'Password must be at least 8 characters long.';
+                        parentElementSibling.textContent = 'Password must be at least 8 characters long.';
                     } else if (!/(?=.*[a-z])/.test(values.password)) {
-                        e.currentTarget.parentElement.nextElementSibling.textContent = 'Password must contain at least one letter.';
+                        parentElementSibling.textContent = 'Password must contain at least one letter.';
                     } else if (!/(?=.*\d)/.test(values.password)) {
-                        e.currentTarget.parentElement.nextElementSibling.textContent = 'Password must contain at least one number.';
+                        parentElementSibling.textContent = 'Password must contain at least one number.';
                     } else {
-                        e.currentTarget.parentElement.nextElementSibling.textContent = 'Allowed special characters: !@#$%&*,.?';
+                        parentElementSibling.textContent = 'Allowed special characters: !@#$%&*,.?';
                     }
                     e.currentTarget.classList.add('form-input-error');
-                    e.currentTarget.parentElement.nextElementSibling.classList.add('form-alert-error');
+                    parentElementSibling.classList.add('form-alert-error');
                 }
             }
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateUsername(values.username) && validateEmail(values.email) && validatePassword(values.password)) {
             console.log(values);
@@ -111,7 +122,7 @@ const RegisterPage = () => {
                                     {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                                 </button>
                             ) : null}
-                            <input type={'password'} value={values.password} name='password' onChange={handleChange} onBlur={handleValidation} className='form-input'></input>
+                            <input type={'password'} value={values.password} name='password' onChange={handleChange} onBlur={handleValidation} className='form-input' id='password'></input>
                         </div>
                         <p className='form-alert'></p>
                     </div>

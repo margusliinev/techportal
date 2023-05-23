@@ -3,19 +3,24 @@ import { useState } from 'react';
 import { Logo, FormRow } from '../components';
 import { Link } from 'react-router-dom';
 
-const initialState = {
+interface values {
+    email: string;
+    password: string;
+}
+
+const initialState: values = {
     email: '',
     password: '',
 };
 
 const LoginPage = () => {
-    const [values, setValues] = useState(initialState);
+    const [values, setValues] = useState<values>(initialState);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(values);
     };
@@ -37,7 +42,7 @@ const LoginPage = () => {
                                 Forgot password?
                             </Link>
                         </div>
-                        <input type='password' value={values.password} name='password' onChange={handleChange} className='form-input' />
+                        <input type='password' value={values.password} name='password' onChange={handleChange} className='form-input' id='password' />
                         <p className='form-alert'></p>
                     </div>
                     <button type='submit' className='btn form-btn'>

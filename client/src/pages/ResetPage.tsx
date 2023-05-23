@@ -3,18 +3,22 @@ import { useState } from 'react';
 import { FormRow } from '../components';
 import { Link } from 'react-router-dom';
 
-const initialState = {
+interface values {
+    email: string;
+}
+
+const initialState: values = {
     email: '',
 };
 
 const ResetPage = () => {
-    const [values, setValues] = useState(initialState);
+    const [values, setValues] = useState<values>(initialState);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(values);
     };

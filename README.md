@@ -6,9 +6,14 @@ This is a repository for project Tech Portal.
 
 ## Technologies
 
--   Javascript
--   NodeJS
--   Express
--   PostgreSQL
--   React
+### Front-End
+
+-   Typescript
+-   React + Redux
 -   Styled Components
+
+### Back-End
+
+-   Typescript
+-   NodeJS + Express
+-   PostgreSQL

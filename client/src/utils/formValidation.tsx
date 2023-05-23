@@ -1,4 +1,4 @@
-const validateUsername = (username) => {
+const validateUsername = (username: string) => {
     const regex = /^[A-Za-z0-9]{3,16}$/;
 
     if (!regex.test(username)) {
@@ -8,7 +8,7 @@ const validateUsername = (username) => {
     return true;
 };
 
-const validateEmail = (email) => {
+const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!regex.test(email)) {
@@ -18,7 +18,7 @@ const validateEmail = (email) => {
     return true;
 };
 
-const validatePassword = (password) => {
+const validatePassword = (password: string) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
     if (!regex.test(password)) {
