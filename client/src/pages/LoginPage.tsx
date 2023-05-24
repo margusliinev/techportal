@@ -28,7 +28,7 @@ const LoginPage = () => {
     return (
         <Wrapper>
             <div className='container'>
-                <form className='form' onSubmit={handleSubmit} noValidate>
+                <form className='form' onSubmit={handleSubmit}>
                     <div className='form-logo'>
                         <Logo />
                     </div>
@@ -42,7 +42,7 @@ const LoginPage = () => {
                                 Forgot password?
                             </Link>
                         </div>
-                        <input type='password' value={values.password} name='password' onChange={handleChange} className='form-input' id='password' />
+                        <input required type='password' value={values.password} name='password' onChange={handleChange} className='form-input' id='password' />
                         <p className='form-alert'></p>
                     </div>
                     <button type='submit' className='btn form-btn'>

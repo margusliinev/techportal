@@ -106,7 +106,7 @@ const RegisterPage = () => {
     return (
         <Wrapper>
             <div className='container'>
-                <form className='form' onSubmit={handleSubmit} noValidate>
+                <form className='form' onSubmit={handleSubmit}>
                     <div className='form-logo'>
                         <Logo />
                     </div>
@@ -122,7 +122,7 @@ const RegisterPage = () => {
                                     {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                                 </button>
                             ) : null}
-                            <input type={'password'} value={values.password} name='password' onChange={handleChange} onBlur={handleValidation} className='form-input' id='password'></input>
+                            <input required type={'password'} value={values.password} name='password' onChange={handleChange} onBlur={handleValidation} className='form-input' id='password'></input>
                         </div>
                         <p className='form-alert'></p>
                     </div>
