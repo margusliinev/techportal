@@ -1,8 +1,18 @@
 import { Request, Response, NextFunction } from 'express';
 
-const errorHandler = async (err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.log(err);
-    return res.status(500).json({ msg: err.message });
+const errorHandler = async (err: any, req: Request, res: Response, next: NextFunction) => {
+    const defaultError = {
+        statusCode: err.statusCode || 500,
+        msg: err.message || 'Something went wrong, try again later',
+    };
+    if (err.code === '23505') {
+        defaultError.statusCode = 400;
+        defaultError.msg = 'Email address is already registered.';
+    } else if (err.code === '23514') {
+        defaultError.statusCode = 400;
+        defaultError.msg = 'Entered information does not meet the specified rules.';
+    }
+    return res.status(defaultError.statusCode).json({ msg: defaultError.msg });
 };
 
 export default errorHandler;

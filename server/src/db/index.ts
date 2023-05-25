@@ -14,8 +14,6 @@ const query = async (text: string, params?: any[]) => {
     try {
         const result = await client.query(text, params);
         return result.rows;
-    } catch (error) {
-        console.log(error);
     } finally {
         client.release();
     }
