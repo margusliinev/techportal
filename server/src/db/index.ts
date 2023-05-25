@@ -13,7 +13,7 @@ const query = async (text: string, params?: any[]) => {
     const client = await pool.connect();
     try {
         const result = await client.query(text, params);
-        return result.rows;
+        return result;
     } finally {
         client.release();
     }

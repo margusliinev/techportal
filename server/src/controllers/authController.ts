@@ -15,7 +15,7 @@ const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Missing username, email or password');
     }
     const uniqueEmail = await query('select email from users where email = $1', [email]);
-    if (uniqueEmail.length >= 1) {
+    if (uniqueEmail.rows.length >= 1) {
         throw new BadRequestError('Email address is already registered.');
     }
 
@@ -45,11 +45,10 @@ const register = async (req: Request, res: Response) => {
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const result = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [req.body.username, req.body.email, hash]);
-    const user = result[0];
-    const token = jwt.sign({ user }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
+    const newUser = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [req.body.username, req.body.email, hash]);
+    const token = jwt.sign({ userId: newUser.rows[0].id }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
 
-    res.status(201).json({ user: { username: user.username, email: user.email }, token });
+    res.status(201).json({ user: { username: newUser.rows[0].username, email: newUser.rows[0].email }, token });
 };
 
 const login = (req: Request, res: Response) => {
