@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { query } from '../db/index';
 import { BadRequestError } from '../errors';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,17 +45,15 @@ const register = async (req: Request, res: Response) => {
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const user = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [req.body.username, req.body.email, hash]);
-    res.status(201).json({ user });
-};
+    const result = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [req.body.username, req.body.email, hash]);
+    const user = result[0];
+    const token = jwt.sign({ user }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
 
-const getAllUsers = async (req: Request, res: Response) => {
-    const users = await query('select * from users');
-    res.status(200).json({ users });
+    res.status(201).json({ user: { username: user.username, email: user.email }, token });
 };
 
 const login = (req: Request, res: Response) => {
     res.send('Login route');
 };
 
-export { register, login, getAllUsers };
+export { register, login };
