@@ -4,6 +4,7 @@ import { Logo, FormRow } from '../components';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { validateUsername, validateEmail, validatePassword } from '../utils/formValidation';
+import { useRegisterUserMutation } from '../features/api/apiSlice';
 
 interface values {
     username: string;
@@ -21,6 +22,7 @@ const RegisterPage = () => {
     const [values, setValues] = useState<values>(initialState);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [allowValidation, setAllowValidation] = useState<boolean>(true);
+    const [registerUser, { isLoading, isSuccess, isError }] = useRegisterUserMutation();
 
     const handlePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
         const nextElementSibling = e.currentTarget.nextElementSibling as HTMLInputElement;
@@ -98,8 +100,15 @@ const RegisterPage = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (validateUsername(values.username) && validateEmail(values.email) && validatePassword(values.password)) {
+        const { username, email, password } = values;
+        if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
+            // const newUser = { username, email, password };
+            // if (isMember){
+            //     console.log('user is already a member')
+            // }
             console.log(values);
+            registerUser(values);
+            console.log('Registered User');
         }
     };
 
@@ -126,7 +135,7 @@ const RegisterPage = () => {
                         </div>
                         <p className='form-alert'></p>
                     </div>
-                    <button type='submit' className='btn form-btn'>
+                    <button type='submit' className='btn form-btn' disabled={isLoading}>
                         Create new account
                     </button>
                     <div className='member-check'>
