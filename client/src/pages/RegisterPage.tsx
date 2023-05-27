@@ -22,7 +22,7 @@ const RegisterPage = () => {
     const [values, setValues] = useState<values>(initialState);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [allowValidation, setAllowValidation] = useState<boolean>(true);
-    const [registerUser, { isLoading, isSuccess, isError }] = useRegisterUserMutation();
+    const [registerUser, { isLoading }] = useRegisterUserMutation();
 
     const handlePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
         const nextElementSibling = e.currentTarget.nextElementSibling as HTMLInputElement;
@@ -102,13 +102,11 @@ const RegisterPage = () => {
         e.preventDefault();
         const { username, email, password } = values;
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
-            // const newUser = { username, email, password };
+            const newUser = { username, email, password };
             // if (isMember){
             //     console.log('user is already a member')
             // }
-            console.log(values);
-            registerUser(values);
-            console.log('Registered User');
+            registerUser(newUser);
         }
     };
 
