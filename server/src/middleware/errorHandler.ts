@@ -10,7 +10,7 @@ const errorHandler = async (err: any, req: Request, res: Response, next: NextFun
         defaultError.msg = 'Email address is already registered.';
     } else if (err.code === '23514') {
         defaultError.statusCode = 400;
-        defaultError.msg = 'Entered information does not meet the specified rules.';
+        defaultError.msg = '400 Bad Request Error';
     }
     return res.status(defaultError.statusCode).json({ msg: defaultError.msg });
 };

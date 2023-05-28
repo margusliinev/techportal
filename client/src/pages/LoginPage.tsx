@@ -3,18 +3,18 @@ import { useState } from 'react';
 import { Logo, FormRow } from '../components';
 import { Link } from 'react-router-dom';
 
-interface values {
+interface User {
     email: string;
     password: string;
 }
 
-const initialState: values = {
+const initialState: User = {
     email: '',
     password: '',
 };
 
 const LoginPage = () => {
-    const [values, setValues] = useState<values>(initialState);
+    const [values, setValues] = useState<User>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [e.target.name]: e.target.value });

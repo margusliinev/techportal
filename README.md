@@ -9,7 +9,7 @@ This is a repository for project Tech Portal.
 ### Front-End
 
 -   Typescript
--   React + Redux
+-   React
 -   Styled Components
 
 ### Back-End

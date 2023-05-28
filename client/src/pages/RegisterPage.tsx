@@ -1,26 +1,23 @@
 import { useState } from 'react';
 import Wrapper from '../assets/Wrappers/Form';
-import { Logo, FormRow } from '../components';
+import { Logo, FormRow, FormRowPassword } from '../components';
 import { Link } from 'react-router-dom';
 import { validateUsername, validateEmail, validatePassword } from '../utils/formValidation';
-import { useRegisterUserMutation } from '../features/api/apiSlice';
-import FormRowPassword from '../components/FormRowPassword';
 
-interface values {
+interface User {
     username: string;
     email: string;
     password: string;
 }
 
-const initialState: values = {
+const initialState: User = {
     username: '',
     email: '',
     password: '',
 };
 
 const RegisterPage = () => {
-    const [values, setValues] = useState<values>(initialState);
-    const [registerUser, { isLoading }] = useRegisterUserMutation();
+    const [values, setValues] = useState<User>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const nextElementSibling = e.currentTarget.nextElementSibling as HTMLElement;
@@ -79,8 +76,6 @@ const RegisterPage = () => {
         e.preventDefault();
         const { username, email, password } = values;
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
-            const newUser = { username, email, password };
-            registerUser(newUser);
         }
     };
 
@@ -94,8 +89,8 @@ const RegisterPage = () => {
                     <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} handleValidation={handleValidation} />
                     <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} handleChange={handleChange} handleValidation={handleValidation} />
                     <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} handleChange={handleChange} handleValidation={handleValidation} />
-                    <button type='submit' className='btn form-btn' disabled={isLoading}>
-                        Create new account
+                    <button type='submit' className='btn form-btn'>
+                        Create new account'
                     </button>
                     <div className='member-check'>
                         <p>Already have an account?</p>

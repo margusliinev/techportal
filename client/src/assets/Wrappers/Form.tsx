@@ -68,6 +68,14 @@ const Wrapper = styled.div`
     .password-toggle:hover {
         color: var(--colorGray6);
     }
+    .server-message-error {
+        color: var(--colorRed2);
+        margin: 0.5rem 0;
+    }
+    .server-message-success {
+        color: var(--colorGreen2);
+        margin: 0.5rem 0;
+    }
 `;
 
 export default Wrapper;

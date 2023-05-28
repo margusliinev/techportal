@@ -10,29 +10,23 @@ const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
 const register = async (req: Request, res: Response) => {
     const { username, email, password } = req.body;
-    console.log(username, email, password);
     if (!username || !email || !password) {
-        console.log('Missing username, email or password');
         throw new BadRequestError('Missing username, email or password');
     }
     const uniqueEmail = await query('select email from users where email = $1', [email]);
     if (uniqueEmail.rows.length >= 1) {
-        console.log('Email address is already registered.');
         throw new BadRequestError('Email address is already registered.');
     }
 
     if (!usernameRegex.test(username)) {
         if (username.length < 3 || username.length > 16) {
-            console.log('Invalid username, username must be between 3-16 characters.');
             throw new BadRequestError('Invalid username, username must be between 3-16 characters.');
         } else {
-            console.log('Invalid username, username can only contain letters (A-Z) and numbers (0-9).');
             throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9).');
         }
     }
 
     if (!emailRegex.test(email)) {
-        console.log('Email is invalid');
         throw new BadRequestError('Email is invalid');
     }
 
