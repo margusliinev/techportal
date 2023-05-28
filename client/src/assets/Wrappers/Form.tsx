@@ -16,7 +16,7 @@ const Wrapper = styled.div`
         margin-bottom: 1.5rem;
     }
     .form-btn {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
     .member-check {
         margin-top: 1rem;
@@ -52,12 +52,11 @@ const Wrapper = styled.div`
     }
     .form-input-password-container {
         position: relative;
-        display: grid;
-        align-items: center;
     }
     .password-toggle {
         position: absolute;
         right: 0.5rem;
+        top: 0.5rem;
         display: grid;
         font-size: 1.4rem;
         background-color: transparent;
