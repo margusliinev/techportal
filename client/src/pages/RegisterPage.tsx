@@ -5,7 +5,7 @@ import { Logo, FormRow, FormRowPassword } from '../components';
 import { Link, useNavigate } from 'react-router-dom';
 import { validateUsername, validateEmail, validatePassword } from '../utils/formValidation';
 import { registerUser } from '../utils/registerUser';
-import { addUserToLocalStorage, removeUserFromLocalStorage } from '../utils/localStorage';
+import { addUserToLocalStorage } from '../utils/localStorage';
 
 interface User {
     username: string;
