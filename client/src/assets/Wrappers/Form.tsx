@@ -18,6 +18,9 @@ const Wrapper = styled.div`
     .form-btn {
         margin-top: 1.5rem;
     }
+    .form-btn-disabled {
+        background-color: var(--colorPrimary4);
+    }
     .member-check {
         margin-top: 1rem;
         text-align: center;
