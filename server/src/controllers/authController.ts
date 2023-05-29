@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { query } from '../db/index';
-import { BadRequestError } from '../errors';
+import { BadRequestError, UnAuthenticatedError } from '../errors';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -10,9 +10,11 @@ const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
 const register = async (req: Request, res: Response) => {
     const { username, email, password } = req.body;
+
     if (!username || !email || !password) {
         throw new BadRequestError('Missing username, email or password');
     }
+
     const uniqueEmail = await query('select email from users where email = $1', [email]);
     if (uniqueEmail.rows.length >= 1) {
         throw new BadRequestError('Email address is already registered.');
@@ -50,8 +52,28 @@ const register = async (req: Request, res: Response) => {
     res.status(201).json({ user: { username: newUser.rows[0].username, email: newUser.rows[0].email }, token });
 };
 
-const login = (req: Request, res: Response) => {
-    res.send('Login route');
+const login = async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        throw new BadRequestError('Missing email or password');
+    }
+
+    const user = await query('SELECT * FROM users WHERE email = $1', [email]);
+    if (!user.rows[0]) {
+        throw new UnAuthenticatedError('Incorrect email or password');
+    }
+    const hashedPassword = user.rows[0].password;
+
+    const isPasswordCorrect = await bcrypt.compare(password, hashedPassword);
+
+    if (!isPasswordCorrect) {
+        throw new UnAuthenticatedError('Incorrect email or password');
+    }
+
+    const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
+
+    res.status(200).json({ user: { username: user.rows[0].username, email: user.rows[0].email }, token });
 };
 
 export { register, login };
