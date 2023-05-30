@@ -3,6 +3,11 @@ import { query } from '../db/index';
 import { BadRequestError, UnAuthenticatedError } from '../errors';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { createCookie } from '../utils/createCookie';
+
+interface CustomRequest extends Request {
+    user?: any;
+}
 
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -47,9 +52,8 @@ const register = async (req: Request, res: Response) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
     const newUser = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [req.body.username, req.body.email, hash]);
-    const token = jwt.sign({ userId: newUser.rows[0].id }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
 
-    res.status(201).json({ user: { username: newUser.rows[0].username, email: newUser.rows[0].email }, token });
+    res.status(201).json({ user: { username: newUser.rows[0].username, email: newUser.rows[0].email } });
 };
 
 const login = async (req: Request, res: Response) => {
@@ -72,8 +76,20 @@ const login = async (req: Request, res: Response) => {
     }
 
     const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
+    createCookie({ res, token });
 
-    res.status(200).json({ user: { username: user.rows[0].username, email: user.rows[0].email }, token });
+    res.status(200).json({ user: { username: user.rows[0].username, email: user.rows[0].email } });
 };
 
-export { register, login };
+const getUserProfile = async (req: CustomRequest, res: Response) => {
+    console.log(req.user);
+    // const user = await query('SELECT * FROM users WHERE id = $1', [req.user.userId]);
+    const user = {
+        id: req.user.id,
+        username: req.user.username,
+        email: req.user.email,
+    };
+    res.status(200).json({ user });
+};
+
+export { register, login, getUserProfile };

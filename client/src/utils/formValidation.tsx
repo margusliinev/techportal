@@ -1,4 +1,45 @@
-const validateUsername = (username: string) => {
+export const handleValidation = (e: React.ChangeEvent<HTMLInputElement>, username: string, email: string, password: string) => {
+    const nextElementSibling = e.currentTarget.nextElementSibling as HTMLElement;
+    const { name, value } = e.currentTarget;
+
+    const showError = (message: string) => {
+        e.currentTarget.classList.add('form-input-error');
+        nextElementSibling.textContent = message;
+        nextElementSibling.classList.add('form-alert-error');
+    };
+
+    if (value === '') {
+        return;
+    }
+
+    if (name === 'username') {
+        if (username.length < 3 || username.length > 16) {
+            showError('Username length: 3-16 characters.');
+        } else if (!/^[A-Za-z0-9]{3,16}$/.test(username)) {
+            showError('Username can only contain letters (A-Z) and numbers (0-9).');
+        }
+    }
+
+    if (name === 'email') {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showError('Please enter a valid email.');
+        }
+    }
+
+    if (name === 'password') {
+        if (password.length < 8) {
+            showError('Password must be at least 8 characters long.');
+        } else if (!/(?=.*[a-z])/.test(password)) {
+            showError('Password must contain at least one letter.');
+        } else if (!/(?=.*\d)/.test(password)) {
+            showError('Password must contain at least one number.');
+        } else if (!/^[A-Za-z\d!@#$%&*,.?]{8,}$/.test(password)) {
+            showError('Allowed special characters: !@#$%&*,.?');
+        }
+    }
+};
+
+export const validateUsername = (username: string) => {
     const regex = /^[A-Za-z0-9]{3,16}$/;
 
     if (!regex.test(username)) {
@@ -8,7 +49,7 @@ const validateUsername = (username: string) => {
     return true;
 };
 
-const validateEmail = (email: string) => {
+export const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!regex.test(email)) {
@@ -18,7 +59,7 @@ const validateEmail = (email: string) => {
     return true;
 };
 
-const validatePassword = (password: string) => {
+export const validatePassword = (password: string) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
     if (!regex.test(password)) {
@@ -27,5 +68,3 @@ const validatePassword = (password: string) => {
 
     return true;
 };
-
-export { validateUsername, validateEmail, validatePassword };

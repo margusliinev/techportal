@@ -1,11 +1,23 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DashboardPage, LandingPage, RegisterPage, LoginPage, ResetPage, ErrorPage } from './pages';
+import { LandingPage, RegisterPage, LoginPage, ResetPage, ErrorPage, ProtectedRoute } from './pages';
+import { SharedLayout, Jobs, Profile, Stats } from './pages/dashboard';
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path='/' element={<DashboardPage />}></Route>
+                <Route
+                    path='/'
+                    element={
+                        <ProtectedRoute>
+                            <SharedLayout />
+                        </ProtectedRoute>
+                    }
+                >
+                    <Route index path='stats' element={<Stats />}></Route>
+                    <Route path='jobs' element={<Jobs />}></Route>
+                    <Route path='profile' element={<Profile />}></Route>
+                </Route>
                 <Route path='/landing' element={<LandingPage />}></Route>
                 <Route path='/register' element={<RegisterPage />}></Route>
                 <Route path='/login' element={<LoginPage />}></Route>

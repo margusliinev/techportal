@@ -59,7 +59,7 @@ const Wrapper = styled.div`
     .password-toggle {
         position: absolute;
         right: 0.5rem;
-        top: 0.5rem;
+        top: 0.45rem;
         display: grid;
         font-size: 1.4rem;
         background-color: transparent;

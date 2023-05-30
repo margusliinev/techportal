@@ -5,15 +5,16 @@ import 'express-async-errors';
 import errorHandlerMiddleware from './middleware/errorHandler';
 import notFoundMiddleware from './middleware/notFound';
 import authRouter from './routes/authRoutes';
-import jobsRouter from './routes/jobsRoutes';
+import cookieParser from 'cookie-parser';
+import AuthMiddleware from './middleware/auth';
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173', optionsSuccessStatus: 200 }));
+app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:5173', optionsSuccessStatus: 200, credentials: true }));
 app.use('/', authRouter);
-app.use('/', jobsRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 

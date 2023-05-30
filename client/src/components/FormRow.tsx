@@ -3,7 +3,7 @@ interface Props {
     name: string;
     value: string;
     labelText: string;
-    handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleValidation?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
