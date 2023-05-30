@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { Link, useNavigate } from 'react-router-dom';
-import { Logo, FormRow, FormRowPassword } from '../components';
+import { useNavigate } from 'react-router-dom';
+import { Logo, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { handleValidation, validateUsername, validateEmail, validatePassword } from '../utils/formValidation';
 import { register } from '../utils/dataFetching';
 import Wrapper from '../assets/Wrappers/Form';
@@ -86,12 +86,7 @@ const RegisterPage = () => {
                     <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
                         {isSuccess ? 'Redirecting...' : 'Create new account'}
                     </button>
-                    <div className='member-check'>
-                        <p>Already have an account?</p>
-                        <Link to={'/login'} type='button' className='member-btn'>
-                            Login
-                        </Link>
-                    </div>
+                    <MemberCheck message={'Already have an account?'} endpoint={'login'} />
                 </form>
             </div>
         </Wrapper>

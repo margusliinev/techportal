@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { Link, useNavigate } from 'react-router-dom';
-import { Logo, FormRow, FormRowPassword } from '../components';
+import { useNavigate } from 'react-router-dom';
+import { Logo, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { login } from '../utils/dataFetching';
 import Wrapper from '../assets/Wrappers/Form';
 
@@ -54,12 +54,7 @@ const LoginPage = () => {
                     <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
                         {isSuccess ? 'Redirecting...' : 'Sign In'}
                     </button>
-                    <div className='member-check'>
-                        <p>Don't have an account?</p>
-                        <Link to={'/register'} className='member-btn'>
-                            Register
-                        </Link>
-                    </div>
+                    <MemberCheck message={"Don't have an account?"} endpoint={'register'} />
                 </form>
             </div>
         </Wrapper>

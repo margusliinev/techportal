@@ -38,6 +38,7 @@ const Wrapper = styled.div`
         cursor: pointer;
         font-size: 1rem;
         font-weight: 500;
+        text-transform: capitalize;
     }
     .return-btn {
         font-size: 0.875rem;
@@ -71,13 +72,17 @@ const Wrapper = styled.div`
     .password-toggle:hover {
         color: var(--colorGray6);
     }
+    .server-message {
+        margin: 0.5rem 0;
+        text-align: center;
+        font-weight: 400;
+        letter-spacing: -0.01rem;
+    }
     .server-message-error {
         color: var(--colorRed2);
-        margin: 0.5rem 0;
     }
     .server-message-success {
         color: var(--colorGreen2);
-        margin: 0.5rem 0;
     }
 `;
 

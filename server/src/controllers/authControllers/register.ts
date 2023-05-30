@@ -1,19 +1,13 @@
 import { Request, Response } from 'express';
-import { query } from '../db/index';
-import { BadRequestError, UnAuthenticatedError } from '../errors';
+import { BadRequestError } from '../../errors';
+import { query } from '../../db';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { createCookie } from '../utils/createCookie';
-
-interface CustomRequest extends Request {
-    user?: any;
-}
 
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
-const register = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
@@ -55,41 +49,3 @@ const register = async (req: Request, res: Response) => {
 
     res.status(201).json({ user: { username: newUser.rows[0].username, email: newUser.rows[0].email } });
 };
-
-const login = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-        throw new BadRequestError('Missing email or password');
-    }
-
-    const user = await query('SELECT * FROM users WHERE email = $1', [email]);
-    if (!user.rows[0]) {
-        throw new UnAuthenticatedError('Incorrect email or password');
-    }
-    const hashedPassword = user.rows[0].password;
-
-    const isPasswordCorrect = await bcrypt.compare(password, hashedPassword);
-
-    if (!isPasswordCorrect) {
-        throw new UnAuthenticatedError('Incorrect email or password');
-    }
-
-    const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
-    createCookie({ res, token });
-
-    res.status(200).json({ user: { username: user.rows[0].username, email: user.rows[0].email } });
-};
-
-const getUserProfile = async (req: CustomRequest, res: Response) => {
-    console.log(req.user);
-    // const user = await query('SELECT * FROM users WHERE id = $1', [req.user.userId]);
-    const user = {
-        id: req.user.id,
-        username: req.user.username,
-        email: req.user.email,
-    };
-    res.status(200).json({ user });
-};
-
-export { register, login, getUserProfile };
