@@ -22,7 +22,9 @@ const LandingPage = () => {
                         <Link to={'/register'} className='btn'>
                             Login / Register
                         </Link>
-                        <button className='btn demo-btn'>Demo User</button>
+                        <Link to={'/'} className='btn explore-btn'>
+                            Explore Job Market
+                        </Link>
                     </div>
                 </div>
                 <img src={LandingLight} alt='landing image' className='landing-img' />
@@ -69,16 +71,36 @@ const Wrapper = styled.div`
         display: flex;
         gap: 1rem;
         margin-top: 1rem;
-        .demo-btn {
-            background-color: var(--colorGray6);
-        }
+    }
+    .explore-btn {
+        background-color: var(--colorGray6);
+    }
+    .explore-btn:hover {
+        background-color: var(--colorGray7);
     }
     .btn {
         font-size: 18px;
+        white-space: nowrap;
     }
     .landing-img {
         display: none;
         height: unset;
+    }
+    @media (max-width: 360px) {
+        .btn-container {
+            flex-wrap: wrap;
+        }
+    }
+    @media (max-width: 410px) {
+        h1 {
+            font-size: 3rem;
+        }
+        p {
+            font-size: 16px;
+        }
+        .btn {
+            font-size: 16px;
+        }
     }
     @media (min-width: 1024px) {
         .container {

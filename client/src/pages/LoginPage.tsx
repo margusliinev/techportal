@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Logo, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { login } from '../utils/dataFetching';
 import Wrapper from '../assets/Wrappers/Form';
+import useUserStore from '../store';
 
 interface User {
     email: string;
@@ -17,9 +18,14 @@ const initialState: User = {
 
 const LoginPage = () => {
     const [values, setValues] = useState<User>(initialState);
-    const { mutate, isLoading, isError, error, isSuccess } = useMutation(login);
+    const { mutate, isLoading, isError, error, isSuccess } = useMutation(login, {
+        onSuccess: (data) => {
+            setUser(data.data.user);
+        },
+    });
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const navigate = useNavigate();
+    const { setUser } = useUserStore();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (errorRef.current) {

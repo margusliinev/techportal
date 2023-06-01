@@ -4,8 +4,7 @@ interface CustomRequest extends Request {
     user?: any;
 }
 
-const getUserProfile = async (req: CustomRequest, res: Response) => {
-    console.log(req.user);
+const getCurrentUserData = async (req: CustomRequest, res: Response) => {
     const user = {
         id: req.user.id,
         username: req.user.username,
@@ -14,4 +13,4 @@ const getUserProfile = async (req: CustomRequest, res: Response) => {
     res.status(200).json({ user });
 };
 
-export { getUserProfile };
+export { getCurrentUserData };

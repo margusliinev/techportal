@@ -6,17 +6,12 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route
-                    path='/'
-                    element={
-                        <ProtectedRoute>
-                            <SharedLayout />
-                        </ProtectedRoute>
-                    }
-                >
+                <Route path='/' element={<SharedLayout />}>
                     <Route index path='stats' element={<Stats />}></Route>
                     <Route path='jobs' element={<Jobs />}></Route>
-                    <Route path='profile' element={<Profile />}></Route>
+                    <Route path='' element={<ProtectedRoute />}>
+                        <Route path='profile' element={<Profile />}></Route>
+                    </Route>
                 </Route>
                 <Route path='/landing' element={<LandingPage />}></Route>
                 <Route path='/register' element={<RegisterPage />}></Route>

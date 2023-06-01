@@ -1,9 +1,9 @@
-interface ProtectedRouteProps {
-    children: React.ReactElement;
-}
+import { Navigate, Outlet } from 'react-router-dom';
+import useUserStore from '../store';
 
-const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-    return children;
+const ProtectedRoute = () => {
+    const { user } = useUserStore();
+    return user ? <Outlet /> : <Navigate to='/' />;
 };
 
 export default ProtectedRoute;
