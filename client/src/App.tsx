@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LandingPage, RegisterPage, LoginPage, ResetPage, ErrorPage, ProtectedRoute } from './pages';
 import { SharedLayout, Jobs, Profile, Stats } from './pages/dashboard';
 
@@ -6,8 +6,10 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path='/' element={<SharedLayout />}>
-                    <Route index path='stats' element={<Stats />}></Route>
+                <Route path='/' element={<Navigate to='/dashboard/stats' />}></Route>
+                <Route path='/dashboard' element={<SharedLayout />}>
+                    <Route path='' element={<Navigate to='stats' />}></Route>
+                    <Route path='stats' element={<Stats />}></Route>
                     <Route path='jobs' element={<Jobs />}></Route>
                     <Route path='' element={<ProtectedRoute />}>
                         <Route path='profile' element={<Profile />}></Route>

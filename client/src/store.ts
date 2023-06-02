@@ -10,9 +10,17 @@ interface UserStore {
     setUser: (user: User | null) => void;
 }
 
-const useUserStore = create<UserStore>((set) => ({
+export const useUserStore = create<UserStore>((set) => ({
     user: null,
     setUser: (user: User | null) => set({ user }),
 }));
 
-export default useUserStore;
+interface NavigationStore {
+    showSidebar: boolean;
+    toggleSidebar: () => void;
+}
+
+export const useNavigationStore = create<NavigationStore>((set) => ({
+    showSidebar: false,
+    toggleSidebar: () => set((state) => ({ showSidebar: !state.showSidebar })),
+}));

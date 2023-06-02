@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Logo, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { login } from '../utils/dataFetching';
 import Wrapper from '../assets/Wrappers/Form';
-import useUserStore from '../store';
+import { useUserStore } from '../store';
 
 interface User {
     email: string;
