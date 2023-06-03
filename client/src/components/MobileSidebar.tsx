@@ -3,6 +3,9 @@ import { Logo } from '../components';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { useNavigationStore } from '../store';
+import { IoBarChart } from 'react-icons/io5';
+import { MdQueryStats } from 'react-icons/md';
+import { ImProfile } from 'react-icons/im';
 
 const MobileSidebar = () => {
     const { showSidebar, toggleSidebar } = useNavigationStore();
@@ -19,18 +22,18 @@ const MobileSidebar = () => {
                     </header>
                     <ul className='sidebar-links'>
                         <li>
-                            <Link to={'/stats'} className='nav-link'>
-                                stats
+                            <Link to={'/dashboard/stats'} className='nav-link'>
+                                {<IoBarChart />} stats
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/jobs'} className='nav-link'>
-                                jobs
+                            <Link to={'/dashboard/jobs'} className='nav-link'>
+                                {<MdQueryStats />} jobs
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/profile'} className='nav-link'>
-                                profile
+                            <Link to={'/dashboard/profile'} className='nav-link'>
+                                {<ImProfile />} profile
                             </Link>
                         </li>
                     </ul>

@@ -27,7 +27,7 @@ const Wrapper = styled.aside`
             padding: 0 1rem;
         }
         .nav-links {
-            padding-top: 2rem;
+            padding-top: 4rem;
             display: flex;
             flex-direction: column;
         }
@@ -36,13 +36,17 @@ const Wrapper = styled.aside`
             align-items: center;
             color: var(--colorGray5);
             padding: 1rem 0;
-            padding-left: 1rem;
+            padding-left: 2.5rem;
             text-transform: capitalize;
             transition: var(--transition);
+            gap: 0.5rem;
+            svg {
+                font-size: 1.5rem;
+            }
         }
         .nav-link:hover {
             background: var(--colorGray1);
-            padding-left: 1.5rem;
+            padding-left: 3rem;
             color: var(--colorGray9);
         }
         .nav-link:hover .icon {

@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { FaAlignLeft, FaUserCircle, FaCaretDown } from 'react-icons/fa';
+import { FaAlignLeft, FaUserCircle } from 'react-icons/fa';
 import Wrapper from '../assets/Wrappers/Navbar';
 import { useNavigationStore } from '../store';
 
@@ -17,7 +16,7 @@ const Navbar = () => {
                 <div className='btn-container'>
                     <button className='btn'>
                         <FaUserCircle />
-                        margus
+                        Margus
                     </button>
                     <div className='dropdown show-dropdown'>
                         <button className='dropdown-btn'>logout</button>
