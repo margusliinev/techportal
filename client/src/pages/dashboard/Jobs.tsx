@@ -1,5 +1,5 @@
 const Jobs = () => {
-    return <div>Jobs</div>;
+    return <div></div>;
 };
 
 export default Jobs;

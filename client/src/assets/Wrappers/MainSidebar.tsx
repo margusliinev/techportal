@@ -4,9 +4,8 @@ const Wrapper = styled.aside`
     display: none;
     @media (min-width: 992px) {
         display: block;
-        box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
         .sidebar-container {
-            background: var(--colorWhite);
+            background: var(--colorPrimary1);
             min-height: 100vh;
             height: 100%;
             width: 250px;
@@ -21,10 +20,10 @@ const Wrapper = styled.aside`
             margin-left: 0;
         }
         header {
-            height: 6rem;
+            height: 5rem;
             display: flex;
             align-items: center;
-            padding: 0 1rem;
+            justify-content: center;
         }
         .nav-links {
             padding-top: 4rem;
@@ -36,7 +35,7 @@ const Wrapper = styled.aside`
             align-items: center;
             color: var(--colorGray5);
             padding: 1rem 0;
-            padding-left: 2.5rem;
+            padding-left: 2rem;
             text-transform: capitalize;
             transition: var(--transition);
             gap: 0.5rem;

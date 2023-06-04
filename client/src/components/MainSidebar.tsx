@@ -7,7 +7,7 @@ import { MdQueryStats } from 'react-icons/md';
 import { ImProfile } from 'react-icons/im';
 
 const MainSidebar = () => {
-    const { showSidebar, toggleSidebar } = useNavigationStore();
+    const { showSidebar } = useNavigationStore();
     return (
         <Wrapper>
             <div className={showSidebar ? 'sidebar-container ' : 'sidebar-container show-sidebar'}>
@@ -37,4 +37,5 @@ const MainSidebar = () => {
         </Wrapper>
     );
 };
+
 export default MainSidebar;

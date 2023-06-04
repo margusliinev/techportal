@@ -1,15 +1,10 @@
-import { FaAlignLeft, FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
 import Wrapper from '../assets/Wrappers/Navbar';
-import { useNavigationStore } from '../store';
 
 const Navbar = () => {
-    const { toggleSidebar } = useNavigationStore();
     return (
         <Wrapper>
             <div className='nav-center'>
-                <button className='toggle-btn' onClick={toggleSidebar}>
-                    <FaAlignLeft />
-                </button>
                 <div>
                     <h3 className='logo-text'>dashboard</h3>
                 </div>
