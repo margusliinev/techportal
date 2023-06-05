@@ -13,7 +13,8 @@ const MainSidebar = () => {
             <div className={showSidebar ? 'sidebar-container ' : 'sidebar-container show-sidebar'}>
                 <div className='content'>
                     <header>
-                        <LogoSmall />
+                        <h4>TP</h4>
+                        <h5>TechPortal</h5>
                     </header>
                     <ul className='nav-links'>
                         <li>

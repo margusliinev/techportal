@@ -5,12 +5,13 @@ const Wrapper = styled.aside`
     @media (min-width: 992px) {
         display: block;
         .sidebar-container {
-            background: var(--colorPrimary1);
+            background: var(--colorPrimary5);
             min-height: 100vh;
             height: 100%;
-            width: 250px;
+            width: 300px;
             margin-left: -250px;
             transition: var(--transition);
+            padding: 0rem 1rem;
         }
         .content {
             position: sticky;
@@ -24,39 +25,46 @@ const Wrapper = styled.aside`
             display: flex;
             align-items: center;
             justify-content: center;
+            h4 {
+                display: inline-block;
+                color: var(--colorPrimary5);
+                background-color: var(--colorWhite);
+                padding: 0.2rem 0.5rem;
+                font-weight: 600;
+                border-radius: var(--radius-md);
+                font-family: 'Poppins';
+                margin-right: 0.5rem;
+            }
+            h5 {
+                display: inline-block;
+                color: var(--colorWhite);
+            }
         }
         .nav-links {
-            padding-top: 4rem;
+            padding-top: 5rem;
             display: flex;
             flex-direction: column;
         }
         .nav-link {
             display: flex;
             align-items: center;
-            color: var(--colorGray5);
+            color: var(--colorWhite);
             padding: 1rem 0;
-            padding-left: 2rem;
+            padding-left: 2.5rem;
             text-transform: capitalize;
             transition: var(--transition);
             gap: 0.5rem;
+            border-radius: var(--radius-md);
             svg {
                 font-size: 1.5rem;
             }
         }
         .nav-link:hover {
-            background: var(--colorGray1);
+            background: var(--colorPrimary6);
             padding-left: 3rem;
-            color: var(--colorGray9);
         }
         .nav-link:hover .icon {
             color: var(--colorPrimary5);
-        }
-        .icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            display: grid;
-            place-items: center;
-            transition: var(--transition);
         }
         .active {
             color: var(--colorGray9);

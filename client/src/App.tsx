@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { LandingPage, RegisterPage, LoginPage, ResetPage, ErrorPage, ProtectedRoute } from './pages';
+import { LandingPage, RegisterPage, LoginPage, ResetPage, ErrorPage } from './pages';
 import { SharedLayout, Jobs, Profile, Stats } from './pages/dashboard';
 
 function App() {
@@ -11,9 +11,7 @@ function App() {
                     <Route path='' element={<Navigate to='stats' />}></Route>
                     <Route path='stats' element={<Stats />}></Route>
                     <Route path='jobs' element={<Jobs />}></Route>
-                    <Route path='' element={<ProtectedRoute />}>
-                        <Route path='profile' element={<Profile />}></Route>
-                    </Route>
+                    <Route path='profile' element={<Profile />}></Route>
                 </Route>
                 <Route path='/landing' element={<LandingPage />}></Route>
                 <Route path='/register' element={<RegisterPage />}></Route>

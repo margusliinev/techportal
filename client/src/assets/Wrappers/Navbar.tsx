@@ -5,69 +5,97 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--colorPrimary1);
-    .logo {
-        display: flex;
-        align-items: center;
-        width: 100px;
-    }
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     .nav-center {
         display: flex;
-        width: 90vw;
         align-items: center;
         justify-content: space-between;
+        width: 90vw;
     }
-    .toggle-btn {
-        background: transparent;
-        border-color: transparent;
-        font-size: 1.75rem;
-        color: var(--colorPrimary5);
-        cursor: pointer;
+    .nav-container {
         display: flex;
         align-items: center;
+        gap: 1.5rem;
+        .toggle-btn {
+            background: transparent;
+            border-color: transparent;
+            font-size: 1.75rem;
+            color: var(--colorPrimary5);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .content-divider-vertical {
+            width: 1px;
+            height: 25px;
+            background-color: var(--colorGray2);
+        }
+        .nav-title {
+            font-size: 1.75rem;
+            color: var(--colorGray9);
+        }
     }
     .btn-container {
         position: relative;
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0 0.5rem;
+            position: relative;
+            background: var(--colorPrimary5);
+            span {
+                display: grid;
+                font-size: 1.25rem;
+            }
+            p {
+                font-weight: 500;
+                font-size: 16px;
+            }
+        }
+        .dropdown {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 8rem;
+            background-color: var(--colorWhite);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            visibility: hidden;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--colorGray2);
+        }
+        .show-dropdown {
+            visibility: visible;
+        }
+        .dropdown-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            border-color: transparent;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .dropdown-btn:nth-of-type(1) {
+            padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+        }
+        .dropdown-btn:nth-of-type(2) {
+            padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+        }
+        .dropdown-btn:hover {
+            background-color: var(--colorGray1);
+        }
     }
-    .btn {
+    .sign-in-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0 0.5rem;
-        position: relative;
-        box-shadow: var(--shadow-md);
-    }
-
-    .dropdown {
-        position: absolute;
-        top: 40px;
-        left: 0;
-        width: 100%;
-        background: var(--colorPrimary1);
-        box-shadow: var(--shadow-md);
-        padding: 0.5rem;
-        text-align: center;
-        visibility: hidden;
-        border-radius: var(--radius-md);
-    }
-    /* .show-dropdown {
-        visibility: visible;
-    }
-    .dropdown-btn {
-        background: transparent;
-        border-color: transparent;
-        color: var(--colorPrimary5);
-        text-transform: capitalize;
-        cursor: pointer;
-    } */
-    .logo-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0;
-        text-transform: capitalize;
-        font-weight: 600;
+        gap: 0.5rem;
+        border-radius: var(--radius-2xl);
+        span {
+            display: grid;
+            font-size: 1.25rem;
+        }
     }
     @media (min-width: 992px) {
         position: sticky;
@@ -75,8 +103,11 @@ const Wrapper = styled.nav`
         .nav-center {
             width: 90%;
         }
-        .logo {
-            display: none;
+        .nav-container {
+            .toggle-btn,
+            .content-divider-vertical {
+                display: none;
+            }
         }
     }
 `;
