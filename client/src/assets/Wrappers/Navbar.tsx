@@ -19,11 +19,15 @@ const Wrapper = styled.nav`
         .toggle-btn {
             background: transparent;
             border-color: transparent;
-            font-size: 1.75rem;
+            font-size: 1.8rem;
             color: var(--colorPrimary5);
             cursor: pointer;
             display: flex;
             align-items: center;
+            transition: var(--transition);
+        }
+        .toggle-btn:hover {
+            color: var(--colorPrimary6);
         }
         .content-divider-vertical {
             width: 1px;

@@ -4,15 +4,18 @@ import { FaUserCircle, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
 import Wrapper from '../assets/Wrappers/Navbar';
 import { useUserStore } from '../store';
+import { useNavigationStore } from '../store';
 
 const Navbar = () => {
     const [showLogout, setShowLogout] = useState(false);
+    const { toggleSidebar } = useNavigationStore();
     const { user } = useUserStore();
+
     return (
         <Wrapper>
             <div className='nav-center'>
                 <div className='nav-container'>
-                    <button className='toggle-btn'>
+                    <button className='toggle-btn' onClick={() => toggleSidebar()}>
                         <BiMenu />
                     </button>
                     <div className='content-divider-vertical'></div>
@@ -28,7 +31,9 @@ const Navbar = () => {
                             <span>{showLogout ? <FaCaretUp /> : <FaCaretDown />}</span>
                         </button>
                         <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
-                            <button className='dropdown-btn'>Your Profile</button>
+                            <Link to={'/dashboard/profile'} className='dropdown-btn' onClick={() => setShowLogout(!showLogout)}>
+                                Your Profile
+                            </Link>
                             <button className='dropdown-btn'>Sign Out</button>
                         </div>
                     </div>

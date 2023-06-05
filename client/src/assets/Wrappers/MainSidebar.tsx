@@ -9,16 +9,13 @@ const Wrapper = styled.aside`
             min-height: 100vh;
             height: 100%;
             width: 300px;
-            margin-left: -250px;
+            margin-left: 0;
             transition: var(--transition);
             padding: 0rem 1rem;
         }
         .content {
             position: sticky;
             top: 0;
-        }
-        .show-sidebar {
-            margin-left: 0;
         }
         header {
             height: 5rem;
