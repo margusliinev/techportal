@@ -9,7 +9,7 @@ const Logo = () => {
     );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
     display: inline-flex;
     align-items: center;
     width: 245px;

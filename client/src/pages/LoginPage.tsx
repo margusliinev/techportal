@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { Logo, FormRow, FormRowPassword, MemberCheck } from '../components';
+import { LogoDark, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { login } from '../utils/dataFetching';
 import Wrapper from '../assets/Wrappers/Form';
 import { useUserStore } from '../store';
@@ -50,7 +50,7 @@ const LoginPage = () => {
             <div className='container'>
                 <form className='form' onSubmit={handleSubmit}>
                     <div className='form-logo'>
-                        <Logo />
+                        <LogoDark />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as any).response.data.msg : isSuccess && 'Login successful! Welcome back'}

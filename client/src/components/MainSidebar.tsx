@@ -1,39 +1,37 @@
-import Wrapper from '../assets/Wrappers/MainSidebar';
-import { Link } from 'react-router-dom';
-import { IoBarChart } from 'react-icons/io5';
-import { MdQueryStats } from 'react-icons/md';
-import { ImProfile } from 'react-icons/im';
+import styled from 'styled-components';
+import { LogoLight, NavLinks } from '../components';
 
 const MainSidebar = () => {
     return (
         <Wrapper>
             <div className='sidebar-container'>
                 <div className='content'>
-                    <header>
-                        <h4>TP</h4>
-                        <h5>TechPortal</h5>
-                    </header>
-                    <ul className='nav-links'>
-                        <li>
-                            <Link to={'/dashboard/stats'} className='nav-link'>
-                                {<IoBarChart />} stats
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={'/dashboard/jobs'} className='nav-link'>
-                                {<MdQueryStats />} jobs
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={'/dashboard/profile'} className='nav-link'>
-                                {<ImProfile />} profile
-                            </Link>
-                        </li>
-                    </ul>
+                    <LogoLight />
+                    <NavLinks />
                 </div>
             </div>
         </Wrapper>
     );
 };
+
+const Wrapper = styled.aside`
+    display: none;
+    @media (min-width: 992px) {
+        display: block;
+        .sidebar-container {
+            background: var(--colorPrimary5);
+            min-height: 100vh;
+            height: 100%;
+            width: 300px;
+            margin-left: 0;
+            transition: var(--transition);
+            padding: 0rem 1rem;
+        }
+        .content {
+            position: sticky;
+            top: 0;
+        }
+    }
+`;
 
 export default MainSidebar;
