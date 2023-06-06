@@ -27,7 +27,7 @@ const Navbar = () => {
                             <span>
                                 <FaUserCircle />
                             </span>
-                            <p>Margus</p>
+                            <p>{user.username}</p>
                             <span>{showLogout ? <FaCaretUp /> : <FaCaretDown />}</span>
                         </button>
                         <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
@@ -38,11 +38,13 @@ const Navbar = () => {
                         </div>
                     </div>
                 ) : (
-                    <Link to={'/login'} className='btn sign-in-btn'>
-                        <span>
-                            <FaUserCircle />
-                        </span>
-                        Sign In
+                    <Link to={'/login'}>
+                        <button className='btn'>
+                            <span>
+                                <FaUserCircle />
+                            </span>
+                            <p>Sign In</p>
+                        </button>
                     </Link>
                 )}
             </div>
@@ -95,9 +97,8 @@ const Wrapper = styled.nav`
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0 0.5rem;
-            position: relative;
-            background: var(--colorPrimary5);
+            gap: 0.5rem;
+            border-radius: var(--radius-2xl);
             span {
                 display: grid;
                 font-size: 1.25rem;
@@ -105,6 +106,8 @@ const Wrapper = styled.nav`
             p {
                 font-weight: 500;
                 font-size: 16px;
+                text-transform: capitalize;
+                align-self: end;
             }
         }
         .dropdown {
@@ -140,8 +143,8 @@ const Wrapper = styled.nav`
             background-color: var(--colorGray1);
         }
     }
-    .sign-in-btn {
-        display: flex;
+    .btn {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
@@ -149,6 +152,9 @@ const Wrapper = styled.nav`
         span {
             display: grid;
             font-size: 1.25rem;
+        }
+        p {
+            align-self: end;
         }
     }
     @media (min-width: 992px) {

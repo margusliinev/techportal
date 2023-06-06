@@ -15,12 +15,7 @@ const auth = async (req: CustomRequest, res: Response, next: NextFunction) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as JwtPayload;
         const result = await query('SELECT * FROM users WHERE id = $1', [decoded.userId]);
-        const userData = {
-            id: result.rows[0].id,
-            username: result.rows[0].username,
-            email: result.rows[0].email,
-        };
-        req.user = userData;
+        req.user = { userId: result.rows[0].id };
         next();
     } catch (error) {
         throw new UnAuthenticatedError('Authentication Invalid');

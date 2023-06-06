@@ -31,3 +31,10 @@ export const login = async (user: User): Promise<AxiosResponse<UserAPIResponse, 
     });
     return response;
 };
+
+export const getCurrentUserData = async (): Promise<AxiosResponse<UserAPIResponse, null>> => {
+    const response = axios.get('http://localhost:5000/api/v1/users/me', {
+        withCredentials: true,
+    });
+    return response;
+};

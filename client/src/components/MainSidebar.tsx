@@ -24,7 +24,6 @@ const Wrapper = styled.aside`
             height: 100%;
             width: 300px;
             margin-left: 0;
-            transition: var(--transition);
             padding: 0rem 1rem;
         }
         .content {

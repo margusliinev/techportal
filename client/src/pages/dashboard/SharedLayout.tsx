@@ -1,8 +1,22 @@
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
-import { Navbar, MainSidebar, MobileSidebar } from '../../components';
+import { Navbar, MainSidebar, MobileSidebar, Loader } from '../../components';
+import { useUserStore } from '../../store';
+import { getCurrentUserData } from '../../utils/dataFetching';
+import { useEffect } from 'react';
 
 const SharedLayout = () => {
+    const { setUser, setUserLoading } = useUserStore();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getCurrentUserData();
+            setUser(data.data.user);
+            setUserLoading(false);
+        };
+        fetchData();
+    }, []);
+
     return (
         <Wrapper>
             <main className='dashboard'>
