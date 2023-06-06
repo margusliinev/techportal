@@ -11,6 +11,14 @@ interface User {
     password: string;
 }
 
+interface CustomAPIError {
+    response: {
+        data: {
+            msg: string;
+        };
+    };
+}
+
 const initialState: User = {
     email: '',
     password: '',
@@ -53,7 +61,7 @@ const LoginPage = () => {
                         <LogoDark />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {isError ? (error as any).response.data.msg : isSuccess && 'Login successful! Welcome back'}
+                        {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Login successful! Welcome back'}
                     </p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
                     <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} forgot={true} handleChange={handleChange} />

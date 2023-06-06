@@ -12,6 +12,14 @@ interface User {
     password: string;
 }
 
+interface CustomAPIError {
+    response: {
+        data: {
+            msg: string;
+        };
+    };
+}
+
 const initialState: User = {
     username: '',
     email: '',
@@ -56,7 +64,7 @@ const RegisterPage = () => {
                         <LogoDark />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {isError ? (error as any).response.data.msg : isSuccess && 'Your account has been created'}
+                        {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Your account has been created'}
                     </p>
                     <FormRow
                         type={'text'}

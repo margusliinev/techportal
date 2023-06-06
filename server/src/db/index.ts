@@ -9,7 +9,7 @@ const pool = new Pool({
     ssl: true,
 });
 
-const query = async (text: string, params?: any[]) => {
+const query = async (text: string, params?: string[]) => {
     const client = await pool.connect();
     try {
         const result = await client.query(text, params);
