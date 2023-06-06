@@ -5,11 +5,12 @@ import { FaUserCircle, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
 import { useUserStore } from '../store';
 import { useNavigationStore } from '../store';
+import { logout } from '../utils/dataFetching';
 
 const Navbar = () => {
     const [showLogout, setShowLogout] = useState(false);
     const { toggleSidebar } = useNavigationStore();
-    const { user } = useUserStore();
+    const { user, setUser } = useUserStore();
 
     return (
         <Wrapper>
@@ -34,7 +35,16 @@ const Navbar = () => {
                             <Link to={'/dashboard/profile'} className='dropdown-btn' onClick={() => setShowLogout(!showLogout)}>
                                 Your Profile
                             </Link>
-                            <button className='dropdown-btn'>Sign Out</button>
+                            <button
+                                className='dropdown-btn'
+                                onClick={() => {
+                                    logout();
+                                    setUser(null);
+                                    setShowLogout(!showLogout);
+                                }}
+                            >
+                                Sign Out
+                            </button>
                         </div>
                     </div>
                 ) : (
@@ -132,6 +142,7 @@ const Wrapper = styled.nav`
             border-color: transparent;
             cursor: pointer;
             font-size: 14px;
+            color: var(--colorGray9);
         }
         .dropdown-btn:nth-of-type(1) {
             padding: 0.5rem 0.5rem 0.25rem 0.5rem;

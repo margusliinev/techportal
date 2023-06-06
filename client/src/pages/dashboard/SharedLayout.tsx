@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
-import { Navbar, MainSidebar, MobileSidebar, Loader } from '../../components';
+import { Navbar, MainSidebar, MobileSidebar } from '../../components';
 import { useUserStore } from '../../store';
 import { getCurrentUserData } from '../../utils/dataFetching';
 import { useEffect } from 'react';
@@ -10,8 +10,12 @@ const SharedLayout = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getCurrentUserData();
-            setUser(data.data.user);
+            try {
+                const data = await getCurrentUserData();
+                setUser(data.data.user);
+            } catch (error) {
+                setUser(null);
+            }
             setUserLoading(false);
         };
         fetchData();
@@ -39,15 +43,17 @@ const Wrapper = styled.section`
         grid-template-columns: 1fr;
     }
     .dashboard-page {
-        width: 90vw;
         margin: 0 auto;
         padding: 2rem 0;
+        height: calc(100vh - 5rem);
+        width: 90vw;
     }
     @media (min-width: 992px) {
         .dashboard {
             grid-template-columns: auto 1fr;
         }
         .dashboard-page {
+            height: 90%;
             width: 90%;
         }
     }
