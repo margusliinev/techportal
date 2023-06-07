@@ -27,5 +27,5 @@ export const login = async (req: Request, res: Response) => {
     const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_LIFETIME });
     createCookie({ res, token });
 
-    res.status(200).json({ user: { username: user.rows[0].username, email: user.rows[0].email } });
+    res.status(200).json({ success: true, user: { username: user.rows[0].username, email: user.rows[0].email } });
 };

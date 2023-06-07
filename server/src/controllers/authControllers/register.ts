@@ -16,14 +16,14 @@ export const register = async (req: Request, res: Response) => {
 
     const uniqueEmail = await query('select email from users where email = $1', [email]);
     if (uniqueEmail.rows.length >= 1) {
-        throw new BadRequestError('Email address is already registered.');
+        throw new BadRequestError('Email address is already registered');
     }
 
     if (!usernameRegex.test(username)) {
         if (username.length < 3 || username.length > 16) {
-            throw new BadRequestError('Invalid username, username must be between 3-16 characters.');
+            throw new BadRequestError('Invalid username, username must be between 3-16 characters');
         } else {
-            throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9).');
+            throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9)');
         }
     }
 
@@ -33,11 +33,11 @@ export const register = async (req: Request, res: Response) => {
 
     if (!passwordRegex.test(password)) {
         if (password.length < 8) {
-            throw new BadRequestError('Password must be at least 8 characters long.');
+            throw new BadRequestError('Password must be at least 8 characters long');
         } else if (!/(?=.*[a-z])/.test(password)) {
-            throw new BadRequestError('Password must contain at least one letter.');
+            throw new BadRequestError('Password must contain at least one letter');
         } else if (!/(?=.*\d)/.test(password)) {
-            throw new BadRequestError('Password must contain at least one number.');
+            throw new BadRequestError('Password must contain at least one number');
         } else {
             throw new BadRequestError('Allowed special characters in password: !@#$%&*,.?');
         }
@@ -47,5 +47,5 @@ export const register = async (req: Request, res: Response) => {
     const hash = await bcrypt.hash(password, salt);
     const newUser = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [username, email, hash]);
 
-    res.status(201).json({ user: { username: newUser.rows[0].username, email: newUser.rows[0].email } });
+    res.status(201).json({ success: true, user: { username: newUser.rows[0].username, email: newUser.rows[0].email } });
 };

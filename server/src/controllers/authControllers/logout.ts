@@ -5,5 +5,5 @@ export const logout = async (req: Request, res: Response) => {
         httpOnly: true,
         expires: new Date(Date.now()),
     });
-    res.status(200).json({ msg: 'User logged out' });
+    res.status(200).json({ success: true, msg: 'User logged out' });
 };

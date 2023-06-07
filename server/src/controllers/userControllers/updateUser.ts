@@ -18,19 +18,19 @@ export const updateUser = async (req: CustomRequest, res: Response) => {
 
     const uniqueEmail = await query('select email from users where email = $1 AND id != $2', [email, req.user.userId]);
     if (uniqueEmail.rows.length >= 1) {
-        throw new BadRequestError('Email address is already in use.');
+        throw new BadRequestError('Email address is already in use');
     }
 
     if (!usernameRegex.test(username)) {
         if (username.length < 3 || username.length > 16) {
-            throw new BadRequestError('Invalid username, username must be between 3-16 characters.');
+            throw new BadRequestError('Invalid username, username must be between 3-16 characters');
         } else {
-            throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9).');
+            throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9)');
         }
     }
 
     if (!emailRegex.test(email)) {
-        throw new BadRequestError('New Email is invalid, please enter a valid email.');
+        throw new BadRequestError('New Email is invalid, please enter a valid email');
     }
 
     const result = await query('UPDATE users SET username = $1, email = $2 WHERE id = $3 returning *', [username, email, req.user.userId]);
@@ -39,5 +39,5 @@ export const updateUser = async (req: CustomRequest, res: Response) => {
         email: result.rows[0].email,
     };
 
-    res.status(200).json({ user });
+    res.status(200).json({ success: true, user });
 };

@@ -11,7 +11,7 @@ const getCurrentUser = async (req: CustomRequest, res: Response) => {
         username: result.rows[0].username,
         email: result.rows[0].email,
     };
-    res.status(200).json({ user });
+    res.status(200).json({ success: true, user });
 };
 
 export { getCurrentUser };
