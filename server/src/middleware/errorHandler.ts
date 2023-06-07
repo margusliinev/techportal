@@ -18,7 +18,7 @@ const errorHandler = async (err: CustomError, req: Request, res: Response, next:
         defaultError.statusCode = 400;
         defaultError.msg = '400 Bad Request Error';
     }
-    return res.status(defaultError.statusCode).json({ msg: defaultError.msg });
+    return res.status(defaultError.statusCode).json({ success: false, msg: defaultError.msg });
 };
 
 export default errorHandler;

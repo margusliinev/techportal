@@ -9,7 +9,7 @@ interface CustomRequest extends Request {
 
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
-export const updatePassword = async (req: CustomRequest, res: Response) => {
+export const updateUserPassword = async (req: CustomRequest, res: Response) => {
     const { currentPassword, newPassword, confirmNewPassword } = req.body;
 
     if (!currentPassword || !newPassword || !confirmNewPassword) {

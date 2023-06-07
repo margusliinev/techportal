@@ -9,7 +9,7 @@ interface CustomRequest extends Request {
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const updateUser = async (req: CustomRequest, res: Response) => {
+export const updateUserProfile = async (req: CustomRequest, res: Response) => {
     const { username, email } = req.body;
 
     if (!username || !email) {
