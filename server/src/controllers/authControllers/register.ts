@@ -45,7 +45,7 @@ export const register = async (req: Request, res: Response) => {
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const newUser = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [req.body.username, req.body.email, hash]);
+    const newUser = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [username, email, hash]);
 
     res.status(201).json({ user: { username: newUser.rows[0].username, email: newUser.rows[0].email } });
 };

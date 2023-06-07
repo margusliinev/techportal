@@ -5,7 +5,7 @@ interface CustomRequest extends Request {
     user?: any;
 }
 
-const getCurrentUserData = async (req: CustomRequest, res: Response) => {
+const getCurrentUser = async (req: CustomRequest, res: Response) => {
     const result = await query('SELECT * FROM users WHERE id = $1', [req.user.userId]);
     const user = {
         username: result.rows[0].username,
@@ -14,4 +14,4 @@ const getCurrentUserData = async (req: CustomRequest, res: Response) => {
     res.status(200).json({ user });
 };
 
-export { getCurrentUserData };
+export { getCurrentUser };

@@ -1,9 +1,10 @@
 import express from 'express';
-import { getCurrentUserData } from '../controllers/userControllers/getCurrentUserData';
+import { getCurrentUser } from '../controllers/userControllers/getCurrentUser';
+import { updateUser } from '../controllers/userControllers/updateUser';
 import AuthMiddleware from '../middleware/auth';
 
 const router = express.Router();
 
-router.route('/api/v1/users/me').get(AuthMiddleware, getCurrentUserData);
+router.route('/api/v1/users/me').get(AuthMiddleware, getCurrentUser).patch(AuthMiddleware, updateUser);
 
 export default router;
