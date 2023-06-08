@@ -11,20 +11,20 @@ interface CustomAPIError {
     };
 }
 
-interface ChangePassword {
+interface UpdatePassword {
     currentPassword: string;
     newPassword: string;
     confirmNewPassword: string;
 }
 
-const initialState: ChangePassword = {
+const initialState: UpdatePassword = {
     currentPassword: '',
     newPassword: '',
     confirmNewPassword: '',
 };
 
 const ChangePassword = () => {
-    const [values, setValues] = useState<ChangePassword>(initialState);
+    const [values, setValues] = useState<UpdatePassword>(initialState);
     const [isButtonDisabled, setButtonDisabled] = useState(false);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const { mutate, isLoading, isError, error, isSuccess } = useMutation(updateUserPassword, {
@@ -61,7 +61,7 @@ const ChangePassword = () => {
                 </div>
                 <form className='change-password-form' onSubmit={handleSubmit}>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Your information has been updated'}
+                        {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Your password has been updated'}
                     </p>
                     <FormRow type={'password'} name={'currentPassword'} value={values.currentPassword} labelText={'Current Password'} handleChange={handleChange} />
                     <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} />

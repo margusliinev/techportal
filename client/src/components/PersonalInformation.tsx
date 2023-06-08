@@ -68,7 +68,7 @@ const personalInformation = () => {
                 </div>
                 <form className='personal-information-form' onSubmit={handleSubmit}>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Your information has been updated'}
+                        {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Your profile has been updated'}
                     </p>
                     <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} />
                     <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} handleChange={handleChange} />

@@ -57,6 +57,13 @@ export const getUser = async (): Promise<AxiosResponse<UserAPIResponse, null>> =
     return response;
 };
 
+export const deleteUser = async () => {
+    const response = axios.delete('http://localhost:5000/api/v1/users/me', {
+        withCredentials: true,
+    });
+    return response;
+};
+
 export const updateUserProfile = async (profile: UpdateUserProfile): Promise<AxiosResponse<UserAPIResponse, null>> => {
     const response = axios.patch('http://localhost:5000/api/v1/users/me', profile, {
         withCredentials: true,

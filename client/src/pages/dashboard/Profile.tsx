@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PersonalInformation, ChangePassword, Loader } from '../../components';
+import { PersonalInformation, ChangePassword, DeleteAccount, Loader } from '../../components';
 import { useUserStore } from '../../store';
 import { Link } from 'react-router-dom';
 
@@ -31,23 +31,31 @@ const Profile = () => {
             <div className='content-divider'></div>
             <ChangePassword />
             <div className='content-divider'></div>
+            <DeleteAccount />
         </Wrapper>
     );
 };
 
 const Wrapper = styled.main`
+    .form {
+        width: 90%;
+        margin: 0 auto;
+        max-width: none;
+    }
     .profile-page-center {
         width: 90%;
         margin: 0 auto;
     }
     .personal-information,
-    .change-password {
+    .change-password,
+    .delete-account {
         display: grid;
         grid-template-columns: 1fr;
         max-width: 500px;
     }
     .personal-information-header,
-    .change-password-header {
+    .change-password-header,
+    .delete-account-header {
         margin-bottom: 1.5rem;
         h6 {
             margin-bottom: 0.25rem;
@@ -63,6 +71,21 @@ const Wrapper = styled.main`
         .btn {
             padding: 0.5rem 0.75rem;
             margin-top: 1rem;
+        }
+    }
+    .delete-account {
+        .btn {
+            background-color: var(--colorRed2);
+            justify-self: start;
+            margin-bottom: 2rem;
+        }
+        .btn:hover {
+            background-color: #c41e1e;
+        }
+    }
+    .delete-account-header {
+        p {
+            max-width: 325px;
         }
     }
     .form-btn-disabled {

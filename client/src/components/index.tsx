@@ -10,5 +10,6 @@ import MainSidebar from './MainSidebar';
 import MobileSidebar from './MobileSidebar';
 import PersonalInformation from './PersonalInformation';
 import ChangePassword from './ChangePassword';
+import DeleteAccount from './DeleteAccount';
 
-export { LogoLight, LogoDark, FormRow, Loader, FormRowPassword, MemberCheck, Navbar, NavLinks, MainSidebar, MobileSidebar, PersonalInformation, ChangePassword };
+export { LogoLight, LogoDark, FormRow, Loader, FormRowPassword, MemberCheck, Navbar, NavLinks, MainSidebar, MobileSidebar, PersonalInformation, ChangePassword, DeleteAccount };
