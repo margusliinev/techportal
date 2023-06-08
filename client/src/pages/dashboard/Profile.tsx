@@ -1,71 +1,10 @@
 import styled from 'styled-components';
-import { useState, useEffect, useRef } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { PersonalInformation, ChangePassword, Loader } from '../../components';
 import { useUserStore } from '../../store';
-import { Loader } from '../../components';
-import { FormRow } from '../../components';
-import { updateUserProfile } from '../../utils/dataFetching';
-
-interface CustomAPIError {
-    response: {
-        data: {
-            msg: string;
-        };
-    };
-}
-
-interface PersonalInfo {
-    username: string;
-    email: string;
-}
-
-const initialState: PersonalInfo = {
-    username: '',
-    email: '',
-};
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
-    const [values, setValues] = useState<PersonalInfo>(initialState);
-    const errorRef = useRef<HTMLParagraphElement | null>(null);
-    const { user, setUser, userLoading } = useUserStore();
-    const { mutate, isLoading, isError, error, isSuccess } = useMutation(updateUserProfile, {
-        onSuccess: (data) => {
-            setUser(data.data.user);
-            setValues(data.data.user);
-        },
-    });
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (errorRef.current) {
-            errorRef.current.textContent = '';
-        }
-        setValues({ ...values, [e.target.name]: e.target.value.trim() });
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const { username, email } = values;
-        mutate({ username, email });
-    };
-
-    useEffect(() => {
-        const errorTimeout = setTimeout(() => {
-            if (errorRef.current) {
-                errorRef.current.textContent = '';
-            }
-        }, 3000);
-
-        return () => {
-            clearTimeout(errorTimeout);
-        };
-    }, [isSuccess]);
-
-    useEffect(() => {
-        if (user) {
-            setValues(user);
-        }
-    }, [userLoading]);
+    const { user, userLoading } = useUserStore();
 
     if (userLoading) {
         return (
@@ -88,29 +27,44 @@ const Profile = () => {
 
     return (
         <Wrapper className='profile-page'>
-            <div className='profile-page-center'>
-                <div className='personal-information'>
-                    <div className='personal-information-header'>
-                        <h6>Personal Information</h6>
-                        <p>Use a permanent address where you can receive mail.</p>
-                    </div>
-                    <form className='personal-information-form' onSubmit={handleSubmit}>
-                        <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                            {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Your information has been updated'}
-                        </p>
-                        <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} />
-                        <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} handleChange={handleChange} />
-                        <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
-                            Save
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <PersonalInformation />
+            <div className='content-divider'></div>
+            <ChangePassword />
+            <div className='content-divider'></div>
         </Wrapper>
     );
 };
 
 const Wrapper = styled.main`
+    .profile-page-center {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .personal-information,
+    .change-password {
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    .personal-information-header,
+    .change-password-header {
+        margin-bottom: 1.5rem;
+        h6 {
+            margin-bottom: 0.25rem;
+            color: var(--colorGray9);
+        }
+        p {
+            color: var(--colorGray7);
+            font-weight: 500;
+        }
+    }
+    .personal-information-form,
+    .change-password-form {
+        .btn {
+            padding: 0.5rem 0.75rem;
+            margin-top: 1rem;
+        }
+    }
     .form-btn-disabled {
         background-color: var(--colorPrimary4);
     }
@@ -124,6 +78,30 @@ const Wrapper = styled.main`
     }
     .server-message-success {
         color: var(--colorGreen2);
+    }
+    .form-input-password-container {
+        position: relative;
+    }
+    .password-toggle {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.45rem;
+        display: grid;
+        font-size: 1.4rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--colorGray4);
+        transition: var(--transition);
+    }
+    .password-toggle:hover {
+        color: var(--colorGray6);
+    }
+    .content-divider {
+        height: 1px;
+        width: 100%;
+        background-color: var(--colorGray3);
+        margin: 3rem 0;
     }
 `;
 

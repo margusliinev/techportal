@@ -8,5 +8,7 @@ import Navbar from './Navbar';
 import NavLinks from './NavLinks';
 import MainSidebar from './MainSidebar';
 import MobileSidebar from './MobileSidebar';
+import PersonalInformation from './PersonalInformation';
+import ChangePassword from './ChangePassword';
 
-export { LogoLight, LogoDark, FormRow, Loader, FormRowPassword, MemberCheck, Navbar, NavLinks, MainSidebar, MobileSidebar };
+export { LogoLight, LogoDark, FormRow, Loader, FormRowPassword, MemberCheck, Navbar, NavLinks, MainSidebar, MobileSidebar, PersonalInformation, ChangePassword };

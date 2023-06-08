@@ -63,11 +63,14 @@ const Navbar = () => {
 };
 
 const Wrapper = styled.nav`
+    position: sticky;
+    top: 0;
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+    background-color: var(--colorWhite);
     .nav-center {
         display: flex;
         align-items: center;
@@ -168,8 +171,6 @@ const Wrapper = styled.nav`
         }
     }
     @media (min-width: 992px) {
-        position: sticky;
-        top: 0;
         .nav-center {
             width: 90%;
         }

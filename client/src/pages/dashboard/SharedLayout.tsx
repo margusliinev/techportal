@@ -46,7 +46,6 @@ const Wrapper = styled.section`
         margin: 0 auto;
         padding: 2rem 0;
         height: calc(100vh - 5rem);
-        width: 90vw;
     }
     @media (min-width: 992px) {
         .dashboard {
@@ -54,7 +53,6 @@ const Wrapper = styled.section`
         }
         .dashboard-page {
             height: 90%;
-            width: 90%;
         }
     }
 `;

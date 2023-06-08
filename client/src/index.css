@@ -226,7 +226,7 @@ input[type='radio'] {
 .form-label {
     display: block;
     text-transform: capitalize;
-    color: var(--colorGray7);
+    color: var(--colorGray9);
     margin-bottom: 0.5rem;
     letter-spacing: -0.01rem;
 }

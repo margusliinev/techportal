@@ -16,6 +16,12 @@ interface UpdateUserProfile {
     email: string;
 }
 
+interface UpdateUserPassword {
+    currentPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+}
+
 interface UserAPIResponse {
     user: {
         username: string;
@@ -51,8 +57,15 @@ export const getUser = async (): Promise<AxiosResponse<UserAPIResponse, null>> =
     return response;
 };
 
-export const updateUserProfile = async (user: UpdateUserProfile): Promise<AxiosResponse<UserAPIResponse, null>> => {
-    const response = axios.patch('http://localhost:5000/api/v1/users/me', user, {
+export const updateUserProfile = async (profile: UpdateUserProfile): Promise<AxiosResponse<UserAPIResponse, null>> => {
+    const response = axios.patch('http://localhost:5000/api/v1/users/me', profile, {
+        withCredentials: true,
+    });
+    return response;
+};
+
+export const updateUserPassword = async (password: UpdateUserPassword) => {
+    const response = axios.put('http://localhost:5000/api/v1/users/me', password, {
         withCredentials: true,
     });
     return response;
