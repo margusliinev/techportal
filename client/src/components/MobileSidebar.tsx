@@ -36,7 +36,7 @@ const Wrapper = styled.aside`
         background: var(--colorPrimary5);
         min-height: 100vh;
         height: 100%;
-        width: 300px;
+        width: 280px;
         transition: var(--transition);
         padding: 0rem 1rem;
         z-index: 999;
@@ -60,14 +60,14 @@ const Wrapper = styled.aside`
         transform: translateX(0);
     }
     .hide-content {
-        margin-left: -300px;
+        margin-left: -280px;
     }
     .show-content {
         margin-left: 0;
     }
     .hide-sidebar {
         opacity: 0;
-        z-index: -998;
+        z-index: -1;
     }
     .show-sidebar {
         opacity: 1;

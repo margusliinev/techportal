@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
 import { Navbar, MainSidebar, MobileSidebar } from '../../components';
 import { useUserStore } from '../../store';
-import { getCurrentUserData } from '../../utils/dataFetching';
+import { getUser } from '../../utils/dataFetching';
 import { useEffect } from 'react';
 
 const SharedLayout = () => {
@@ -11,7 +11,7 @@ const SharedLayout = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getCurrentUserData();
+                const data = await getUser();
                 setUser(data.data.user);
             } catch (error) {
                 setUser(null);

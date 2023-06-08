@@ -22,7 +22,7 @@ const Wrapper = styled.aside`
             background: var(--colorPrimary5);
             min-height: 100vh;
             height: 100%;
-            width: 300px;
+            width: 280px;
             margin-left: 0;
             padding: 0rem 1rem;
         }

@@ -116,7 +116,6 @@ const Wrapper = styled.nav`
             p {
                 font-weight: 500;
                 font-size: 16px;
-                text-transform: capitalize;
                 align-self: end;
             }
         }

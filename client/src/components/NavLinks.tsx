@@ -35,7 +35,7 @@ const Wrapper = styled.ul`
         align-items: center;
         gap: 0.5rem;
         color: var(--colorWhite);
-        padding: 1rem 0rem 1rem 2.5rem;
+        padding: 1rem 0rem 1rem 2rem;
         text-transform: capitalize;
         transition: var(--transition);
         border-radius: var(--radius-md);
@@ -45,7 +45,7 @@ const Wrapper = styled.ul`
     }
     .nav-link:hover {
         background: var(--colorPrimary6);
-        padding-left: 3rem;
+        padding-left: 2.5rem;
     }
 `;
 

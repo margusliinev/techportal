@@ -11,6 +11,11 @@ interface User {
     password: string;
 }
 
+interface UpdateUserProfile {
+    username: string;
+    email: string;
+}
+
 interface UserAPIResponse {
     user: {
         username: string;
@@ -39,8 +44,15 @@ export const logout = async () => {
     return response;
 };
 
-export const getCurrentUserData = async (): Promise<AxiosResponse<UserAPIResponse, null>> => {
+export const getUser = async (): Promise<AxiosResponse<UserAPIResponse, null>> => {
     const response = axios.get('http://localhost:5000/api/v1/users/me', {
+        withCredentials: true,
+    });
+    return response;
+};
+
+export const updateUserProfile = async (user: UpdateUserProfile): Promise<AxiosResponse<UserAPIResponse, null>> => {
+    const response = axios.patch('http://localhost:5000/api/v1/users/me', user, {
         withCredentials: true,
     });
     return response;

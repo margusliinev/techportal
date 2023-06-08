@@ -23,14 +23,14 @@ export const updateUserProfile = async (req: CustomRequest, res: Response) => {
 
     if (!usernameRegex.test(username)) {
         if (username.length < 3 || username.length > 16) {
-            throw new BadRequestError('Invalid username, username must be between 3-16 characters');
+            throw new BadRequestError('Username must be between 3-16 characters');
         } else {
-            throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9)');
+            throw new BadRequestError('Username can only contain letters (A-Z) and numbers (0-9)');
         }
     }
 
     if (!emailRegex.test(email)) {
-        throw new BadRequestError('New Email is invalid, please enter a valid email');
+        throw new BadRequestError('Please enter a valid email');
     }
 
     const result = await query('UPDATE users SET username = $1, email = $2 WHERE id = $3 returning *', [username, email, req.user.userId]);
