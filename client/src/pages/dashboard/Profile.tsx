@@ -27,11 +27,13 @@ const Profile = () => {
 
     return (
         <Wrapper className='profile-page'>
-            <PersonalInformation />
-            <div className='content-divider'></div>
-            <ChangePassword />
-            <div className='content-divider'></div>
-            <DeleteAccount />
+            <div className='form'>
+                <PersonalInformation />
+                <div className='content-divider'></div>
+                <ChangePassword />
+                <div className='content-divider'></div>
+                <DeleteAccount />
+            </div>
         </Wrapper>
     );
 };
@@ -41,6 +43,7 @@ const Wrapper = styled.main`
         width: 90%;
         margin: 0 auto;
         max-width: none;
+        background-color: var(--colorWhite);
     }
     .profile-page-center {
         width: 90%;
@@ -121,7 +124,7 @@ const Wrapper = styled.main`
         color: var(--colorGray6);
     }
     .content-divider {
-        height: 1px;
+        height: 0.1px;
         width: 100%;
         background-color: var(--colorGray3);
         margin: 3rem 0;

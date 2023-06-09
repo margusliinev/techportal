@@ -34,7 +34,7 @@ const Wrapper = styled.ul`
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: var(--colorWhite);
+        color: var(--colorPrimary5);
         padding: 1rem 0rem 1rem 2rem;
         text-transform: capitalize;
         transition: var(--transition);
@@ -44,7 +44,7 @@ const Wrapper = styled.ul`
         }
     }
     .nav-link:hover {
-        background: var(--colorPrimary6);
+        background: var(--colorPrimary2);
         padding-left: 2.5rem;
     }
 `;

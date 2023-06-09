@@ -41,6 +41,7 @@ const Wrapper = styled.section`
     .dashboard {
         display: grid;
         grid-template-columns: 1fr;
+        background-color: var(--colorWhite);
     }
     .dashboard-page {
         margin: 0 auto;

@@ -16,8 +16,8 @@ const Wrapper = styled.header`
     justify-content: center;
     h4 {
         display: inline-block;
-        color: var(--colorPrimary5);
-        background-color: var(--colorWhite);
+        color: var(--colorWhite);
+        background-color: var(--colorPrimary5);
         padding: 0.2rem 0.5rem;
         font-weight: 600;
         border-radius: var(--radius-md);
@@ -26,7 +26,7 @@ const Wrapper = styled.header`
     }
     h5 {
         display: inline-block;
-        color: var(--colorWhite);
+        color: var(--colorGray9);
     }
 `;
 
