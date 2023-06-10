@@ -44,7 +44,7 @@ const Wrapper = styled.ul`
         }
     }
     .nav-link:hover {
-        background: var(--colorPrimary2);
+        background-color: var(--colorPrimary1);
         padding-left: 2.5rem;
     }
 `;

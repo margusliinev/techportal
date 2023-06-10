@@ -12,17 +12,17 @@ interface UserStore {
     setUserLoading: (userLoading: boolean) => void;
 }
 
+interface NavigationStore {
+    showSidebar: boolean;
+    toggleSidebar: () => void;
+}
+
 export const useUserStore = create<UserStore>((set) => ({
     user: null,
     userLoading: true,
     setUser: (user: User | null) => set({ user }),
     setUserLoading: (loading: boolean) => set({ userLoading: loading }),
 }));
-
-interface NavigationStore {
-    showSidebar: boolean;
-    toggleSidebar: () => void;
-}
 
 export const useNavigationStore = create<NavigationStore>((set) => ({
     showSidebar: false,

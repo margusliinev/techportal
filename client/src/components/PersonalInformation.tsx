@@ -3,6 +3,8 @@ import { useMutation } from '@tanstack/react-query';
 import { updateUserProfile } from '../utils/dataFetching';
 import { FormRow } from '../components';
 import { useUserStore } from '../store';
+import { logout } from '../utils/dataFetching';
+import { AxiosError } from 'axios';
 
 interface CustomAPIError {
     response: {
@@ -31,6 +33,12 @@ const personalInformation = () => {
         onSuccess: (data) => {
             setUser(data.data.user);
             setValues(data.data.user);
+        },
+        onError: (error: AxiosError) => {
+            if (error.response?.status === 401) {
+                logout();
+                setUser(null);
+            }
         },
     });
 

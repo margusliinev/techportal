@@ -33,7 +33,7 @@ const Wrapper = styled.aside`
     }
     .content {
         position: absolute;
-        background-color: #eff6ff;
+        background-color: var(--colorWhite);
         min-height: 100vh;
         height: 100%;
         width: 280px;

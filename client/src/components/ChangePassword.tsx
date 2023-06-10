@@ -2,6 +2,9 @@ import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { updateUserPassword } from '../utils/dataFetching';
 import { FormRow } from '../components';
+import { useUserStore } from '../store';
+import { logout } from '../utils/dataFetching';
+import { AxiosError } from 'axios';
 
 interface CustomAPIError {
     response: {
@@ -27,9 +30,16 @@ const ChangePassword = () => {
     const [values, setValues] = useState<UpdatePassword>(initialState);
     const [isButtonDisabled, setButtonDisabled] = useState(false);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
+    const { setUser } = useUserStore();
     const { mutate, isLoading, isError, error, isSuccess } = useMutation(updateUserPassword, {
         onSuccess: () => {
             setValues({ currentPassword: '', newPassword: '', confirmNewPassword: '' });
+        },
+        onError: (error: AxiosError) => {
+            if (error.response?.status === 401) {
+                logout();
+                setUser(null);
+            }
         },
     });
 
