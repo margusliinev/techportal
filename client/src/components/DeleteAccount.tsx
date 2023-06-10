@@ -1,8 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
-import { deleteUser } from '../utils/dataFetching';
+import { deleteUser, logout } from '../utils/dataFetching';
 import { useUserStore } from '../store';
 import { AxiosError } from 'axios';
-import { logout } from '../utils/dataFetching';
 
 const DeleteAccount = () => {
     const { setUser } = useUserStore();

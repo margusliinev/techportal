@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import LandingLight from '../assets/images/landing-light.svg';
-import { LogoDark } from '../components';
+import { LogoBig } from '../components';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
     return (
         <Wrapper>
             <nav>
-                <LogoDark />
+                <LogoBig />
             </nav>
             <div className='container'>
                 <div className='landing-info'>

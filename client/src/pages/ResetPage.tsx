@@ -1,18 +1,15 @@
-import Wrapper from '../assets/Wrappers/Form';
 import { useState } from 'react';
 import { FormRow } from '../components';
 import { Link } from 'react-router-dom';
+import { UserReset } from '../types';
+import Wrapper from '../assets/Wrappers/Form';
 
-interface User {
-    email: string;
-}
-
-const initialState: User = {
+const initialState: UserReset = {
     email: '',
 };
 
 const ResetPage = () => {
-    const [values, setValues] = useState<User>(initialState);
+    const [values, setValues] = useState<UserReset>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [e.target.name]: e.target.value });

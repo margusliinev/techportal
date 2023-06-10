@@ -1,31 +1,19 @@
 import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { LogoDark, FormRow, FormRowPassword, MemberCheck } from '../components';
+import { LogoBig, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { login } from '../utils/dataFetching';
 import { useUserStore } from '../store';
+import { UserLogin, CustomAPIError } from '../types';
 import Wrapper from '../assets/Wrappers/Form';
 
-interface User {
-    email: string;
-    password: string;
-}
-
-interface CustomAPIError {
-    response: {
-        data: {
-            msg: string;
-        };
-    };
-}
-
-const initialState: User = {
+const initialState: UserLogin = {
     email: '',
     password: '',
 };
 
 const LoginPage = () => {
-    const [values, setValues] = useState<User>(initialState);
+    const [values, setValues] = useState<UserLogin>(initialState);
     const { mutate, isLoading, isError, error, isSuccess } = useMutation(login, {
         onSuccess: (data) => {
             setUser(data.data.user);
@@ -58,7 +46,7 @@ const LoginPage = () => {
             <div className='container'>
                 <form className='form' onSubmit={handleSubmit}>
                     <div className='form-logo'>
-                        <LogoDark />
+                        <LogoBig />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Login successful! Welcome back'}

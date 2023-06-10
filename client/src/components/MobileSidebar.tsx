@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigationStore } from '../store';
-import { LogoLight, NavLinks } from '../components';
+import { LogoSmall, NavLinks } from '../components';
 import { CgClose } from 'react-icons/cg';
 
 const MobileSidebar = () => {
@@ -13,7 +13,7 @@ const MobileSidebar = () => {
                 <button type='button' className={showSidebar ? 'close-btn show-close-btn' : 'close-btn'} onClick={toggleSidebar}>
                     <CgClose />
                 </button>
-                <LogoLight />
+                <LogoSmall />
                 <NavLinks />
             </div>
         </Wrapper>

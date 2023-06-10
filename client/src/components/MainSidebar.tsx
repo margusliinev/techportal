@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { LogoLight, NavLinks } from '../components';
+import { LogoSmall, NavLinks } from '../components';
 
 const MainSidebar = () => {
     return (
         <Wrapper>
             <div className='sidebar-container'>
                 <div className='content'>
-                    <LogoLight />
+                    <LogoSmall />
                     <NavLinks />
                 </div>
             </div>

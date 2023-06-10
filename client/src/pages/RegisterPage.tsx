@@ -1,33 +1,20 @@
 import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { LogoDark, FormRow, FormRowPassword, MemberCheck } from '../components';
+import { LogoBig, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { handleValidation, validateUsername, validateEmail, validatePassword } from '../utils/formValidation';
 import { register } from '../utils/dataFetching';
+import { UserRegister, CustomAPIError } from '../types';
 import Wrapper from '../assets/Wrappers/Form';
 
-interface User {
-    username: string;
-    email: string;
-    password: string;
-}
-
-interface CustomAPIError {
-    response: {
-        data: {
-            msg: string;
-        };
-    };
-}
-
-const initialState: User = {
+const initialState: UserRegister = {
     username: '',
     email: '',
     password: '',
 };
 
 const RegisterPage = () => {
-    const [values, setValues] = useState<User>(initialState);
+    const [values, setValues] = useState<UserRegister>(initialState);
     const { mutate, isLoading, isError, error, isSuccess } = useMutation(register);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const navigate = useNavigate();
@@ -61,7 +48,7 @@ const RegisterPage = () => {
             <div className='container'>
                 <form className='form' onSubmit={handleSubmit}>
                     <div className='form-logo'>
-                        <LogoDark />
+                        <LogoBig />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).response.data.msg : isSuccess && 'Your account has been created'}

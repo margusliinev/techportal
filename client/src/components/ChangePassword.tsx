@@ -1,33 +1,19 @@
 import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { updateUserPassword } from '../utils/dataFetching';
+import { updateUserPassword, logout } from '../utils/dataFetching';
 import { FormRow } from '../components';
 import { useUserStore } from '../store';
-import { logout } from '../utils/dataFetching';
 import { AxiosError } from 'axios';
+import { CustomAPIError, UserUpdatePassword } from '../types';
 
-interface CustomAPIError {
-    response: {
-        data: {
-            msg: string;
-        };
-    };
-}
-
-interface UpdatePassword {
-    currentPassword: string;
-    newPassword: string;
-    confirmNewPassword: string;
-}
-
-const initialState: UpdatePassword = {
+const initialState: UserUpdatePassword = {
     currentPassword: '',
     newPassword: '',
     confirmNewPassword: '',
 };
 
 const ChangePassword = () => {
-    const [values, setValues] = useState<UpdatePassword>(initialState);
+    const [values, setValues] = useState<UserUpdatePassword>(initialState);
     const [isButtonDisabled, setButtonDisabled] = useState(false);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const { setUser } = useUserStore();

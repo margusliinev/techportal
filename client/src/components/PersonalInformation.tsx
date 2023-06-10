@@ -1,31 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { updateUserProfile } from '../utils/dataFetching';
+import { updateUserProfile, logout } from '../utils/dataFetching';
 import { FormRow } from '../components';
 import { useUserStore } from '../store';
-import { logout } from '../utils/dataFetching';
 import { AxiosError } from 'axios';
+import { UserUpdateProfile, CustomAPIError } from '../types';
 
-interface CustomAPIError {
-    response: {
-        data: {
-            msg: string;
-        };
-    };
-}
-
-interface PersonalInfo {
-    username: string;
-    email: string;
-}
-
-const initialState: PersonalInfo = {
+const initialState: UserUpdateProfile = {
     username: '',
     email: '',
 };
 
 const personalInformation = () => {
-    const [values, setValues] = useState<PersonalInfo>(initialState);
+    const [values, setValues] = useState<UserUpdateProfile>(initialState);
     const [isButtonDisabled, setButtonDisabled] = useState(false);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const { user, setUser, userLoading } = useUserStore();

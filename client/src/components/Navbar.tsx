@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
-import { useUserStore } from '../store';
-import { useNavigationStore } from '../store';
+import { useUserStore, useNavigationStore } from '../store';
 import { logout } from '../utils/dataFetching';
 
 const Navbar = () => {
