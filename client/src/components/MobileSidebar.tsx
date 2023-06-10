@@ -10,7 +10,7 @@ const MobileSidebar = () => {
         <Wrapper>
             <div className={showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container hide-sidebar'}></div>
             <div className={showSidebar ? 'content show-content' : 'content hide-content'}>
-                <button type='button' className={showSidebar ? 'close-btn show-close-btn' : 'close-btn'} onClick={toggleSidebar}>
+                <button type='button' className='close-btn' onClick={toggleSidebar}>
                     <CgClose />
                 </button>
                 <LogoSmall />
@@ -32,11 +32,10 @@ const Wrapper = styled.aside`
         transition: all 0.3s ease-in-out;
     }
     .content {
-        position: absolute;
+        position: fixed;
         background-color: var(--colorWhite);
-        min-height: 100vh;
-        height: 100%;
         width: 280px;
+        height: 100vh;
         transition: var(--transition);
         padding: 0rem 1rem;
         z-index: 999;
@@ -52,15 +51,10 @@ const Wrapper = styled.aside`
         color: var(--colorGray1);
         cursor: pointer;
         transition: var(--transition);
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    .show-close-btn {
         opacity: 1;
-        transform: translateX(0);
     }
     .hide-content {
-        margin-left: -280px;
+        margin-left: -350px;
     }
     .show-content {
         margin-left: 0;

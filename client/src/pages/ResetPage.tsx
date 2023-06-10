@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FormRow } from '../components';
 import { Link } from 'react-router-dom';
 import { UserReset } from '../types';
-import Wrapper from '../assets/Wrappers/Form';
+import Wrapper from '../assets/Wrappers/RegisterLoginResetPage';
 
 const initialState: UserReset = {
     email: '',

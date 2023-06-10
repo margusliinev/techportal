@@ -16,7 +16,7 @@ const Profile = () => {
 
     if (!user) {
         return (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '3rem', width: '100%', height: '100%', textAlign: 'center', padding: '5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '3rem', width: '100%', height: '100%', textAlign: 'center' }}>
                 <h3>Please login to access your profile</h3>
                 <Link className='btn' style={{ fontSize: '24px' }} to={'/login'}>
                     Sign In
@@ -26,29 +26,17 @@ const Profile = () => {
     }
 
     return (
-        <Wrapper className='profile-page'>
-            <div className='form'>
-                <PersonalInformation />
-                <div className='content-divider'></div>
-                <ChangePassword />
-                <div className='content-divider'></div>
-                <DeleteAccount />
-            </div>
+        <Wrapper>
+            <PersonalInformation />
+            <div className='content-divider'></div>
+            <ChangePassword />
+            <div className='content-divider'></div>
+            <DeleteAccount />
         </Wrapper>
     );
 };
 
-const Wrapper = styled.main`
-    .form {
-        width: 90%;
-        margin: 0 auto;
-        max-width: none;
-        background-color: var(--colorWhite);
-    }
-    .profile-page-center {
-        width: 90%;
-        margin: 0 auto;
-    }
+const Wrapper = styled.section`
     .personal-information,
     .change-password,
     .delete-account {
@@ -76,19 +64,18 @@ const Wrapper = styled.main`
             margin-top: 1rem;
         }
     }
-    .delete-account {
+    .delete-account-header {
+        p {
+            max-width: 400px;
+        }
+    }
+    .delete-account-form {
         .btn {
             background-color: var(--colorRed2);
             justify-self: start;
-            margin-bottom: 2rem;
         }
         .btn:hover {
             background-color: #c41e1e;
-        }
-    }
-    .delete-account-header {
-        p {
-            max-width: 325px;
         }
     }
     .form-btn-disabled {
@@ -104,24 +91,6 @@ const Wrapper = styled.main`
     }
     .server-message-success {
         color: var(--colorGreen2);
-    }
-    .form-input-password-container {
-        position: relative;
-    }
-    .password-toggle {
-        position: absolute;
-        right: 0.5rem;
-        top: 0.45rem;
-        display: grid;
-        font-size: 1.4rem;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        color: var(--colorGray4);
-        transition: var(--transition);
-    }
-    .password-toggle:hover {
-        color: var(--colorGray6);
     }
     .content-divider {
         height: 0.1px;

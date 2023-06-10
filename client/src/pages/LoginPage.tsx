@@ -5,7 +5,7 @@ import { LogoBig, FormRow, FormRowPassword, MemberCheck } from '../components';
 import { login } from '../utils/dataFetching';
 import { useUserStore } from '../store';
 import { UserLogin, CustomAPIError } from '../types';
-import Wrapper from '../assets/Wrappers/Form';
+import Wrapper from '../assets/Wrappers/RegisterLoginResetPage';
 
 const initialState: UserLogin = {
     email: '',

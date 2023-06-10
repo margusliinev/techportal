@@ -1,6 +1,6 @@
-import SharedLayout from './SharedLayout';
+import DashboardLayout from './DashboardLayout';
 import Jobs from './Jobs';
 import Profile from './Profile';
 import Stats from './Stats';
 
-export { SharedLayout, Jobs, Profile, Stats };
+export { DashboardLayout, Jobs, Profile, Stats };

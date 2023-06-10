@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LandingPage, RegisterPage, LoginPage, ResetPage, ErrorPage } from './pages';
-import { SharedLayout, Jobs, Profile, Stats } from './pages/dashboard';
+import { DashboardLayout, Jobs, Profile, Stats } from './pages/dashboard';
 
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path='/' element={<Navigate to='/dashboard/stats' />}></Route>
-                <Route path='/dashboard' element={<SharedLayout />}>
+                <Route path='/dashboard' element={<DashboardLayout />}>
                     <Route path='' element={<Navigate to='stats' />}></Route>
                     <Route path='stats' element={<Stats />}></Route>
                     <Route path='jobs' element={<Jobs />}></Route>
