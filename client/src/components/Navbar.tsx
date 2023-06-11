@@ -10,7 +10,7 @@ const Navbar = () => {
         <Wrapper>
             <div className='nav-center'>
                 <div className='nav-container'>
-                    <button className='toggle-btn' onClick={() => toggleSidebar()}>
+                    <button className='toggle-btn' onClick={toggleSidebar}>
                         <BiMenu />
                     </button>
                     <div className='content-divider-vertical'></div>
@@ -67,6 +67,10 @@ const Wrapper = styled.nav`
     @media (max-width: 450px) {
         .nav-center {
             display: initial;
+            .btn-container,
+            .sign-in-btn {
+                display: none;
+            }
         }
         .nav-container {
             justify-content: space-between;

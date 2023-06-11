@@ -3,22 +3,24 @@ import { Link } from 'react-router-dom';
 import { IoBarChart } from 'react-icons/io5';
 import { MdQueryStats } from 'react-icons/md';
 import { ImProfile } from 'react-icons/im';
+import { useNavigationStore } from '../store';
 
 const NavLinks = () => {
+    const { toggleSidebar } = useNavigationStore();
     return (
         <Wrapper>
             <li>
-                <Link to={'/dashboard/stats'} className='nav-link'>
+                <Link to={'/dashboard/stats'} className='nav-link' onClick={toggleSidebar}>
                     {<IoBarChart />} stats
                 </Link>
             </li>
             <li>
-                <Link to={'/dashboard/jobs'} className='nav-link'>
+                <Link to={'/dashboard/jobs'} className='nav-link' onClick={toggleSidebar}>
                     {<MdQueryStats />} jobs
                 </Link>
             </li>
             <li>
-                <Link to={'/dashboard/profile'} className='nav-link'>
+                <Link to={'/dashboard/profile'} className='nav-link' onClick={toggleSidebar}>
                     {<ImProfile />} profile
                 </Link>
             </li>

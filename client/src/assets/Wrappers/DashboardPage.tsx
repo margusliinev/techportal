@@ -9,16 +9,12 @@ const Wrapper = styled.div`
     .dashboard-page {
         margin: 0 auto;
         padding: 2rem 0;
-        width: 90vw;
-        height: 90vh;
+        min-height: calc(100vh - 5rem);
+        width: 90%;
     }
     @media (min-width: 992px) {
         .dashboard {
             grid-template-columns: auto 1fr;
-        }
-        .dashboard-page {
-            width: 90%;
-            height: 90%;
         }
     }
 `;

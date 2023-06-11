@@ -10,7 +10,7 @@ const UserButton = () => {
     const { user, setUser } = useUserStore();
 
     return (
-        <Wrapper>
+        <Wrapper className='user-button'>
             {user ? (
                 <div className='btn-container'>
                     <button className='btn' onClick={() => setShowLogout(!showLogout)}>
@@ -115,12 +115,6 @@ const Wrapper = styled.div`
         }
         p {
             align-self: end;
-        }
-    }
-    @media (max-width: 450px) {
-        .btn-container,
-        .sign-in-btn {
-            display: none;
         }
     }
 `;

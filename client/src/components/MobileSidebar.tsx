@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigationStore } from '../store';
-import { LogoSmall, NavLinks } from '../components';
+import { LogoSmall, NavLinks, UserButton } from '../components';
 import { CgClose } from 'react-icons/cg';
 
 const MobileSidebar = () => {
@@ -15,16 +15,13 @@ const MobileSidebar = () => {
                 </button>
                 <LogoSmall />
                 <NavLinks />
+                <UserButton />
             </div>
         </Wrapper>
     );
 };
 
 const Wrapper = styled.aside`
-    position: relative;
-    @media (min-width: 992px) {
-        display: none;
-    }
     .sidebar-container {
         position: fixed;
         background: rgba(17, 24, 39, 0.75);
@@ -40,6 +37,13 @@ const Wrapper = styled.aside`
         padding: 0rem 1rem;
         z-index: 999;
         box-shadow: var(--shadow-2xl);
+        display: flex;
+        flex-direction: column;
+    }
+    .user-button {
+        display: none;
+        align-self: center;
+        margin-top: 3rem;
     }
     .close-btn {
         position: absolute;
@@ -66,6 +70,17 @@ const Wrapper = styled.aside`
     .show-sidebar {
         opacity: 1;
         z-index: 998;
+    }
+    @media (max-width: 450px) {
+        .user-button {
+            display: initial;
+        }
+        .content {
+            width: 250px;
+        }
+    }
+    @media (min-width: 992px) {
+        display: none;
     }
 `;
 
