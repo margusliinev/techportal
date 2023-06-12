@@ -39,3 +39,36 @@ export interface CustomAPIError {
         };
     };
 }
+
+enum Job_type {
+    full_time = 'full-time',
+    part_time = 'part-time',
+    internship = 'internship',
+    contractor = 'contractor',
+}
+
+enum Job_location {
+    remote = 'remote',
+    part_remote = 'part-remote',
+    office = 'office',
+}
+
+export interface Job {
+    id: number;
+    logo: string;
+    company: string;
+    company_email: string;
+    position: string;
+    technologies: string[];
+    job_type: Job_type;
+    job_location: Job_location;
+    salary: number;
+    expire_date: string;
+}
+
+export interface JobsAPIResponse {
+    success: boolean;
+    jobs: Job[];
+    numOfPages: number;
+    totalJobs: number;
+}

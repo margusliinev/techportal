@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { UserRegister, UserLogin, UserUpdateProfile, UserUpdatePassword, UserAPIResponse } from '../types';
+import { UserRegister, UserLogin, UserUpdateProfile, UserUpdatePassword, UserAPIResponse, JobsAPIResponse } from '../types';
 
 export const register = async (user: UserRegister): Promise<AxiosResponse<UserAPIResponse, null>> => {
     const response = axios.post('http://localhost:5000/api/v1/register', user, {
@@ -45,6 +45,13 @@ export const updateUserProfile = async (profile: UserUpdateProfile): Promise<Axi
 
 export const updateUserPassword = async (password: UserUpdatePassword) => {
     const response = axios.put('http://localhost:5000/api/v1/users/me', password, {
+        withCredentials: true,
+    });
+    return response;
+};
+
+export const getJobs = async (): Promise<AxiosResponse<JobsAPIResponse, null>> => {
+    const response = axios.get('http://localhost:5000/api/v1/jobs', {
         withCredentials: true,
     });
     return response;
