@@ -1,6 +1,6 @@
-import DashboardLayout from './DashboardLayout';
+import DashboardPage from './DashboardPage';
+import Stats from './Stats';
 import Jobs from './Jobs';
 import Profile from './Profile';
-import Stats from './Stats';
 
-export { DashboardLayout, Jobs, Profile, Stats };
+export { DashboardPage, Stats, Jobs, Profile };

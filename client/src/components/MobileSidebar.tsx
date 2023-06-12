@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigationStore } from '../store';
-import { LogoSmall, NavLinks, UserButton } from '../components';
+import { Logo, NavLinks, UserButton } from '../components';
 import { CgClose } from 'react-icons/cg';
 
 const MobileSidebar = () => {
@@ -13,7 +13,7 @@ const MobileSidebar = () => {
                 <button type='button' className='close-btn' onClick={toggleSidebar}>
                     <CgClose />
                 </button>
-                <LogoSmall />
+                <Logo />
                 <NavLinks />
                 <UserButton />
             </div>
@@ -30,7 +30,7 @@ const Wrapper = styled.aside`
     }
     .content {
         position: fixed;
-        background-color: var(--colorWhite);
+        background-color: var(--colorBackgroundSecondary);
         width: 280px;
         height: 100vh;
         transition: var(--transition);

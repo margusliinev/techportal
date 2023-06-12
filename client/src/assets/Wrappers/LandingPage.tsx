@@ -8,6 +8,13 @@ const Wrapper = styled.div`
         width: 90vw;
         margin: 0 auto;
         max-width: var(--width-lg);
+        h4 {
+            font-size: 2.25rem;
+            padding: 0.5rem;
+        }
+        h5 {
+            font-size: 1.75rem;
+        }
     }
     .container {
         min-height: calc(100vh - 6rem);
@@ -21,14 +28,13 @@ const Wrapper = styled.div`
     h1 {
         margin-bottom: 1rem;
         line-height: 1.25;
-        color: var(--colorGray9);
         span {
             color: var(--colorPrimary5);
             display: block;
         }
     }
     p {
-        color: var(--colorGray8);
+        color: var(--colorFontSecondary);
         line-height: 1.75;
         margin-bottom: 0.5rem;
         max-width: 900px;

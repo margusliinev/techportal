@@ -1,5 +1,4 @@
-import LogoSmall from './LogoSmall';
-import LogoBig from './LogoBig';
+import Logo from './Logo';
 import FormRow from './FormRow';
 import Loader from './Loader';
 import FormRowPassword from './FormRowPassword';
@@ -13,4 +12,4 @@ import PersonalInformation from './PersonalInformation';
 import ChangePassword from './ChangePassword';
 import DeleteAccount from './DeleteAccount';
 
-export { LogoSmall, LogoBig, FormRow, Loader, FormRowPassword, MemberCheck, Navbar, UserButton, NavLinks, MainSidebar, MobileSidebar, PersonalInformation, ChangePassword, DeleteAccount };
+export { Logo, FormRow, Loader, FormRowPassword, MemberCheck, Navbar, UserButton, NavLinks, MainSidebar, MobileSidebar, PersonalInformation, ChangePassword, DeleteAccount };

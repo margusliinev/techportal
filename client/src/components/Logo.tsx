@@ -16,17 +16,14 @@ const Wrapper = styled.header`
     justify-content: center;
     h4 {
         display: inline-block;
-        color: var(--colorWhite);
         background-color: var(--colorPrimary5);
         padding: 0.2rem 0.5rem;
-        font-weight: 600;
         border-radius: var(--radius-md);
         font-family: 'Poppins';
         margin-right: 0.5rem;
     }
     h5 {
         display: inline-block;
-        color: var(--colorGray9);
     }
 `;
 

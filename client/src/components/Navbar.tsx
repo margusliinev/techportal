@@ -30,7 +30,7 @@ const Wrapper = styled.nav`
     align-items: center;
     justify-content: center;
     box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.1);
-    background-color: var(--colorWhite);
+    background-color: var(--colorBackgroundSecondary);
     .nav-center {
         display: flex;
         align-items: center;
@@ -61,7 +61,6 @@ const Wrapper = styled.nav`
         }
         .nav-title {
             font-size: 1.75rem;
-            color: var(--colorGray9);
         }
     }
     @media (max-width: 450px) {

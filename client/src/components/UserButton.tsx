@@ -13,7 +13,15 @@ const UserButton = () => {
         <Wrapper className='user-button'>
             {user ? (
                 <div className='btn-container'>
-                    <button className='btn' onClick={() => setShowLogout(!showLogout)}>
+                    <button
+                        className='btn'
+                        onClick={() => setShowLogout(!showLogout)}
+                        onBlur={() => {
+                            setTimeout(() => {
+                                setShowLogout(!showLogout);
+                            }, 100);
+                        }}
+                    >
                         <span>
                             <FaUserCircle />
                         </span>
@@ -21,7 +29,7 @@ const UserButton = () => {
                         <span>{showLogout ? <FaCaretUp /> : <FaCaretDown />}</span>
                     </button>
                     <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
-                        <Link to={'/dashboard/profile'} className='dropdown-btn' onClick={() => setShowLogout(!showLogout)}>
+                        <Link to={'/dashboard/profile'} className='dropdown-btn'>
                             Your Profile
                         </Link>
                         <button
@@ -29,7 +37,6 @@ const UserButton = () => {
                             onClick={() => {
                                 logout();
                                 setUser(null);
-                                setShowLogout(!showLogout);
                             }}
                         >
                             Sign Out
@@ -74,11 +81,11 @@ const Wrapper = styled.div`
             top: 40px;
             right: 0;
             width: 8rem;
-            background-color: var(--colorWhite);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             visibility: hidden;
             border-radius: var(--radius-md);
-            border: 1px solid var(--colorGray2);
+            border: 1px solid var(--colorBackgroundtertiary);
+            background-color: var(--colorBackgroundSecondary);
         }
         .show-dropdown {
             visibility: visible;
@@ -91,7 +98,7 @@ const Wrapper = styled.div`
             border-color: transparent;
             cursor: pointer;
             font-size: 14px;
-            color: var(--colorGray9);
+            color: var(--colorFontPrimary);
         }
         .dropdown-btn:nth-of-type(1) {
             padding: 0.5rem 0.5rem 0.25rem 0.5rem;
@@ -100,7 +107,7 @@ const Wrapper = styled.div`
             padding: 0.25rem 0.5rem 0.5rem 0.5rem;
         }
         .dropdown-btn:hover {
-            background-color: var(--colorGray1);
+            background-color: var(--colorBackgroundtertiary);
         }
     }
     .sign-in-btn {

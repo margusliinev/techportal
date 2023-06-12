@@ -7,20 +7,27 @@ import { useNavigationStore } from '../store';
 
 const NavLinks = () => {
     const { toggleSidebar } = useNavigationStore();
+
+    const controlSidebar = () => {
+        if (window.innerWidth < 992) {
+            toggleSidebar();
+        }
+    };
+
     return (
         <Wrapper>
             <li>
-                <Link to={'/dashboard/stats'} className='nav-link' onClick={toggleSidebar}>
+                <Link to={'/dashboard/stats'} className='nav-link' onClick={controlSidebar}>
                     {<IoBarChart />} stats
                 </Link>
             </li>
             <li>
-                <Link to={'/dashboard/jobs'} className='nav-link' onClick={toggleSidebar}>
+                <Link to={'/dashboard/jobs'} className='nav-link' onClick={controlSidebar}>
                     {<MdQueryStats />} jobs
                 </Link>
             </li>
             <li>
-                <Link to={'/dashboard/profile'} className='nav-link' onClick={toggleSidebar}>
+                <Link to={'/dashboard/profile'} className='nav-link' onClick={controlSidebar}>
                     {<ImProfile />} profile
                 </Link>
             </li>
@@ -36,17 +43,18 @@ const Wrapper = styled.ul`
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: var(--colorPrimary5);
+        color: var(--colorFontPrimary);
         padding: 1rem 0rem 1rem 2rem;
         text-transform: capitalize;
         transition: var(--transition);
         border-radius: var(--radius-md);
         svg {
             font-size: 1.5rem;
+            color: var(--colorPrimary5);
         }
     }
     .nav-link:hover {
-        background-color: var(--colorPrimary1);
+        background-color: var(--colorBackgroundPrimary);
         padding-left: 2.5rem;
     }
 `;

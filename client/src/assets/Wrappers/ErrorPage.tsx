@@ -18,12 +18,11 @@ const Wrapper = styled.div`
     }
     h3 {
         margin-bottom: 0.5rem;
-        color: var(--colorGray8);
         font-weight: 500;
     }
     p {
         margin-top: 0;
-        color: var(--colorGray8);
+        color: var(--colorFontSecondary);
         margin-bottom: 1rem;
     }
     .btn {

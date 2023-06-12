@@ -1,13 +1,13 @@
 import Wrapper from '../assets/Wrappers/LandingPage';
-import LandingLight from '../assets/images/landing-light.svg';
-import { LogoBig } from '../components';
+import LandingDark from '../assets/images/landing-dark.svg';
+import { Logo } from '../components';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
     return (
         <Wrapper>
             <nav>
-                <LogoBig />
+                <Logo />
             </nav>
             <div className='container'>
                 <div className='landing-info'>
@@ -27,7 +27,7 @@ const LandingPage = () => {
                         </Link>
                     </div>
                 </div>
-                <img src={LandingLight} alt='landing image' className='landing-img' />
+                <img src={LandingDark} alt='landing image' className='landing-img' />
             </div>
         </Wrapper>
     );

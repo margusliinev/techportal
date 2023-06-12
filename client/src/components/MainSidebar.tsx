@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { LogoSmall, NavLinks } from '../components';
+import { Logo, NavLinks } from '../components';
 
 const MainSidebar = () => {
     return (
         <Wrapper>
             <div className='sidebar-container'>
                 <div className='content'>
-                    <LogoSmall />
+                    <Logo />
                     <NavLinks />
                 </div>
             </div>
@@ -19,7 +19,7 @@ const Wrapper = styled.aside`
     @media (min-width: 992px) {
         display: block;
         .sidebar-container {
-            background-color: var(--colorWhite);
+            background-color: var(--colorBackgroundSecondary);
             min-height: 100vh;
             height: 100%;
             width: 280px;

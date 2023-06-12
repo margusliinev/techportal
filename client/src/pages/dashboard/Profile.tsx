@@ -8,20 +8,26 @@ const Profile = () => {
 
     if (userLoading) {
         return (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
-                <Loader />
-            </div>
+            <Wrapper>
+                <div className='profile-center'>
+                    <Loader />
+                </div>
+            </Wrapper>
         );
     }
 
     if (!user) {
         return (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '3rem', width: '100%', height: '100%', textAlign: 'center' }}>
-                <h3>Please login to access your profile</h3>
-                <Link className='btn' style={{ fontSize: '24px' }} to={'/login'}>
-                    Sign In
-                </Link>
-            </div>
+            <Wrapper>
+                <div className='profile-center'>
+                    <div className='logged-out'>
+                        <h3>Please login to access your profile</h3>
+                        <Link className='btn' to={'/login'}>
+                            Sign In
+                        </Link>
+                    </div>
+                </div>
+            </Wrapper>
         );
     }
 
@@ -37,6 +43,16 @@ const Profile = () => {
 };
 
 const Wrapper = styled.section`
+    width: 100%;
+    height: fit-content;
+    padding: 2rem 2.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    background-color: var(--colorBackgroundSecondary);
+    @media screen and (max-width: 400px) {
+        padding: 2rem 1.5rem;
+    }
     .personal-information,
     .change-password,
     .delete-account {
@@ -49,12 +65,12 @@ const Wrapper = styled.section`
     .delete-account-header {
         margin-bottom: 1.5rem;
         h6 {
+            color: var(--colorFontPrimary);
             margin-bottom: 0.25rem;
-            color: var(--colorGray9);
         }
         p {
-            color: var(--colorGray7);
-            font-weight: 500;
+            color: var(--colorFontSecondary);
+            font-size: 15px;
         }
     }
     .personal-information-form,
@@ -75,7 +91,7 @@ const Wrapper = styled.section`
             justify-self: start;
         }
         .btn:hover {
-            background-color: #c41e1e;
+            background-color: var(--colorRed3);
         }
     }
     .form-btn-disabled {
@@ -87,16 +103,31 @@ const Wrapper = styled.section`
         letter-spacing: -0.01rem;
     }
     .server-message-error {
-        color: var(--colorRed2);
+        color: var(--colorRed1);
     }
     .server-message-success {
-        color: var(--colorGreen2);
+        color: var(--colorGreen1);
     }
     .content-divider {
         height: 0.1px;
         width: 100%;
-        background-color: var(--colorGray3);
+        background-color: var(--colorGray5);
         margin: 3rem 0;
+    }
+    .profile-center {
+        display: grid;
+        place-items: center;
+        height: calc(100vh - 13rem);
+    }
+    .logged-out {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+        .btn {
+            font-size: 22px;
+        }
     }
 `;
 

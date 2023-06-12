@@ -11,9 +11,13 @@ const Wrapper = styled.div`
         box-shadow: 0 0 20px 5px rgb(0 0 0 / 0.15);
     }
     .form-logo {
-        display: grid;
-        place-items: center;
-        margin-bottom: 1.5rem;
+        h4 {
+            font-size: 2.25rem;
+            padding: 0.5rem;
+        }
+        h5 {
+            font-size: 1.75rem;
+        }
     }
     .form-btn {
         margin-top: 1.5rem;
@@ -46,12 +50,12 @@ const Wrapper = styled.div`
         color: var(--colorPrimary5);
     }
     .reset-title {
-        color: var(--colorGray7);
         margin-bottom: 1rem;
+        font-weight: 600;
     }
     .reset-description {
         font-size: 0.875rem;
-        color: var(--colorGray7);
+        color: var(--colorFontSecondary);
         margin-bottom: 1.5rem;
     }
     .form-input-password-container {
@@ -70,7 +74,7 @@ const Wrapper = styled.div`
         transition: var(--transition);
     }
     .password-toggle:hover {
-        color: var(--colorGray6);
+        color: var(--colorGray5);
     }
     .server-message {
         margin: 0.5rem 0;
@@ -79,10 +83,10 @@ const Wrapper = styled.div`
         letter-spacing: -0.01rem;
     }
     .server-message-error {
-        color: var(--colorRed2);
+        color: var(--colorRed1);
     }
     .server-message-success {
-        color: var(--colorGreen2);
+        color: var(--colorGreen1);
     }
 `;
 
