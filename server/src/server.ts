@@ -6,6 +6,7 @@ import errorHandlerMiddleware from './middleware/errorHandler';
 import notFoundMiddleware from './middleware/notFound';
 import authRouter from './routes/authRoutes';
 import userRouter from './routes/userRoutes';
+import jobsRouter from './routes/jobsRoutes';
 import cookieParser from 'cookie-parser';
 import AuthMiddleware from './middleware/auth';
 
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: 'http://localhost:5173', optionsSuccessStatus: 200, credentials: true }));
 app.use('/', authRouter);
-app.use('/', AuthMiddleware, userRouter);
+app.use('/', userRouter);
+app.use('/', jobsRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
