@@ -7,8 +7,8 @@ import notFoundMiddleware from './middleware/notFound';
 import authRouter from './routes/authRoutes';
 import userRouter from './routes/userRoutes';
 import jobsRouter from './routes/jobsRoutes';
+import statsRouter from './routes/statsRoutes';
 import cookieParser from 'cookie-parser';
-import AuthMiddleware from './middleware/auth';
 
 dotenv.config();
 const app = express();
@@ -19,6 +19,7 @@ app.use(cors({ origin: 'http://localhost:5173', optionsSuccessStatus: 200, crede
 app.use('/', authRouter);
 app.use('/', userRouter);
 app.use('/', jobsRouter);
+app.use('/', statsRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 

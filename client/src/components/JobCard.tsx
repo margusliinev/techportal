@@ -52,8 +52,12 @@ const JobCard = ({ position, company, job_location, job_type, expire_date, techn
                         <span className='text'>Tech Stack:</span>
                     </div>
                     <div className='technologies'>
-                        {technologies.map((item) => {
-                            return <div className='technology'>{item}</div>;
+                        {technologies.map((item, index) => {
+                            return (
+                                <div className='technology' key={index}>
+                                    {item}
+                                </div>
+                            );
                         })}
                     </div>
                 </div>

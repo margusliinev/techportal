@@ -72,3 +72,13 @@ export interface JobsAPIResponse {
     numOfPages: number;
     totalJobs: number;
 }
+
+interface technology {
+    technology: string;
+    count: number;
+}
+
+export interface StatsAPIResponse {
+    success: boolean;
+    topTechnologies: technology[];
+}
