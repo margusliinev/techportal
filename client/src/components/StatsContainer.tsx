@@ -1,36 +1,15 @@
 import styled from 'styled-components';
-import { getStats } from '../utils/dataFetching';
-import { useQuery } from '@tanstack/react-query';
-import { Loader } from '../components';
+import { technology } from '../types';
 
-const StatsContainer = () => {
-    const { data, isLoading, isError } = useQuery(['stats'], getStats);
+interface Props {
+    topTechnologies: technology[];
+}
 
-    if (isLoading) {
-        return (
-            <Wrapper>
-                <div className='stats-center'>
-                    <Loader />
-                </div>
-            </Wrapper>
-        );
-    }
-
-    if (isError) {
-        return (
-            <Wrapper>
-                <div className='stats-center'>
-                    <h3>Oops! Internal Server Error</h3>
-                    <p>Service is currently down, please try again later</p>
-                </div>
-            </Wrapper>
-        );
-    }
-
+const StatsContainer = ({ topTechnologies }: Props) => {
     return (
         <Wrapper>
             <div className='stats'>
-                {data.data.topTechnologies.slice(0, 3).map((technology, index) => {
+                {topTechnologies.slice(0, 3).map((technology, index) => {
                     return (
                         <article key={index}>
                             <header>
@@ -48,7 +27,7 @@ const StatsContainer = () => {
     );
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
     .stats {
         display: grid;
         row-gap: 2rem;
@@ -64,15 +43,6 @@ const Wrapper = styled.section`
         .stats {
             grid-template-columns: 1fr 1fr 1fr;
             column-gap: 1rem;
-        }
-    }
-    .stats-center {
-        display: grid;
-        place-items: center;
-        text-align: center;
-        row-gap: 1rem;
-        p {
-            color: var(--colorFontSecondary);
         }
     }
     article {

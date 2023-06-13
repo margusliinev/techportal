@@ -50,7 +50,7 @@ const Wrapper = styled.ul`
         border-radius: var(--radius-md);
         svg {
             font-size: 1.5rem;
-            color: var(--colorPrimary5);
+            color: var(--colorPrimary4);
         }
     }
     .nav-link:hover {

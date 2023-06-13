@@ -73,7 +73,7 @@ export interface JobsAPIResponse {
     totalJobs: number;
 }
 
-interface technology {
+export interface technology {
     technology: string;
     count: number;
 }

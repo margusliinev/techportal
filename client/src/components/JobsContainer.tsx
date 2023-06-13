@@ -48,6 +48,8 @@ const Wrapper = styled.section`
     }
     & > h5 {
         font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: capitalize;
     }
     .jobs {
         display: grid;

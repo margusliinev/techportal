@@ -13,7 +13,7 @@ export const getStats = async (req: Request, res: Response) => {
 
     const sortedTechnologies = Object.entries(technologyCount).sort((a, b) => b[1] - a[1]);
 
-    const topTechnologies = sortedTechnologies.slice(0, 10).map(([technology, count]) => ({
+    const topTechnologies = sortedTechnologies.slice(0, 7).map(([technology, count]) => ({
         technology,
         count,
     }));
