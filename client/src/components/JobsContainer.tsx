@@ -7,13 +7,22 @@ const JobsContainer = () => {
     const { data, isLoading, isError } = useQuery(['jobs'], getJobs);
 
     if (isLoading) {
-        return <Loader />;
+        return (
+            <Wrapper>
+                <div className='jobs-center'>
+                    <Loader />
+                </div>
+            </Wrapper>
+        );
     }
 
     if (isError) {
         return (
             <Wrapper>
-                <p>Failed Fetching Jobs</p>
+                <div className='jobs-center'>
+                    <h3>Oops! Internal Server Error</h3>
+                    <p>Service is currently down, please try again later</p>
+                </div>
             </Wrapper>
         );
     }
@@ -21,7 +30,7 @@ const JobsContainer = () => {
     return (
         <Wrapper>
             <h5>
-                {data.data.totalJobs} job{data.data.totalJobs > 1 && 's'}
+                {data.data.totalJobs} job{data.data.totalJobs > 1 && 's'} found
             </h5>
             <div className='jobs'>
                 {data.data.jobs.map((job) => {
@@ -45,11 +54,20 @@ const Wrapper = styled.section`
         grid-template-columns: 1fr;
         row-gap: 2rem;
     }
-    @media (min-width: 992px) {
+    @media (min-width: 1280px) {
         .jobs {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
+        }
+    }
+    .jobs-center {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        row-gap: 1rem;
+        p {
+            color: var(--colorFontSecondary);
         }
     }
 `;

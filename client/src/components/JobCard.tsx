@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import moment from 'moment';
-import { FaLocationArrow, FaCalendar, FaBriefcase, FaMoneyBill } from 'react-icons/fa';
+import { FaLocationArrow, FaCalendar, FaBriefcase, FaMoneyBill, FaServicestack } from 'react-icons/fa';
 import { Job } from '../types';
 
 const JobCard = ({ position, company, job_location, job_type, expire_date, technologies, logo, salary }: Job) => {
@@ -15,6 +15,7 @@ const JobCard = ({ position, company, job_location, job_type, expire_date, techn
                     <h5>{position}</h5>
                     <p>{company}</p>
                 </div>
+                <button className='btn'>Apply</button>
             </header>
             <div className='content'>
                 <div className='content-center'>
@@ -43,6 +44,19 @@ const JobCard = ({ position, company, job_location, job_type, expire_date, techn
                         <span className='text'>{'€' + salary}</span>
                     </div>
                 </div>
+                <div className='tech-stack'>
+                    <div className='job-info'>
+                        <span className='icon'>
+                            <FaServicestack />
+                        </span>
+                        <span className='text'>Tech Stack:</span>
+                    </div>
+                    <div className='technologies'>
+                        {technologies.map((item) => {
+                            return <div className='technology'>{item}</div>;
+                        })}
+                    </div>
+                </div>
             </div>
         </Wrapper>
     );
@@ -52,31 +66,60 @@ const Wrapper = styled.article`
     background: var(--colorBackgroundSecondary);
     border-radius: var(--radius-md);
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto 1fr;
     box-shadow: var(--shadow-md);
-
     header {
         padding: 1rem 1.5rem;
         border-bottom: 1px solid var(--colorGray1);
         display: grid;
-        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        row-gap: 1rem;
+        column-gap: 0.25rem;
         align-items: center;
-        h5 {
-            letter-spacing: 0;
+        .btn {
+            background-color: var(--colorGreen1);
+            color: var(--colorBackgroundPrimary);
+            font-weight: 600;
+            font-family: 'Poppins';
+            transition: var(--transition);
+        }
+        .btn:hover {
+            background-color: #4ade80;
         }
     }
     .main-icon {
-        width: 60px;
-        height: 60px;
-        display: grid;
-        place-items: center;
-        background: var(--colorPrimary5);
+        width: 70px;
+        height: 70px;
         border-radius: var(--radius-md);
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: var(--colorBackgroundSecondary);
-        margin-right: 2rem;
+        margin-right: 1.5rem;
+    }
+    @media (min-width: 400px) {
+        header {
+            grid-template-columns: auto 1fr;
+            grid-template-rows: 1fr auto;
+            row-gap: 1.5rem;
+        }
+    }
+    @media (min-width: 640px) {
+        header {
+            grid-template-columns: auto 1fr auto;
+            grid-template-rows: 1fr;
+            row-gap: 0;
+        }
+    }
+    @media (min-width: 1280px) {
+        header {
+            grid-template-columns: auto 1fr;
+            grid-template-rows: 1fr auto;
+            row-gap: 1.5rem;
+        }
+    }
+    @media (min-width: 1536px) {
+        header {
+            grid-template-columns: auto 1fr auto;
+            grid-template-rows: 1fr;
+            row-gap: 0;
+        }
     }
     .info {
         h5 {
@@ -85,20 +128,8 @@ const Wrapper = styled.article`
         p {
             margin: 0;
             text-transform: capitalize;
-            color: var(--colorGray4);
+            color: var(--colorFontSecondary);
         }
-    }
-    .pending {
-        background: #fcefc7;
-        color: #e9b949;
-    }
-    .interview {
-        background: #e0e8f9;
-        color: #647acb;
-    }
-    .declined {
-        color: #d66a6a;
-        background: #ffeeee;
     }
     .content {
         padding: 1rem 1.5rem;
@@ -107,63 +138,41 @@ const Wrapper = styled.article`
         display: grid;
         grid-template-columns: 1fr;
         row-gap: 0.5rem;
-        @media (min-width: 576px) {
+        @media (min-width: 400px) {
             grid-template-columns: 1fr 1fr;
         }
-        @media (min-width: 992px) {
-            grid-template-columns: 1fr;
-        }
-        @media (min-width: 1120px) {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-
-    .status {
-        border-radius: var(--radius-md);
-        text-transform: capitalize;
-
-        text-align: center;
-        width: 100px;
-        height: 30px;
-    }
-    footer {
-        margin-top: 1rem;
-    }
-    .edit-btn,
-    .delete-btn {
-        cursor: pointer;
-        height: 30px;
-    }
-    .edit-btn {
-        color: var(--colorGreen2);
-        background: var(--colorGreen1);
-        margin-right: 0.5rem;
-    }
-    .delete-btn {
-        color: var(--colorRed2);
-        background: var(--colorRed1);
-    }
-    &:hover .actions {
-        visibility: visible;
     }
     .job-info {
         margin-top: 0.5rem;
         display: flex;
         align-items: center;
-
         .icon {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-right: 1rem;
             display: flex;
             align-items: center;
             svg {
-                color: var(--grey-400);
+                color: var(--colorPrimary3);
             }
         }
         .text {
             text-transform: capitalize;
-            letter-spacing: var(--letterSpacing);
         }
+    }
+    .technologies {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .technology {
+        padding: 0.125rem;
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+    }
+    .tech-stack {
+        margin-top: 1rem;
     }
 `;
 
