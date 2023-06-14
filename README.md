@@ -1,15 +1,15 @@
-# Tech Portal
+# TechPortal
 
 ## Description
 
-This is a repository for project Tech Portal.
+This is a repository for project TechPortal.
 
 ## Technologies
 
 ### Front-End
 
 -   Typescript
--   React
+-   React + Redux
 -   Styled Components
 
 ### Back-End

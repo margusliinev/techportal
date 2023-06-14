@@ -12,7 +12,15 @@ interface Props {
     handleValidation?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-const FormRowPassword = ({ type, name, value, labelText, forgot, handleChange, handleValidation }: Props) => {
+const FormRowPassword = ({
+    type,
+    name,
+    value,
+    labelText,
+    forgot,
+    handleChange,
+    handleValidation,
+}: Props) => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const handlePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,11 +53,24 @@ const FormRowPassword = ({ type, name, value, labelText, forgot, handleChange, h
             )}
             <div className='form-input-password-container'>
                 {value.length > 0 ? (
-                    <button type='button' className='password-toggle' onMouseDown={handlePasswordVisibility}>
+                    <button
+                        type='button'
+                        className='password-toggle'
+                        onMouseDown={handlePasswordVisibility}
+                    >
                         {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                     </button>
                 ) : null}
-                <input type={type} name={name} value={value} className='form-input' id={name} onChange={handleChange} onBlur={handleValidation} required />
+                <input
+                    type={type}
+                    name={name}
+                    value={value}
+                    className='form-input'
+                    id={name}
+                    onChange={handleChange}
+                    onBlur={handleValidation}
+                    required
+                />
                 <p className='form-alert'></p>
             </div>
         </div>

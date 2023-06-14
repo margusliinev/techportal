@@ -13,7 +13,16 @@ const FormRow = ({ type, name, value, labelText, handleChange, handleValidation 
             <label htmlFor={name} className='form-label'>
                 {labelText || name}
             </label>
-            <input type={type} name={name} value={value} className='form-input' id={name} onChange={handleChange} onBlur={handleValidation} required />
+            <input
+                type={type}
+                name={name}
+                value={value}
+                className='form-input'
+                id={name}
+                onChange={handleChange}
+                onBlur={handleValidation}
+                required
+            />
             <p className='form-alert'></p>
         </div>
     );

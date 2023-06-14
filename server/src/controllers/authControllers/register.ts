@@ -15,7 +15,7 @@ export const register = async (req: Request, res: Response) => {
     }
 
     const uniqueEmail = await query('select email from users where email = $1', [email]);
-    if (uniqueEmail.rows.length >= 1) {
+    if (uniqueEmail.length >= 1) {
         throw new BadRequestError('Email address is already registered');
     }
 
@@ -23,7 +23,9 @@ export const register = async (req: Request, res: Response) => {
         if (username.length < 3 || username.length > 16) {
             throw new BadRequestError('Invalid username, username must be between 3-16 characters');
         } else {
-            throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9)');
+            throw new BadRequestError(
+                'Invalid username, username can only contain letters (A-Z) and numbers (0-9)'
+            );
         }
     }
 
@@ -45,7 +47,13 @@ export const register = async (req: Request, res: Response) => {
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const newUser = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [username, email, hash]);
+    const newUser = await query(
+        'insert into users (username, email, password) values ($1, $2, $3) returning *',
+        [username, email, hash]
+    );
 
-    res.status(201).json({ success: true, user: { username: newUser.rows[0].username, email: newUser.rows[0].email } });
+    res.status(201).json({
+        success: true,
+        user: { username: newUser[0].username, email: newUser[0].email },
+    });
 };

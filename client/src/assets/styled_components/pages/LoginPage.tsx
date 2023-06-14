@@ -38,25 +38,11 @@ const Wrapper = styled.div`
     .member-btn {
         background: transparent;
         border: none;
-        color: var(--colorPrimary5);
+        color: var(--colorPrimary4);
         cursor: pointer;
         font-size: 1rem;
         font-weight: 500;
         text-transform: capitalize;
-    }
-    .return-btn {
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--colorPrimary5);
-    }
-    .reset-title {
-        margin-bottom: 1rem;
-        font-weight: 600;
-    }
-    .reset-description {
-        font-size: 0.875rem;
-        color: var(--colorFontSecondary);
-        margin-bottom: 1.5rem;
     }
     .form-input-password-container {
         position: relative;

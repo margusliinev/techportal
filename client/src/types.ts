@@ -1,3 +1,9 @@
+export interface CustomAPIError {
+    data: {
+        msg: string;
+    };
+}
+
 export interface UserRegister {
     username: string;
     email: string;
@@ -29,14 +35,6 @@ export interface UserAPIResponse {
     user: {
         username: string;
         email: string;
-    };
-}
-
-export interface CustomAPIError {
-    response: {
-        data: {
-            msg: string;
-        };
     };
 }
 

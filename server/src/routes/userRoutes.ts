@@ -7,6 +7,11 @@ import AuthMiddleware from '../middleware/auth';
 
 const router = express.Router();
 
-router.route('/api/v1/users/me').get(AuthMiddleware, getUser).patch(AuthMiddleware, updateUserProfile).put(AuthMiddleware, updateUserPassword).delete(AuthMiddleware, deleteUser);
+router
+    .route('/api/v1/users/me')
+    .get(AuthMiddleware, getUser)
+    .patch(AuthMiddleware, updateUserProfile)
+    .put(AuthMiddleware, updateUserPassword)
+    .delete(AuthMiddleware, deleteUser);
 
 export default router;

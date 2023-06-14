@@ -1,16 +1,24 @@
 import { Request, Response } from 'express';
 import { query } from '../../db';
+import { UnAuthenticatedError } from '../../errors';
 
-interface CustomRequest extends Request {
-    user?: any;
+interface AuthenticatedRequest extends Request {
+    user?: {
+        userId: number;
+    };
 }
 
-const getUser = async (req: CustomRequest, res: Response) => {
-    const result = await query('SELECT * FROM users WHERE id = $1', [req.user.userId]);
+const getUser = async (req: AuthenticatedRequest, res: Response) => {
+    if (!req.user) {
+        throw new UnAuthenticatedError('Authentication Invalid');
+    }
+
+    const result = await query('SELECT * FROM users WHERE id = $1', [req.user.userId.toString()]);
     const user = {
-        username: result.rows[0].username,
-        email: result.rows[0].email,
+        username: result[0].username,
+        email: result[0].email,
     };
+
     res.status(200).json({ success: true, user });
 };
 

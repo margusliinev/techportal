@@ -1,4 +1,4 @@
-import Wrapper from '../assets/Wrappers/ErrorPage';
+import Wrapper from '../assets/styled_components/pages/ErrorPage';
 import errorDark from '../assets/images/error-dark.svg';
 import { Link } from 'react-router-dom';
 

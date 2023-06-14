@@ -1,24 +1,32 @@
 import { Request, Response } from 'express';
 import { query } from '../../db';
-import { BadRequestError } from '../../errors';
+import { BadRequestError, UnAuthenticatedError } from '../../errors';
 import bcrypt from 'bcryptjs';
 
-interface CustomRequest extends Request {
-    user?: any;
+interface AuthenticatedRequest extends Request {
+    user?: {
+        userId: number;
+    };
 }
 
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
-export const updateUserPassword = async (req: CustomRequest, res: Response) => {
+export const updateUserPassword = async (req: AuthenticatedRequest, res: Response) => {
+    if (!req.user) {
+        throw new UnAuthenticatedError('Authentication Invalid');
+    }
+
     const { currentPassword, newPassword, confirmNewPassword } = req.body;
 
     if (!currentPassword || !newPassword || !confirmNewPassword) {
         throw new BadRequestError('Missing current password, new password, or confirm password');
     }
 
-    const userPassword = await query('SELECT password FROM users WHERE id = $1', [req.user.userId]);
+    const userPassword = await query('SELECT password FROM users WHERE id = $1', [
+        req.user.userId.toString(),
+    ]);
 
-    const passwordMatch = await bcrypt.compare(currentPassword, userPassword.rows[0].password);
+    const passwordMatch = await bcrypt.compare(currentPassword, userPassword[0].password);
 
     if (!passwordMatch) {
         throw new BadRequestError('Current password is incorrect');
@@ -43,7 +51,7 @@ export const updateUserPassword = async (req: CustomRequest, res: Response) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(newPassword, salt);
 
-    await query('UPDATE users SET password = $1 WHERE id = $2', [hash, req.user.userId]);
+    await query('UPDATE users SET password = $1 WHERE id = $2', [hash, req.user.userId.toString()]);
 
     res.status(200).json({ success: true, msg: 'User password has been updated' });
 };

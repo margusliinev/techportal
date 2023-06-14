@@ -9,24 +9,23 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@tanstack/react-query": "^4.29.11",
-        "axios": "^1.4.0",
+        "@reduxjs/toolkit": "^1.9.5",
         "moment": "^2.29.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-icons": "^4.8.0",
+        "react-icons": "^4.9.0",
         "react-is": "^18.2.0",
-        "react-router-dom": "^6.11.2",
+        "react-redux": "^8.1.0",
+        "react-router-dom": "^6.12.1",
         "recharts": "^2.6.2",
-        "styled-components": "^5.3.10",
-        "zustand": "^4.3.8"
+        "styled-components": "^5.3.10"
     },
     "devDependencies": {
-        "@types/react": "^18.0.28",
+        "@types/react": "^18.0.37",
         "@types/react-dom": "^18.0.11",
         "@types/styled-components": "^5.1.26",
         "@vitejs/plugin-react-swc": "^3.0.0",
         "typescript": "^5.0.2",
-        "vite": "^4.3.2"
+        "vite": "^4.3.9"
     }
 }
