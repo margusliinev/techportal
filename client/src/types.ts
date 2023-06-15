@@ -24,6 +24,40 @@ export interface UserUpdatePassword {
     confirmNewPassword: string;
 }
 
+enum Employment {
+    full_time = 'full-time',
+    part_time = 'part-time',
+    internship = 'internship',
+    contractor = 'contract',
+}
+
+enum Location {
+    remote = 'remote',
+    part_remote = 'part-remote',
+    tallinn = 'tallinn',
+    tartu = 'tartu',
+    parnu = 'parnu',
+    narva = 'narva',
+}
+
+export interface Job {
+    id: number;
+    company: string;
+    position: string;
+    employment: Employment;
+    location: Location;
+    salary: number;
+    expire_date: Date;
+    technologies: string[];
+}
+
+export interface JobsAPIResponse {
+    jobs: Job[];
+    numOfPages: number;
+    success: boolean;
+    totalJobs: number;
+}
+
 export interface UserAPIResponse {
     success: boolean;
     user: {

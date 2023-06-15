@@ -2,7 +2,7 @@ import { Logo, NavLinks, UserButton } from '../components';
 import { CgClose } from 'react-icons/cg';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { toggleNavigation } from '../features/navigation/navigationSlice';
-import Wrapper from '../assets/styled_components/MobileSidebar';
+import Wrapper from '../assets/styled_components/components/MobileSidebar';
 
 const MobileSidebar = () => {
     const { showSidebar } = useAppSelector((store) => store.navigation);

@@ -11,5 +11,25 @@ import UserButton from './UserButton';
 import PersonalInformation from './PersonalInformation';
 import ChangePassword from './ChangePassword';
 import DeleteAccount from './DeleteAccount';
+import SearchContainer from './SearchContainer';
+import JobsContainer from './JobsContainer';
+import JobCard from './JobCard';
 
-export { Logo, Loader, FormRow, FormRowPassword, MemberCheck, Navbar, DesktopSidebar, MobileSidebar, NavLinks, UserButton, PersonalInformation, ChangePassword, DeleteAccount };
+export {
+    Logo,
+    Loader,
+    FormRow,
+    FormRowPassword,
+    MemberCheck,
+    Navbar,
+    DesktopSidebar,
+    MobileSidebar,
+    NavLinks,
+    UserButton,
+    PersonalInformation,
+    ChangePassword,
+    DeleteAccount,
+    SearchContainer,
+    JobsContainer,
+    JobCard,
+};

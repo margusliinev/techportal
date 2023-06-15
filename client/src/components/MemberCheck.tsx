@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Wrapper from '../assets/styled_components/MemberCheck';
+import Wrapper from '../assets/styled_components/components/MemberCheck';
 
 interface Props {
     message: string;

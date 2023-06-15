@@ -5,14 +5,14 @@ import { MdQueryStats } from 'react-icons/md';
 import { ImProfile } from 'react-icons/im';
 import { useAppDispatch } from '../hooks';
 import { toggleNavigation } from '../features/navigation/navigationSlice';
-import Wrapper from '../assets/styled_components/NavLinks';
+import Wrapper from '../assets/styled_components/components/NavLinks';
 
 const NavLinks = () => {
     const dispatch = useAppDispatch();
 
     const controlSidebar = () => {
         if (window.innerWidth < 992) {
-            dispatch(toggleNavigation);
+            dispatch(toggleNavigation());
         }
     };
 

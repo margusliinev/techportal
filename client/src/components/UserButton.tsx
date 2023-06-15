@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../hooks';
 import { setUser, logoutUser } from '../features/user/userSlice';
 import { FaUserCircle, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Wrapper from '../assets/styled_components/UserButton';
+import Wrapper from '../assets/styled_components/components/UserButton';
 
 const UserButton = () => {
     const [showLogout, setShowLogout] = useState(false);

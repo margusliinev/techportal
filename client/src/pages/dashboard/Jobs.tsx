@@ -1,12 +1,12 @@
-// import { SearchContainer, JobsContainer } from '../../components';
+import { SearchContainer, JobsContainer } from '../../components';
+import Wrapper from '../../assets/styled_components/pages/dashboard/Jobs';
 
 const Jobs = () => {
     return (
-        <>
-            {/* <SearchContainer />
-            <JobsContainer /> */}
-            <div>Jobs Page</div>
-        </>
+        <Wrapper>
+            <SearchContainer />
+            <JobsContainer />
+        </Wrapper>
     );
 };
 

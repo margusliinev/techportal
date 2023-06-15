@@ -4,7 +4,7 @@ import { CustomAPIError, UserUpdatePassword } from '../types';
 import { useUpdateUserPasswordMutation } from '../features/api/apiSlice';
 import { useAppDispatch } from '../hooks';
 import { logoutUser, setUser } from '../features/user/userSlice';
-import Wrapper from '../assets/styled_components/ChangePassword';
+import Wrapper from '../assets/styled_components/components/ChangePassword';
 
 const initialState: UserUpdatePassword = {
     currentPassword: '',

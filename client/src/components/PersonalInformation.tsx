@@ -4,7 +4,7 @@ import { User, CustomAPIError } from '../types';
 import { useUpdateUserProfileMutation } from '../features/api/apiSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { logoutUser, setUser } from '../features/user/userSlice';
-import Wrapper from '../assets/styled_components/PersonalInformation';
+import Wrapper from '../assets/styled_components/components/PersonalInformation';
 
 const initialState: User = {
     username: '',
