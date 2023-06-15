@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Wrapper from '../assets/styled_components/MemberCheck';
 
 interface Props {
     message: string;
@@ -7,12 +8,12 @@ interface Props {
 
 const MemberCheck = ({ message, endpoint }: Props) => {
     return (
-        <div className='member-check'>
+        <Wrapper className='member-check'>
             <p>{message}</p>
             <Link to={`/${endpoint}`} type='button' className='member-btn'>
                 {endpoint}
             </Link>
-        </div>
+        </Wrapper>
     );
 };
 export default MemberCheck;

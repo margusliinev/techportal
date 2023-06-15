@@ -22,14 +22,12 @@ export const updateUserPassword = async (req: AuthenticatedRequest, res: Respons
         throw new BadRequestError('Missing current password, new password, or confirm password');
     }
 
-    const userPassword = await query('SELECT password FROM users WHERE id = $1', [
-        req.user.userId.toString(),
-    ]);
+    const userPassword = await query('SELECT password FROM users WHERE id = $1', [req.user.userId.toString()]);
 
     const passwordMatch = await bcrypt.compare(currentPassword, userPassword[0].password);
 
     if (!passwordMatch) {
-        throw new BadRequestError('Current password is incorrect');
+        throw new BadRequestError('Your current password is incorrect');
     }
 
     if (!passwordRegex.test(newPassword)) {

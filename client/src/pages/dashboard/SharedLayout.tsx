@@ -3,9 +3,9 @@ import { useAppDispatch } from '../../hooks';
 import { getUser } from '../../features/user/userSlice';
 import { Outlet } from 'react-router-dom';
 import { Navbar, DesktopSidebar, MobileSidebar } from '../../components';
-import Wrapper from '../../assets/styled_components/pages/DashboardPage';
+import Wrapper from '../../assets/styled_components/pages/dashboard/SharedLayout';
 
-const DashboardPage = () => {
+const SharedLayout = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -28,4 +28,4 @@ const DashboardPage = () => {
     );
 };
 
-export default DashboardPage;
+export default SharedLayout;

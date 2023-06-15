@@ -19,7 +19,7 @@ const UserButton = () => {
                         onClick={() => setShowLogout(!showLogout)}
                         onBlur={() => {
                             setTimeout(() => {
-                                setShowLogout(!showLogout);
+                                setShowLogout(false);
                             }, 100);
                         }}
                     >

@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { User, UserLogin, UserRegister, UserUpdatePassword } from '../../types';
 
 export const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/v1' }),
     endpoints: (builder) => ({
         register: builder.mutation({
-            query: (user) => ({
+            query: (user: UserRegister) => ({
                 url: '/register',
                 method: 'POST',
                 credentials: 'include',
@@ -13,7 +14,7 @@ export const apiSlice = createApi({
             }),
         }),
         login: builder.mutation({
-            query: (user) => ({
+            query: (user: UserLogin) => ({
                 url: '/login',
                 method: 'POST',
                 credentials: 'include',
@@ -21,7 +22,7 @@ export const apiSlice = createApi({
             }),
         }),
         updateUserProfile: builder.mutation({
-            query: (profile) => ({
+            query: (profile: User) => ({
                 url: '/users/me',
                 method: 'PATCH',
                 credentials: 'include',
@@ -29,7 +30,7 @@ export const apiSlice = createApi({
             }),
         }),
         updateUserPassword: builder.mutation({
-            query: (password) => ({
+            query: (password: UserUpdatePassword) => ({
                 url: '/users/me',
                 method: 'PUT',
                 credentials: 'include',

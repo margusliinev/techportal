@@ -25,7 +25,7 @@ const deleteUser = createAsyncThunk('user/deleteUser', async () => {
         credentials: 'include',
     });
     const data = await response.json();
-    return data.user;
+    return data;
 });
 
 const logoutUser = createAsyncThunk('user/logoutUser', async () => {

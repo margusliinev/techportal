@@ -34,16 +34,7 @@ const Wrapper = styled.div`
         margin-bottom: 1.5rem;
     }
     .server-message {
-        margin: 0.5rem 0;
         text-align: center;
-        font-weight: 400;
-        letter-spacing: -0.01rem;
-    }
-    .server-message-error {
-        color: var(--colorRed1);
-    }
-    .server-message-success {
-        color: var(--colorGreen1);
     }
 `;
 

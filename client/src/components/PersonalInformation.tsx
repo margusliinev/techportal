@@ -4,6 +4,7 @@ import { User, CustomAPIError } from '../types';
 import { useUpdateUserProfileMutation } from '../features/api/apiSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { logoutUser, setUser } from '../features/user/userSlice';
+import Wrapper from '../assets/styled_components/PersonalInformation';
 
 const initialState: User = {
     username: '',
@@ -46,22 +47,24 @@ const personalInformation = () => {
     }, [userLoading]);
 
     return (
-        <div className='personal-information'>
-            <div className='personal-information-header'>
-                <h6>Personal Information</h6>
-                <p>Use a permanent address where you can receive mail.</p>
+        <Wrapper>
+            <div className='personal-information'>
+                <div className='personal-information-header'>
+                    <h6>Personal Information</h6>
+                    <p>Use a permanent address where you can receive mail.</p>
+                </div>
+                <form className='personal-information-form' onSubmit={handleSubmit}>
+                    <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
+                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your profile has been updated'}
+                    </p>
+                    <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} />
+                    <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} handleChange={handleChange} />
+                    <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
+                        Save
+                    </button>
+                </form>
             </div>
-            <form className='personal-information-form' onSubmit={handleSubmit}>
-                <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                    {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your profile has been updated'}
-                </p>
-                <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} />
-                <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} handleChange={handleChange} />
-                <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
-                    Save
-                </button>
-            </form>
-        </div>
+        </Wrapper>
     );
 };
 

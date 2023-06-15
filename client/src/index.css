@@ -31,12 +31,15 @@
     --colorRed1: #fca5a5;
     --colorRed2: #f87171;
     --colorRed3: #ef4444;
+    --colorRed4: #dc2626;
     --colorYellow1: #fde047;
-    --colorYellow1: #facc15;
-    --colorYellow1: #eab308;
+    --colorYellow2: #facc15;
+    --colorYellow3: #eab308;
+    --colorYellow4: #ca8a04;
     --colorGreen1: #86efac;
     --colorGreen2: #4ade80;
     --colorGreen3: #22c55e;
+    --colorGreen4: #16a34a;
     --colorBlack: #000000;
     --colorWhite: #ffffff;
     --fontPrimary: 'Inter var', sans-serif;
@@ -328,6 +331,18 @@ input[type='radio'] {
 }
 
 .form-alert-success {
+    color: var(--colorGreen1);
+}
+
+.server-message {
+    margin: 0.5rem 0;
+    font-weight: 400;
+    letter-spacing: -0.01rem;
+}
+.server-message-error {
+    color: var(--colorRed1);
+}
+.server-message-success {
     color: var(--colorGreen1);
 }
 

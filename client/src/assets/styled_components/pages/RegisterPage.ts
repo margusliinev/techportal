@@ -25,25 +25,6 @@ const Wrapper = styled.div`
     .form-btn-disabled {
         background-color: var(--colorPrimary4);
     }
-    .member-check {
-        margin-top: 1rem;
-        text-align: center;
-        p {
-            display: inline;
-        }
-        p:nth-of-type(1) {
-            margin-right: 0.5rem;
-        }
-    }
-    .member-btn {
-        background: transparent;
-        border: none;
-        color: var(--colorPrimary4);
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 500;
-        text-transform: capitalize;
-    }
     .form-input-password-container {
         position: relative;
     }
@@ -63,16 +44,7 @@ const Wrapper = styled.div`
         color: var(--colorGray5);
     }
     .server-message {
-        margin: 0.5rem 0;
         text-align: center;
-        font-weight: 400;
-        letter-spacing: -0.01rem;
-    }
-    .server-message-error {
-        color: var(--colorRed1);
-    }
-    .server-message-success {
-        color: var(--colorGreen1);
     }
 `;
 
