@@ -20,14 +20,23 @@ export const apiSlice = createApi({
                 body: user,
             }),
         }),
-        logout: builder.query({
-            query: () => ({
-                url: '/logout',
-                method: 'GET',
+        updateUserProfile: builder.mutation({
+            query: (profile) => ({
+                url: '/users/me',
+                method: 'PATCH',
                 credentials: 'include',
+                body: profile,
+            }),
+        }),
+        updateUserPassword: builder.mutation({
+            query: (password) => ({
+                url: '/users/me',
+                method: 'PUT',
+                credentials: 'include',
+                body: password,
             }),
         }),
     }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useLogoutQuery } = apiSlice;
+export const { useRegisterMutation, useLoginMutation, useUpdateUserProfileMutation, useUpdateUserPasswordMutation } = apiSlice;
