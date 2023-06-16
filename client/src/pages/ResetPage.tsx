@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { FormRow } from '../components';
 import { Link } from 'react-router-dom';
-import { UserReset, CustomAPIError } from '../types';
+import { UserReset } from '../types';
 import Wrapper from '../assets/styled_components/pages/ResetPage';
 
 const initialState: UserReset = {

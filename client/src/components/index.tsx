@@ -14,6 +14,8 @@ import DeleteAccount from './DeleteAccount';
 import SearchContainer from './SearchContainer';
 import JobsContainer from './JobsContainer';
 import JobCard from './JobCard';
+import StatsContainer from './StatsContainer';
+import ChartsContainer from './ChartsContainer';
 
 export {
     Logo,
@@ -32,4 +34,6 @@ export {
     SearchContainer,
     JobsContainer,
     JobCard,
+    StatsContainer,
+    ChartsContainer,
 };

@@ -1,5 +1,6 @@
 import { Loader, JobCard } from '../components';
 import { useGetJobsQuery } from '../features/api/apiSlice';
+import { Job } from '../types';
 import Wrapper from '../assets/styled_components/components/JobsContainer';
 
 const JobsContainer = () => {
@@ -31,7 +32,7 @@ const JobsContainer = () => {
                 {data?.totalJobs} job{data && data.totalJobs > 1 && 's'} found
             </h5>
             <div className='jobs'>
-                {data?.jobs.map((job) => {
+                {data.jobs.map((job: Job) => {
                     return <JobCard key={job.id} {...job} />;
                 })}
             </div>

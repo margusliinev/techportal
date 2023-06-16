@@ -72,3 +72,13 @@ export interface CustomAPIError {
     };
     status: number;
 }
+
+export interface technology {
+    technology: string;
+    count: number;
+}
+
+export interface StatsAPIResponse {
+    success: boolean;
+    topTechnologies: technology[];
+}
