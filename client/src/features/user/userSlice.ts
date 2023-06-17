@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { User } from '../../types';
+import { User, UserAPIResponse, DefaultAPIResponse } from '../../types';
 
 interface UserState {
     user: User | null;
@@ -11,12 +11,11 @@ const initialState: UserState = {
     userLoading: true,
 };
 
-const getUser = createAsyncThunk('user/getUser', async () => {
+const getUser = createAsyncThunk<UserAPIResponse>('user/getUser', async () => {
     const response = await fetch('http://localhost:5000/api/v1/users/me', {
         credentials: 'include',
     });
-    const data = await response.json();
-    return data.user;
+    return (await response.json()) as UserAPIResponse;
 });
 
 const deleteUser = createAsyncThunk('user/deleteUser', async () => {
@@ -24,16 +23,14 @@ const deleteUser = createAsyncThunk('user/deleteUser', async () => {
         method: 'DELETE',
         credentials: 'include',
     });
-    const data = await response.json();
-    return data;
+    return (await response.json()) as DefaultAPIResponse;
 });
 
 const logoutUser = createAsyncThunk('user/logoutUser', async () => {
     const response = await fetch('http://localhost:5000/api/v1/logout', {
         credentials: 'include',
     });
-    const data = await response.json();
-    return data;
+    return (await response.json()) as DefaultAPIResponse;
 });
 
 const userSlice = createSlice({
@@ -41,7 +38,11 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
-            state.user = action.payload;
+            if (action.payload !== null) {
+                state.user = action.payload as User;
+            } else {
+                state.user = null;
+            }
         },
     },
     extraReducers: (builder) => {
@@ -54,7 +55,7 @@ const userSlice = createSlice({
             })
             .addCase(getUser.fulfilled, (state, action) => {
                 state.userLoading = false;
-                state.user = action.payload;
+                state.user = action.payload.user;
             });
     },
 });

@@ -4,7 +4,7 @@ import { Job } from '../types';
 import Wrapper from '../assets/styled_components/components/JobCard';
 
 const JobCard = ({ company, position, employment, location, salary, expire_date, technologies }: Job) => {
-    let date = moment(expire_date).format('MMM Do, YYYY');
+    const date = moment(expire_date).format('MMM Do, YYYY');
 
     return (
         <Wrapper>
@@ -40,7 +40,7 @@ const JobCard = ({ company, position, employment, location, salary, expire_date,
                         <span className='icon'>
                             <FaMoneyBill />
                         </span>
-                        <span className='text'>{'€' + salary}</span>
+                        <span className='text'>{'€' + salary.toString()}</span>
                     </div>
                 </div>
                 <div className='tech-stack'>

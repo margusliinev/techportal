@@ -11,7 +11,7 @@ const initialState: User = {
     email: '',
 };
 
-const personalInformation = () => {
+const PersonalInformation = () => {
     const [values, setValues] = useState<User>(initialState);
     const [updateUser, { isLoading, isError, error, isSuccess }] = useUpdateUserProfileMutation();
     const { user, userLoading } = useAppSelector((store) => store.user);
@@ -25,26 +25,28 @@ const personalInformation = () => {
         setValues({ ...values, [e.target.name]: e.target.value.trim() });
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const { username, email } = values;
-        try {
-            const response = await updateUser({ username, email }).unwrap();
-            dispatch(setUser(response.user));
-            setValues(response.user);
-        } catch (error) {
-            if ((error as CustomAPIError).status === 401) {
-                dispatch(logoutUser());
-                dispatch(setUser(null));
-            }
-        }
+        updateUser({ username, email })
+            .unwrap()
+            .then((response) => {
+                dispatch(setUser(response.user));
+                setValues(response.user);
+            })
+            .catch(async (error) => {
+                if ((error as CustomAPIError).status === 401) {
+                    await dispatch(logoutUser());
+                    dispatch(setUser(null));
+                }
+            });
     };
 
     useEffect(() => {
         if (user) {
             setValues(user);
         }
-    }, [userLoading]);
+    }, [user, userLoading]);
 
     return (
         <Wrapper>
@@ -68,4 +70,4 @@ const personalInformation = () => {
     );
 };
 
-export default personalInformation;
+export default PersonalInformation;

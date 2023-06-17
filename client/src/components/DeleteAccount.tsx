@@ -6,16 +6,18 @@ import Wrapper from '../assets/styled_components/components/DeleteAccount';
 const DeleteAccount = () => {
     const dispatch = useAppDispatch();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        try {
-            dispatch(deleteUser());
-        } catch (error) {
-            if ((error as CustomAPIError).status === 401) {
-                dispatch(logoutUser());
-            }
-        }
-        dispatch(setUser(null));
+        dispatch(deleteUser())
+            .then(() => {
+                dispatch(setUser(null));
+            })
+            .catch(async (error) => {
+                if ((error as CustomAPIError).status === 401) {
+                    await dispatch(logoutUser());
+                    dispatch(setUser(null));
+                }
+            });
     };
 
     return (

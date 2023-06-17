@@ -4,7 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import Wrapper from '../assets/styled_components/components/ChartsContainer';
 
 interface Props {
-    topTechnologies: technology[];
+    topTechnologies: technology[] | undefined;
 }
 
 const ChartsContainer = ({ topTechnologies }: Props) => {
@@ -42,7 +42,7 @@ const ChartsContainer = ({ topTechnologies }: Props) => {
         };
     }, []);
 
-    const barsToShow = topTechnologies.slice(0, numBars);
+    const barsToShow = topTechnologies?.slice(0, numBars);
 
     return (
         <Wrapper id='chart-container'>
@@ -52,7 +52,7 @@ const ChartsContainer = ({ topTechnologies }: Props) => {
             <ResponsiveContainer className='responsive-container' width='100%' height={400}>
                 <BarChart data={barsToShow} margin={{ top: 50 }}>
                     <CartesianGrid strokeDasharray={'1 1 '} />
-                    <XAxis dataKey='technology' tick={{ fill: '#F3F4F6' }} tickFormatter={(value) => value.charAt(0).toUpperCase() + value.slice(1)} />
+                    <XAxis dataKey='technology' tick={{ fill: '#F3F4F6' }} tickFormatter={(value: string) => value.charAt(0).toUpperCase() + value.slice(1)} />
                     <YAxis dataKey='count' allowDecimals={false} tick={{ fill: '#F3F4F6' }} />
                     <Tooltip />
                     <Bar dataKey='count' fill='#60a5fa' barSize={barSize} />

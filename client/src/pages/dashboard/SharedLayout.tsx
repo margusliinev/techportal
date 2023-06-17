@@ -9,8 +9,14 @@ const SharedLayout = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(getUser());
-    }, []);
+        dispatch(getUser())
+            .then(() => {
+                return;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [dispatch]);
 
     return (
         <Wrapper>

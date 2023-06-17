@@ -28,8 +28,8 @@ const Stats = () => {
 
     return (
         <Wrapper>
-            <StatsContainer topTechnologies={data.topTechnologies} />
-            <ChartsContainer topTechnologies={data.topTechnologies} />
+            <StatsContainer topTechnologies={data?.topTechnologies} />
+            <ChartsContainer topTechnologies={data?.topTechnologies} />
             <div>Stats Page</div>
         </Wrapper>
     );

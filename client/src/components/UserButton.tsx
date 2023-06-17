@@ -10,6 +10,16 @@ const UserButton = () => {
     const { user } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();
 
+    const handleLogout = () => {
+        dispatch(logoutUser())
+            .then(() => {
+                dispatch(setUser(null));
+            })
+            .catch(() => {
+                dispatch(setUser(null));
+            });
+    };
+
     return (
         <Wrapper className='user-button'>
             {user ? (
@@ -33,13 +43,7 @@ const UserButton = () => {
                         <Link to={'/dashboard/profile'} className='dropdown-btn'>
                             Your Profile
                         </Link>
-                        <button
-                            className='dropdown-btn'
-                            onClick={() => {
-                                dispatch(setUser(null));
-                                dispatch(logoutUser());
-                            }}
-                        >
+                        <button className='dropdown-btn' onClick={handleLogout}>
                             Sign Out
                         </button>
                     </div>

@@ -66,6 +66,11 @@ export interface UserAPIResponse {
     };
 }
 
+export interface DefaultAPIResponse {
+    success: boolean;
+    msg: string;
+}
+
 export interface CustomAPIError {
     data: {
         msg: string;

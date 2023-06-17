@@ -32,9 +32,10 @@ const JobsContainer = () => {
                 {data?.totalJobs} job{data && data.totalJobs > 1 && 's'} found
             </h5>
             <div className='jobs'>
-                {data.jobs.map((job: Job) => {
-                    return <JobCard key={job.id} {...job} />;
-                })}
+                {data &&
+                    data.jobs.map((job: Job) => {
+                        return <JobCard key={job.id} {...job} />;
+                    })}
             </div>
         </Wrapper>
     );

@@ -32,7 +32,7 @@ const ResetPage = () => {
             <div className='container'>
                 <form className='form' onSubmit={handleSubmit} noValidate>
                     <h5 className='reset-title'>Reset your password</h5>
-                    <p className='reset-description'>Enter the email address associated with your account and we'll send you a link to reset your password.</p>
+                    <p className='reset-description'>Enter the email address associated with your account and we&apos;ll send you a link to reset your password.</p>
                     {/* <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {error ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email and follow the instructions to reset your password'}
                     </p> */}

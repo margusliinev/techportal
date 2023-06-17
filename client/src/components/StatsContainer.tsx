@@ -2,14 +2,14 @@ import { technology } from '../types';
 import Wrapper from '../assets/styled_components/components/StatsContainer';
 
 interface Props {
-    topTechnologies: technology[];
+    topTechnologies: technology[] | undefined;
 }
 
 const StatsContainer = ({ topTechnologies }: Props) => {
     return (
         <Wrapper>
             <div className='stats'>
-                {topTechnologies.slice(0, 3).map((technology, index) => {
+                {topTechnologies?.slice(0, 3).map((technology, index) => {
                     return (
                         <article key={index}>
                             <header>

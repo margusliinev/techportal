@@ -25,20 +25,22 @@ const ChangePassword = () => {
         setValues({ ...values, [e.target.name]: e.target.value.trim() });
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const { currentPassword, newPassword, confirmNewPassword } = values;
-        try {
-            const response = await updateUserPassword({ currentPassword, newPassword, confirmNewPassword }).unwrap();
-            if (response.success) {
-                setValues({ currentPassword: '', newPassword: '', confirmNewPassword: '' });
-            }
-        } catch (error) {
-            if ((error as CustomAPIError).status === 401) {
-                dispatch(logoutUser());
-                dispatch(setUser(null));
-            }
-        }
+        updateUserPassword({ currentPassword, newPassword, confirmNewPassword })
+            .unwrap()
+            .then((response) => {
+                if (response.success) {
+                    setValues({ currentPassword: '', newPassword: '', confirmNewPassword: '' });
+                }
+            })
+            .catch(async (error) => {
+                if ((error as CustomAPIError).status === 401) {
+                    await dispatch(logoutUser());
+                    dispatch(setUser(null));
+                }
+            });
     };
 
     return (
