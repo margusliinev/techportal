@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-export const logout = async (req: Request, res: Response) => {
+export const logout = (req: Request, res: Response) => {
     res.cookie('token', 'logout', {
         httpOnly: true,
         expires: new Date(Date.now()),

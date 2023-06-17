@@ -8,6 +8,11 @@ interface AuthenticatedRequest extends Request {
     };
 }
 
+interface UserProfile {
+    username: string;
+    email: string;
+}
+
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -16,16 +21,13 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
         throw new UnAuthenticatedError('Authentication Invalid');
     }
 
-    const { username, email } = req.body;
+    const { username, email }: UserProfile = req.body as UserProfile;
 
     if (!username || !email) {
         throw new BadRequestError('Missing email or password');
     }
 
-    const uniqueEmail = await query('select email from users where email = $1 AND id != $2', [
-        email,
-        req.user.userId,
-    ]);
+    const uniqueEmail = await query('select email from users where email = $1 AND id != $2', [email, req.user.userId.toString()]);
     if (uniqueEmail.length >= 1) {
         throw new BadRequestError('Email address is already in use');
     }
@@ -42,13 +44,10 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
         throw new BadRequestError('Please enter a valid email');
     }
 
-    const result = await query(
-        'UPDATE users SET username = $1, email = $2 WHERE id = $3 returning *',
-        [username, email, req.user.userId]
-    );
+    const result = await query('UPDATE users SET username = $1, email = $2 WHERE id = $3 returning *', [username, email, req.user.userId.toString()]);
     const user = {
-        username: result[0].username,
-        email: result[0].email,
+        username: result[0].username as string,
+        email: result[0].email as string,
     };
 
     res.status(200).json({ success: true, user });

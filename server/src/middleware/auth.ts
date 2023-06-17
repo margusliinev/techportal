@@ -7,6 +7,9 @@ interface AuthenticatedRequest extends Request {
     user?: {
         userId: number;
     };
+    cookies: {
+        token: string;
+    };
 }
 
 const auth = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
@@ -17,7 +20,7 @@ const auth = async (req: AuthenticatedRequest, res: Response, next: NextFunction
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as JwtPayload;
         const result = await query('SELECT * FROM users WHERE id = $1', [decoded.userId]);
-        req.user = { userId: result[0].id };
+        req.user = { userId: result[0].id as number };
         next();
     } catch (error) {
         throw new UnAuthenticatedError('Authentication Invalid');

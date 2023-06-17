@@ -5,19 +5,34 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { createCookie } from '../../utils/createCookie';
 
+interface User {
+    id: number;
+    username: string;
+    email: string;
+    password: string;
+}
+
+interface UserLogin {
+    email: string;
+    password: string;
+}
+
 export const login = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
+    const { email, password }: UserLogin = req.body as UserLogin;
 
     if (!email || !password) {
         throw new BadRequestError('Missing email or password');
     }
 
-    const user = await query('SELECT * FROM users WHERE email = $1', [email]);
+    const result = await query('SELECT * FROM users WHERE email = $1', [email]);
 
-    if (!user[0]) {
+    if (!result[0]) {
         throw new UnAuthenticatedError('Incorrect email or password');
     }
-    const hashedPassword = user[0].password;
+
+    const user = result[0] as User;
+
+    const hashedPassword = user.password;
 
     const isPasswordCorrect = await bcrypt.compare(password, hashedPassword);
 
@@ -25,7 +40,7 @@ export const login = async (req: Request, res: Response) => {
         throw new UnAuthenticatedError('Incorrect email or password');
     }
 
-    const token = jwt.sign({ userId: user[0].id }, process.env.JWT_SECRET as string, {
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET as string, {
         expiresIn: process.env.JWT_LIFETIME,
     });
 
@@ -33,6 +48,6 @@ export const login = async (req: Request, res: Response) => {
 
     res.status(200).json({
         success: true,
-        user: { username: user[0].username, email: user[0].email },
+        user: { username: user.username, email: user.email },
     });
 };

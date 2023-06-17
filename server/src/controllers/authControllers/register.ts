@@ -7,8 +7,21 @@ const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
+interface NewUser {
+    id: number;
+    username: string;
+    email: string;
+    password: string;
+}
+
+interface UserRegister {
+    username: string;
+    email: string;
+    password: string;
+}
+
 export const register = async (req: Request, res: Response) => {
-    const { username, email, password } = req.body;
+    const { username, email, password }: UserRegister = req.body as UserRegister;
 
     if (!username || !email || !password) {
         throw new BadRequestError('Missing username, email or password');
@@ -23,9 +36,7 @@ export const register = async (req: Request, res: Response) => {
         if (username.length < 3 || username.length > 16) {
             throw new BadRequestError('Invalid username, username must be between 3-16 characters');
         } else {
-            throw new BadRequestError(
-                'Invalid username, username can only contain letters (A-Z) and numbers (0-9)'
-            );
+            throw new BadRequestError('Invalid username, username can only contain letters (A-Z) and numbers (0-9)');
         }
     }
 
@@ -47,13 +58,12 @@ export const register = async (req: Request, res: Response) => {
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const newUser = await query(
-        'insert into users (username, email, password) values ($1, $2, $3) returning *',
-        [username, email, hash]
-    );
+    const result = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [username, email, hash]);
+
+    const user = result[0] as NewUser;
 
     res.status(201).json({
         success: true,
-        user: { username: newUser[0].username, email: newUser[0].email },
+        user: { username: user.username, email: user.email },
     });
 };

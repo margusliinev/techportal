@@ -15,8 +15,8 @@ const getUser = async (req: AuthenticatedRequest, res: Response) => {
 
     const result = await query('SELECT * FROM users WHERE id = $1', [req.user.userId.toString()]);
     const user = {
-        username: result[0].username,
-        email: result[0].email,
+        username: result[0].username as string,
+        email: result[0].email as string,
     };
 
     res.status(200).json({ success: true, user });

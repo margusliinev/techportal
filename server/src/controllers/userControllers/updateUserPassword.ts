@@ -9,6 +9,12 @@ interface AuthenticatedRequest extends Request {
     };
 }
 
+interface UserUpdatePassword {
+    currentPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+}
+
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
 
 export const updateUserPassword = async (req: AuthenticatedRequest, res: Response) => {
@@ -16,7 +22,7 @@ export const updateUserPassword = async (req: AuthenticatedRequest, res: Respons
         throw new UnAuthenticatedError('Authentication Invalid');
     }
 
-    const { currentPassword, newPassword, confirmNewPassword } = req.body;
+    const { currentPassword, newPassword, confirmNewPassword }: UserUpdatePassword = req.body as UserUpdatePassword;
 
     if (!currentPassword || !newPassword || !confirmNewPassword) {
         throw new BadRequestError('Missing current password, new password, or confirm password');
@@ -24,7 +30,7 @@ export const updateUserPassword = async (req: AuthenticatedRequest, res: Respons
 
     const userPassword = await query('SELECT password FROM users WHERE id = $1', [req.user.userId.toString()]);
 
-    const passwordMatch = await bcrypt.compare(currentPassword, userPassword[0].password);
+    const passwordMatch = await bcrypt.compare(currentPassword, userPassword[0].password as string);
 
     if (!passwordMatch) {
         throw new BadRequestError('Your current password is incorrect');
