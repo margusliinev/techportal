@@ -27,7 +27,8 @@ const Wrapper = styled.div`
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             visibility: hidden;
             border-radius: var(--radius-md);
-            border: 1px solid var(--colorBackgroundtertiary);
+            color: var(--colorFontPrimary);
+            border: 1px solid var(--colorBackgroundPrimary);
             background-color: var(--colorBackgroundSecondary);
         }
         .show-dropdown {
@@ -50,7 +51,7 @@ const Wrapper = styled.div`
             padding: 0.25rem 0.5rem 0.5rem 0.5rem;
         }
         .dropdown-btn:hover {
-            background-color: var(--colorBackgroundtertiary);
+            background-color: var(--colorBackgroundPrimary);
         }
     }
     .sign-in-btn {

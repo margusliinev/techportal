@@ -6,18 +6,13 @@ import { Link } from 'react-router-dom';
 import Wrapper from '../assets/styled_components/components/UserButton';
 
 const UserButton = () => {
-    const [showLogout, setShowLogout] = useState(false);
+    const [showLogout, setShowLogout] = useState<boolean>(false);
     const { user } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();
 
-    const handleLogout = () => {
-        dispatch(logoutUser())
-            .then(() => {
-                dispatch(setUser(null));
-            })
-            .catch(() => {
-                dispatch(setUser(null));
-            });
+    const handleLogout = async () => {
+        await dispatch(logoutUser());
+        dispatch(setUser(null));
     };
 
     return (
@@ -30,7 +25,7 @@ const UserButton = () => {
                         onBlur={() => {
                             setTimeout(() => {
                                 setShowLogout(false);
-                            }, 100);
+                            }, 150);
                         }}
                     >
                         <span>

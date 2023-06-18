@@ -19,7 +19,7 @@ const ResetPage = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (values.email) {
-            // reset(values);
+            console.log(values.email);
         } else if (!values.email) {
             if (errorRef.current) {
                 errorRef.current.textContent = 'Missing email or password';

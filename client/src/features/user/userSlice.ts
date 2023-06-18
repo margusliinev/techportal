@@ -15,22 +15,25 @@ const getUser = createAsyncThunk<UserAPIResponse>('user/getUser', async () => {
     const response = await fetch('http://localhost:5000/api/v1/users/me', {
         credentials: 'include',
     });
-    return (await response.json()) as UserAPIResponse;
+    const data = response.json();
+    return data;
 });
 
-const deleteUser = createAsyncThunk('user/deleteUser', async () => {
+const deleteUser = createAsyncThunk<DefaultAPIResponse>('user/deleteUser', async () => {
     const response = await fetch('http://localhost:5000/api/v1/users/me', {
         method: 'DELETE',
         credentials: 'include',
     });
-    return (await response.json()) as DefaultAPIResponse;
+    const data = response.json();
+    return data;
 });
 
-const logoutUser = createAsyncThunk('user/logoutUser', async () => {
+const logoutUser = createAsyncThunk<DefaultAPIResponse>('user/logoutUser', async () => {
     const response = await fetch('http://localhost:5000/api/v1/logout', {
         credentials: 'include',
     });
-    return (await response.json()) as DefaultAPIResponse;
+    const data = response.json();
+    return data;
 });
 
 const userSlice = createSlice({
