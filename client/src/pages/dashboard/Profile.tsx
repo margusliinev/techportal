@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import Wrapper from '../../assets/styled_components/pages/dashboard/Profile';
-import { ChangePassword, DeleteAccount, Loader,PersonalInformation } from '../../components';
+import { ChangePassword, DeleteAccount, Loader, PersonalInformation } from '../../components';
 import { useAppSelector } from '../../hooks';
+import Wrapper from '../../styles/styled_components/pages/dashboard/Profile';
 
 const Profile = () => {
     const { user, userLoading } = useAppSelector((store) => store.user);

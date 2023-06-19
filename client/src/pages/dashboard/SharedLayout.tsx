@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Wrapper from '../../assets/styled_components/pages/dashboard/SharedLayout';
-import { DesktopSidebar, MobileSidebar,Navbar } from '../../components';
+import { DesktopSidebar, MobileSidebar, Navbar } from '../../components';
 import { getUser } from '../../features/user/userSlice';
 import { useAppDispatch } from '../../hooks';
+import Wrapper from '../../styles/styled_components/pages/dashboard/SharedLayout';
 
 const SharedLayout = () => {
     const dispatch = useAppDispatch();

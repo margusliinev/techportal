@@ -1,10 +1,10 @@
-import { useRef,useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Wrapper from '../assets/styled_components/pages/LoginPage';
 import { FormRow, FormRowPassword, Logo, MemberCheck } from '../components';
 import { useLoginMutation } from '../features/api/apiSlice';
-import { CustomAPIError,UserLogin } from '../types';
+import Wrapper from '../styles/styled_components/pages/LoginPage';
+import { CustomAPIError, UserLogin } from '../types';
 
 const initialState: UserLogin = {
     email: '',

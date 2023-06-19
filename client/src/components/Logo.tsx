@@ -1,4 +1,4 @@
-import Wrapper from '../assets/styled_components/components/Logo';
+import Wrapper from '../styles/styled_components/components/Logo';
 
 const Logo = () => {
     return (

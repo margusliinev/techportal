@@ -1,6 +1,6 @@
-import Wrapper from '../assets/styled_components/components/JobsContainer';
-import { JobCard,Loader } from '../components';
+import { JobCard, Loader } from '../components';
 import { useGetJobsQuery } from '../features/api/apiSlice';
+import Wrapper from '../styles/styled_components/components/JobsContainer';
 import { Job } from '../types';
 
 const JobsContainer = () => {

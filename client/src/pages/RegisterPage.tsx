@@ -1,11 +1,11 @@
-import { useRef,useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Wrapper from '../assets/styled_components/pages/RegisterPage';
 import { FormRow, FormRowPassword, Logo, MemberCheck } from '../components';
 import { useRegisterMutation } from '../features/api/apiSlice';
-import { CustomAPIError,UserRegister } from '../types';
-import { handleValidation,validateEmail, validatePassword, validateUsername } from '../utils/registerValidation';
+import Wrapper from '../styles/styled_components/pages/RegisterPage';
+import { CustomAPIError, UserRegister } from '../types';
+import { handleValidation, validateEmail, validatePassword, validateUsername } from '../utils/registerValidation';
 
 const initialState: UserRegister = {
     username: '',

@@ -3,9 +3,9 @@ import { IoBarChart } from 'react-icons/io5';
 import { MdQueryStats } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
-import Wrapper from '../assets/styled_components/components/NavLinks';
 import { toggleNavigation } from '../features/navigation/navigationSlice';
 import { useAppDispatch } from '../hooks';
+import Wrapper from '../styles/styled_components/components/NavLinks';
 
 const NavLinks = () => {
     const dispatch = useAppDispatch();

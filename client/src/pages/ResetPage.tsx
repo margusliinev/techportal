@@ -1,8 +1,8 @@
-import { useRef,useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Wrapper from '../assets/styled_components/pages/ResetPage';
 import { FormRow } from '../components';
+import Wrapper from '../styles/styled_components/pages/ResetPage';
 import { UserReset } from '../types';
 
 const initialState: UserReset = {

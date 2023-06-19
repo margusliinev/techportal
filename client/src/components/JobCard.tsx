@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { FaBriefcase, FaCalendar, FaLocationArrow, FaMoneyBill, FaServicestack } from 'react-icons/fa';
 
-import Wrapper from '../assets/styled_components/components/JobCard';
+import Wrapper from '../styles/styled_components/components/JobCard';
 import { Job } from '../types';
 
 const JobCard = ({ company, position, employment, location, salary, expire_date, technologies }: Job) => {

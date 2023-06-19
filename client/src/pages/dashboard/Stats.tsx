@@ -1,6 +1,6 @@
-import Wrapper from '../../assets/styled_components/pages/dashboard/Stats';
-import { ChartsContainer, Loader,StatsContainer } from '../../components';
+import { ChartsContainer, Loader, StatsContainer } from '../../components';
 import { useGetStatsQuery } from '../../features/api/apiSlice';
+import Wrapper from '../../styles/styled_components/pages/dashboard/Stats';
 
 const Stats = () => {
     const { data, isLoading, isError } = useGetStatsQuery(undefined);
@@ -30,7 +30,6 @@ const Stats = () => {
         <Wrapper>
             <StatsContainer topTechnologies={data?.topTechnologies} />
             <ChartsContainer topTechnologies={data?.topTechnologies} />
-            <div>Stats Page</div>
         </Wrapper>
     );
 };

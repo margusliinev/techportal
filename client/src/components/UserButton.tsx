@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { FaCaretDown, FaCaretUp,FaUserCircle } from 'react-icons/fa';
+import { FaCaretDown, FaCaretUp, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import Wrapper from '../assets/styled_components/components/UserButton';
-import { logoutUser,setUser } from '../features/user/userSlice';
-import { useAppDispatch,useAppSelector } from '../hooks';
+import { logoutUser, setUser } from '../features/user/userSlice';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import Wrapper from '../styles/styled_components/components/UserButton';
 
 const UserButton = () => {
     const [showLogout, setShowLogout] = useState<boolean>(false);

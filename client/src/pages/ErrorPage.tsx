@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import errorDark from '../assets/images/error-dark.svg';
-import Wrapper from '../assets/styled_components/pages/ErrorPage';
+import Wrapper from '../styles/styled_components/pages/ErrorPage';
 
 const ErrorPage = () => {
     return (

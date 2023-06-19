@@ -1,6 +1,6 @@
-import Wrapper from '../assets/styled_components/components/DeleteAccount';
 import { deleteUser, logoutUser, setUser } from '../features/user/userSlice';
 import { useAppDispatch } from '../hooks';
+import Wrapper from '../styles/styled_components/components/DeleteAccount';
 import { CustomAPIError } from '../types';
 
 const DeleteAccount = () => {

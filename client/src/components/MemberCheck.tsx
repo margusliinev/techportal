@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Wrapper from '../assets/styled_components/components/MemberCheck';
+import Wrapper from '../styles/styled_components/components/MemberCheck';
 
 interface Props {
     message: string;

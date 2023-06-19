@@ -1,4 +1,4 @@
-import Wrapper from '../assets/styled_components/components/StatsContainer';
+import Wrapper from '../styles/styled_components/components/StatsContainer';
 import { technology } from '../types';
 
 interface Props {

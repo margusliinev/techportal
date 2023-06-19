@@ -1,5 +1,5 @@
-import Wrapper from '../../assets/styled_components/pages/dashboard/Jobs';
-import { JobsContainer,SearchContainer } from '../../components';
+import { JobsContainer, SearchContainer } from '../../components';
+import Wrapper from '../../styles/styled_components/pages/dashboard/Jobs';
 
 const Jobs = () => {
     return (
