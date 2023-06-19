@@ -1,4 +1,5 @@
 import express from 'express';
+
 import { getStats } from '../controllers/statsControllers/getStats';
 
 const router = express.Router();

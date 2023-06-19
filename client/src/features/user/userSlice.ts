@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { User, UserAPIResponse, DefaultAPIResponse } from '../../types';
+import { createAsyncThunk,createSlice } from '@reduxjs/toolkit';
+
+import { DefaultAPIResponse,User, UserAPIResponse } from '../../types';
 
 interface UserState {
     user: User | null;
@@ -63,6 +64,6 @@ const userSlice = createSlice({
     },
 });
 
-export { getUser, deleteUser, logoutUser };
+export { deleteUser, getUser, logoutUser };
 export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

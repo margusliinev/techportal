@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+
 import { query } from '../../db';
 
 export const getJobs = async (req: Request, res: Response) => {

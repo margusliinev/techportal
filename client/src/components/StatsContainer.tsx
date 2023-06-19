@@ -1,5 +1,5 @@
-import { technology } from '../types';
 import Wrapper from '../assets/styled_components/components/StatsContainer';
+import { technology } from '../types';
 
 interface Props {
     topTechnologies: technology[] | undefined;

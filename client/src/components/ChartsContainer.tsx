@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import { technology } from '../types';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useEffect,useState } from 'react';
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer,Tooltip, XAxis, YAxis } from 'recharts';
+
 import Wrapper from '../assets/styled_components/components/ChartsContainer';
+import { technology } from '../types';
 
 interface Props {
     topTechnologies: technology[] | undefined;

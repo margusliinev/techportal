@@ -1,9 +1,10 @@
 import express from 'express';
-import AuthMiddleware from '../middleware/auth';
-import { getUser } from '../controllers/userControllers/getUser';
+
 import { deleteUser } from '../controllers/userControllers/deleteUser';
-import { updateUserProfile } from '../controllers/userControllers/updateUserProfile';
+import { getUser } from '../controllers/userControllers/getUser';
 import { updateUserPassword } from '../controllers/userControllers/updateUserPassword';
+import { updateUserProfile } from '../controllers/userControllers/updateUserProfile';
+import AuthMiddleware from '../middleware/auth';
 
 const router = express.Router();
 

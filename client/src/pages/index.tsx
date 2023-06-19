@@ -1,7 +1,7 @@
-import LandingPage from './LandingPage';
 import ErrorPage from './ErrorPage';
-import RegisterPage from './RegisterPage';
+import LandingPage from './LandingPage';
 import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
 import ResetPage from './ResetPage';
 
-export { LandingPage, ErrorPage, RegisterPage, LoginPage, ResetPage };
+export { ErrorPage, LandingPage, LoginPage, RegisterPage, ResetPage };

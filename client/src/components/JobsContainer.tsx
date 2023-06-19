@@ -1,7 +1,7 @@
-import { Loader, JobCard } from '../components';
+import Wrapper from '../assets/styled_components/components/JobsContainer';
+import { JobCard,Loader } from '../components';
 import { useGetJobsQuery } from '../features/api/apiSlice';
 import { Job } from '../types';
-import Wrapper from '../assets/styled_components/components/JobsContainer';
 
 const JobsContainer = () => {
     const { data, isLoading, isError } = useGetJobsQuery(undefined);

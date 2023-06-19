@@ -1,7 +1,8 @@
-import { Request, Response } from 'express';
-import { BadRequestError } from '../../errors';
-import { query } from '../../db';
 import bcrypt from 'bcryptjs';
+import { Request, Response } from 'express';
+
+import { query } from '../../db';
+import { BadRequestError } from '../../errors';
 
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

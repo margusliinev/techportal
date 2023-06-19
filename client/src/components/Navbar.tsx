@@ -1,8 +1,9 @@
 import { BiMenu } from 'react-icons/bi';
-import { UserButton } from '../components';
-import { useAppDispatch } from '../hooks';
-import { toggleNavigation } from '../features/navigation/navigationSlice';
+
 import Wrapper from '../assets/styled_components/components/Navbar';
+import { UserButton } from '../components';
+import { toggleNavigation } from '../features/navigation/navigationSlice';
+import { useAppDispatch } from '../hooks';
 
 const Navbar = () => {
     const dispatch = useAppDispatch();

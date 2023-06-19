@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { ImProfile } from 'react-icons/im';
 import { IoBarChart } from 'react-icons/io5';
 import { MdQueryStats } from 'react-icons/md';
-import { ImProfile } from 'react-icons/im';
-import { useAppDispatch } from '../hooks';
-import { toggleNavigation } from '../features/navigation/navigationSlice';
+import { Link } from 'react-router-dom';
+
 import Wrapper from '../assets/styled_components/components/NavLinks';
+import { toggleNavigation } from '../features/navigation/navigationSlice';
+import { useAppDispatch } from '../hooks';
 
 const NavLinks = () => {
     const dispatch = useAppDispatch();

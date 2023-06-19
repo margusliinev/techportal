@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
-import { FormRow } from '../components';
-import { User, CustomAPIError } from '../types';
-import { useUpdateUserProfileMutation } from '../features/api/apiSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { logoutUser, setUser } from '../features/user/userSlice';
+import { useEffect, useRef, useState } from 'react';
+
 import Wrapper from '../assets/styled_components/components/PersonalInformation';
+import { FormRow } from '../components';
+import { useUpdateUserProfileMutation } from '../features/api/apiSlice';
+import { logoutUser, setUser } from '../features/user/userSlice';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { CustomAPIError, User } from '../types';
 
 const initialState: User = {
     username: '',

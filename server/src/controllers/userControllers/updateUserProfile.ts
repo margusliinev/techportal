@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+
 import { query } from '../../db';
 import { BadRequestError, UnAuthenticatedError } from '../../errors';
 

@@ -1,14 +1,16 @@
+import 'express-async-errors';
+
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
-import cors from 'cors';
-import 'express-async-errors';
+
 import errorHandlerMiddleware from './middleware/errorHandler';
 import notFoundMiddleware from './middleware/notFound';
 import authRouter from './routes/authRoutes';
-import userRouter from './routes/userRoutes';
 import jobsRouter from './routes/jobsRoutes';
 import statsRouter from './routes/statsRoutes';
-import cookieParser from 'cookie-parser';
+import userRouter from './routes/userRoutes';
 
 dotenv.config();
 const app = express();

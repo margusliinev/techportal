@@ -1,8 +1,9 @@
+import bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+
 import { query } from '../../db/index';
 import { BadRequestError, UnAuthenticatedError } from '../../errors';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import { createCookie } from '../../utils/createCookie';
 
 interface User {

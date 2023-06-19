@@ -1,7 +1,8 @@
-import Wrapper from '../assets/styled_components/pages/LandingPage';
-import LandingDark from '../assets/images/landing-dark.svg';
-import { Logo } from '../components';
 import { Link } from 'react-router-dom';
+
+import LandingDark from '../assets/images/landing-dark.svg';
+import Wrapper from '../assets/styled_components/pages/LandingPage';
+import { Logo } from '../components';
 
 const LandingPage = () => {
     return (

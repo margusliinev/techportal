@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { RegisterPage, LoginPage, ResetPage, LandingPage, ErrorPage } from './pages';
-import { SharedLayout, Stats, Jobs, Profile } from './pages/dashboard';
+import { BrowserRouter as Router, Navigate,Route, Routes } from 'react-router-dom';
+
+import { ErrorPage,LandingPage, LoginPage, RegisterPage, ResetPage } from './pages';
+import { Jobs, Profile,SharedLayout, Stats } from './pages/dashboard';
 
 function App() {
     return (

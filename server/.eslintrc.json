@@ -7,6 +7,10 @@
     "parserOptions": {
         "project": true
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["simple-import-sort", "@typescript-eslint"],
+    "rules": {
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": "error"
+    },
     "root": true
 }

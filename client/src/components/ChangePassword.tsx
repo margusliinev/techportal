@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react';
-import { FormRow } from '../components';
-import { CustomAPIError, UserUpdatePassword } from '../types';
-import { useUpdateUserPasswordMutation } from '../features/api/apiSlice';
-import { useAppDispatch } from '../hooks';
-import { logoutUser, setUser } from '../features/user/userSlice';
+import { useRef, useState } from 'react';
+
 import Wrapper from '../assets/styled_components/components/ChangePassword';
+import { FormRow } from '../components';
+import { useUpdateUserPasswordMutation } from '../features/api/apiSlice';
+import { logoutUser, setUser } from '../features/user/userSlice';
+import { useAppDispatch } from '../hooks';
+import { CustomAPIError, UserUpdatePassword } from '../types';
 
 const initialState: UserUpdatePassword = {
     currentPassword: '',

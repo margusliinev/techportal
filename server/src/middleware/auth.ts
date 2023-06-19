@@ -1,7 +1,8 @@
+import { NextFunction,Request, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import { UnAuthenticatedError } from '../errors';
-import { Request, Response, NextFunction } from 'express';
+
 import { query } from '../db';
+import { UnAuthenticatedError } from '../errors';
 
 interface AuthenticatedRequest extends Request {
     user?: {

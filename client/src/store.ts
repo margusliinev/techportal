@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { apiSlice } from './features/api/apiSlice';
-import userReducer from './features/user/userSlice';
 import navigationReducer from './features/navigation/navigationSlice';
+import userReducer from './features/user/userSlice';
 
 export const store = configureStore({
     reducer: {

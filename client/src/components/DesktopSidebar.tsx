@@ -1,5 +1,5 @@
-import { Logo, NavLinks } from '../components';
 import Wrapper from '../assets/styled_components/components/DesktopSidebar';
+import { Logo, NavLinks } from '../components';
 
 const DesktopSidebar = () => {
     return (
