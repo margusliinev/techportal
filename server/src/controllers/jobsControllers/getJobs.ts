@@ -61,7 +61,18 @@ export const getJobs = async (req: Request, res: Response) => {
         sqlQuery += ` ORDER BY salary ASC`;
     }
 
-    const jobs = await query(sqlQuery, params);
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
 
-    res.status(200).json({ success: true, jobs, totalJobs: jobs.length, numOfPages: 1 });
+    const skip = (page - 1) * limit;
+
+    const allJobs = await query(sqlQuery, params);
+
+    const numOfPages = Math.ceil(allJobs.length / limit);
+
+    sqlQuery += ` LIMIT ${limit} OFFSET ${skip}`;
+
+    const displayedJobs = await query(sqlQuery, params);
+
+    res.status(200).json({ success: true, jobs: displayedJobs, totalJobs: allJobs.length, numOfPages: numOfPages });
 };
