@@ -36,7 +36,7 @@ const JobsContainer = () => {
     return (
         <Wrapper>
             <h5>
-                {data?.totalJobs} job{data && data.totalJobs > 1 && 's'} found
+                {data?.totalJobs} job{data && data.totalJobs !== 1 && 's'} found
                 {isFetching && (
                     <div className='mini-loader'>
                         <Loader />

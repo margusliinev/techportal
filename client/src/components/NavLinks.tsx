@@ -11,7 +11,7 @@ const NavLinks = () => {
     const dispatch = useAppDispatch();
 
     const controlSidebar = () => {
-        if (window.innerWidth < 992) {
+        if (window.innerWidth < 1024) {
             dispatch(toggleNavigation());
         }
     };

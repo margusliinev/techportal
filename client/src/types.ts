@@ -67,8 +67,8 @@ export interface JobsAPIResponse {
 
 export interface GetJobsParams {
     search?: string;
-    employment?: Employment;
-    location?: Location;
+    employment?: string;
+    location?: string;
     sort?: string;
 }
 

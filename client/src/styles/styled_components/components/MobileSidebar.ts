@@ -58,7 +58,7 @@ const Wrapper = styled.aside`
             width: 250px;
         }
     }
-    @media (min-width: 992px) {
+    @media (min-width: 1024px) {
         display: none;
     }
 `;

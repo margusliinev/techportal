@@ -11,7 +11,7 @@ const Wrapper = styled.div`
         min-height: calc(100vh - 5rem);
         width: 90%;
     }
-    @media (min-width: 992px) {
+    @media (min-width: 1024px) {
         .dashboard {
             grid-template-columns: auto 1fr;
         }

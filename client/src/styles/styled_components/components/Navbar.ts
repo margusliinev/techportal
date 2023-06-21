@@ -57,7 +57,7 @@ const Wrapper = styled.nav`
             display: none;
         }
     }
-    @media (min-width: 992px) {
+    @media (min-width: 1024px) {
         .nav-center {
             width: 90%;
         }

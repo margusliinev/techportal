@@ -8,7 +8,7 @@ const Wrapper = styled.section`
     .form-title {
         text-transform: capitalize;
         font-weight: 500;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
     .form-row {
         margin-bottom: 0;
@@ -18,29 +18,36 @@ const Wrapper = styled.section`
         grid-template-columns: 1fr;
         column-gap: 2rem;
         row-gap: 1rem;
+        align-items: center;
     }
     .btn-find {
         background-color: var(--colorPrimary3);
         color: var(--colorBackgroundSecondary);
+        border: 1px solid var(--colorPrimary3);
         font-weight: 600;
+        align-self: end;
     }
     .btn-find:hover {
         background-color: var(--colorPrimary4);
+        border: 1px solid var(--colorPrimary4);
     }
     .btn-clear {
         background-color: var(--colorRed1);
+        border: 1px solid var(--colorRed1);
         color: var(--colorBackgroundSecondary);
         font-weight: 600;
+        align-self: end;
     }
     .btn-clear:hover {
         background-color: var(--colorRed2);
+        border: 1px solid var(--colorRed2);
     }
     @media (min-width: 768px) {
         .form-center {
             grid-template-columns: 1fr 1fr;
         }
     }
-    @media (min-width: 992px) {
+    @media (min-width: 1280px) {
         .form-center {
             grid-template-columns: 1fr 1fr 1fr;
         }

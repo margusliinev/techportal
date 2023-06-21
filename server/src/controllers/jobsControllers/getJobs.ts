@@ -19,9 +19,13 @@ export const getJobs = async (req: Request, res: Response) => {
     if (search) {
         const searchParam = `%${search.toLowerCase().replace(/[\s-]+/g, '')}%`;
         if (params.length > 0) {
-            sqlQuery += ` AND REPLACE(REPLACE(LOWER(position), ' ', ''), '-', '') ILIKE $${params.length + 1}`;
+            sqlQuery += ` AND (REPLACE(REPLACE(LOWER(position), ' ', ''), '-', '') ILIKE $${params.length + 1} OR EXISTS (SELECT 1 FROM unnest(technologies) AS tech WHERE tech ILIKE $${
+                params.length + 1
+            }))`;
         } else {
-            sqlQuery += ` WHERE REPLACE(REPLACE(LOWER(position), ' ', ''), '-', '') ILIKE $${params.length + 1}`;
+            sqlQuery += ` WHERE (REPLACE(REPLACE(LOWER(position), ' ', ''), '-', '') ILIKE $${params.length + 1} OR EXISTS (SELECT 1 FROM unnest(technologies) AS tech WHERE tech ILIKE $${
+                params.length + 1
+            }))`;
         }
         params.push(searchParam);
     }
