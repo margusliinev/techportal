@@ -1,19 +1,20 @@
-import { JobCard, Loader } from '../components';
+import { JobCard, Loader, PaginationContainer } from '../components';
 import { useGetJobsQuery } from '../features/api/apiSlice';
 import { useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/JobsContainer';
 import { Job } from '../types';
 
 const JobsContainer = () => {
-    const { search, employment, location, sort } = useAppSelector((store) => store.search);
+    const { search, employment, location, sort, page } = useAppSelector((store) => store.search);
     const { data, isLoading, isError, isFetching } = useGetJobsQuery({
         search: search,
         employment: employment,
         location: location,
         sort: sort,
+        page: page,
     });
 
-    if (isLoading) {
+    if (isLoading || isFetching) {
         return (
             <Wrapper>
                 <div className='jobs-center'>
@@ -36,7 +37,7 @@ const JobsContainer = () => {
     return (
         <Wrapper>
             <h5>
-                {data?.totalJobs} job{data && data.totalJobs !== 1 && 's'} found
+                {data && data.totalJobs} job{data && data.totalJobs !== 1 && 's'} found
                 {isFetching && (
                     <div className='mini-loader'>
                         <Loader />
@@ -49,6 +50,7 @@ const JobsContainer = () => {
                         return <JobCard key={job.id} {...job} />;
                     })}
             </div>
+            {data && data.numOfPages > 1 && <PaginationContainer numOfPages={data.numOfPages} />}
         </Wrapper>
     );
 };

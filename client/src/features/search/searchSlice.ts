@@ -7,6 +7,7 @@ const initialState: FilterStates = {
     employment: 'all',
     location: 'all',
     sort: 'latest',
+    page: 1,
 };
 
 const searchSlice = createSlice({
@@ -19,8 +20,11 @@ const searchSlice = createSlice({
             state.location = action.payload.location;
             state.sort = action.payload.sort;
         },
+        setPage(state, action: PayloadAction<number>) {
+            state.page = action.payload;
+        },
     },
 });
 
-export const { setFilters } = searchSlice.actions;
+export const { setFilters, setPage } = searchSlice.actions;
 export default searchSlice.reducer;

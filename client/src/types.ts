@@ -56,6 +56,7 @@ export interface FilterStates {
     employment: string;
     location: string;
     sort: string;
+    page: number;
 }
 
 export interface JobsAPIResponse {
@@ -70,6 +71,7 @@ export interface GetJobsParams {
     employment?: string;
     location?: string;
     sort?: string;
+    page?: number;
 }
 
 export interface UserAPIResponse {

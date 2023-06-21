@@ -12,6 +12,7 @@ import MemberCheck from './MemberCheck';
 import MobileSidebar from './MobileSidebar';
 import Navbar from './Navbar';
 import NavLinks from './NavLinks';
+import PaginationContainer from './PaginationContainer';
 import PersonalInformation from './PersonalInformation';
 import SearchContainer from './SearchContainer';
 import StatsContainer from './StatsContainer';
@@ -32,6 +33,7 @@ export {
     MobileSidebar,
     Navbar,
     NavLinks,
+    PaginationContainer,
     PersonalInformation,
     SearchContainer,
     StatsContainer,
