@@ -9,6 +9,7 @@ const Wrapper = styled.div`
             justify-content: center;
             gap: 0.5rem;
             border-radius: var(--radius-2xl);
+            color: #f3f4f6;
             span {
                 display: grid;
                 font-size: 1.25rem;

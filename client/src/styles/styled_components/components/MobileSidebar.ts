@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Wrapper = styled.aside`
     .sidebar-container {
         position: fixed;
-        background: rgba(17, 24, 39, 0.75);
+        background: var(--colorBackgroundOverlay);
         inset: 0;
         transition: all 0.3s ease-in-out;
     }

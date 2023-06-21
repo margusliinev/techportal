@@ -38,10 +38,8 @@ const Wrapper = styled.section`
         border-color: transparent;
         color: var(--colorPrimary4);
         text-transform: capitalize;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
+        display: grid;
+        place-items: center;
         cursor: pointer;
         transition: var(--transition);
         font-size: 1.5rem;
@@ -57,6 +55,13 @@ const Wrapper = styled.section`
     .prev-btn:hover,
     .next-btn:hover {
         background: #4f4f4f;
+    }
+    @media screen and (max-width: 350px) {
+        .prev-btn,
+        .next-btn,
+        .pageBtn {
+            width: 45px;
+        }
     }
 `;
 export default Wrapper;

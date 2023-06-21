@@ -10,6 +10,10 @@
     --colorBackgroundPrimary: #333;
     --colorBackgroundSecondary: #3f3f3f;
     --colorInputBackground: #4f4f4f;
+    --colorLinkBackground: #4f4f4f;
+    --colorContentDivider: #9ca3af;
+    --colorBackgroundOverlay: rgba(17, 24, 39, 0.75);
+    --colorToggleBorder: #3f3f3f;
     --colorPrimary1: #dbeafe;
     --colorPrimary2: #bfdbfe;
     --colorPrimary3: #93c5fd;
@@ -59,6 +63,24 @@
     --shadow-lg: 0 0 15px 3px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 0 20px 4px rgb(0 0 0 / 0.1);
     --shadow-2xl: 0 0 25px 5px rgb(0 0 0 / 0.1);
+
+    /* --colorFontPrimary: #111827;
+    --colorFontSecondary: #374151;
+    --colorBackgroundPrimary: #f8fafc;
+    --colorBackgroundSecondary: #fff;
+    --colorInputBackground: #f8fafc;
+    --colorLinkBackground: #dbeafe;
+    --colorContentDivider: #e5e7eb;
+    --colorBackgroundOverlay: rgba(17, 24, 39, 0.5);
+    --colorToggleBorder: #d1d5db;
+    --colorPrimary3: #60a5fa;
+    --colorPrimary4: #3b82f6;
+    --colorRed1: #f87171;
+    --colorRed2: #ef4444;
+    --colorYellow1: #eab308;
+    --colorYellow2: #ca8a04;
+    --colorGreen1: #22c55e;
+    --colorGreen2: #16a34a; */
 }
 
 *,
@@ -266,6 +288,7 @@ input[type='radio'] {
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
     width: 100%;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .form-input::placeholder,
 .form-textarea::placeholder,

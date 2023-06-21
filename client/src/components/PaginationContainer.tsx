@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 import { setPage } from '../features/search/searchSlice';
@@ -12,9 +13,9 @@ const PaginationContainer = ({ numOfPages }: Props) => {
     const { page } = useAppSelector((store) => store.search);
     const totalPages = Array.from({ length: numOfPages }, (_, index) => index + 1);
     const dispatch = useAppDispatch();
+    const [range, setRange] = useState(window.innerWidth < 450 ? 3 : 5);
 
     const getPageNumbers = () => {
-        const range = 5;
         const pages = [];
 
         let start = Math.max(1, page - Math.ceil(range / 2));
@@ -38,6 +39,18 @@ const PaginationContainer = ({ numOfPages }: Props) => {
         }
         return pages;
     };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setRange(window.innerWidth < 450 ? 3 : 5);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const changePage = (pageNumber: number) => {
         dispatch(setPage(pageNumber));

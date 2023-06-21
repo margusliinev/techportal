@@ -15,7 +15,6 @@ const JobCard = ({ company, position, employment, location, salary, expire_date,
                     <h5>{position}</h5>
                     <p>{company}</p>
                 </div>
-                <button className='btn'>Apply</button>
             </header>
             <div className='content'>
                 <div className='content-center'>

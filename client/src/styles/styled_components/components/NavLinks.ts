@@ -19,7 +19,7 @@ const Wrapper = styled.ul`
         }
     }
     .nav-link:hover {
-        background-color: var(--colorBackgroundPrimary);
+        background-color: var(--colorLinkBackground);
         padding-left: 2.5rem;
     }
 `;

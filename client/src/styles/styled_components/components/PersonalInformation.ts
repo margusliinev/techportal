@@ -21,6 +21,7 @@ const Wrapper = styled.div`
         .btn {
             padding: 0.5rem 0.75rem;
             margin-top: 1rem;
+            color: #f3f4f6;
         }
     }
     .form-btn-disabled {

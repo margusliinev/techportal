@@ -22,8 +22,8 @@ const Wrapper = styled.section`
     }
     .btn-find {
         background-color: var(--colorPrimary3);
-        color: var(--colorBackgroundSecondary);
         border: 1px solid var(--colorPrimary3);
+        color: #3f3f3f;
         font-weight: 600;
         align-self: end;
     }
@@ -34,7 +34,7 @@ const Wrapper = styled.section`
     .btn-clear {
         background-color: var(--colorRed1);
         border: 1px solid var(--colorRed1);
-        color: var(--colorBackgroundSecondary);
+        color: #3f3f3f;
         font-weight: 600;
         align-self: end;
     }

@@ -24,6 +24,7 @@ const Wrapper = styled.div`
         border-radius: var(--radius-md);
         display: grid;
         row-gap: 0.5rem;
+        box-shadow: var(--shadow-sm);
         header {
             display: flex;
             align-items: center;

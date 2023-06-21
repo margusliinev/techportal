@@ -1,6 +1,6 @@
 import { BiMenu } from 'react-icons/bi';
 
-import { UserButton } from '../components';
+import { DarkModeToggle, UserButton } from '../components';
 import { toggleNavigation } from '../features/navigation/navigationSlice';
 import { useAppDispatch } from '../hooks';
 import Wrapper from '../styles/styled_components/components/Navbar';
@@ -18,7 +18,10 @@ const Navbar = () => {
                     <div className='content-divider-vertical'></div>
                     <h4 className='nav-title'>Dashboard</h4>
                 </div>
-                <UserButton />
+                <div className='nav-button-container'>
+                    <DarkModeToggle />
+                    <UserButton />
+                </div>
             </div>
         </Wrapper>
     );

@@ -8,7 +8,7 @@ const Wrapper = styled.article`
     box-shadow: var(--shadow-md);
     header {
         padding: 1rem 1.5rem;
-        border-bottom: 1px solid var(--colorGray1);
+        border-bottom: 1px solid var(--colorContentDivider);
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
         text-align: center;
@@ -27,16 +27,6 @@ const Wrapper = styled.article`
             text-transform: uppercase;
             color: var(--colorWhite);
             justify-self: center;
-        }
-        .btn {
-            background-color: var(--colorGreen1);
-            color: var(--colorBackgroundPrimary);
-            font-weight: 600;
-            font-family: 'Poppins';
-            transition: var(--transition);
-        }
-        .btn:hover {
-            background-color: #4ade80;
         }
     }
     @media (min-width: 400px) {

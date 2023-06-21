@@ -1,5 +1,6 @@
 import ChangePassword from './ChangePassword';
 import ChartsContainer from './ChartsContainer';
+import DarkModeToggle from './DarkModeToggle';
 import DeleteAccount from './DeleteAccount';
 import DesktopSidebar from './DesktopSidebar';
 import FormRow from './FormRow';
@@ -21,6 +22,7 @@ import UserButton from './UserButton';
 export {
     ChangePassword,
     ChartsContainer,
+    DarkModeToggle,
     DeleteAccount,
     DesktopSidebar,
     FormRow,

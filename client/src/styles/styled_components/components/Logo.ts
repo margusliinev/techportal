@@ -12,6 +12,7 @@ const Wrapper = styled.header`
         border-radius: var(--radius-md);
         font-family: 'Poppins';
         margin-right: 0.5rem;
+        color: #f3f4f6;
     }
     h5 {
         display: inline-block;

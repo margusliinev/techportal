@@ -41,6 +41,11 @@ const Wrapper = styled.nav`
             font-size: 1.75rem;
         }
     }
+    .nav-button-container {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
     @media (max-width: 450px) {
         .nav-center {
             display: initial;
