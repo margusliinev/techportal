@@ -51,11 +51,25 @@ export interface Job {
     technologies: string[];
 }
 
+export interface FilterStates {
+    search: string;
+    employment: string;
+    location: string;
+    sort: string;
+}
+
 export interface JobsAPIResponse {
     jobs: Job[];
     numOfPages: number;
     success: boolean;
     totalJobs: number;
+}
+
+export interface GetJobsParams {
+    search?: string;
+    employment?: Employment;
+    location?: Location;
+    sort?: string;
 }
 
 export interface UserAPIResponse {

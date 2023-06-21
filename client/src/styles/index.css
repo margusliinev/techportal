@@ -267,6 +267,11 @@ input[type='radio'] {
     padding: 0.5rem 0.75rem;
     width: 100%;
 }
+.form-input::placeholder,
+.form-textarea::placeholder,
+.form-select::placeholder {
+    color: var(--colorFontPrimary);
+}
 
 .form-input:focus,
 .form-textarea:focus,

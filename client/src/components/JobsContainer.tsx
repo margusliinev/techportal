@@ -1,10 +1,17 @@
 import { JobCard, Loader } from '../components';
 import { useGetJobsQuery } from '../features/api/apiSlice';
+import { useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/JobsContainer';
 import { Job } from '../types';
 
 const JobsContainer = () => {
-    const { data, isLoading, isError } = useGetJobsQuery(undefined);
+    const { search, employment, location, sort } = useAppSelector((store) => store.search);
+    const { data, isLoading, isError, isFetching } = useGetJobsQuery({
+        search: search,
+        employment: employment,
+        location: location,
+        sort: sort,
+    });
 
     if (isLoading) {
         return (
@@ -30,6 +37,11 @@ const JobsContainer = () => {
         <Wrapper>
             <h5>
                 {data?.totalJobs} job{data && data.totalJobs > 1 && 's'} found
+                {isFetching && (
+                    <div className='mini-loader'>
+                        <Loader />
+                    </div>
+                )}
             </h5>
             <div className='jobs'>
                 {data &&
