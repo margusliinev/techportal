@@ -1,6 +1,7 @@
 import 'express-async-errors';
 
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import helmet from 'helmet';
@@ -15,20 +16,23 @@ import userRouter from './routes/userRoutes';
 
 dotenv.config();
 const app = express();
-app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 
-app.use(express.json());
 app.use(helmet());
-app.use(cookieParser());
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));
-});
+app.use(cors({ origin: 'http://localhost:5000', optionsSuccessStatus: 200, credentials: true }));
+app.use(express.static(path.resolve(__dirname, '../../client/dist')));
+app.use(express.json());
+app.use(cookieParser());
 
 app.use('/', authRouter);
 app.use('/', userRouter);
 app.use('/', jobsRouter);
 app.use('/', statsRouter);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));
+});
+
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
