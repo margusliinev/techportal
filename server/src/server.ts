@@ -19,7 +19,7 @@ const app = express();
 
 app.use(helmet());
 
-app.use(cors({ origin: 'https://localhost:10000', optionsSuccessStatus: 200, credentials: true, methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' }));
+app.use(cors({ origin: 'https://techportal.onrender.com', optionsSuccessStatus: 200, credentials: true, methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' }));
 app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 app.use(express.json());
 app.use(cookieParser());
