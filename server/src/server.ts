@@ -1,7 +1,6 @@
 import 'express-async-errors';
 
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import helmet from 'helmet';
@@ -21,7 +20,6 @@ app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors({ origin: 'https://techportal.onrender.com', optionsSuccessStatus: 200, credentials: true }));
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));

@@ -4,7 +4,7 @@ import { DefaultAPIResponse, GetJobsParams, JobsAPIResponse, StatsAPIResponse, U
 
 export const apiSlice = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/v1' }),
+    baseQuery: fetchBaseQuery({ baseUrl: '/api/v1' }),
     endpoints: (builder) => ({
         register: builder.mutation<UserAPIResponse, UserRegister>({
             query: (user) => ({

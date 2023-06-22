@@ -36,11 +36,12 @@ const PaginationContainer = ({ numOfPages }: Props) => {
 
         if (end < totalPages.length) {
             pages.push(
-                <button type='button' className='pageBtn'>
+                <button type='button' className='pageBtn' key={totalPages.length + 1}>
                     ...
                 </button>
             );
         }
+
         return pages;
     };
 
