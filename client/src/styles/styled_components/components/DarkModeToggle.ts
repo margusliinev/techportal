@@ -11,7 +11,7 @@ const Wrapper = styled.div`
         background-color: #4f4f4f;
         border-radius: 200px;
         cursor: pointer;
-        box-shadow: inset 0 0 1px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 0 30px 0px rgba(0, 0, 0, 0.1);
     }
     label:after {
         content: '';
