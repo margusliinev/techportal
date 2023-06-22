@@ -12,6 +12,7 @@ const Wrapper = styled.div`
     }
     .form-btn {
         margin-top: 1.5rem;
+        color: #f3f4f6;
     }
     .form-btn-disabled {
         background-color: var(--colorPrimary4);

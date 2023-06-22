@@ -30,6 +30,7 @@ const Wrapper = styled.section`
         text-align: center;
         .btn {
             font-size: 22px;
+            color: #f3f4f6;
         }
     }
 `;

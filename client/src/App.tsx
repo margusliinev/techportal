@@ -1,9 +1,17 @@
-import { BrowserRouter as Router, Navigate,Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
-import { ErrorPage,LandingPage, LoginPage, RegisterPage, ResetPage } from './pages';
-import { Jobs, Profile,SharedLayout, Stats } from './pages/dashboard';
+import { useAppSelector } from './hooks';
+import { ErrorPage, LandingPage, LoginPage, RegisterPage, ResetPage } from './pages';
+import { Jobs, Profile, SharedLayout, Stats } from './pages/dashboard';
 
 function App() {
+    const { theme } = useAppSelector((store) => store.navigation);
+    useEffect(() => {
+        document.documentElement.className = theme;
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
     return (
         <Router>
             <Routes>

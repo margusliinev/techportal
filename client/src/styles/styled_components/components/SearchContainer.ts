@@ -21,26 +21,26 @@ const Wrapper = styled.section`
         align-items: center;
     }
     .btn-find {
-        background-color: var(--colorPrimary3);
-        border: 1px solid var(--colorPrimary3);
+        background-color: var(--colorFindJobsButton);
+        border: 1px solid var(--colorFindJobsButton);
         color: #3f3f3f;
         font-weight: 600;
         align-self: end;
     }
     .btn-find:hover {
-        background-color: var(--colorPrimary4);
-        border: 1px solid var(--colorPrimary4);
+        background-color: var(--colorFindJobsHover);
+        border: 1px solid var(--colorFindJobsHover);
     }
     .btn-clear {
-        background-color: var(--colorRed1);
-        border: 1px solid var(--colorRed1);
+        background-color: var(--colorClearFiltersButton);
+        border: 1px solid var(--colorClearFiltersButton);
         color: #3f3f3f;
         font-weight: 600;
         align-self: end;
     }
     .btn-clear:hover {
-        background-color: var(--colorRed2);
-        border: 1px solid var(--colorRed2);
+        background-color: var(--colorClearFiltersHover);
+        border: 1px solid var(--colorClearFiltersHover);
     }
     @media (min-width: 768px) {
         .form-center {

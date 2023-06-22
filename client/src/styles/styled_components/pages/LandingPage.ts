@@ -54,6 +54,7 @@ const Wrapper = styled.div`
     .btn {
         font-size: 18px;
         white-space: nowrap;
+        color: #f3f4f6;
     }
     .landing-img {
         display: none;

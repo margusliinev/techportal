@@ -27,6 +27,7 @@ const Wrapper = styled.div`
     }
     .btn {
         font-size: 18px;
+        color: #f3f4f6;
     }
 `;
 

@@ -1,6 +1,6 @@
 import { CgClose } from 'react-icons/cg';
 
-import { Logo, NavLinks, UserButton } from '../components';
+import { DarkModeToggle, Logo, NavLinks, UserButton } from '../components';
 import { toggleNavigation } from '../features/navigation/navigationSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/MobileSidebar';
@@ -18,6 +18,7 @@ const MobileSidebar = () => {
                 </button>
                 <Logo />
                 <NavLinks />
+                <DarkModeToggle />
                 <UserButton />
             </div>
         </Wrapper>

@@ -4,7 +4,7 @@
 @import url('https://rsms.me/inter/inter.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-:root {
+.dark-theme {
     --colorFontPrimary: #f3f4f6;
     --colorFontSecondary: #d1d5db;
     --colorBackgroundPrimary: #333;
@@ -14,6 +14,12 @@
     --colorContentDivider: #9ca3af;
     --colorBackgroundOverlay: rgba(17, 24, 39, 0.75);
     --colorToggleBorder: #3f3f3f;
+    --colorFindJobsButton: #93c5fd;
+    --colorFindJobsHover: #60a5fa;
+    --colorClearFiltersButton: #fca5a5;
+    --colorClearFiltersHover: #f87171;
+    --colorSwitchPageButton: #444;
+    --colorSwitchPageHover: #4f4f4f;
     --colorPrimary1: #dbeafe;
     --colorPrimary2: #bfdbfe;
     --colorPrimary3: #93c5fd;
@@ -46,6 +52,54 @@
     --colorGreen4: #16a34a;
     --colorBlack: #000000;
     --colorWhite: #ffffff;
+}
+
+.light-theme {
+    --colorFontPrimary: #111827;
+    --colorFontSecondary: #374151;
+    --colorBackgroundPrimary: #f8fafc;
+    --colorBackgroundSecondary: #fff;
+    --colorInputBackground: #f8fafc;
+    --colorLinkBackground: #dbeafe;
+    --colorContentDivider: #e5e7eb;
+    --colorBackgroundOverlay: rgba(17, 24, 39, 0.5);
+    --colorToggleBorder: #d1d5db;
+    --colorFindJobsButton: #93c5fd;
+    --colorFindJobsHover: #60a5fa;
+    --colorClearFiltersButton: #fca5a5;
+    --colorClearFiltersHover: #f87171;
+    --colorSwitchPageButton: #93c5fd;
+    --colorSwitchPageHover: #60a5fa;
+    --colorGray1: #f3f4f6;
+    --colorGray2: #e5e7eb;
+    --colorGray3: #d1d5db;
+    --colorGray4: #9ca3af;
+    --colorGray5: #6b7280;
+    --colorGray6: #4b5563;
+    --colorGray7: #374151;
+    --colorGray8: #1f2937;
+    --colorGray9: #111827;
+    --colorPrimary1: #dbeafe;
+    --colorPrimary2: #bfdbfe;
+    --colorPrimary3: #93c5fd;
+    --colorPrimary4: #60a5fa;
+    --colorPrimary5: #3b82f6;
+    --colorPrimary6: #2563eb;
+    --colorPrimary7: #1d4ed8;
+    --colorPrimary8: #1e40af;
+    --colorPrimary9: #1e3a8a;
+    --colorRed1: #f87171;
+    --colorRed2: #ef4444;
+    --colorRed3: #dc2626;
+    --colorYellow1: #eab308;
+    --colorYellow2: #ca8a04;
+    --colorGreen1: #22c55e;
+    --colorGreen2: #16a34a;
+    --colorBlack: #000000;
+    --colorWhite: #ffffff;
+}
+
+:root {
     --fontPrimary: 'Inter var', sans-serif;
     --transition: all 0.15s ease-in-out;
     --radius-sm: 0.25rem;
@@ -63,24 +117,6 @@
     --shadow-lg: 0 0 15px 3px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 0 20px 4px rgb(0 0 0 / 0.1);
     --shadow-2xl: 0 0 25px 5px rgb(0 0 0 / 0.1);
-
-    /* --colorFontPrimary: #111827;
-    --colorFontSecondary: #374151;
-    --colorBackgroundPrimary: #f8fafc;
-    --colorBackgroundSecondary: #fff;
-    --colorInputBackground: #f8fafc;
-    --colorLinkBackground: #dbeafe;
-    --colorContentDivider: #e5e7eb;
-    --colorBackgroundOverlay: rgba(17, 24, 39, 0.5);
-    --colorToggleBorder: #d1d5db;
-    --colorPrimary3: #60a5fa;
-    --colorPrimary4: #3b82f6;
-    --colorRed1: #f87171;
-    --colorRed2: #ef4444;
-    --colorYellow1: #eab308;
-    --colorYellow2: #ca8a04;
-    --colorGreen1: #22c55e;
-    --colorGreen2: #16a34a; */
 }
 
 *,

@@ -7,10 +7,10 @@ const Wrapper = styled.section`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 1px;
     .btn-container {
-        background: var(--colorBackgroundSecondary);
         display: flex;
-        border-left: 1px solid var(--colorBackgroundPrimary);
+        gap: 1px;
     }
     .pageBtn {
         background: transparent;
@@ -20,13 +20,11 @@ const Wrapper = styled.section`
         font-weight: 500;
         font-size: 18px;
         color: var(--fontColorPrimary);
+        background-color: var(--colorSwitchPageButton);
         transition: var(--transition);
         cursor: pointer;
-        border-right: 1px solid var(--colorBackgroundPrimary);
     }
     .active {
-        border-right: 1px solid var(--colorPrimary5);
-        border-left: 1px solid var(--colorPrimary5);
         background: var(--colorPrimary5);
         color: var(--colorWhite);
     }
@@ -34,9 +32,9 @@ const Wrapper = styled.section`
     .next-btn {
         width: 50px;
         height: 40px;
-        background: #444;
+        background: var(--colorSwitchPageButton);
         border-color: transparent;
-        color: var(--colorPrimary4);
+        color: #f3f4f6;
         text-transform: capitalize;
         display: grid;
         place-items: center;
@@ -54,7 +52,7 @@ const Wrapper = styled.section`
     }
     .prev-btn:hover,
     .next-btn:hover {
-        background: #4f4f4f;
+        background: var(--colorSwitchPageHover);
     }
     @media screen and (max-width: 350px) {
         .prev-btn,

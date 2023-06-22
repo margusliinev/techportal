@@ -24,12 +24,12 @@ const Wrapper = styled.div`
     }
     .delete-account-form {
         .btn {
-            background-color: var(--colorRed3);
+            background-color: var(--colorRed2);
             justify-self: start;
             color: #f3f4f6;
         }
         .btn:hover {
-            background-color: var(--colorRed4);
+            background-color: var(--colorRed3);
         }
     }
 `;

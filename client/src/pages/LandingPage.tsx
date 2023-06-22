@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 
 import LandingDark from '../assets/images/landing-dark.svg';
+import LandingLight from '../assets/images/landing-light.svg';
 import { Logo } from '../components';
+import { useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/pages/LandingPage';
 
 const LandingPage = () => {
+    const { theme } = useAppSelector((store) => store.navigation);
     return (
         <Wrapper>
             <nav>
@@ -28,7 +31,7 @@ const LandingPage = () => {
                         </Link>
                     </div>
                 </div>
-                <img src={LandingDark} alt='landing image' className='landing-img' />
+                {theme === 'dark-theme' ? <img src={LandingDark} alt='landing image' className='landing-img' /> : <img src={LandingLight} alt='landing image' className='landing-img' />}
             </div>
         </Wrapper>
     );

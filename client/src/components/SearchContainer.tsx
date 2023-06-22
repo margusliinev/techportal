@@ -4,11 +4,12 @@ import { setFilters } from '../features/search/searchSlice';
 import { useAppDispatch } from '../hooks';
 import Wrapper from '../styles/styled_components/components/SearchContainer';
 
-const initialState: { search: string; employment: string; location: string; sort: string } = {
+const initialState: { search: string; employment: string; location: string; sort: string; page: number } = {
     search: '',
     employment: 'all',
     location: 'all',
     sort: 'latest',
+    page: 1,
 };
 
 const SearchContainer = () => {
@@ -25,8 +26,8 @@ const SearchContainer = () => {
 
     const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        setValues({ search: '', employment: 'all', location: 'all', sort: 'latest' });
-        dispatch(setFilters({ search: '', employment: 'all', location: 'all', sort: 'latest' }));
+        setValues({ search: '', employment: 'all', location: 'all', sort: 'latest', page: 1 });
+        dispatch(setFilters({ search: '', employment: 'all', location: 'all', sort: 'latest', page: 1 }));
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

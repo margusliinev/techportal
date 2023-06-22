@@ -1,7 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
     showSidebar: false,
+    theme: localStorage.getItem('theme') || 'dark-theme',
 };
 
 const navigationSlice = createSlice({
@@ -11,8 +12,11 @@ const navigationSlice = createSlice({
         toggleNavigation: (state) => {
             state.showSidebar = !state.showSidebar;
         },
+        setTheme: (state, action: PayloadAction<string>) => {
+            state.theme = action.payload;
+        },
     },
 });
 
-export const { toggleNavigation } = navigationSlice.actions;
+export const { toggleNavigation, setTheme } = navigationSlice.actions;
 export default navigationSlice.reducer;

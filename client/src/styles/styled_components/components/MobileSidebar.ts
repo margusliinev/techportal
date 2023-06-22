@@ -19,10 +19,15 @@ const Wrapper = styled.aside`
         display: flex;
         flex-direction: column;
     }
-    .user-button {
+    .user-button,
+    .theme-button {
         display: none;
-        align-self: center;
-        margin-top: 3rem;
+        align-self: start;
+        margin-top: 1rem;
+        margin-left: 2rem;
+    }
+    .theme-button {
+        margin-bottom: 0.5rem;
     }
     .close-btn {
         position: absolute;
@@ -56,6 +61,11 @@ const Wrapper = styled.aside`
         }
         .content {
             width: 250px;
+        }
+    }
+    @media (max-width: 600px) {
+        .theme-button {
+            display: block;
         }
     }
     @media (min-width: 1024px) {
