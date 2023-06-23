@@ -23,6 +23,14 @@ const Wrapper = styled.ul`
         background-color: var(--colorLinkBackground);
         padding-left: 2.5rem;
     }
+    @media (max-width: 450px) {
+        .nav-link {
+            padding-left: 1rem;
+        }
+        .nav-link:hover {
+            padding-left: 1.5rem;
+        }
+    }
 `;
 
 export default Wrapper;

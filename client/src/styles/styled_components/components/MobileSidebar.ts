@@ -65,12 +65,6 @@ const Wrapper = styled.aside`
         .theme-button {
             margin-left: 0.75rem;
         }
-        .nav-link {
-            padding-left: 1rem;
-        }
-        .nav-link:hover {
-            padding-left: 1.5rem;
-        }
         .content {
             width: 250px;
         }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { setFilters } from '../features/search/searchSlice';
 import { useAppDispatch } from '../hooks';
@@ -34,6 +34,10 @@ const SearchContainer = () => {
         e.preventDefault();
         dispatch(setFilters(values));
     };
+
+    useEffect(() => {
+        dispatch(setFilters({ search: '', employment: 'all', location: 'all', sort: 'latest', page: 1 }));
+    }, [dispatch]);
 
     return (
         <Wrapper>

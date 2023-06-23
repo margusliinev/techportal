@@ -61,7 +61,7 @@ const ChartsContainer = ({ topTechnologies }: Props) => {
                         tickFormatter={(value: string) => value.charAt(0).toUpperCase() + value.slice(1)}
                     />
                     <YAxis dataKey='count' allowDecimals={false} tick={theme === 'dark-theme' ? { fill: '#F3F4F6' } : { fill: '#111827' }} />
-                    <Tooltip />
+                    <Tooltip labelStyle={{ color: '#4f4f4f', fontWeight: '500' }} labelFormatter={(value: string) => value.charAt(0).toUpperCase() + value.slice(1)} />
                     <Bar dataKey='count' fill='#60a5fa' barSize={barSize} />
                 </BarChart>
             </ResponsiveContainer>
