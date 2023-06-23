@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
+import { useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/ChartsContainer';
 import { technology } from '../types';
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const ChartsContainer = ({ topTechnologies }: Props) => {
+    const { theme } = useAppSelector((store) => store.navigation);
     const [numBars, setNumBars] = useState(7);
     const [barSize, setBarSize] = useState(75);
 
@@ -53,8 +55,12 @@ const ChartsContainer = ({ topTechnologies }: Props) => {
             <ResponsiveContainer className='responsive-container' width='100%' height={400}>
                 <BarChart data={barsToShow} margin={{ top: 50 }}>
                     <CartesianGrid strokeDasharray={'1 1 '} />
-                    <XAxis dataKey='technology' tick={{ fill: '#F3F4F6' }} tickFormatter={(value: string) => value.charAt(0).toUpperCase() + value.slice(1)} />
-                    <YAxis dataKey='count' allowDecimals={false} tick={{ fill: '#F3F4F6' }} />
+                    <XAxis
+                        dataKey='technology'
+                        tick={theme === 'dark-theme' ? { fill: '#F3F4F6' } : { fill: '#111827' }}
+                        tickFormatter={(value: string) => value.charAt(0).toUpperCase() + value.slice(1)}
+                    />
+                    <YAxis dataKey='count' allowDecimals={false} tick={theme === 'dark-theme' ? { fill: '#F3F4F6' } : { fill: '#111827' }} />
                     <Tooltip />
                     <Bar dataKey='count' fill='#60a5fa' barSize={barSize} />
                 </BarChart>

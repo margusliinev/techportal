@@ -93,7 +93,7 @@ const Wrapper = styled.article`
             display: flex;
             align-items: center;
             svg {
-                color: var(--colorPrimary3);
+                color: var(--colorPrimary);
             }
         }
         .text {

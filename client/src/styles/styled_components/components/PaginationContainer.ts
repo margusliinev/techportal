@@ -13,7 +13,6 @@ const Wrapper = styled.section`
         gap: 1px;
     }
     .pageBtn {
-        background: transparent;
         border-color: transparent;
         width: 50px;
         height: 40px;
@@ -21,7 +20,6 @@ const Wrapper = styled.section`
         font-size: 18px;
         color: var(--fontColorPrimary);
         background-color: var(--colorSwitchPageButton);
-        transition: var(--transition);
         cursor: pointer;
     }
     .active {
@@ -38,9 +36,8 @@ const Wrapper = styled.section`
         text-transform: capitalize;
         display: grid;
         place-items: center;
-        cursor: pointer;
-        transition: var(--transition);
         font-size: 1.5rem;
+        cursor: pointer;
     }
     .next-btn {
         border-top-right-radius: var(--radius-md);
@@ -52,6 +49,7 @@ const Wrapper = styled.section`
     }
     .prev-btn:hover,
     .next-btn:hover {
+        transition: var(--transition);
         background: var(--colorSwitchPageHover);
     }
     @media screen and (max-width: 350px) {

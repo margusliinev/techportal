@@ -17,8 +17,8 @@ const MobileSidebar = () => {
                     <CgClose />
                 </button>
                 <Logo />
-                <NavLinks />
                 <DarkModeToggle />
+                <NavLinks />
                 <UserButton />
             </div>
         </Wrapper>

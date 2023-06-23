@@ -6,7 +6,6 @@ const Wrapper = styled.section`
     padding: 2rem 2.5rem;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
-    transition: var(--transition);
     background-color: var(--colorBackgroundSecondary);
     @media screen and (max-width: 400px) {
         padding: 2rem 1.5rem;

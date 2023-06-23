@@ -23,7 +23,7 @@ const Wrapper = styled.div`
         text-align: center;
         font-size: 0.875rem;
         font-weight: 500;
-        color: var(--colorPrimary4);
+        color: var(--colorPrimary);
     }
     .reset-title {
         margin-bottom: 1rem;

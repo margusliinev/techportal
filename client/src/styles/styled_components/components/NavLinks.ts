@@ -12,10 +12,11 @@ const Wrapper = styled.ul`
         padding: 1rem 0rem 1rem 2rem;
         text-transform: capitalize;
         transition: var(--transition);
+        transition-property: padding-left, background-color;
         border-radius: var(--radius-md);
         svg {
             font-size: 1.5rem;
-            color: var(--colorPrimary4);
+            color: var(--colorPrimary);
         }
     }
     .nav-link:hover {

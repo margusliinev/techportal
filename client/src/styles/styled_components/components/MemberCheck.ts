@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     .member-btn {
         background: transparent;
         border: none;
-        color: var(--colorPrimary4);
+        color: var(--colorPrimary);
         cursor: pointer;
         font-size: 1rem;
         font-weight: 500;

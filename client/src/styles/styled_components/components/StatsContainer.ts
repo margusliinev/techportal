@@ -56,35 +56,35 @@ const Wrapper = styled.div`
         }
     }
     article:nth-of-type(1) {
-        border-bottom: 5px solid var(--colorGreen1);
+        border-bottom: 5px solid var(--colorGreen);
         .technology {
-            background-color: var(--colorGreen1);
+            background-color: var(--colorGreen);
         }
         .title {
             span {
-                color: var(--colorGreen1);
+                color: var(--colorGreen);
             }
         }
     }
     article:nth-of-type(2) {
-        border-bottom: 5px solid var(--colorYellow1);
+        border-bottom: 5px solid var(--colorYellow);
         .technology {
-            background-color: var(--colorYellow1);
+            background-color: var(--colorYellow);
         }
         .title {
             span {
-                color: var(--colorYellow1);
+                color: var(--colorYellow);
             }
         }
     }
     article:nth-of-type(3) {
-        border-bottom: 5px solid var(--colorRed1);
+        border-bottom: 5px solid var(--colorRed);
         .technology {
-            background-color: var(--colorRed1);
+            background-color: var(--colorRed);
         }
         .title {
             span {
-                color: var(--colorRed1);
+                color: var(--colorRed);
             }
         }
     }

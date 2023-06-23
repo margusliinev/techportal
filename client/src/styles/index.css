@@ -13,13 +13,49 @@
     --colorLinkBackground: #4f4f4f;
     --colorContentDivider: #9ca3af;
     --colorBackgroundOverlay: rgba(17, 24, 39, 0.75);
-    --colorToggleBorder: #3f3f3f;
-    --colorFindJobsButton: #93c5fd;
-    --colorFindJobsHover: #60a5fa;
-    --colorClearFiltersButton: #fca5a5;
-    --colorClearFiltersHover: #f87171;
     --colorSwitchPageButton: #444;
     --colorSwitchPageHover: #4f4f4f;
+    --colorRed: #fca5a5;
+    --colorYellow: #fde047;
+    --colorGreen: #86efac;
+    --colorPrimary: #60a5fa;
+}
+
+.light-theme {
+    --colorFontPrimary: #111827;
+    --colorFontSecondary: #374151;
+    --colorBackgroundPrimary: #eff6ff;
+    --colorBackgroundSecondary: #fff;
+    --colorInputBackground: #f1f5f9;
+    --colorLinkBackground: #dbeafe;
+    --colorContentDivider: #d1d5db;
+    --colorBackgroundOverlay: rgba(17, 24, 39, 0.5);
+    --colorSwitchPageButton: #93c5fd;
+    --colorSwitchPageHover: #60a5fa;
+    --colorRed: #ef4444;
+    --colorYellow: #eab308;
+    --colorGreen: #22c55e;
+    --colorPrimary: #3b82f6;
+}
+
+:root {
+    --fontPrimary: 'Inter var', sans-serif;
+    --transition: all 0.15s ease-in-out;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --width-sm: 640px;
+    --width-md: 768px;
+    --width-lg: 1024px;
+    --width-xl: 1280px;
+    --width-2xl: 1536px;
+    --shadow-sm: 0 0 6px 1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 0 9px 2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 0 15px 3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 0 20px 4px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 0 25px 5px rgb(0 0 0 / 0.1);
     --colorPrimary1: #dbeafe;
     --colorPrimary2: #bfdbfe;
     --colorPrimary3: #93c5fd;
@@ -42,81 +78,19 @@
     --colorRed2: #f87171;
     --colorRed3: #ef4444;
     --colorRed4: #dc2626;
+    --colorRed5: #b91c1c;
     --colorYellow1: #fde047;
     --colorYellow2: #facc15;
     --colorYellow3: #eab308;
     --colorYellow4: #ca8a04;
+    --colorYellow5: #a46a1f;
     --colorGreen1: #86efac;
     --colorGreen2: #4ade80;
     --colorGreen3: #22c55e;
     --colorGreen4: #16a34a;
+    --colorGreen5: #15803d;
     --colorBlack: #000000;
     --colorWhite: #ffffff;
-}
-
-.light-theme {
-    --colorFontPrimary: #111827;
-    --colorFontSecondary: #374151;
-    --colorBackgroundPrimary: #f8fafc;
-    --colorBackgroundSecondary: #fff;
-    --colorInputBackground: #f8fafc;
-    --colorLinkBackground: #dbeafe;
-    --colorContentDivider: #e5e7eb;
-    --colorBackgroundOverlay: rgba(17, 24, 39, 0.5);
-    --colorToggleBorder: #d1d5db;
-    --colorFindJobsButton: #93c5fd;
-    --colorFindJobsHover: #60a5fa;
-    --colorClearFiltersButton: #fca5a5;
-    --colorClearFiltersHover: #f87171;
-    --colorSwitchPageButton: #93c5fd;
-    --colorSwitchPageHover: #60a5fa;
-    --colorGray1: #f3f4f6;
-    --colorGray2: #e5e7eb;
-    --colorGray3: #d1d5db;
-    --colorGray4: #9ca3af;
-    --colorGray5: #6b7280;
-    --colorGray6: #4b5563;
-    --colorGray7: #374151;
-    --colorGray8: #1f2937;
-    --colorGray9: #111827;
-    --colorPrimary1: #dbeafe;
-    --colorPrimary2: #bfdbfe;
-    --colorPrimary3: #93c5fd;
-    --colorPrimary4: #60a5fa;
-    --colorPrimary5: #3b82f6;
-    --colorPrimary6: #2563eb;
-    --colorPrimary7: #1d4ed8;
-    --colorPrimary8: #1e40af;
-    --colorPrimary9: #1e3a8a;
-    --colorRed1: #f87171;
-    --colorRed2: #ef4444;
-    --colorRed3: #dc2626;
-    --colorYellow1: #eab308;
-    --colorYellow2: #ca8a04;
-    --colorGreen1: #22c55e;
-    --colorGreen2: #16a34a;
-    --colorBlack: #000000;
-    --colorWhite: #ffffff;
-}
-
-:root {
-    --fontPrimary: 'Inter var', sans-serif;
-    --transition: all 0.15s ease-in-out;
-    --radius-sm: 0.25rem;
-    --radius-md: 0.375rem;
-    --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
-    --width-sm: 640px;
-    --width-md: 768px;
-    --width-lg: 1024px;
-    --width-xl: 1280px;
-    --width-2xl: 1536px;
-    --shadow-sm: 0 0 6px 1px rgb(0 0 0 / 0.1);
-    --shadow-md: 0 0 9px 2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 0 15px 3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 0 20px 4px rgb(0 0 0 / 0.1);
-    --shadow-2xl: 0 0 25px 5px rgb(0 0 0 / 0.1);
 }
 
 *,
@@ -276,7 +250,6 @@ input[type='radio'] {
     padding: 2rem 2.5rem;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
-    transition: var(--transition);
     background-color: var(--colorBackgroundSecondary);
 }
 
@@ -364,25 +337,25 @@ input[type='radio'] {
 .form-forgot-password {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--colorPrimary4);
+    color: var(--colorPrimary);
     letter-spacing: -0.01rem;
     text-transform: none;
 }
 
 .form-input-error {
-    outline: 1px solid var(--colorRed1);
+    outline: 1px solid var(--colorRed);
 }
 
 .form-input-error:focus {
-    outline: 1px solid var(--colorRed1);
+    outline: 1px solid var(--colorRed);
 }
 
 .form-input-success {
-    outline: 1px solid var(--colorGreen1);
+    outline: 1px solid var(--colorGreen);
 }
 
 .form-input-success:focus {
-    outline: 1px solid var(--colorGreen1);
+    outline: 1px solid var(--colorGreen);
 }
 
 .form-alert {
@@ -391,11 +364,11 @@ input[type='radio'] {
 }
 
 .form-alert-error {
-    color: var(--colorRed1);
+    color: var(--colorRed);
 }
 
 .form-alert-success {
-    color: var(--colorGreen1);
+    color: var(--colorGreen);
 }
 
 .server-message {
@@ -404,10 +377,10 @@ input[type='radio'] {
     letter-spacing: -0.01rem;
 }
 .server-message-error {
-    color: var(--colorRed1);
+    color: var(--colorRed);
 }
 .server-message-success {
-    color: var(--colorGreen1);
+    color: var(--colorGreen);
 }
 
 /* END */

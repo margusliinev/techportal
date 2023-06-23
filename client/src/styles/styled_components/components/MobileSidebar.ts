@@ -13,21 +13,23 @@ const Wrapper = styled.aside`
         width: 280px;
         height: 100vh;
         transition: var(--transition);
+        transition-property: margin;
         padding: 0rem 1rem;
         z-index: 999;
         box-shadow: var(--shadow-2xl);
         display: flex;
         flex-direction: column;
     }
-    .user-button,
-    .theme-button {
+    .user-button {
         display: none;
         align-self: start;
-        margin-top: 1rem;
+        margin-top: 2rem;
         margin-left: 2rem;
     }
     .theme-button {
-        margin-bottom: 0.5rem;
+        display: none;
+        margin-left: 1.75rem;
+        margin-top: 0.5rem;
     }
     .close-btn {
         position: absolute;
@@ -58,6 +60,16 @@ const Wrapper = styled.aside`
     @media (max-width: 450px) {
         .user-button {
             display: initial;
+            margin-left: 1rem;
+        }
+        .theme-button {
+            margin-left: 0.75rem;
+        }
+        .nav-link {
+            padding-left: 1rem;
+        }
+        .nav-link:hover {
+            padding-left: 1.5rem;
         }
         .content {
             width: 250px;
@@ -65,7 +77,7 @@ const Wrapper = styled.aside`
     }
     @media (max-width: 600px) {
         .theme-button {
-            display: block;
+            display: grid;
         }
     }
     @media (min-width: 1024px) {

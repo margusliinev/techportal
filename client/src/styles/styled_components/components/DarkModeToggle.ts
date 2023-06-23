@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     display: grid;
-    place-items: center;
     label {
         width: 90px;
         height: 40px;
