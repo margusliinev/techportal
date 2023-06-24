@@ -1,11 +1,12 @@
 import { Pool, QueryResult, QueryResultRow } from 'pg';
 
 const pool = new Pool({
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    port: Number(process.env.PGPORT),
-    user: process.env.PGUSER,
-    password: process.env.PGPASSWORD,
+    // host: process.env.PGHOST,
+    // database: process.env.PGDATABASE,
+    // port: Number(process.env.PGPORT),
+    // user: process.env.PGUSER,
+    // password: process.env.PGPASSWORD,
+    connectionString: process.env.PGCONNECTION,
     ssl: true,
 });
 
