@@ -1,7 +1,6 @@
 import 'express-async-errors';
 
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
@@ -25,7 +24,6 @@ dotenv.config();
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: 'https://techportal.onrender.com', optionsSuccessStatus: 200, credentials: true }));
 app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 app.use(express.json());
 app.use(cookieParser());

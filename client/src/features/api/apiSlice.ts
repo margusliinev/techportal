@@ -10,7 +10,6 @@ export const apiSlice = createApi({
             query: (user) => ({
                 url: '/register',
                 method: 'POST',
-                credentials: 'include',
                 body: user,
             }),
         }),
@@ -18,7 +17,6 @@ export const apiSlice = createApi({
             query: (user) => ({
                 url: '/login',
                 method: 'POST',
-                credentials: 'include',
                 body: user,
             }),
         }),
@@ -26,7 +24,6 @@ export const apiSlice = createApi({
             query: (profile) => ({
                 url: '/users/me',
                 method: 'PATCH',
-                credentials: 'include',
                 body: profile,
             }),
         }),
@@ -34,7 +31,6 @@ export const apiSlice = createApi({
             query: (password) => ({
                 url: '/users/me',
                 method: 'PUT',
-                credentials: 'include',
                 body: password,
             }),
         }),
@@ -42,7 +38,6 @@ export const apiSlice = createApi({
             query: (queryArgs) => ({
                 url: '/jobs',
                 method: 'GET',
-                credentials: 'include',
                 params: {
                     ...queryArgs,
                 },
@@ -52,7 +47,6 @@ export const apiSlice = createApi({
             query: () => ({
                 url: '/stats',
                 method: 'GET',
-                credentials: 'include',
             }),
         }),
     }),
