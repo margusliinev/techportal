@@ -13,7 +13,7 @@ const initialState: UserState = {
 };
 
 const getUser = createAsyncThunk<UserAPIResponse>('user/getUser', async () => {
-    const response = await fetch('https://techportal.onrender.com/api/v1/users/me', {
+    const response = await fetch('/api/v1/users/me', {
         credentials: 'include',
     });
     const data = response.json();
@@ -21,7 +21,7 @@ const getUser = createAsyncThunk<UserAPIResponse>('user/getUser', async () => {
 });
 
 const deleteUser = createAsyncThunk<DefaultAPIResponse>('user/deleteUser', async () => {
-    const response = await fetch('https://techportal.onrender.com/api/v1/users/me', {
+    const response = await fetch('/api/v1/users/me', {
         method: 'DELETE',
         credentials: 'include',
     });
@@ -30,7 +30,7 @@ const deleteUser = createAsyncThunk<DefaultAPIResponse>('user/deleteUser', async
 });
 
 const logoutUser = createAsyncThunk<DefaultAPIResponse>('user/logoutUser', async () => {
-    const response = await fetch('https://techportal.onrender.com/api/v1/logout', {
+    const response = await fetch('/api/v1/logout', {
         credentials: 'include',
     });
     const data = response.json();
