@@ -29,11 +29,17 @@ const RegisterPage = () => {
         setValues({ ...values, [e.target.name]: e.target.value.trim() });
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { username, email, password } = values;
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
-            await register({ username, email, password });
+            register({ username, email, password })
+                .then(() => {
+                    return;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         } else if (!username || !email || !password) {
             if (errorRef.current) {
                 errorRef.current.textContent = 'Missing username, email or password';

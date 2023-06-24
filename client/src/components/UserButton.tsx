@@ -11,8 +11,14 @@ const UserButton = () => {
     const { user } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();
 
-    const handleLogout = async () => {
-        await dispatch(logoutUser());
+    const handleLogout = () => {
+        dispatch(logoutUser())
+            .then(() => {
+                return;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         dispatch(setUser(null));
     };
 

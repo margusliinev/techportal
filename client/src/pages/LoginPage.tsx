@@ -24,10 +24,16 @@ const LoginPage = () => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (values.email && values.password) {
-            await login(values);
+            login(values)
+                .then(() => {
+                    return;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         } else if (!values.email || !values.password) {
             if (errorRef.current) {
                 errorRef.current.textContent = 'Missing email or password';

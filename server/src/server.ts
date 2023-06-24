@@ -24,7 +24,6 @@ dotenv.config();
 const app = express();
 
 app.use(helmet());
-app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 app.use(express.json());
 app.use(cookieParser());
 app.use(limiter);
@@ -33,9 +32,12 @@ app.use('/', userRouter);
 app.use('/', jobsRouter);
 app.use('/', statsRouter);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.resolve(__dirname, '../../client/dist')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));
+    });
+}
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
