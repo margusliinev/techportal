@@ -25,7 +25,7 @@ dotenv.config();
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: 'http://localhost:5173', optionsSuccessStatus: 200, credentials: true }));
+app.use(cors({ origin: 'https://techportal.onrender.com', optionsSuccessStatus: 200, credentials: true }));
 app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 app.use(express.json());
 app.use(cookieParser());
