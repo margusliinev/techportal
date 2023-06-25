@@ -84,7 +84,6 @@ const RegisterPage = () => {
                         name={'password'}
                         value={values.password}
                         labelText={'password'}
-                        forgot={false}
                         handleChange={handleChange}
                         handleValidation={(e) => handleValidation(e, values.username, values.email, values.password)}
                     />
