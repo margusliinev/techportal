@@ -58,7 +58,7 @@ const LoginPage = () => {
                         {error ? (error as CustomAPIError).data.msg : isSuccess && 'Login successful! Welcome back'}
                     </p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
-                    <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} forgot={true} handleChange={handleChange} />
+                    <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} handleChange={handleChange} />
                     <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
                         {isSuccess ? 'Redirecting...' : 'Sign In'}
                     </button>

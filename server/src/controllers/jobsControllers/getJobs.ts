@@ -6,12 +6,13 @@ interface QueryParams {
     search?: string;
     employment?: string;
     location?: string;
-    salary?: number;
     sort?: string;
+    page?: number;
+    limit?: number;
 }
 
 export const getJobs = async (req: Request, res: Response) => {
-    const { search, employment, location, sort }: QueryParams = req.query;
+    const { search, employment, location, sort, page, limit }: QueryParams = req.query;
 
     let sqlQuery = 'SELECT * FROM jobs';
     const params = [];
@@ -61,16 +62,16 @@ export const getJobs = async (req: Request, res: Response) => {
         sqlQuery += ` ORDER BY salary ASC`;
     }
 
-    const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 10;
+    const pageNumber = page || 1;
+    const limitNumber = limit || 10;
 
-    const skip = (page - 1) * limit;
+    const skip = (pageNumber - 1) * limitNumber;
 
     const allJobs = await query(sqlQuery, params);
 
-    const numOfPages = Math.ceil(allJobs.length / limit);
+    const numOfPages = Math.ceil(allJobs.length / limitNumber);
 
-    sqlQuery += ` LIMIT ${limit} OFFSET ${skip}`;
+    sqlQuery += ` LIMIT ${limitNumber} OFFSET ${skip}`;
 
     const displayedJobs = await query(sqlQuery, params);
 

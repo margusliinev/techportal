@@ -4,13 +4,13 @@ import { FaBriefcase, FaCalendar, FaLocationArrow, FaMoneyBill, FaServicestack }
 import Wrapper from '../styles/styled_components/components/JobCard';
 import { Job } from '../types';
 
-const JobCard = ({ company, position, employment, location, salary, expire_date, technologies }: Job) => {
+const JobCard = ({ company, position, employment, location, salary, expire_date, technologies, company_logo }: Job) => {
     const date = moment(expire_date).format('MMM Do, YYYY');
 
     return (
         <Wrapper>
             <header>
-                <div className='main-icon'>{company.charAt(0)}</div>
+                <img src={company_logo} alt='company-logo' className='company-logo' />
                 <div className='info'>
                     <h5>{position}</h5>
                     <p>{company}</p>

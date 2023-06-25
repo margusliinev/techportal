@@ -12,6 +12,7 @@ const JobsContainer = () => {
         location: location,
         sort: sort,
         page: page,
+        limit: 10,
     });
 
     if (isLoading || isFetching) {

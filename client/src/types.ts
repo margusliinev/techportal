@@ -14,10 +14,6 @@ export interface UserLogin {
     password: string;
 }
 
-export interface UserReset {
-    email: string;
-}
-
 export interface UserUpdatePassword {
     currentPassword: string;
     newPassword: string;
@@ -49,6 +45,7 @@ export interface Job {
     salary: number;
     expire_date: Date;
     technologies: string[];
+    company_logo: string;
 }
 
 export interface FilterStates {
@@ -72,6 +69,7 @@ export interface GetJobsParams {
     location?: string;
     sort?: string;
     page?: number;
+    limit?: number;
 }
 
 export interface UserAPIResponse {

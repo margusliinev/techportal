@@ -13,20 +13,10 @@ const Wrapper = styled.article`
         grid-template-rows: 1fr 1fr 1fr;
         text-align: center;
         row-gap: 1rem;
-        column-gap: 0.25rem;
+        column-gap: 1rem;
         align-items: center;
-        .main-icon {
-            width: 60px;
-            height: 60px;
-            display: grid;
-            place-items: center;
-            background: var(--colorPrimary5);
+        .company-logo {
             border-radius: var(--radius-md);
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--colorWhite);
-            justify-self: center;
         }
     }
     @media (min-width: 400px) {
