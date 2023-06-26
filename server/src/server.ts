@@ -23,7 +23,14 @@ const limiter = rateLimit({
 dotenv.config();
 const app = express();
 
-app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+        useDefaults: true,
+        directives: {
+            'img-src': ["'self'", 'https: data:'],
+        },
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(limiter);
