@@ -1,3 +1,5 @@
+import moment from 'moment';
+import { FaCalendar } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Loader } from '../../components';
@@ -8,6 +10,7 @@ const Job = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { data, isLoading, isError } = useGetJobQuery(id || '');
+    const date: string = moment(data?.job.expire_date).format('MMM Do, YYYY');
 
     if (isLoading) {
         return (
@@ -34,7 +37,22 @@ const Job = () => {
 
     return (
         <Wrapper>
-            <embed src={data?.job.company_post} type='' />
+            <div className='job-container'>
+                <div className='job-header'>
+                    <img src={data?.job.company_logo} alt='company logo' className='job-company-logo' />
+                    <div>
+                        <h4 className='job-position'>{data?.job.position}</h4>
+                        <h6 className='job-company'>{data?.job.company}</h6>
+                    </div>
+                    <p className='job-deadline'>
+                        <span>
+                            <FaCalendar />
+                        </span>
+                        {date}
+                    </p>
+                </div>
+                <article className='job-post'>{data?.job.company_post}</article>
+            </div>
         </Wrapper>
     );
 };
