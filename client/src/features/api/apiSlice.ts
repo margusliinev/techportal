@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { DefaultAPIResponse, GetJobsParams, JobsAPIResponse, StatsAPIResponse, User, UserAPIResponse, UserLogin, UserRegister, UserUpdatePassword } from '../../types';
+import { DefaultAPIResponse, GetJobsParams, JobAPIResponse, JobsAPIResponse, StatsAPIResponse, User, UserAPIResponse, UserLogin, UserRegister, UserUpdatePassword } from '../../types';
 
 export const apiSlice = createApi({
     reducerPath: 'api',
@@ -43,6 +43,12 @@ export const apiSlice = createApi({
                 },
             }),
         }),
+        getJob: builder.query<JobAPIResponse, string>({
+            query: (jobID) => ({
+                url: `/jobs/${jobID}`,
+                method: 'GET',
+            }),
+        }),
         getStats: builder.query<StatsAPIResponse, undefined>({
             query: () => ({
                 url: '/stats',
@@ -52,4 +58,4 @@ export const apiSlice = createApi({
     }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useUpdateUserProfileMutation, useUpdateUserPasswordMutation, useGetJobsQuery, useGetStatsQuery } = apiSlice;
+export const { useRegisterMutation, useLoginMutation, useUpdateUserProfileMutation, useUpdateUserPasswordMutation, useGetJobsQuery, useGetJobQuery, useGetStatsQuery } = apiSlice;

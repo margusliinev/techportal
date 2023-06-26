@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.article`
-    background: var(--colorBackgroundSecondary);
-    border-radius: var(--radius-md);
-    display: grid;
-    grid-template-rows: auto 1fr;
-    box-shadow: var(--shadow-md);
+    .job-card {
+        background: var(--colorBackgroundSecondary);
+        border-radius: var(--radius-md);
+        display: grid;
+        grid-template-rows: auto 1fr;
+        box-shadow: var(--shadow-md);
+        color: var(--colorFontPrimary);
+        transition: var(--transition);
+    }
+    .job-card:hover {
+        transform: translateY(-3px);
+    }
     header {
         padding: 1rem 1.5rem;
         border-bottom: 1px solid var(--colorContentDivider);

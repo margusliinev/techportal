@@ -19,17 +19,17 @@ const NavLinks = () => {
     return (
         <Wrapper>
             <li>
-                <Link to={'/dashboard/stats'} className='nav-link' onClick={controlSidebar}>
+                <Link to={'/stats'} className='nav-link' onClick={controlSidebar}>
                     {<IoBarChart />} stats
                 </Link>
             </li>
             <li>
-                <Link to={'/dashboard/jobs'} className='nav-link' onClick={controlSidebar}>
+                <Link to={'/jobs'} className='nav-link' onClick={controlSidebar}>
                     {<MdQueryStats />} jobs
                 </Link>
             </li>
             <li>
-                <Link to={'/dashboard/profile'} className='nav-link' onClick={controlSidebar}>
+                <Link to={'/profile'} className='nav-link' onClick={controlSidebar}>
                     {<ImProfile />} profile
                 </Link>
             </li>

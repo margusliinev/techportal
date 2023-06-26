@@ -46,6 +46,7 @@ export interface Job {
     expire_date: Date;
     technologies: string[];
     company_logo: string;
+    company_post: string;
 }
 
 export interface FilterStates {
@@ -70,6 +71,11 @@ export interface GetJobsParams {
     sort?: string;
     page?: number;
     limit?: number;
+}
+
+export interface JobAPIResponse {
+    success: boolean;
+    job: Job;
 }
 
 export interface UserAPIResponse {
