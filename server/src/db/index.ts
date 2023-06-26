@@ -6,7 +6,6 @@ const pool = new Pool({
     port: Number(process.env.PGPORT),
     user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
-    ssl: true,
 });
 
 const query = async <T extends QueryResultRow>(text: string, params?: string[]): Promise<T[]> => {
