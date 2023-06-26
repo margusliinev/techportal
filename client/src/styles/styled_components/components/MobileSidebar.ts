@@ -6,6 +6,7 @@ const Wrapper = styled.aside`
         background: var(--colorBackgroundOverlay);
         inset: 0;
         transition: all 0.3s ease-in-out;
+        z-index: 999;
     }
     .content {
         position: fixed;

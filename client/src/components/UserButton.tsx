@@ -42,7 +42,7 @@ const UserButton = () => {
                         <span>{showLogout ? <FaCaretUp /> : <FaCaretDown />}</span>
                     </button>
                     <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
-                        <Link to={'/dashboard/profile'} className='dropdown-btn'>
+                        <Link to={'/profile'} className='dropdown-btn'>
                             Your Profile
                         </Link>
                         <button className='dropdown-btn' onClick={handleLogout}>

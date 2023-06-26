@@ -9,21 +9,28 @@ const Wrapper = styled.article`
         box-shadow: var(--shadow-md);
         color: var(--colorFontPrimary);
         transition: var(--transition);
+        transition-property: transform;
+        z-index: -999;
     }
     .job-card:hover {
+        z-index: -999;
         transform: translateY(-3px);
     }
     header {
         padding: 1rem 1.5rem;
         border-bottom: 1px solid var(--colorContentDivider);
         display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         text-align: center;
         row-gap: 1rem;
         column-gap: 1rem;
         align-items: center;
+        justify-content: center;
         .company-logo {
             border-radius: var(--radius-md);
+            height: 80px;
+            width: 80px;
+            justify-self: center;
         }
     }
     @media (min-width: 400px) {
