@@ -111,3 +111,8 @@ export interface StatsAPIResponse {
 export interface NewSkill {
     skill: string;
 }
+
+export interface SkillsAPIResponse {
+    success: boolean;
+    skills: string[];
+}

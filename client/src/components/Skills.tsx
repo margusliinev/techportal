@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
+import { SkillsList } from '../components';
 import { useAddSkillMutation } from '../features/api/apiSlice';
 import Wrapper from '../styles/styled_components/components/Skills';
 import data from '../utils/technologies.json';
@@ -17,8 +18,12 @@ const Skills = () => {
         const technology = item.toLowerCase();
         return searchTerm && technology.startsWith(searchTerm) && technology !== searchTerm;
     });
+    const errorRef = useRef<HTMLParagraphElement>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (errorRef.current) {
+            errorRef.current.textContent = '';
+        }
         setValue({ skill: e.target.value });
     };
 
@@ -38,6 +43,12 @@ const Skills = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const item = findMatch(data, value.skill);
+        if (!item) {
+            if (errorRef.current) {
+                errorRef.current.textContent = 'Please choose a skill from the dropdown list';
+            }
+            return;
+        }
         if (item) {
             addSkill({ skill: item })
                 .then(() => {
@@ -58,6 +69,7 @@ const Skills = () => {
                     <p>Select technologies and tools that you are familiar with.</p>
                 </div>
                 <form className='skills-form' onSubmit={handleSubmit}>
+                    <p ref={errorRef} className='server-message server-message-error'></p>
                     <div className='form-row'>
                         <label htmlFor='skills' className='form-label'>
                             Add A Skill
@@ -81,6 +93,7 @@ const Skills = () => {
                         </div>
                     </div>
                 </form>
+                <SkillsList />
             </div>
         </Wrapper>
     );
