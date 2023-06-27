@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { setFilters } from '../features/search/searchSlice';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/SearchContainer';
 
 const initialState: { search: string; employment: string; location: string; sort: string; page: number } = {
@@ -13,6 +13,7 @@ const initialState: { search: string; employment: string; location: string; sort
 };
 
 const SearchContainer = () => {
+    const { search, employment, location, sort, page } = useAppSelector((store) => store.search);
     const [values, setValues] = useState(initialState);
     const dispatch = useAppDispatch();
 
@@ -36,8 +37,8 @@ const SearchContainer = () => {
     };
 
     useEffect(() => {
-        dispatch(setFilters({ search: '', employment: 'all', location: 'all', sort: 'latest', page: 1 }));
-    }, [dispatch]);
+        setValues({ search: search, employment: employment, location: location, sort: sort, page: page });
+    }, [search, employment, location, sort, page]);
 
     return (
         <Wrapper>
