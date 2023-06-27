@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    .skills {
+    .skills-container {
         display: grid;
         grid-template-columns: 1fr;
         max-width: 500px;

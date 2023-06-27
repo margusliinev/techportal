@@ -63,7 +63,7 @@ const Skills = () => {
 
     return (
         <Wrapper>
-            <div className='skills'>
+            <div className='skills-container'>
                 <div className='skills-header'>
                     <h6>Your Skills</h6>
                     <p>Select technologies and tools that you are familiar with.</p>

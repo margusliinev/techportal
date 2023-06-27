@@ -9,7 +9,7 @@ interface AuthenticatedRequest extends Request {
     };
 }
 
-const addSkills = async (req: AuthenticatedRequest, res: Response) => {
+const addSkill = async (req: AuthenticatedRequest, res: Response) => {
     const { skill } = req.body as { skill: string };
 
     if (!req.user) {
@@ -23,4 +23,4 @@ const addSkills = async (req: AuthenticatedRequest, res: Response) => {
     res.status(201).json({ success: true, skill: skill });
 };
 
-export { addSkills };
+export { addSkill };

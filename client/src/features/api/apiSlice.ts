@@ -84,12 +84,13 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ['Skills'],
         }),
-        deleteSkill: builder.mutation<DefaultAPIResponse, string>({
+        deleteSkill: builder.mutation<DefaultAPIResponse, NewSkill>({
             query: (skill) => ({
                 url: '/users/me/skills',
                 method: 'DELETE',
                 body: skill,
             }),
+            invalidatesTags: ['Skills'],
         }),
     }),
 });
