@@ -1,18 +1,53 @@
 import { useState } from 'react';
 
+import { useAddSkillMutation } from '../features/api/apiSlice';
 import Wrapper from '../styles/styled_components/components/Skills';
+import data from '../utils/technologies.json';
 
-const initialValue = '';
+const initialValue = {
+    skill: '',
+};
 
 const Skills = () => {
-    const [value, setValue] = useState<string>(initialValue);
+    const [addSkill] = useAddSkillMutation();
+    const [value, setValue] = useState(initialValue);
+    const technologies = [...data];
+    const filteredTechnologies = technologies.filter((item) => {
+        const searchTerm = value.skill.toLowerCase();
+        const technology = item.toLowerCase();
+        return searchTerm && technology.startsWith(searchTerm) && technology !== searchTerm;
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value);
+        setValue({ skill: e.target.value });
+    };
+
+    const onSearch = (searchTerm: string) => {
+        setValue({ skill: searchTerm });
+    };
+
+    const findMatch = (array: string[], value: string): string | null => {
+        for (const item of array) {
+            if (item.toLowerCase() === value.toLowerCase()) {
+                return item;
+            }
+        }
+        return null;
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
+        const item = findMatch(data, value.skill);
+        if (item) {
+            addSkill({ skill: item })
+                .then(() => {
+                    setValue({ skill: '' });
+                })
+                .catch((error) => {
+                    setValue({ skill: '' });
+                    console.log(error);
+                });
+        }
     };
 
     return (
@@ -20,20 +55,30 @@ const Skills = () => {
             <div className='skills'>
                 <div className='skills-header'>
                     <h6>Your Skills</h6>
-                    <p>Select the list of technologies that you are familiar with.</p>
+                    <p>Select technologies and tools that you are familiar with.</p>
                 </div>
                 <form className='skills-form' onSubmit={handleSubmit}>
                     <div className='form-row'>
-                        <label htmlFor='username' className='form-label'>
-                            Add a technology
+                        <label htmlFor='skills' className='form-label'>
+                            Add A Skill
                         </label>
                         <div className='skills-input-container'>
-                            <input type='text' name='username' value={value} className='form-input' id='username' onChange={handleChange} required />
-                            <button type='submit' className='btn'>
-                                Add
-                            </button>
+                            <div className='skills-search-container'>
+                                <input type='text' name='skills' value={value.skill} className='form-input' id='skills' onChange={handleChange} required />
+                                <button type='submit' className='btn'>
+                                    Add
+                                </button>
+                            </div>
+                            <div className={filteredTechnologies.length > 0 ? 'skills-input-dropdown show-dropdown' : 'skills-input-dropdown'}>
+                                {filteredTechnologies.map((item) => {
+                                    return (
+                                        <div className='dropdown-item' key={item} onClick={() => onSearch(item)}>
+                                            {item}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
-                        <p className='form-alert'></p>
                     </div>
                 </form>
             </div>

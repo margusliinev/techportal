@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { DefaultAPIResponse, GetJobsParams, JobAPIResponse, JobsAPIResponse, StatsAPIResponse, User, UserAPIResponse, UserLogin, UserRegister, UserUpdatePassword } from '../../types';
+import { DefaultAPIResponse, GetJobsParams, JobAPIResponse, JobsAPIResponse, NewSkill, StatsAPIResponse, User, UserAPIResponse, UserLogin, UserRegister, UserUpdatePassword } from '../../types';
 
 export const apiSlice = createApi({
     reducerPath: 'api',
@@ -61,7 +61,7 @@ export const apiSlice = createApi({
                 method: 'GET',
             }),
         }),
-        AddSkill: builder.mutation<DefaultAPIResponse, string>({
+        addSkill: builder.mutation<DefaultAPIResponse, NewSkill>({
             query: (skill) => ({
                 url: '/users/me/skills',
                 method: 'POST',

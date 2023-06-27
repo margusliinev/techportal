@@ -107,3 +107,7 @@ export interface StatsAPIResponse {
     success: boolean;
     topTechnologies: technology[];
 }
+
+export interface NewSkill {
+    skill: string;
+}
