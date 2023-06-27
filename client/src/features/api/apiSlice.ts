@@ -55,7 +55,38 @@ export const apiSlice = createApi({
                 method: 'GET',
             }),
         }),
+        getSkills: builder.query<DefaultAPIResponse, undefined>({
+            query: () => ({
+                url: '/users/me/skills',
+                method: 'GET',
+            }),
+        }),
+        AddSkill: builder.mutation<DefaultAPIResponse, string>({
+            query: (skill) => ({
+                url: '/users/me/skills',
+                method: 'POST',
+                body: skill,
+            }),
+        }),
+        deleteSkill: builder.mutation<DefaultAPIResponse, string>({
+            query: (skill) => ({
+                url: '/users/me/skills',
+                method: 'DELETE',
+                body: skill,
+            }),
+        }),
     }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useUpdateUserProfileMutation, useUpdateUserPasswordMutation, useGetJobsQuery, useGetJobQuery, useGetStatsQuery } = apiSlice;
+export const {
+    useRegisterMutation,
+    useLoginMutation,
+    useUpdateUserProfileMutation,
+    useUpdateUserPasswordMutation,
+    useGetJobsQuery,
+    useGetJobQuery,
+    useGetStatsQuery,
+    useAddSkillMutation,
+    useGetSkillsQuery,
+    useDeleteSkillMutation,
+} = apiSlice;

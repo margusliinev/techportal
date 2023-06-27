@@ -16,6 +16,7 @@ import NavLinks from './NavLinks';
 import PaginationContainer from './PaginationContainer';
 import PersonalInformation from './PersonalInformation';
 import SearchContainer from './SearchContainer';
+import Skills from './Skills';
 import StatsContainer from './StatsContainer';
 import UserButton from './UserButton';
 
@@ -38,6 +39,7 @@ export {
     PaginationContainer,
     PersonalInformation,
     SearchContainer,
+    Skills,
     StatsContainer,
     UserButton,
 };
