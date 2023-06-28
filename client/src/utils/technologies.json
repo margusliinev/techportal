@@ -159,5 +159,11 @@
     "Tailwind",
     "styled-components",
     "Blazor",
-    "Nest.js"
+    "Nest.js",
+    "Prisma",
+    "Drizzle",
+    "Sequelize",
+    "TypeORM",
+    "Mongoose",
+    "Knex.js"
 ]

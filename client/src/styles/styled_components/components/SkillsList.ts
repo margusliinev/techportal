@@ -2,9 +2,13 @@ import styled from 'styled-components';
 
 const Wrapper = styled.form`
     .skills {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 0.5rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        border: 1px solid var(--colorGray3);
+        border-radius: 1rem;
+        padding: 2rem;
     }
     .skill {
         display: flex;
@@ -17,10 +21,20 @@ const Wrapper = styled.form`
         button {
             display: grid;
             background-color: transparent;
-            border: none;
-            font-size: 1.25rem;
+            border: 2px solid transparent;
+            font-size: 1.5rem;
             color: var(--colorRed);
             cursor: pointer;
+            transition: var(--transition);
+            border-radius: var(--radius-md);
+        }
+        button:hover {
+            border: 2px solid var(--colorRed);
+        }
+    }
+    @media (max-width: 450px) {
+        .skills {
+            padding: 1rem;
         }
     }
 `;
