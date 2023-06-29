@@ -7,9 +7,15 @@ const SkillsList = () => {
     const [deleteSkill] = useDeleteSkillMutation();
     const { data } = useGetSkillsQuery(undefined);
 
-    const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLButtonElement>): void => {
         e.preventDefault();
-        await deleteSkill({ skill: e.currentTarget.value });
+        deleteSkill({ skill: e.currentTarget.value })
+            .then(() => {
+                return;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
