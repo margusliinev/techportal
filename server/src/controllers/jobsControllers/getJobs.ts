@@ -124,7 +124,7 @@ export const getJobs = async (req: Request, res: Response) => {
 
         const recommendedJobs = jobRanks.slice(0, 5).map((job) => job.job);
 
-        if (allJobs.length === 140) {
+        if (allJobs.length === 140 && skills.length > 0) {
             const updateQuery = `
             UPDATE jobs
             SET recommended = CASE
