@@ -5,7 +5,7 @@ import { BadRequestError, UnAuthenticatedError } from '../../errors';
 
 interface AuthenticatedRequest extends Request {
     user?: {
-        userId: number;
+        userId: string;
     };
 }
 
@@ -16,7 +16,7 @@ const addSkill = async (req: AuthenticatedRequest, res: Response) => {
         throw new UnAuthenticatedError('Authentication Invalid');
     }
 
-    await query('UPDATE users set skills = array_append(skills, $1) WHERE id = $2', [skill, req.user.userId.toString()]).catch(() => {
+    await query('UPDATE users set skills = array_append(skills, $1) WHERE id = $2', [skill, req.user.userId]).catch(() => {
         throw new BadRequestError('Failed updating user skills');
     });
 

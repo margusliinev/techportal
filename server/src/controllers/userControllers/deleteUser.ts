@@ -5,7 +5,7 @@ import { UnAuthenticatedError } from '../../errors';
 
 interface AuthenticatedRequest extends Request {
     user?: {
-        userId: number;
+        userId: string;
     };
 }
 
@@ -14,7 +14,7 @@ export const deleteUser = async (req: AuthenticatedRequest, res: Response) => {
         throw new UnAuthenticatedError('Authentication Invalid');
     }
 
-    await query('DELETE FROM users WHERE id = $1', [req.user.userId.toString()]);
+    await query('DELETE FROM users WHERE id = $1', [req.user.userId]);
     res.cookie('token', 'logout', {
         httpOnly: true,
         expires: new Date(Date.now()),

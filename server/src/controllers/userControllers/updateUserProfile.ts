@@ -5,7 +5,7 @@ import { BadRequestError, UnAuthenticatedError } from '../../errors';
 
 interface AuthenticatedRequest extends Request {
     user?: {
-        userId: number;
+        userId: string;
     };
 }
 
@@ -28,7 +28,7 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
         throw new BadRequestError('Missing email or password');
     }
 
-    const uniqueEmail = await query('select email from users where email = $1 AND id != $2', [email, req.user.userId.toString()]);
+    const uniqueEmail = await query('select email from users where email = $1 AND id != $2', [email, req.user.userId]);
     if (uniqueEmail.length >= 1) {
         throw new BadRequestError('Email address is already in use');
     }
@@ -45,7 +45,7 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
         throw new BadRequestError('Please enter a valid email');
     }
 
-    const result = await query('UPDATE users SET username = $1, email = $2 WHERE id = $3 returning *', [username, email, req.user.userId.toString()]);
+    const result = await query('UPDATE users SET username = $1, email = $2 WHERE id = $3 returning *', [username, email, req.user.userId]);
     const user = {
         username: result[0].username as string,
         email: result[0].email as string,

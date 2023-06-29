@@ -5,7 +5,7 @@ import { BadRequestError, UnAuthenticatedError } from '../../errors';
 
 interface AuthenticatedRequest extends Request {
     user?: {
-        userId: number;
+        userId: string;
     };
 }
 
@@ -14,7 +14,7 @@ const getSkills = async (req: AuthenticatedRequest, res: Response) => {
         throw new UnAuthenticatedError('Authentication Invalid');
     }
 
-    const result = await query('SELECT skills FROM users WHERE id = $1', [req.user.userId.toString()]).catch(() => {
+    const result = await query('SELECT skills FROM users WHERE id = $1', [req.user.userId]).catch(() => {
         throw new BadRequestError('Failed to fetch user skills');
     });
 

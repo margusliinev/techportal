@@ -1,4 +1,5 @@
 export interface User {
+    id: string;
     username: string;
     email: string;
 }
@@ -71,6 +72,7 @@ export interface GetJobsParams {
     sort?: string;
     page?: number;
     limit?: number;
+    userId?: string;
 }
 
 export interface JobAPIResponse {
@@ -81,6 +83,7 @@ export interface JobAPIResponse {
 export interface UserAPIResponse {
     success: boolean;
     user: {
+        id: string;
         username: string;
         email: string;
     };

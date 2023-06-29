@@ -7,7 +7,7 @@ import { BadRequestError, UnAuthenticatedError } from '../../errors';
 import { createCookie } from '../../utils/createCookie';
 
 interface User {
-    id: number;
+    id: string;
     username: string;
     email: string;
     password: string;

@@ -6,7 +6,7 @@ import { BadRequestError, UnAuthenticatedError } from '../../errors';
 
 interface AuthenticatedRequest extends Request {
     user?: {
-        userId: number;
+        userId: string;
     };
 }
 
@@ -29,7 +29,7 @@ export const updateUserPassword = async (req: AuthenticatedRequest, res: Respons
         throw new BadRequestError('Missing current password, new password, or confirm password');
     }
 
-    const userPassword = await query('SELECT password FROM users WHERE id = $1', [req.user.userId.toString()]);
+    const userPassword = await query('SELECT password FROM users WHERE id = $1', [req.user.userId]);
 
     const passwordMatch = await bcrypt.compare(currentPassword, userPassword[0].password as string);
 
@@ -56,7 +56,7 @@ export const updateUserPassword = async (req: AuthenticatedRequest, res: Respons
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(newPassword, salt);
 
-    await query('UPDATE users SET password = $1 WHERE id = $2', [hash, req.user.userId.toString()]);
+    await query('UPDATE users SET password = $1 WHERE id = $2', [hash, req.user.userId]);
 
     res.status(200).json({ success: true, msg: 'User password has been updated' });
 };

@@ -5,6 +5,7 @@ import Wrapper from '../styles/styled_components/components/JobsContainer';
 import { Job } from '../types';
 
 const JobsContainer = () => {
+    const { user } = useAppSelector((store) => store.user);
     const { search, employment, location, sort, page } = useAppSelector((store) => store.search);
     const { data, isLoading, isError, isFetching } = useGetJobsQuery({
         search: search,
@@ -13,6 +14,7 @@ const JobsContainer = () => {
         sort: sort,
         page: page,
         limit: 10,
+        userId: user?.id,
     });
 
     if (isLoading || isFetching) {
