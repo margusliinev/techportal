@@ -16,7 +16,7 @@ const Skills = () => {
     const filteredTechnologies = technologies.filter((item) => {
         const searchTerm = value.skill.toLowerCase();
         const technology = item.toLowerCase();
-        return searchTerm && technology.startsWith(searchTerm) && technology !== searchTerm;
+        return searchTerm && technology.includes(searchTerm) && technology !== searchTerm;
     });
     const errorRef = useRef<HTMLParagraphElement>(null);
 
@@ -27,10 +27,6 @@ const Skills = () => {
         setValue({ skill: e.target.value });
     };
 
-    const onSearch = (searchTerm: string) => {
-        setValue({ skill: searchTerm });
-    };
-
     const findMatch = (array: string[], value: string): string | null => {
         for (const item of array) {
             if (item.toLowerCase() === value.toLowerCase()) {
@@ -38,6 +34,10 @@ const Skills = () => {
             }
         }
         return null;
+    };
+
+    const onSearch = (searchTerm: string) => {
+        setValue({ skill: searchTerm });
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -82,7 +82,7 @@ const Skills = () => {
                                 </button>
                             </div>
                             <div className={filteredTechnologies.length > 0 ? 'skills-input-dropdown show-dropdown' : 'skills-input-dropdown'}>
-                                {filteredTechnologies.map((item) => {
+                                {filteredTechnologies.slice(0, 10).map((item) => {
                                     return (
                                         <div className='dropdown-item' key={item} onClick={() => onSearch(item)}>
                                             {item}

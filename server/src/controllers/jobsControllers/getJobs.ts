@@ -102,7 +102,7 @@ export const getJobs = async (req: Request, res: Response) => {
 
     const numOfPages = Math.ceil(allJobs.length / limitNumber);
 
-    if (userId) {
+    if (userId && allJobs.length > 0) {
         const result = await query('SELECT skills FROM users WHERE id = $1', [userId]);
         const skills = result[0].skills as string[];
 
@@ -124,18 +124,26 @@ export const getJobs = async (req: Request, res: Response) => {
 
         const recommendedJobs = jobRanks.slice(0, 5).map((job) => job.job);
 
-        const updateQuery = `
+        if (allJobs.length === 140) {
+            const updateQuery = `
             UPDATE jobs
             SET recommended = CASE
             WHEN id IN (${recommendedJobs.map((job) => job.id).join(',')}) THEN true
             ELSE false
             END;
         `;
+            await query(updateQuery).catch((err) => console.log(err));
+        }
+    } else {
+        const updateQuery = `
+            UPDATE jobs
+            SET recommended = false
+        `;
 
-        await query(updateQuery);
+        await query(updateQuery).catch((err) => console.log(err));
     }
-    sqlQuery += ` LIMIT ${limitNumber} OFFSET ${skip}`;
 
+    sqlQuery += ` LIMIT ${limitNumber} OFFSET ${skip}`;
     const displayedJobs = await query(sqlQuery, params);
 
     res.status(200).json({ success: true, jobs: displayedJobs, totalJobs: allJobs.length, numOfPages: numOfPages });

@@ -120,6 +120,11 @@ const Wrapper = styled.article`
         margin-top: 1rem;
         text-transform: capitalize;
     }
+    .recommended {
+        color: #fb923c;
+        font-size: 1.25rem;
+        align-self: start;
+    }
 `;
 
 export default Wrapper;

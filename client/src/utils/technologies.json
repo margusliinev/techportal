@@ -165,5 +165,6 @@
     "Sequelize",
     "TypeORM",
     "Mongoose",
-    "Knex.js"
+    "Knex.js",
+    "Hibernate"
 ]

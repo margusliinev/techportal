@@ -1,3 +1,5 @@
+import { AiFillStar } from 'react-icons/ai';
+
 import { JobCard, Loader, PaginationContainer } from '../components';
 import { useGetJobsQuery } from '../features/api/apiSlice';
 import { useAppSelector } from '../hooks';
@@ -41,17 +43,24 @@ const JobsContainer = () => {
         <Wrapper>
             <h5>
                 {data && data.totalJobs} job{data && data.totalJobs !== 1 && 's'} found
-                {isFetching && (
-                    <div className='mini-loader'>
-                        <Loader />
-                    </div>
+                {user && (
+                    <span className='legend'>
+                        <span className='legend-icon'>
+                            <AiFillStar />
+                        </span>
+                        <span>-</span>
+                        <p>Recommended based on your profile</p>
+                    </span>
                 )}
             </h5>
             <div className='jobs'>
-                {data &&
-                    data.jobs.map((job: Job) => {
+                {data ? (
+                    data?.jobs.map((job: Job) => {
                         return <JobCard key={job.id} {...job} />;
-                    })}
+                    })
+                ) : (
+                    <div>No jobs found</div>
+                )}
             </div>
             {data && data.numOfPages > 1 && <PaginationContainer numOfPages={data.numOfPages} />}
         </Wrapper>

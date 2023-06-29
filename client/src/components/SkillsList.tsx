@@ -20,20 +20,20 @@ const SkillsList = () => {
 
     return (
         <Wrapper>
-            <ul className='skills'>
-                {data
-                    ? data.skills.map((skill, index) => {
-                          return (
-                              <li key={index} className='skill'>
-                                  <p>{skill}</p>
-                                  <button type='submit' value={skill} onClick={handleSubmit}>
-                                      <MdClose />
-                                  </button>
-                              </li>
-                          );
-                      })
-                    : null}
-            </ul>
+            {data && data.skills.length > 0 && (
+                <ul className='skills'>
+                    {data.skills.map((skill, index) => {
+                        return (
+                            <li key={index} className='skill'>
+                                <p>{skill}</p>
+                                <button type='submit' value={skill} onClick={handleSubmit}>
+                                    <MdClose />
+                                </button>
+                            </li>
+                        );
+                    })}
+                </ul>
+            )}
         </Wrapper>
     );
 };
