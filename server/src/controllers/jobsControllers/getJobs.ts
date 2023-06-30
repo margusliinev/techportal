@@ -117,7 +117,9 @@ export const getJobs = async (req: Request, res: Response) => {
                 }
             }
 
-            jobRanks.push({ job: job, matchingSkills: matchingSkills });
+            if (matchingSkills > 0) {
+                jobRanks.push({ job: job, matchingSkills: matchingSkills });
+            }
         }
 
         jobRanks.sort((a, b) => b.matchingSkills - a.matchingSkills);

@@ -42,7 +42,7 @@ const Wrapper = styled.section`
         box-shadow: var(--shadow-sm);
         height: fit-content;
         padding: 1rem;
-        background-color: var(--colorPrimary);
+        background-color: var(--colorPrimary5);
         color: #f3f4f6;
         border-radius: var(--radius-md);
         white-space: nowrap;
