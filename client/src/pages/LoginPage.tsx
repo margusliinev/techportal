@@ -28,8 +28,11 @@ const LoginPage = () => {
         e.preventDefault();
         if (values.email && values.password) {
             login(values)
-                .then(() => {
-                    navigate('/');
+                .unwrap()
+                .then((response) => {
+                    if (response.success) {
+                        navigate('/');
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
@@ -52,7 +55,7 @@ const LoginPage = () => {
                         {error && (error as CustomAPIError).data.msg}
                     </p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
-                    <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} handleChange={handleChange} />
+                    <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} forgot={true} handleChange={handleChange} />
                     <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
                         Sign In
                     </button>

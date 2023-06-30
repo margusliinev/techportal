@@ -15,6 +15,10 @@ export interface UserLogin {
     password: string;
 }
 
+export interface UserReset {
+    email: string;
+}
+
 export interface UserUpdatePassword {
     currentPassword: string;
     newPassword: string;

@@ -34,8 +34,11 @@ const RegisterPage = () => {
         const { username, email, password } = values;
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
             register({ username, email, password })
-                .then(() => {
-                    navigate('/');
+                .unwrap()
+                .then((response) => {
+                    if (response.success) {
+                        navigate('/login');
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
@@ -78,6 +81,7 @@ const RegisterPage = () => {
                         name={'password'}
                         value={values.password}
                         labelText={'password'}
+                        forgot={false}
                         handleChange={handleChange}
                         handleValidation={(e) => handleValidation(e, values.username, values.email, values.password)}
                     />

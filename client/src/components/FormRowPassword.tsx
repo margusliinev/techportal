@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 interface Props {
     type: string;
     name: string;
     value: string;
     labelText: string;
+    forgot: boolean;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleValidation?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-const FormRowPassword = ({ type, name, value, labelText, handleChange, handleValidation }: Props) => {
+const FormRowPassword = ({ type, name, value, labelText, forgot, handleChange, handleValidation }: Props) => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const handlePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -27,9 +29,18 @@ const FormRowPassword = ({ type, name, value, labelText, handleChange, handleVal
 
     return (
         <div className='form-row'>
-            <label htmlFor={name} className='form-label'>
-                {labelText || name}
-            </label>
+            {forgot ? (
+                <div className='form-label-flex'>
+                    <label htmlFor='password'>password</label>
+                    <Link to={'/reset'} className='form-forgot-password'>
+                        Forgot password?
+                    </Link>
+                </div>
+            ) : (
+                <label htmlFor={name} className='form-label'>
+                    {labelText || name}
+                </label>
+            )}
             <div className='form-input-password-container'>
                 {value.length > 0 ? (
                     <button type='button' className='password-toggle' onMouseDown={handlePasswordVisibility}>
