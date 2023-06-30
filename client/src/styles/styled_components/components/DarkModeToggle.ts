@@ -40,6 +40,7 @@ const Wrapper = styled.div`
     label,
     label:after {
         transition: 0.3s;
+        transition-property: width, height, position, top, right, bottom, left, box-shadow, border-radius, transform;
     }
     label:active:after {
         width: 60px;

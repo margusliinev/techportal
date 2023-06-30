@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { DefaultAPIResponse, User, UserAPIResponse } from '../../types';
 
@@ -40,9 +40,9 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser: (state, action) => {
+        setUser: (state, action: PayloadAction<User | null>) => {
             if (action.payload !== null) {
-                state.user = action.payload as User;
+                state.user = action.payload;
             } else {
                 state.user = null;
             }

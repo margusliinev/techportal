@@ -13,7 +13,7 @@ const initialState: UserLogin = {
 
 const LoginPage = () => {
     const [values, setValues] = useState<UserLogin>(initialState);
-    const [login, { isLoading, error, isSuccess }] = useLoginMutation();
+    const [login, { isLoading, error }] = useLoginMutation();
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const LoginPage = () => {
         if (values.email && values.password) {
             login(values)
                 .then(() => {
-                    return;
+                    navigate('/');
                 })
                 .catch((error) => {
                     console.log(error);
@@ -41,12 +41,6 @@ const LoginPage = () => {
         }
     };
 
-    if (isSuccess) {
-        setTimeout(() => {
-            navigate('/');
-        }, 2000);
-    }
-
     return (
         <Wrapper>
             <div className='container'>
@@ -54,13 +48,13 @@ const LoginPage = () => {
                     <div className='form-logo'>
                         <Logo />
                     </div>
-                    <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Login successful! Welcome back'}
+                    <p ref={errorRef} className='server-message server-message-error'>
+                        {error && (error as CustomAPIError).data.msg}
                     </p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
                     <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} handleChange={handleChange} />
-                    <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
-                        {isSuccess ? 'Redirecting...' : 'Sign In'}
+                    <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
+                        Sign In
                     </button>
                     <MemberCheck message={"Don't have an account?"} endpoint={'register'} />
                 </form>

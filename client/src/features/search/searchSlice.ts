@@ -19,7 +19,7 @@ const searchSlice = createSlice({
             state.employment = action.payload.employment;
             state.location = action.payload.location;
             state.sort = action.payload.sort;
-            state.page = action.payload.page;
+            state.page = 1;
         },
         setPage(state, action: PayloadAction<number>) {
             state.page = action.payload;

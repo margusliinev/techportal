@@ -1,12 +1,25 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
-import { useAppSelector } from './hooks';
+import { getUser } from './features/user/userSlice';
+import { useAppDispatch, useAppSelector } from './hooks';
 import { ErrorPage, LandingPage, LoginPage, RegisterPage } from './pages';
 import { Job, Jobs, Profile, SharedLayout, Stats } from './pages/dashboard';
 
 function App() {
     const { theme } = useAppSelector((store) => store.navigation);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getUser())
+            .then(() => {
+                return;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [dispatch]);
+
     useEffect(() => {
         document.documentElement.className = theme;
         localStorage.setItem('theme', theme);

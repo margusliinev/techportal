@@ -15,7 +15,7 @@ const initialState: UserRegister = {
 
 const RegisterPage = () => {
     const [values, setValues] = useState<UserRegister>(initialState);
-    const [register, { isLoading, error, isSuccess }] = useRegisterMutation();
+    const [register, { isLoading, error }] = useRegisterMutation();
     const errorRef = useRef<HTMLParagraphElement>(null);
     const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const RegisterPage = () => {
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
             register({ username, email, password })
                 .then(() => {
-                    return;
+                    navigate('/');
                 })
                 .catch((error) => {
                     console.log(error);
@@ -47,12 +47,6 @@ const RegisterPage = () => {
         }
     };
 
-    if (isSuccess) {
-        setTimeout(() => {
-            navigate('/login');
-        }, 2000);
-    }
-
     return (
         <Wrapper>
             <div className='container'>
@@ -60,8 +54,8 @@ const RegisterPage = () => {
                     <div className='form-logo'>
                         <Logo />
                     </div>
-                    <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Your account has been created'}
+                    <p ref={errorRef} className='server-message server-message-error'>
+                        {error && (error as CustomAPIError).data.msg}
                     </p>
                     <FormRow
                         type={'text'}
@@ -87,8 +81,8 @@ const RegisterPage = () => {
                         handleChange={handleChange}
                         handleValidation={(e) => handleValidation(e, values.username, values.email, values.password)}
                     />
-                    <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
-                        {isSuccess ? 'Redirecting...' : 'Create new account'}
+                    <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
+                        Create new account
                     </button>
                     <MemberCheck message={'Already have an account?'} endpoint={'login'} />
                 </form>

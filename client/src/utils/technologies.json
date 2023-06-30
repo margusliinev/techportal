@@ -166,5 +166,7 @@
     "TypeORM",
     "Mongoose",
     "Knex.js",
-    "Hibernate"
+    "Hibernate",
+    "Redux",
+    "Linux"
 ]

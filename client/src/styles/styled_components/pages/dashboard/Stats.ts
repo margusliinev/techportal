@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-    height: calc(100vh - 10rem);
+    min-height: calc(100vh - 10rem);
     width: 100%;
     .stats-center {
         width: 100%;
-        height: 100%;
+        min-height: calc(100vh - 10rem);
         display: grid;
         place-items: center;
         text-align: center;
