@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 import { Request, Response } from 'express';
 
 import { query } from '../../db';
@@ -7,13 +8,6 @@ import { BadRequestError } from '../../errors';
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%&*,.?]{8,}$/;
-
-interface NewUser {
-    id: number;
-    username: string;
-    email: string;
-    password: string;
-}
 
 interface UserRegister {
     username: string;
@@ -59,12 +53,16 @@ export const register = async (req: Request, res: Response) => {
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const result = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [username, email, hash]);
 
-    const user = result[0] as NewUser;
+    const verificationToken = crypto.randomBytes(40).toString('hex');
+
+    await query('insert into users (username, email, password, verification_token) values ($1, $2, $3, $4) returning *', [username, email, hash, verificationToken]).catch(() => {
+        throw new BadRequestError('Failed to register user');
+    });
 
     res.status(201).json({
         success: true,
-        user: { username: user.username, email: user.email },
+        msg: 'Please check your email to verify your account',
+        token: verificationToken,
     });
 };
