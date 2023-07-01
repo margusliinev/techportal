@@ -61,7 +61,7 @@ export const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Failed to register user');
     });
 
-    const origin = 'https://techportal.onrender.com/';
+    const origin = 'https://techportal.onrender.com';
 
     await sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch(() => {
         throw new BadRequestError('Failed to send verification email');
