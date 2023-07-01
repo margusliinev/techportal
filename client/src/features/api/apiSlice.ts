@@ -20,7 +20,7 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: '/api/v1' }),
     tagTypes: ['Skills'],
     endpoints: (builder) => ({
-        register: builder.mutation<UserAPIResponse, UserRegister>({
+        register: builder.mutation<DefaultAPIResponse, UserRegister>({
             query: (user) => ({
                 url: '/register',
                 method: 'POST',

@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { FormRow, FormRowPassword, Logo, MemberCheck } from '../components';
 import { useRegisterMutation } from '../features/api/apiSlice';
@@ -15,9 +14,8 @@ const initialState: UserRegister = {
 
 const RegisterPage = () => {
     const [values, setValues] = useState<UserRegister>(initialState);
-    const [register, { isLoading, error }] = useRegisterMutation();
+    const [register, { isLoading, error, isSuccess }] = useRegisterMutation();
     const errorRef = useRef<HTMLParagraphElement>(null);
-    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const nextElementSibling = e.currentTarget.nextElementSibling as HTMLElement;
@@ -35,10 +33,8 @@ const RegisterPage = () => {
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
             register({ username, email, password })
                 .unwrap()
-                .then((response) => {
-                    if (response.success) {
-                        navigate('/login');
-                    }
+                .then(() => {
+                    return;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -57,8 +53,8 @@ const RegisterPage = () => {
                     <div className='form-logo'>
                         <Logo />
                     </div>
-                    <p ref={errorRef} className='server-message server-message-error'>
-                        {error && (error as CustomAPIError).data.msg}
+                    <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
+                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email for a verification link'}
                     </p>
                     <FormRow
                         type={'text'}

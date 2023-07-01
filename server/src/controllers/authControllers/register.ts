@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 
 import { query } from '../../db';
 import { BadRequestError } from '../../errors';
+import { sendVerificationEmail } from '../../utils/sendVerificationEmail';
 
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,8 +23,12 @@ export const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Missing username, email or password');
     }
 
-    const uniqueEmail = await query('select email from users where email = $1', [email]);
-    if (uniqueEmail.length >= 1) {
+    const result = await query('select * from users where email = $1', [email]);
+    const uniqueEmail = result[0];
+    if (!uniqueEmail.verified) {
+        throw new BadRequestError('Please verify your email');
+    }
+    if (uniqueEmail) {
         throw new BadRequestError('Email address is already registered');
     }
 
@@ -60,9 +65,12 @@ export const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Failed to register user');
     });
 
+    // const origin = 'http://localhost:5173';
+
+    // await sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((err) => console.log(err));
+
     res.status(201).json({
         success: true,
         msg: 'Please check your email to verify your account',
-        token: verificationToken,
     });
 };
