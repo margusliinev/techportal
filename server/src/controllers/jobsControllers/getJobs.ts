@@ -10,11 +10,10 @@ interface QueryParams {
     sort?: string;
     page?: number;
     limit?: number;
-    userId?: string;
 }
 
 export const getJobs = async (req: Request, res: Response) => {
-    const { search, employment, location, sort, page, limit, userId }: QueryParams = req.query;
+    const { search, employment, location, sort, page, limit }: QueryParams = req.query;
 
     let sqlQuery = 'SELECT * FROM jobs';
     const params = [];
@@ -52,16 +51,16 @@ export const getJobs = async (req: Request, res: Response) => {
     }
 
     if (sort === 'latest') {
-        sqlQuery += ` ORDER BY CASE WHEN recommended = true THEN 0 ELSE 1 END, id ASC`;
+        sqlQuery += ` ORDER BY id ASC`;
     }
     if (sort === 'oldest') {
-        sqlQuery += ` ORDER BY CASE WHEN recommended = true THEN 0 ELSE 1 END, id DESC`;
+        sqlQuery += ` ORDER BY id DESC`;
     }
     if (sort === 'salary(highest)') {
-        sqlQuery += ` ORDER BY CASE WHEN recommended = true THEN 0 ELSE 1 END, salary DESC`;
+        sqlQuery += ` ORDER BY salary DESC`;
     }
     if (sort === 'salary(lowest)') {
-        sqlQuery += ` ORDER BY CASE WHEN recommended = true THEN 0 ELSE 1 END, salary ASC`;
+        sqlQuery += ` ORDER BY salary ASC`;
     }
 
     const pageNumber = page || 1;
@@ -73,57 +72,8 @@ export const getJobs = async (req: Request, res: Response) => {
 
     const numOfPages = Math.ceil(allJobs.length / limitNumber);
 
-    if (userId && allJobs.length > 0) {
-        const result = await query('SELECT skills FROM users WHERE id = $1', [userId]);
-        const skills = result[0].skills as string[];
-
-        const jobRanks: { job: Job; matchingSkills: number }[] = [];
-
-        for (const job of allJobs) {
-            let matchingSkills = 0;
-
-            for (const skill of skills) {
-                if (job.technologies.includes(skill.toLowerCase().replace('.', ''))) {
-                    matchingSkills++;
-                }
-            }
-
-            if (matchingSkills > 0) {
-                jobRanks.push({ job: job, matchingSkills: matchingSkills });
-            }
-        }
-
-        jobRanks.sort((a, b) => b.matchingSkills - a.matchingSkills);
-
-        const recommendedJobs = jobRanks.slice(0, 5).map((job) => job.job);
-
-        if (allJobs.length === 140 && skills.length > 0) {
-            const updateQuery = `
-            UPDATE jobs
-            SET recommended = CASE
-            WHEN id IN (${recommendedJobs.map((job) => job.id).join(',')}) THEN true
-            ELSE false
-            END;
-        `;
-            await query(updateQuery).catch((err) => console.log(err));
-        } else if (skills.length === 0) {
-            const updateQuery = `
-            UPDATE jobs
-            SET recommended = false
-        `;
-
-            await query(updateQuery).catch((err) => console.log(err));
-        }
-    } else {
-        const updateQuery = `
-            UPDATE jobs
-            SET recommended = false
-        `;
-
-        await query(updateQuery).catch((err) => console.log(err));
-    }
-
     sqlQuery += ` LIMIT ${limitNumber} OFFSET ${skip}`;
+
     const displayedJobs = await query(sqlQuery, params);
 
     res.status(200).json({ success: true, jobs: displayedJobs, totalJobs: allJobs.length, numOfPages: numOfPages });

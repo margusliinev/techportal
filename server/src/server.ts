@@ -11,6 +11,7 @@ import errorHandlerMiddleware from './middleware/errorHandler';
 import notFoundMiddleware from './middleware/notFound';
 import authRouter from './routes/authRoutes';
 import jobsRouter from './routes/jobsRoutes';
+import skillsRouter from './routes/skillsRoutes';
 import statsRouter from './routes/statsRoutes';
 import userRouter from './routes/userRoutes';
 
@@ -38,6 +39,7 @@ app.use('/', authRouter);
 app.use('/', userRouter);
 app.use('/', jobsRouter);
 app.use('/', statsRouter);
+app.use('/', skillsRouter);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../../client/dist')));

@@ -1,12 +1,11 @@
 import moment from 'moment';
-import { AiFillStar } from 'react-icons/ai';
 import { FaBriefcase, FaCalendar, FaLocationArrow, FaMoneyBill, FaServicestack } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import Wrapper from '../styles/styled_components/components/JobCard';
 import { Job } from '../types';
 
-const JobCard = ({ company, position, employment, location, salary, expire_date, technologies, company_logo, id, recommended }: Job) => {
+const JobCard = ({ company, position, employment, location, salary, expire_date, technologies, company_logo, id }: Job) => {
     const date = moment(expire_date).format('MMM Do, YYYY');
 
     return (
@@ -18,11 +17,6 @@ const JobCard = ({ company, position, employment, location, salary, expire_date,
                         <h5>{position}</h5>
                         <p>{company}</p>
                     </div>
-                    {recommended && (
-                        <span className='recommended'>
-                            <AiFillStar />
-                        </span>
-                    )}
                 </header>
                 <div className='content'>
                     <div className='content-center'>

@@ -16,13 +16,11 @@ const deleteSkill = async (req: AuthenticatedRequest, res: Response) => {
         throw new UnAuthenticatedError('Authentication Invalid');
     }
 
-    try {
-        await query('UPDATE users SET skills = array_remove(skills, $1) WHERE id = $2', [skill, req.user.userId]);
-
-        res.status(200).json({ success: true, message: 'Skill deleted successfully' });
-    } catch (error) {
+    await query('UPDATE users SET skills = array_remove(skills, $1) WHERE id = $2', [skill, req.user.userId]).catch(() => {
         throw new BadRequestError('Failed deleting user skill');
-    }
+    });
+
+    res.status(204).json({ success: true, message: 'Skill deleted successfully' });
 };
 
 export { deleteSkill };

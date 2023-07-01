@@ -79,14 +79,14 @@ export const apiSlice = createApi({
         }),
         getSkills: builder.query<SkillsAPIResponse, undefined>({
             query: () => ({
-                url: '/users/me/skills',
+                url: '/skills',
                 method: 'GET',
             }),
             providesTags: ['Skills'],
         }),
         addSkill: builder.mutation<DefaultAPIResponse, NewSkill>({
             query: (skill) => ({
-                url: '/users/me/skills',
+                url: '/skills',
                 method: 'POST',
                 body: skill,
             }),
@@ -94,7 +94,7 @@ export const apiSlice = createApi({
         }),
         deleteSkill: builder.mutation<DefaultAPIResponse, NewSkill>({
             query: (skill) => ({
-                url: '/users/me/skills',
+                url: '/skills',
                 method: 'DELETE',
                 body: skill,
             }),

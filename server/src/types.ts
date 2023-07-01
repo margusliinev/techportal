@@ -25,5 +25,4 @@ export interface Job {
     technologies: string[];
     company_logo: string;
     company_post: string;
-    recommended: boolean;
 }

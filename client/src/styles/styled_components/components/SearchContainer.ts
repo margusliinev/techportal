@@ -42,6 +42,11 @@ const Wrapper = styled.section`
         background-color: var(--colorRed2);
         border: 1px solid var(--colorRed2);
     }
+    @media (max-width: 450px) {
+        .form {
+            padding: 2rem 1.5rem;
+        }
+    }
     @media (min-width: 768px) {
         .form-center {
             grid-template-columns: 1fr 1fr;
