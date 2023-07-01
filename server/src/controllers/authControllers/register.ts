@@ -23,12 +23,8 @@ export const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Missing username, email or password');
     }
 
-    const result = await query('select * from users where email = $1', [email]);
-    const uniqueEmail = result[0];
-    if (!uniqueEmail.verified) {
-        throw new BadRequestError('Please verify your email');
-    }
-    if (uniqueEmail) {
+    const uniqueEmail = await query('select * from users where email = $1', [email]);
+    if (uniqueEmail.length >= 1) {
         throw new BadRequestError('Email address is already registered');
     }
 
@@ -65,9 +61,9 @@ export const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Failed to register user');
     });
 
-    // const origin = 'http://localhost:5173';
+    const origin = 'http://localhost:5173';
 
-    // await sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((err) => console.log(err));
+    await sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((err) => console.log(err));
 
     res.status(201).json({
         success: true,

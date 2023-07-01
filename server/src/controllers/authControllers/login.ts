@@ -29,12 +29,11 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const result = await query('SELECT * FROM users WHERE email = $1', [email]);
+    const user = result[0] as User;
 
-    if (!result[0]) {
+    if (!user) {
         throw new UnAuthenticatedError('Incorrect email or password');
     }
-
-    const user = result[0] as User;
 
     const hashedPassword = user.password;
 
@@ -56,6 +55,6 @@ export const login = async (req: Request, res: Response) => {
 
     res.status(200).json({
         success: true,
-        user: { username: user.username, email: user.email },
+        msg: 'Login successful',
     });
 };

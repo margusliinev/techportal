@@ -36,8 +36,8 @@ const RegisterPage = () => {
                 .then(() => {
                     return;
                 })
-                .catch((error) => {
-                    console.log(error);
+                .catch(() => {
+                    return;
                 });
         } else if (!username || !email || !password) {
             if (errorRef.current) {
@@ -54,7 +54,7 @@ const RegisterPage = () => {
                         <Logo />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email for a verification link'}
+                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email to verify your account'}
                     </p>
                     <FormRow
                         type={'text'}

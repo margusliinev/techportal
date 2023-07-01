@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
 import { useAppSelector } from './hooks';
-import { ErrorPage, LandingPage, LoginPage, RegisterPage, ResetPage } from './pages';
+import { ErrorPage, LandingPage, LoginPage, RegisterPage, ResetPage, VerifyPage } from './pages';
 import { Job, Jobs, Profile, SharedLayout, Stats } from './pages/dashboard';
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
                 <Route path='/register' element={<RegisterPage />}></Route>
                 <Route path='/login' element={<LoginPage />}></Route>
                 <Route path='/reset' element={<ResetPage />}></Route>
+                <Route path='/verify' element={<VerifyPage />}></Route>
                 <Route path='/landing' element={<LandingPage />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
             </Routes>

@@ -27,5 +27,5 @@ export const verify = async (req: Request, res: Response) => {
         throw new BadRequestError('Failed to update user');
     });
 
-    res.status(200).json({ verificationToken, email });
+    res.status(200).json({ success: true, msg: 'Your account has been verified' });
 };

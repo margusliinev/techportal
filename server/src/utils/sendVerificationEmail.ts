@@ -28,6 +28,6 @@ export const sendVerificationEmail = async ({ username, email, verification_toke
         from: '"TechPortal" <techportalteam@gmail.com>',
         to: `${email}`,
         subject: 'Email Confirmation',
-        html: `<h4>Hello ${username}</h4> ${message}`,
+        html: `<h4>Hello, ${username}!</h4> ${message}`,
     });
 };

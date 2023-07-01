@@ -9,6 +9,10 @@ export interface UserRegister {
     email: string;
     password: string;
 }
+export interface UserVerify {
+    verificationToken: string | null;
+    email: string | null;
+}
 
 export interface UserLogin {
     email: string;

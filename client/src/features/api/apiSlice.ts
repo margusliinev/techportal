@@ -13,6 +13,7 @@ import {
     UserLogin,
     UserRegister,
     UserUpdatePassword,
+    UserVerify,
 } from '../../types';
 
 export const apiSlice = createApi({
@@ -27,7 +28,14 @@ export const apiSlice = createApi({
                 body: user,
             }),
         }),
-        login: builder.mutation<UserAPIResponse, UserLogin>({
+        verify: builder.mutation<DefaultAPIResponse, UserVerify>({
+            query: (verificationParams) => ({
+                url: '/verify',
+                method: 'POST',
+                body: verificationParams,
+            }),
+        }),
+        login: builder.mutation<DefaultAPIResponse, UserLogin>({
             query: (user) => ({
                 url: '/login',
                 method: 'POST',
@@ -97,6 +105,7 @@ export const apiSlice = createApi({
 
 export const {
     useRegisterMutation,
+    useVerifyMutation,
     useLoginMutation,
     useUpdateUserProfileMutation,
     useUpdateUserPasswordMutation,
