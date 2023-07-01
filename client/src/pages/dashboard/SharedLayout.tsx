@@ -9,13 +9,9 @@ import Wrapper from '../../styles/styled_components/pages/dashboard/SharedLayout
 const SharedLayout = () => {
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(getUser())
-            .then(() => {
-                return;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        dispatch(getUser()).finally(() => {
+            return;
+        });
     }, [dispatch]);
 
     return (

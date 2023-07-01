@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Wrapper from '../styles/styled_components/components/JobCard';
 import { Job } from '../types';
 
-const JobCard = ({ company, position, employment, location, salary, expire_date, technologies, company_logo, id }: Job) => {
+const JobCard = ({ id, company, position, employment, location, salary, expire_date, technologies, company_logo }: Job) => {
     const date = moment(expire_date).format('MMM Do, YYYY');
 
     return (

@@ -54,9 +54,8 @@ const Skills = () => {
                 .then(() => {
                     setValue({ skill: '' });
                 })
-                .catch((error) => {
+                .catch(() => {
                     setValue({ skill: '' });
-                    console.log(error);
                 });
         }
     };

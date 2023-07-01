@@ -12,13 +12,9 @@ const UserButton = () => {
     const dispatch = useAppDispatch();
 
     const handleLogout = () => {
-        dispatch(logoutUser())
-            .then(() => {
-                return;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        dispatch(logoutUser()).finally(() => {
+            return;
+        });
         dispatch(setUser(null));
     };
 

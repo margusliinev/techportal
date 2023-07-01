@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 
 import { query } from '../../db';
-import { Job } from '../../types';
 
 interface QueryParams {
     search?: string;
@@ -68,7 +67,7 @@ export const getJobs = async (req: Request, res: Response) => {
 
     const skip = (pageNumber - 1) * limitNumber;
 
-    const allJobs: Job[] = await query(sqlQuery, params);
+    const allJobs = await query(sqlQuery, params);
 
     const numOfPages = Math.ceil(allJobs.length / limitNumber);
 

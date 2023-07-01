@@ -16,7 +16,7 @@ const VerifyPage = () => {
     useEffect(() => {
         const verificationToken = query.get('token');
         const email = query.get('email');
-        verify({ verificationToken, email }).catch(() => {
+        verify({ verificationToken, email }).finally(() => {
             return;
         });
     }, []);

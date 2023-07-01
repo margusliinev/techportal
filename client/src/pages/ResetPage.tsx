@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FormRow } from '../components';
@@ -11,7 +11,7 @@ const initialState: UserReset = {
 
 const ResetPage = () => {
     const [values, setValues] = useState<UserReset>(initialState);
-    const errorRef = useRef<HTMLParagraphElement | null>(null);
+    // const errorRef = useRef<HTMLParagraphElement | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -19,13 +19,6 @@ const ResetPage = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (values.email) {
-            // console.log(values.email);
-        } else if (!values.email) {
-            if (errorRef.current) {
-                errorRef.current.textContent = 'Missing email or password';
-            }
-        }
     };
 
     return (

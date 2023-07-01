@@ -6,9 +6,7 @@ import { BadRequestError, UnAuthenticatedError } from '../../errors';
 export const verify = async (req: Request, res: Response) => {
     const { verificationToken, email } = req.body as { verificationToken: string; email: string };
 
-    const result = await query('SELECT * FROM users WHERE email = $1', [email]).catch(() => {
-        throw new BadRequestError('Invalid email');
-    });
+    const result = await query('SELECT * FROM users WHERE email = $1', [email]);
     const user = result[0];
 
     if (!user) {

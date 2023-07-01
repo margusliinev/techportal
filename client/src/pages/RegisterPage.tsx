@@ -31,14 +31,9 @@ const RegisterPage = () => {
         e.preventDefault();
         const { username, email, password } = values;
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
-            register({ username, email, password })
-                .unwrap()
-                .then(() => {
-                    return;
-                })
-                .catch(() => {
-                    return;
-                });
+            register({ username, email, password }).finally(() => {
+                return;
+            });
         } else if (!username || !email || !password) {
             if (errorRef.current) {
                 errorRef.current.textContent = 'Missing username, email or password';

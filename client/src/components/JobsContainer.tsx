@@ -6,7 +6,7 @@ import { Job } from '../types';
 
 const JobsContainer = () => {
     const { search, employment, location, sort, page } = useAppSelector((store) => store.search);
-    const { data, isLoading, isError, error, isFetching } = useGetJobsQuery({
+    const { data, isLoading, isError, isFetching } = useGetJobsQuery({
         search: search,
         employment: employment,
         location: location,
@@ -25,7 +25,6 @@ const JobsContainer = () => {
         );
     }
     if (isError) {
-        console.log(error);
         return (
             <Wrapper>
                 <div className='jobs-center'>
