@@ -36,9 +36,24 @@ export const sendVerificationEmail = async ({ username, email, verification_toke
             from: '"TechPortal" <techportalteam@gmail.com>',
             to: `${email}`,
             subject: 'Email Confirmation',
-            html: `<h4>Hello, ${username}!</h4> ${message}`,
+            html: `<html>
+                        <head>
+                        </head>
+                        <body>
+                            <header>
+                                <h3>Hello, ${username}!</h3>
+                                <p>${message}</p>
+                            </header>
+                            <footer>
+                                <p>
+                                    Kind Regards,<br>
+                                    <br>
+                                    TechPortal Support Team<br>
+                                </p>
+                            </footer>
+                        </body>
+                    </html>`,
         });
-
         return result;
     } catch (error) {
         return error;

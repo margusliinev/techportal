@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-d
 
 import { useAppSelector } from './hooks';
 import { ErrorPage, LandingPage, LoginPage, RegisterPage, ResetPage, VerifyPage } from './pages';
-import { Job, Jobs, Profile, SharedLayout, Stats } from './pages/dashboard';
+import { Job, Jobs, PrivateRoute, Profile, SharedLayout, Skills, Stats } from './pages/dashboard';
 
 function App() {
     const { theme } = useAppSelector((store) => store.navigation);
@@ -21,6 +21,14 @@ function App() {
                     <Route path='stats' element={<Stats />}></Route>
                     <Route path='jobs' element={<Jobs />}></Route>
                     <Route path='jobs/:company/:id' element={<Job />} />
+                    <Route
+                        path='skills'
+                        element={
+                            <PrivateRoute>
+                                <Skills />
+                            </PrivateRoute>
+                        }
+                    />
                     <Route path='profile' element={<Profile />}></Route>
                 </Route>
                 <Route path='/register' element={<RegisterPage />}></Route>

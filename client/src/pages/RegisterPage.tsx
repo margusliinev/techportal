@@ -14,7 +14,7 @@ const initialState: UserRegister = {
 
 const RegisterPage = () => {
     const [values, setValues] = useState<UserRegister>(initialState);
-    const [register, { isLoading, error, isSuccess }] = useRegisterMutation();
+    const [register, { isLoading, isError, error, isSuccess }] = useRegisterMutation();
     const errorRef = useRef<HTMLParagraphElement>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +31,7 @@ const RegisterPage = () => {
         e.preventDefault();
         const { username, email, password } = values;
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
-            register({ username, email, password }).finally(() => {
+            register({ username, email, password }).catch(() => {
                 return;
             });
         } else if (!username || !email || !password) {
@@ -49,7 +49,7 @@ const RegisterPage = () => {
                         <Logo />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email to verify your account'}
+                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email to verify your account'}
                     </p>
                     <FormRow
                         type={'text'}

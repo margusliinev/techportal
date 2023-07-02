@@ -1,13 +1,15 @@
+import { BsTools } from 'react-icons/bs';
 import { ImProfile } from 'react-icons/im';
 import { IoBarChart } from 'react-icons/io5';
 import { MdQueryStats } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 import { toggleNavigation } from '../features/navigation/navigationSlice';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/NavLinks';
 
 const NavLinks = () => {
+    const { user } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();
 
     const controlSidebar = () => {
@@ -28,6 +30,13 @@ const NavLinks = () => {
                     {<MdQueryStats />} jobs
                 </Link>
             </li>
+            {user ? (
+                <li>
+                    <Link to={'/skills'} className='nav-link' onClick={controlSidebar}>
+                        {<BsTools />} Skills
+                    </Link>
+                </li>
+            ) : null}
             <li>
                 <Link to={'/profile'} className='nav-link' onClick={controlSidebar}>
                     {<ImProfile />} profile

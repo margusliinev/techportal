@@ -28,7 +28,7 @@ const ResetPage = () => {
                     <h5 className='reset-title'>Reset your password</h5>
                     <p className='reset-description'>Enter the email address associated with your account and we&apos;ll send you a link to reset your password.</p>
                     {/* <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email and follow the instructions to reset your password'}
+                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email and follow the instructions to reset your password'}
                     </p> */}
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
                     <button type='submit' className='btn form-btn'>

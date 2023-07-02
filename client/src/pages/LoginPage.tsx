@@ -13,7 +13,7 @@ const initialState: UserLogin = {
 
 const LoginPage = () => {
     const [values, setValues] = useState<UserLogin>(initialState);
-    const [login, { isLoading, error, isSuccess }] = useLoginMutation();
+    const [login, { isLoading, isError, error, isSuccess }] = useLoginMutation();
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ const LoginPage = () => {
                         <Logo />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {error ? (error as CustomAPIError).data.msg : isSuccess && 'Login Successful'}
+                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Login Successful'}
                     </p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
                     <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} forgot={true} handleChange={handleChange} />

@@ -61,9 +61,13 @@ export const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Failed to register user');
     });
 
-    const origin = 'https://techportal.onrender.com';
-
-    sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((error) => console.log(error));
+    if (process.env.NODE_ENV === 'production') {
+        const origin = 'https://techportal.onrender.com';
+        sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((error) => console.log(error));
+    } else {
+        const origin = 'http://localhost:5173';
+        sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((error) => console.log(error));
+    }
 
     res.status(201).json({
         success: true,
