@@ -57,15 +57,13 @@ export const register = async (req: Request, res: Response) => {
 
     const verificationToken = crypto.randomBytes(40).toString('hex');
 
-    await query('insert into users (username, email, password, verification_token) values ($1, $2, $3, $4) returning *', [username, email, hash, verificationToken]).catch(() => {
+    query('insert into users (username, email, password, verification_token) values ($1, $2, $3, $4) returning *', [username, email, hash, verificationToken]).catch(() => {
         throw new BadRequestError('Failed to register user');
     });
 
     const origin = 'https://techportal.onrender.com';
 
-    await sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch(() => {
-        throw new BadRequestError('Failed to send verification email');
-    });
+    sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((error) => console.log(error));
 
     res.status(201).json({
         success: true,

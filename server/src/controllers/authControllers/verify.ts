@@ -21,8 +21,8 @@ export const verify = async (req: Request, res: Response) => {
     user.verified = true;
     user.verification_date = Date.now();
 
-    await query('UPDATE users SET verification_token = $1, verified = $2, verification_date = $3', [user.verification_token, user.verified, user.verification_date]).catch(() => {
-        throw new BadRequestError('Failed to update user');
+    query('UPDATE users SET verification_token = $1, verified = $2, verification_date = $3', [user.verification_token, user.verified, user.verification_date]).catch(() => {
+        throw new BadRequestError('Failed to verify user');
     });
 
     res.status(200).json({ success: true, msg: 'Your account has been verified' });
