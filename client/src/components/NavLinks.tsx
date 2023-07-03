@@ -1,7 +1,7 @@
-import { BsTools } from 'react-icons/bs';
 import { ImProfile } from 'react-icons/im';
 import { IoBarChart } from 'react-icons/io5';
 import { MdQueryStats } from 'react-icons/md';
+import { TbViewfinder } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
 import { toggleNavigation } from '../features/navigation/navigationSlice';
@@ -32,8 +32,8 @@ const NavLinks = () => {
             </li>
             {user ? (
                 <li>
-                    <Link to={'/skills'} className='nav-link' onClick={controlSidebar}>
-                        {<BsTools />} Skills
+                    <Link to={'/find'} className='nav-link' onClick={controlSidebar}>
+                        {<TbViewfinder />} Find Job
                     </Link>
                 </li>
             ) : null}

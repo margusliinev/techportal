@@ -16,10 +16,10 @@ import NavLinks from './NavLinks';
 import PaginationContainer from './PaginationContainer';
 import PersonalInformation from './PersonalInformation';
 import SearchContainer from './SearchContainer';
-import Skills from './Skills';
 import SkillsList from './SkillsList';
 import StatsContainer from './StatsContainer';
 import UserButton from './UserButton';
+import UserSkills from './UserSkills';
 
 export {
     ChangePassword,
@@ -40,8 +40,8 @@ export {
     PaginationContainer,
     PersonalInformation,
     SearchContainer,
-    Skills,
     SkillsList,
     StatsContainer,
     UserButton,
+    UserSkills,
 };

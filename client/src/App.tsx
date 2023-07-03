@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-d
 
 import { useAppSelector } from './hooks';
 import { ErrorPage, LandingPage, LoginPage, RegisterPage, ResetPage, VerifyPage } from './pages';
-import { Job, Jobs, PrivateRoute, Profile, SharedLayout, Skills, Stats } from './pages/dashboard';
+import { FindJob, Job, Jobs, PrivateRoute, Profile, SharedLayout, Stats } from './pages/dashboard';
 
 function App() {
     const { theme } = useAppSelector((store) => store.navigation);
@@ -22,10 +22,10 @@ function App() {
                     <Route path='jobs' element={<Jobs />}></Route>
                     <Route path='jobs/:company/:id' element={<Job />} />
                     <Route
-                        path='skills'
+                        path='find'
                         element={
                             <PrivateRoute>
-                                <Skills />
+                                <FindJob />
                             </PrivateRoute>
                         }
                     />

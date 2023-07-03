@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 
-import { SkillsList } from '../components';
 import { useAddSkillMutation } from '../features/api/apiSlice';
-import Wrapper from '../styles/styled_components/components/Skills';
+import Wrapper from '../styles/styled_components/components/UserSkills';
 import data from '../utils/technologies.json';
+import { SkillsList } from '.';
 
 const initialValue = {
     skill: '',
@@ -63,36 +63,40 @@ const Skills = () => {
     return (
         <Wrapper>
             <div className='skills-container'>
-                <div className='skills-header'>
-                    <h6>Your Skills</h6>
-                    <p>Select technologies and tools that you are familiar with.</p>
-                </div>
-                <form className='skills-form' onSubmit={handleSubmit}>
-                    <p ref={errorRef} className='server-message server-message-error'></p>
-                    <div className='form-row'>
-                        <label htmlFor='skills' className='form-label'>
-                            Add A Skill
-                        </label>
-                        <div className='skills-input-container'>
-                            <div className='skills-search-container'>
-                                <input type='text' name='skills' value={value.skill} className='form-input' id='skills' onChange={handleChange} required />
-                                <button type='submit' className='btn'>
-                                    Add
-                                </button>
-                            </div>
-                            <div className={filteredTechnologies.length > 0 ? 'skills-input-dropdown show-dropdown' : 'skills-input-dropdown'}>
-                                {filteredTechnologies.slice(0, 10).map((item) => {
-                                    return (
-                                        <div className='dropdown-item' key={item} onClick={() => onSearch(item)}>
-                                            {item}
-                                        </div>
-                                    );
-                                })}
+                <div className='skills-form-column'>
+                    <div className='skills-header'>
+                        <h6>Your Skills</h6>
+                        <p>Select technologies and tools that you are familiar with.</p>
+                    </div>
+                    <form className='skills-form' onSubmit={handleSubmit}>
+                        <p ref={errorRef} className='server-message server-message-error'></p>
+                        <div className='form-row'>
+                            <label htmlFor='skills' className='form-label'>
+                                Add A Skill
+                            </label>
+                            <div className='skills-input-container'>
+                                <div className='skills-search-container'>
+                                    <input type='text' name='skills' value={value.skill} className='form-input' id='skills' onChange={handleChange} required />
+                                    <button type='submit' className='btn'>
+                                        Add
+                                    </button>
+                                </div>
+                                <div className={filteredTechnologies.length > 0 ? 'skills-input-dropdown show-dropdown' : 'skills-input-dropdown'}>
+                                    {filteredTechnologies.slice(0, 10).map((item) => {
+                                        return (
+                                            <div className='dropdown-item' key={item} onClick={() => onSearch(item)}>
+                                                {item}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-                <SkillsList />
+                    </form>
+                </div>
+                <div className='skills-list-column'>
+                    <SkillsList />
+                </div>
             </div>
         </Wrapper>
     );

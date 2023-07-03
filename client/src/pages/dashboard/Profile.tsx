@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { ChangePassword, DeleteAccount, Loader, PersonalInformation, Skills } from '../../components';
+import { ChangePassword, DeleteAccount, Loader, PersonalInformation } from '../../components';
 import { useAppSelector } from '../../hooks';
 import Wrapper from '../../styles/styled_components/pages/dashboard/Profile';
 
@@ -37,8 +37,6 @@ const Profile = () => {
             <PersonalInformation />
             <div className='content-divider'></div>
             <ChangePassword />
-            <div className='content-divider'></div>
-            <Skills />
             <div className='content-divider'></div>
             <DeleteAccount />
         </Wrapper>

@@ -7,7 +7,12 @@ type PrivateRouteProps = {
 };
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
-    const { user } = useAppSelector((store) => store.user);
+    const { user, userLoading } = useAppSelector((store) => store.user);
+
+    if (!user && userLoading) {
+        return;
+    }
+
     if (!user) {
         return <Navigate to='/' />;
     }
