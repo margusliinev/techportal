@@ -1,7 +1,7 @@
 // Auth Types
 
 export interface User {
-    id?: string;
+    id: string;
     username: string;
     email: string;
 }
@@ -80,6 +80,10 @@ export interface JobsAPIResponse {
     success: boolean;
     totalJobs: number;
 }
+export interface RecommendedJobsAPIResponse {
+    recommendedJobs: Job[];
+    success: boolean;
+}
 export interface GetJobsParams {
     search?: string;
     employment?: string;
@@ -87,6 +91,9 @@ export interface GetJobsParams {
     sort?: string;
     page?: number;
     limit?: number;
+}
+export interface GetRecommendedJobs {
+    userId?: string;
 }
 export interface JobAPIResponse {
     success: boolean;

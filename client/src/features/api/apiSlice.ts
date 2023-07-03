@@ -3,9 +3,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
     DefaultAPIResponse,
     GetJobsParams,
+    GetRecommendedJobs,
     JobAPIResponse,
     JobsAPIResponse,
     NewSkill,
+    RecommendedJobsAPIResponse,
     SkillsAPIResponse,
     StatsAPIResponse,
     User,
@@ -65,6 +67,14 @@ export const apiSlice = createApi({
                 },
             }),
         }),
+        getRecommendedJobs: builder.query<RecommendedJobsAPIResponse, GetRecommendedJobs>({
+            query: (queryArgs) => ({
+                url: '/jobs/recommended',
+                method: 'GET',
+                params: { ...queryArgs },
+            }),
+            providesTags: ['Skills'],
+        }),
         getJob: builder.query<JobAPIResponse, string>({
             query: (jobID) => ({
                 url: `/jobs/${jobID}`,
@@ -115,4 +125,5 @@ export const {
     useAddSkillMutation,
     useGetSkillsQuery,
     useDeleteSkillMutation,
+    useGetRecommendedJobsQuery,
 } = apiSlice;

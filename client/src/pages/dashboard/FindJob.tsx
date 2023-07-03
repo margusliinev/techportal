@@ -1,4 +1,4 @@
-import { UserSkills } from '../../components';
+import { RecommendedJobs, UserSkills } from '../../components';
 import Wrapper from '../../styles/styled_components/pages/dashboard/FindJob';
 
 const FindJob = () => {
@@ -8,6 +8,7 @@ const FindJob = () => {
             <div className='content-divider'></div>
             <UserSkills />
             <div className='content-divider'></div>
+            <RecommendedJobs />
         </Wrapper>
     );
 };

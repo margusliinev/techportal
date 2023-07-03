@@ -15,6 +15,7 @@ import Navbar from './Navbar';
 import NavLinks from './NavLinks';
 import PaginationContainer from './PaginationContainer';
 import PersonalInformation from './PersonalInformation';
+import RecommendedJobs from './RecommendedJobs';
 import SearchContainer from './SearchContainer';
 import SkillsList from './SkillsList';
 import StatsContainer from './StatsContainer';
@@ -39,6 +40,7 @@ export {
     NavLinks,
     PaginationContainer,
     PersonalInformation,
+    RecommendedJobs,
     SearchContainer,
     SkillsList,
     StatsContainer,
