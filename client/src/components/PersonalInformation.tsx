@@ -5,15 +5,15 @@ import { useUpdateUserProfileMutation } from '../features/api/apiSlice';
 import { logoutUser, setUser } from '../features/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/PersonalInformation';
-import { CustomAPIError, User } from '../types';
+import { CustomAPIError, UserUpdateProfile } from '../types';
 
-const initialState: User = {
+const initialState: UserUpdateProfile = {
     username: '',
     email: '',
 };
 
 const PersonalInformation = () => {
-    const [values, setValues] = useState<User>(initialState);
+    const [values, setValues] = useState<UserUpdateProfile>(initialState);
     const [updateUser, { isLoading, isError, error, isSuccess }] = useUpdateUserProfileMutation();
     const { user, userLoading } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();

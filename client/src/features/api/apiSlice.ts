@@ -3,18 +3,18 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
     DefaultAPIResponse,
     GetJobsParams,
-    GetRecommendedJobs,
+    GetRecommendedJobsParams,
     JobAPIResponse,
     JobsAPIResponse,
     NewSkill,
     RecommendedJobsAPIResponse,
     SkillsAPIResponse,
     StatsAPIResponse,
-    User,
     UserAPIResponse,
     UserLogin,
     UserRegister,
     UserUpdatePassword,
+    UserUpdateProfile,
     UserVerify,
 } from '../../types';
 
@@ -23,6 +23,7 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: '/api/v1' }),
     tagTypes: ['Skills'],
     endpoints: (builder) => ({
+        // USER
         register: builder.mutation<DefaultAPIResponse, UserRegister>({
             query: (user) => ({
                 url: '/register',
@@ -44,7 +45,7 @@ export const apiSlice = createApi({
                 body: user,
             }),
         }),
-        updateUserProfile: builder.mutation<UserAPIResponse, User>({
+        updateUserProfile: builder.mutation<UserAPIResponse, UserUpdateProfile>({
             query: (profile) => ({
                 url: '/users/me',
                 method: 'PATCH',
@@ -58,6 +59,7 @@ export const apiSlice = createApi({
                 body: password,
             }),
         }),
+        // JOBS
         getJobs: builder.query<JobsAPIResponse, GetJobsParams>({
             query: (queryArgs) => ({
                 url: '/jobs',
@@ -67,7 +69,7 @@ export const apiSlice = createApi({
                 },
             }),
         }),
-        getRecommendedJobs: builder.query<RecommendedJobsAPIResponse, GetRecommendedJobs>({
+        getRecommendedJobs: builder.query<RecommendedJobsAPIResponse, GetRecommendedJobsParams>({
             query: (queryArgs) => ({
                 url: '/jobs/recommended',
                 method: 'GET',
@@ -75,18 +77,7 @@ export const apiSlice = createApi({
             }),
             providesTags: ['Skills'],
         }),
-        getJob: builder.query<JobAPIResponse, string>({
-            query: (jobID) => ({
-                url: `/jobs/${jobID}`,
-                method: 'GET',
-            }),
-        }),
-        getStats: builder.query<StatsAPIResponse, undefined>({
-            query: () => ({
-                url: '/stats',
-                method: 'GET',
-            }),
-        }),
+        // SKILLS
         getSkills: builder.query<SkillsAPIResponse, undefined>({
             query: () => ({
                 url: '/skills',
@@ -109,6 +100,19 @@ export const apiSlice = createApi({
                 body: skill,
             }),
             invalidatesTags: ['Skills'],
+        }),
+        getJob: builder.query<JobAPIResponse, string>({
+            query: (jobID) => ({
+                url: `/jobs/${jobID}`,
+                method: 'GET',
+            }),
+        }),
+        // STATS
+        getStats: builder.query<StatsAPIResponse, undefined>({
+            query: () => ({
+                url: '/stats',
+                method: 'GET',
+            }),
         }),
     }),
 });

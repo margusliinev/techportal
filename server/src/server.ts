@@ -17,7 +17,7 @@ import userRouter from './routes/userRoutes';
 
 const limiter = rateLimit({
     windowMs: 10 * 60 * 1000,
-    max: 100,
+    max: 200,
     message: 'Too many requests from this IP address, please try again later',
 });
 

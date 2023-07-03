@@ -5,26 +5,25 @@ import { JobCard } from '.';
 
 const RecommendedJobs = () => {
     const { user } = useAppSelector((store) => store.user);
-    const { data, isLoading } = useGetRecommendedJobsQuery({ userId: user?.id });
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    const { data } = useGetRecommendedJobsQuery({ userId: user?.id });
 
     if (!data) {
         return (
             <Wrapper>
-                <div>No data</div>
+                <div>No Jobs found</div>
             </Wrapper>
         );
     }
 
     return (
         <Wrapper>
-            {data
-                ? data.recommendedJobs.map((job) => {
-                      return <JobCard key={job.id} {...job} />;
-                  })
-                : null}
+            {data.recommendedJobs.length > 0 ? (
+                data.recommendedJobs.map((job) => {
+                    return <JobCard key={job.id} {...job} />;
+                })
+            ) : (
+                <div>Could not find any jobs, sure you added all the technologies you know?</div>
+            )}
         </Wrapper>
     );
 };

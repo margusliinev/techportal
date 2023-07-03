@@ -1,31 +1,41 @@
-// Auth Types
-
+// USER
 export interface User {
     id: string;
     username: string;
     email: string;
 }
+
 export interface UserRegister {
     username: string;
     email: string;
     password: string;
 }
+
 export interface UserLogin {
     email: string;
     password: string;
 }
+
 export interface UserVerify {
     verificationToken: string | null;
     email: string | null;
 }
+
 export interface UserReset {
     email: string;
 }
+
+export interface UserUpdateProfile {
+    username: string;
+    email: string;
+}
+
 export interface UserUpdatePassword {
     currentPassword: string;
     newPassword: string;
     confirmNewPassword: string;
 }
+
 export interface UserAPIResponse {
     success: boolean;
     user: {
@@ -35,7 +45,7 @@ export interface UserAPIResponse {
     };
 }
 
-// Jobs Types
+// JOBS
 
 enum Employment {
     full_time = 'full-time',
@@ -43,6 +53,7 @@ enum Employment {
     internship = 'internship',
     contractor = 'contract',
 }
+
 enum Location {
     remote = 'remote',
     part_remote = 'part-remote',
@@ -51,6 +62,12 @@ enum Location {
     parnu = 'parnu',
     narva = 'narva',
 }
+
+export interface technology {
+    technology: string;
+    count: number;
+}
+
 export interface Job {
     id: number;
     company: string;
@@ -63,10 +80,7 @@ export interface Job {
     company_logo: string;
     company_post: string;
 }
-export interface technology {
-    technology: string;
-    count: number;
-}
+
 export interface FilterStates {
     search: string;
     employment: string;
@@ -74,16 +88,7 @@ export interface FilterStates {
     sort: string;
     page: number;
 }
-export interface JobsAPIResponse {
-    jobs: Job[];
-    numOfPages: number;
-    success: boolean;
-    totalJobs: number;
-}
-export interface RecommendedJobsAPIResponse {
-    recommendedJobs: Job[];
-    success: boolean;
-}
+
 export interface GetJobsParams {
     search?: string;
     employment?: string;
@@ -92,37 +97,53 @@ export interface GetJobsParams {
     page?: number;
     limit?: number;
 }
-export interface GetRecommendedJobs {
+
+export interface GetRecommendedJobsParams {
     userId?: string;
 }
+
+export interface JobsAPIResponse {
+    jobs: Job[];
+    numOfPages: number;
+    success: boolean;
+    totalJobs: number;
+}
+
+export interface RecommendedJobsAPIResponse {
+    recommendedJobs: Job[];
+    success: boolean;
+}
+
 export interface JobAPIResponse {
     success: boolean;
     job: Job;
 }
 
-// Skills Types
+// SKILLS
 
 export interface SkillsAPIResponse {
     success: boolean;
     skills: string[];
 }
+
 export interface NewSkill {
     skill: string;
 }
 
-// Stats Types
+// STATS
 
 export interface StatsAPIResponse {
     success: boolean;
     topTechnologies: technology[];
 }
 
-// Default Types
+// DEFAULT
 
 export interface DefaultAPIResponse {
     success: boolean;
     msg: string;
 }
+
 export interface CustomAPIError {
     data: {
         msg: string;

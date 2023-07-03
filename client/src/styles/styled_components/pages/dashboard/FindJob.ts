@@ -19,7 +19,7 @@ const Wrapper = styled.section`
     .find-job-title {
         font-weight: 600;
     }
-    .skills-center {
+    .find-job-center {
         display: grid;
         place-items: center;
         height: calc(100vh - 13rem);
