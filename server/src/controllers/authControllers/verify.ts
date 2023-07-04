@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import moment from 'moment';
 
 import { query } from '../../db';
 import { BadRequestError, UnAuthenticatedError } from '../../errors';
@@ -17,7 +18,9 @@ export const verify = async (req: Request, res: Response) => {
         throw new UnAuthenticatedError('Verification failed');
     }
 
-    query('UPDATE users SET verification_token = $1, verified = $2, verification_date = $3 WHERE id = $4', [null, true, new Date(Date.now()), user.id]).catch(() => {
+    const utcDate = moment().utc().format('YYYY-MM-DD HH:mm:ss');
+
+    query('UPDATE users SET verification_token = $1, verified = $2, verification_date = $3 WHERE id = $4', [null, true, utcDate, user.id]).catch(() => {
         throw new BadRequestError('Failed to verify user');
     });
 

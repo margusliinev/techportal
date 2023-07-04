@@ -26,6 +26,7 @@
         "googleapis": "^120.0.0",
         "helmet": "^7.0.0",
         "jsonwebtoken": "^9.0.0",
+        "moment": "^2.29.4",
         "nodemailer": "^6.9.3",
         "pg": "^8.11.0"
     },

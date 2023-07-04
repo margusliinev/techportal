@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
+import moment from 'moment';
 
 import { query } from '../../db';
 import { BadRequestError } from '../../errors';
@@ -26,9 +27,9 @@ export const resetPassword = async (req: Request, res: Response) => {
     const user = result[0];
 
     if (user) {
-        const currentDate = new Date(Date.now());
+        const utcDate = moment().utc().format('YYYY-MM-DD HH:mm:ss');
 
-        if (user.password_token === token && user.password_token_expiration_date < currentDate) {
+        if (user.password_token === token && user.password_token_expiration_date > utcDate) {
             const salt = await bcrypt.genSalt(10);
             const hash = await bcrypt.hash(newPassword, salt);
 

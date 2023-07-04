@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import { Request, Response } from 'express';
+import moment from 'moment';
 
 import { query } from '../../db';
 import { BadRequestError } from '../../errors';
@@ -22,10 +23,9 @@ export const forgotPassword = async (req: Request, res: Response) => {
     if (user) {
         const passwordToken = crypto.randomBytes(40).toString('hex');
 
-        const tenMinutes = 1000 * 60 * 10;
-        const passwordTokenExpirationDate = new Date(Date.now() + tenMinutes);
+        const utcDate = moment().utc().clone().add(10, 'minutes').format('YYYY-MM-DD HH:mm:ss');
 
-        query('UPDATE users SET password_token = $1, password_token_expiration_date = $2 WHERE id = $3', [passwordToken, passwordTokenExpirationDate, user.id]).catch(() => {
+        query('UPDATE users SET password_token = $1, password_token_expiration_date = $2 WHERE id = $3', [passwordToken, utcDate, user.id]).catch(() => {
             throw new BadRequestError('Failed to update password token');
         });
 
