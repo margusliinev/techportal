@@ -1,37 +1,58 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import { FormRow } from '../components';
+import { useResetMutation } from '../features/api/apiSlice';
 import Wrapper from '../styles/styled_components/pages/ResetPage';
-import { UserReset } from '../types';
+import { CustomAPIError, UserReset } from '../types';
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
 
 const initialState: UserReset = {
+    newPassword: '',
+    confirmNewPassword: '',
+    token: '',
     email: '',
 };
 
 const ResetPage = () => {
+    const [reset, { isLoading, isError, error, isSuccess }] = useResetMutation();
     const [values, setValues] = useState<UserReset>(initialState);
-    // const errorRef = useRef<HTMLParagraphElement | null>(null);
+    const errorRef = useRef<HTMLParagraphElement | null>(null);
+    const query = useQuery();
+
+    useEffect(() => {
+        setValues({ ...values, token: query.get('token') as string, email: query.get('email') as string });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValues({ ...values, [e.target.name]: e.target.value });
+        if (errorRef.current) {
+            errorRef.current.textContent = '';
+        }
+        setValues({ ...values, [e.target.name]: e.target.value.trim() });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (values.newPassword && values.confirmNewPassword && values.token && values.email) {
+            await reset({ newPassword: values.newPassword, confirmNewPassword: values.confirmNewPassword, token: values.token, email: values.email });
+        }
     };
 
     return (
         <Wrapper>
             <div className='container'>
-                <form className='form' onSubmit={handleSubmit} noValidate>
+                <form className='form' onSubmit={handleSubmit}>
                     <h5 className='reset-title'>Reset your password</h5>
-                    <p className='reset-description'>Enter the email address associated with your account and we&apos;ll send you a link to reset your password.</p>
-                    {/* <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email and follow the instructions to reset your password'}
-                    </p> */}
-                    <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
-                    <button type='submit' className='btn form-btn'>
+                    <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
+                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your password has been reset'}
+                    </p>
+                    <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} />
+                    <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} />{' '}
+                    <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
                         Continue
                     </button>
                     <Link to={'/login'} className='return-btn'>

@@ -19,6 +19,7 @@ const VerifyPage = () => {
         verify({ verificationToken, email }).catch(() => {
             return;
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (isLoading) {

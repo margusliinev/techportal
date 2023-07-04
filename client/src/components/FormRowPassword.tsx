@@ -32,7 +32,7 @@ const FormRowPassword = ({ type, name, value, labelText, forgot, handleChange, h
             {forgot ? (
                 <div className='form-label-flex'>
                     <label htmlFor='password'>password</label>
-                    <Link to={'/reset'} className='form-forgot-password'>
+                    <Link to={'/forgot'} className='form-forgot-password'>
                         Forgot password?
                     </Link>
                 </div>

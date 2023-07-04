@@ -19,7 +19,13 @@
         "simple-import-sort/exports": "error",
         "simple-import-sort/imports": "error",
         "react/react-in-jsx-scope": "off",
-        "react/jsx-uses-react": "off"
+        "react/jsx-uses-react": "off",
+        "@typescript-eslint/no-misused-promises": [
+            "error",
+            {
+                "checksVoidReturn": false
+            }
+        ]
     },
     "settings": {
         "react": {

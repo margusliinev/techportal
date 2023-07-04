@@ -11,8 +11,10 @@ import {
     SkillsAPIResponse,
     StatsAPIResponse,
     UserAPIResponse,
+    UserForgot,
     UserLogin,
     UserRegister,
+    UserReset,
     UserUpdatePassword,
     UserUpdateProfile,
     UserVerify,
@@ -43,6 +45,20 @@ export const apiSlice = createApi({
                 url: '/login',
                 method: 'POST',
                 body: user,
+            }),
+        }),
+        forgot: builder.mutation<DefaultAPIResponse, UserForgot>({
+            query: (email) => ({
+                url: '/forgot',
+                method: 'POST',
+                body: email,
+            }),
+        }),
+        reset: builder.mutation<DefaultAPIResponse, UserReset>({
+            query: (password) => ({
+                url: '/reset',
+                method: 'POST',
+                body: password,
             }),
         }),
         updateUserProfile: builder.mutation<UserAPIResponse, UserUpdateProfile>({
@@ -130,4 +146,6 @@ export const {
     useGetSkillsQuery,
     useDeleteSkillMutation,
     useGetRecommendedJobsQuery,
+    useForgotMutation,
+    useResetMutation,
 } = apiSlice;

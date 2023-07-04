@@ -14,6 +14,9 @@ const Wrapper = styled.div`
         margin-top: 1.5rem;
         color: #f3f4f6;
     }
+    .form-btn-disabled {
+        background-color: var(--colorPrimary4);
+    }
     .return-btn {
         display: block;
         margin-top: 1rem;
@@ -26,18 +29,13 @@ const Wrapper = styled.div`
         margin-bottom: 1rem;
         font-weight: 600;
     }
+    .reset-description {
+        font-size: 0.875rem;
+        color: var(--colorFontSecondary);
+        margin-bottom: 1.5rem;
+    }
     .server-message {
         text-align: center;
-    }
-    .reset-password-form {
-        .btn {
-            padding: 0.5rem 0.75rem;
-            margin-top: 1rem;
-            color: #f3f4f6;
-        }
-    }
-    .form-btn-disabled {
-        background-color: var(--colorPrimary4);
     }
 `;
 

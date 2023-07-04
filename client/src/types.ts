@@ -21,7 +21,14 @@ export interface UserVerify {
     email: string | null;
 }
 
+export interface UserForgot {
+    email: string;
+}
+
 export interface UserReset {
+    newPassword: string;
+    confirmNewPassword: string;
+    token: string;
     email: string;
 }
 
