@@ -10,7 +10,7 @@ const RecommendedJobs = () => {
     if (!data) {
         return (
             <Wrapper>
-                <div>No Jobs found</div>
+                <h5>No Jobs found</h5>
             </Wrapper>
         );
     }
@@ -22,7 +22,7 @@ const RecommendedJobs = () => {
                     return <JobCard key={job.id} {...job} />;
                 })
             ) : (
-                <div>Could not find any jobs, sure you added all the technologies you know?</div>
+                <h5>Add more skills to your profile to find a match</h5>
             )}
         </Wrapper>
     );

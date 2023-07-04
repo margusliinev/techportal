@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.ts",
     "scripts": {
-        "dev": "nodemon src/server.ts",
+        "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
         "build": "npx tsc",
         "preview": "node dist/server.js",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
@@ -42,8 +42,8 @@
         "concurrently": "^8.2.0",
         "eslint": "^8.43.0",
         "eslint-plugin-simple-import-sort": "^10.0.0",
-        "nodemon": "^2.0.22",
         "ts-node": "^10.9.1",
+        "ts-node-dev": "^2.0.0",
         "typescript": "^5.1.3"
     }
 }

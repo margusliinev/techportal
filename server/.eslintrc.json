@@ -10,7 +10,13 @@
     "plugins": ["simple-import-sort", "@typescript-eslint"],
     "rules": {
         "simple-import-sort/exports": "error",
-        "simple-import-sort/imports": "error"
+        "simple-import-sort/imports": "error",
+        "@typescript-eslint/no-misused-promises": [
+            "error",
+            {
+                "checksVoidReturn": false
+            }
+        ]
     },
     "root": true
 }

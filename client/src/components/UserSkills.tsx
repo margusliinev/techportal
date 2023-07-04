@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 import { useAddSkillMutation } from '../features/api/apiSlice';
 import Wrapper from '../styles/styled_components/components/UserSkills';
-import data from '../utils/technologies.json';
+import { data } from '../utils/technologies';
 import { SkillsList } from '.';
 
 const initialValue = {
@@ -16,7 +16,7 @@ const Skills = () => {
     const filteredTechnologies = technologies.filter((item) => {
         const searchTerm = value.skill.toLowerCase();
         const technology = item.toLowerCase();
-        return searchTerm && technology.includes(searchTerm) && technology !== searchTerm;
+        return searchTerm && technology.includes(searchTerm);
     });
     const errorRef = useRef<HTMLParagraphElement>(null);
 
@@ -36,27 +36,34 @@ const Skills = () => {
         return null;
     };
 
-    const onSearch = (searchTerm: string) => {
-        setValue({ skill: searchTerm });
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-        e.preventDefault();
-        const item = findMatch(data, value.skill);
-        if (!item) {
+    const onSearch = (item: string) => {
+        const match = findMatch(data, item);
+        if (!match) {
             if (errorRef.current) {
                 errorRef.current.textContent = 'Please choose a skill from the dropdown list';
             }
             return;
         }
-        if (item) {
-            addSkill({ skill: item })
-                .then(() => {
-                    setValue({ skill: '' });
-                })
-                .catch(() => {
-                    setValue({ skill: '' });
-                });
+        if (match) {
+            addSkill({ skill: item }).finally(() => {
+                setValue({ skill: '' });
+            });
+        }
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        const match = findMatch(data, value.skill);
+        if (!match) {
+            if (errorRef.current) {
+                errorRef.current.textContent = 'Please choose a skill from the dropdown list';
+            }
+            return;
+        }
+        if (match) {
+            addSkill({ skill: match }).finally(() => {
+                setValue({ skill: '' });
+            });
         }
     };
 
