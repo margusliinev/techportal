@@ -17,11 +17,7 @@ export const verify = async (req: Request, res: Response) => {
         throw new UnAuthenticatedError('Verification failed');
     }
 
-    user.verification_token = null;
-    user.verified = true;
-    user.verification_date = new Date(Date.now());
-
-    query('UPDATE users SET verification_token = $1, verified = $2, verification_date = $3', [user.verification_token, user.verified, user.verification_date]).catch(() => {
+    query('UPDATE users SET verification_token = $1, verified = $2, verification_date = $3 WHERE id = $4', [null, true, new Date(Date.now()), user.id]).catch(() => {
         throw new BadRequestError('Failed to verify user');
     });
 

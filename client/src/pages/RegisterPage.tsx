@@ -34,10 +34,6 @@ const RegisterPage = () => {
             register({ username, email, password }).catch(() => {
                 return;
             });
-        } else if (!username || !email || !password) {
-            if (errorRef.current) {
-                errorRef.current.textContent = 'Missing username, email or password';
-            }
         }
     };
 

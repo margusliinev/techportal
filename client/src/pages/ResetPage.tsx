@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { FormRow } from '../components';
 import { useResetMutation } from '../features/api/apiSlice';
@@ -22,6 +22,7 @@ const ResetPage = () => {
     const [values, setValues] = useState<UserReset>(initialState);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const query = useQuery();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setValues({ ...values, token: query.get('token') as string, email: query.get('email') as string });
@@ -42,6 +43,12 @@ const ResetPage = () => {
         }
     };
 
+    if (isSuccess) {
+        setTimeout(() => {
+            navigate('/login');
+        }, 3000);
+    }
+
     return (
         <Wrapper>
             <div className='container'>
@@ -52,8 +59,8 @@ const ResetPage = () => {
                     </p>
                     <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} />
                     <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} />{' '}
-                    <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
-                        Continue
+                    <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
+                        {isLoading || isSuccess ? 'Redirecting' : 'Continue'}
                     </button>
                     <Link to={'/login'} className='return-btn'>
                         Return to Login
