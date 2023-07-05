@@ -11,6 +11,8 @@ const UserButton = () => {
     const { user } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();
 
+    // Clear cookie and set user to null
+
     const handleLogout = () => {
         dispatch(logoutUser()).finally(() => {
             return;

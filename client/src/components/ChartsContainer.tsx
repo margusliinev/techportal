@@ -14,6 +14,8 @@ const ChartsContainer = ({ topTechnologies }: Props) => {
     const [numBars, setNumBars] = useState(7);
     const [barSize, setBarSize] = useState(75);
 
+    // Resizing the graph on window resize, removing number of bars and/or shrinking bar size.
+
     useEffect(() => {
         const handleResize = () => {
             const containerWidth = document.getElementById('chart-container')?.clientWidth || 0;

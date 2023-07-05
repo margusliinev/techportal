@@ -21,6 +21,8 @@ const ForgotPage = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // Check if email is provided and is valid and then send the email.
+
         if (values.email) {
             await forgot({ email: values.email });
         }

@@ -1,3 +1,5 @@
+// Form validation for user registration which will be triggered when input loses focus.
+
 export const handleValidation = (e: React.ChangeEvent<HTMLInputElement>, username: string, email: string, password: string) => {
     const nextElementSibling = e.currentTarget.nextElementSibling as HTMLElement;
     const { name, value } = e.currentTarget;
@@ -38,6 +40,8 @@ export const handleValidation = (e: React.ChangeEvent<HTMLInputElement>, usernam
         }
     }
 };
+
+// Validate all the fields before user registration form is submitted.
 
 export const validateUsername = (username: string) => {
     const regex = /^[A-Za-z0-9]{3,16}$/;

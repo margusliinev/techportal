@@ -8,6 +8,8 @@ import { FindJob, Job, Jobs, PrivateRoute, Profile, SharedLayout, Stats } from '
 function App() {
     const { theme } = useAppSelector((store) => store.navigation);
 
+    // Add theme mode to local storage to persist across sessions and pages.
+
     useEffect(() => {
         document.documentElement.className = theme;
         localStorage.setItem('theme', theme);

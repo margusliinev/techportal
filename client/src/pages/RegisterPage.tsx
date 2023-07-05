@@ -30,6 +30,8 @@ const RegisterPage = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { username, email, password } = values;
+        // Validate inputs with regEx and only submit if all inputs are valid.
+
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
             register({ username, email, password }).catch(() => {
                 return;

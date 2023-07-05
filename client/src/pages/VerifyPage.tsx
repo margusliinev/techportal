@@ -11,9 +11,11 @@ function useQuery() {
 
 const VerifyPage = () => {
     const query = useQuery();
-    const [verify, { isLoading }] = useVerifyMutation();
+    const [verify, { isLoading, isError }] = useVerifyMutation();
 
     useEffect(() => {
+        // Grab values from the query string and pass them to the verify mutation.
+
         const verificationToken = query.get('token');
         const email = query.get('email');
         verify({ verificationToken, email }).catch(() => {
@@ -49,7 +51,7 @@ const VerifyPage = () => {
                 </div>
             </nav>
             <main>
-                <h3>Your account has been verified</h3>
+                <h3>{isError ? 'Verification failed, please try again later' : 'Your account has been verified'}</h3>
                 <Link to={'/login'} className='btn back-to-login-btn'>
                     Please Login
                 </Link>

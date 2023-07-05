@@ -25,16 +25,22 @@ const SearchContainer = () => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    // Reset filters
+
     const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setValues({ search: '', employment: 'all', location: 'all', sort: 'latest', page: 1 });
         dispatch(setFilters({ search: '', employment: 'all', location: 'all', sort: 'latest', page: 1 }));
     };
 
+    // Set new filters and this will trigger a refetching the jobs
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(setFilters(values));
     };
+
+    // Keep the current search values even if the user navigates away from the page.
 
     useEffect(() => {
         setValues({ search: search, employment: employment, location: location, sort: sort, page: page });

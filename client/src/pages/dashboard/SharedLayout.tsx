@@ -8,6 +8,7 @@ import Wrapper from '../../styles/styled_components/pages/dashboard/SharedLayout
 
 const SharedLayout = () => {
     const dispatch = useAppDispatch();
+
     useEffect(() => {
         dispatch(getUser()).finally(() => {
             return;

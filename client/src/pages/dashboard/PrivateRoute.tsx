@@ -6,6 +6,8 @@ type PrivateRouteProps = {
     children: React.ReactNode;
 };
 
+// Check if user is logged in and only then allow them to access the route.
+
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
     const { user, userLoading } = useAppSelector((store) => store.user);
 

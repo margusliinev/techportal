@@ -12,6 +12,8 @@ const initialState: UserState = {
     userLoading: true,
 };
 
+// Get user info and set it to state
+
 const getUser = createAsyncThunk<UserAPIResponse>('user/getUser', async () => {
     const response = await fetch('/api/v1/users/me', {
         method: 'GET',
@@ -20,6 +22,8 @@ const getUser = createAsyncThunk<UserAPIResponse>('user/getUser', async () => {
     return data;
 });
 
+// Remove user from state, delete user from database and reset token
+
 const deleteUser = createAsyncThunk<DefaultAPIResponse>('user/deleteUser', async () => {
     const response = await fetch('/api/v1/users/me', {
         method: 'DELETE',
@@ -27,6 +31,8 @@ const deleteUser = createAsyncThunk<DefaultAPIResponse>('user/deleteUser', async
     const data = response.json();
     return data;
 });
+
+// Remove user from state and reset token
 
 const logoutUser = createAsyncThunk<DefaultAPIResponse>('user/logoutUser', async () => {
     const response = await fetch('/api/v1/logout', {

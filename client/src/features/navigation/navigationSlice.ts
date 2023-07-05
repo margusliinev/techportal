@@ -5,6 +5,8 @@ const initialState = {
     theme: localStorage.getItem('theme') || 'dark-theme',
 };
 
+// Toggle sidebar on/off and set theme to state
+
 const navigationSlice = createSlice({
     name: 'navigation',
     initialState,

@@ -3,7 +3,7 @@ import { useGetStatsQuery } from '../../features/api/apiSlice';
 import Wrapper from '../../styles/styled_components/pages/dashboard/Stats';
 
 const Stats = () => {
-    const { data, isLoading, isError } = useGetStatsQuery(undefined);
+    const { data, isLoading } = useGetStatsQuery(undefined);
 
     if (isLoading) {
         return (
@@ -15,7 +15,7 @@ const Stats = () => {
         );
     }
 
-    if (isError) {
+    if (!data) {
         return (
             <Wrapper>
                 <div className='stats-center'>
@@ -28,8 +28,8 @@ const Stats = () => {
 
     return (
         <Wrapper>
-            <StatsContainer topTechnologies={data?.topTechnologies} />
-            <ChartsContainer topTechnologies={data?.topTechnologies} />
+            <StatsContainer topTechnologies={data.topTechnologies} />
+            <ChartsContainer topTechnologies={data.topTechnologies} />
         </Wrapper>
     );
 };

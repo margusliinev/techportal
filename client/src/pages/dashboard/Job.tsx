@@ -22,6 +22,8 @@ const Job = () => {
         );
     }
 
+    // If the page does not exist, redirect to the jobs page.
+
     if (isError) {
         setTimeout(() => {
             navigate('/jobs');

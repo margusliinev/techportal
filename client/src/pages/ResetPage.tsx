@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { FormRow } from '../components';
 import { useResetMutation } from '../features/api/apiSlice';
@@ -22,9 +22,10 @@ const ResetPage = () => {
     const [values, setValues] = useState<UserReset>(initialState);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const query = useQuery();
-    const navigate = useNavigate();
 
     useEffect(() => {
+        // Grab params from URL and update the state.
+
         setValues({ ...values, token: query.get('token') as string, email: query.get('email') as string });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -38,16 +39,12 @@ const ResetPage = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // Validate that all fields are filled out and then submit the request.
+
         if (values.newPassword && values.confirmNewPassword && values.token && values.email) {
             await reset({ newPassword: values.newPassword, confirmNewPassword: values.confirmNewPassword, token: values.token, email: values.email });
         }
     };
-
-    if (isSuccess) {
-        setTimeout(() => {
-            navigate('/login');
-        }, 3000);
-    }
 
     return (
         <Wrapper>
@@ -55,7 +52,7 @@ const ResetPage = () => {
                 <form className='form' onSubmit={handleSubmit}>
                     <h5 className='reset-title'>Reset your password</h5>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your password has been reset'}
+                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your password has been updated'}
                     </p>
                     <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} />
                     <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} />{' '}

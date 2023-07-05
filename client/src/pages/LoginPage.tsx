@@ -26,6 +26,8 @@ const LoginPage = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // Submit only if all fields are filled and if login is successful navigate to dashboard.
+
         if (values.email && values.password) {
             login(values)
                 .unwrap()
@@ -37,10 +39,6 @@ const LoginPage = () => {
                 .catch(() => {
                     return;
                 });
-        } else if (!values.email || !values.password) {
-            if (errorRef.current) {
-                errorRef.current.textContent = 'Missing Email or Password';
-            }
         }
     };
 

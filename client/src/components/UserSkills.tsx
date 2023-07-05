@@ -27,6 +27,8 @@ const Skills = () => {
         setValue({ skill: e.target.value });
     };
 
+    // Check if skill matches the technologies array in Utils.
+
     const findMatch = (array: string[], value: string): string | null => {
         for (const item of array) {
             if (item.toLowerCase() === value.toLowerCase()) {
@@ -35,6 +37,8 @@ const Skills = () => {
         }
         return null;
     };
+
+    // If skill matches then make the request and clear the input.
 
     const onSearch = (item: string) => {
         const match = findMatch(data, item);

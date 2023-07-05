@@ -29,6 +29,8 @@ const ChangePassword = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const { currentPassword, newPassword, confirmNewPassword } = values;
+        // Clear input fields if updating password is successful and logout the user if the request is unauthenticated.
+
         updateUserPassword({ currentPassword, newPassword, confirmNewPassword })
             .unwrap()
             .then((response) => {

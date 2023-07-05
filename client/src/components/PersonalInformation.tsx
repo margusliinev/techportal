@@ -29,6 +29,8 @@ const PersonalInformation = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const { username, email } = values;
+        // Update user profile and display if the update was successful and log out the user if request was unauthenticated.
+
         updateUser({ username, email })
             .unwrap()
             .then((response) => {

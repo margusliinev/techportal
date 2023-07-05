@@ -1,23 +1,18 @@
 import { deleteUser, logoutUser, setUser } from '../features/user/userSlice';
 import { useAppDispatch } from '../hooks';
 import Wrapper from '../styles/styled_components/components/DeleteAccount';
-import { CustomAPIError } from '../types';
 
 const DeleteAccount = () => {
     const dispatch = useAppDispatch();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        dispatch(deleteUser())
-            .then(() => {
-                dispatch(setUser(null));
-            })
-            .catch(async (error) => {
-                if ((error as CustomAPIError).status === 401) {
-                    await dispatch(logoutUser());
-                    dispatch(setUser(null));
-                }
-            });
+        // Regardless of success or failure, the user will be logged out.
+
+        dispatch(deleteUser()).finally(async () => {
+            await dispatch(logoutUser());
+            dispatch(setUser(null));
+        });
     };
 
     return (

@@ -1,3 +1,5 @@
+// List of technologies that are available in the skills search.
+
 export const data = [
     'Python',
     'JavaScript',

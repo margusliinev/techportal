@@ -5,6 +5,9 @@ import { JobCard } from '.';
 
 const RecommendedJobs = () => {
     const { user } = useAppSelector((store) => store.user);
+
+    // Fetch recommended jobs for the user using the user id.
+
     const { data } = useGetRecommendedJobsQuery({ userId: user?.id });
 
     if (!data) {

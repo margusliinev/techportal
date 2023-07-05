@@ -38,6 +38,8 @@ export const getRecommendedJobs = async (req: Request, res: Response) => {
     const result = await query('SELECT skills FROM users WHERE id = $1', [userId]);
     const skills = result[0].skills as string[];
 
+    // Rank jobs based on the number of matches between user skills and job technologies
+
     const jobRanks: { job: Job; matchingSkills: number }[] = [];
 
     for (const job of allJobs) {

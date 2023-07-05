@@ -15,16 +15,22 @@ const PaginationContainer = ({ numOfPages }: Props) => {
     const dispatch = useAppDispatch();
     const [range, setRange] = useState(window.innerWidth < 450 ? 3 : 5);
 
+    // Function to generate an array of page buttons based on the current page and range
+
     const getPageNumbers = () => {
         const pages = [];
 
         let start = Math.max(1, page - Math.ceil(range / 2));
         let end = start + range - 1;
 
+        // Adjust the range if it exceeds the total number of pages
+
         if (end > totalPages.length) {
             end = totalPages.length;
             start = Math.max(1, end - range + 1);
         }
+
+        // Generate page buttons for the range
 
         for (let i = start; i <= end; i++) {
             pages.push(
@@ -33,6 +39,8 @@ const PaginationContainer = ({ numOfPages }: Props) => {
                 </button>
             );
         }
+
+        // Add ellipsis button if the end of range is less than the total number of pages
 
         if (end < totalPages.length) {
             pages.push(
@@ -44,6 +52,8 @@ const PaginationContainer = ({ numOfPages }: Props) => {
 
         return pages;
     };
+
+    // Handle window resize and update the range value
 
     useEffect(() => {
         const handleResize = () => {

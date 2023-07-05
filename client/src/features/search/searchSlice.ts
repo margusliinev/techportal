@@ -14,6 +14,8 @@ const searchSlice = createSlice({
     name: 'search',
     initialState,
     reducers: {
+        // Add search filters to the state and reset page back to 1
+
         setFilters(state, action: PayloadAction<FilterStates>) {
             state.search = action.payload.search;
             state.employment = action.payload.employment;
