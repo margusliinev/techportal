@@ -56,8 +56,8 @@ const ResetPage = () => {
                     </p>
                     <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} />
                     <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} />{' '}
-                    <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
-                        {isLoading || isSuccess ? 'Redirecting' : 'Continue'}
+                    <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
+                        Continue
                     </button>
                     <Link to={'/login'} className='return-btn'>
                         Return to Login
