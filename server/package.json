@@ -2,14 +2,14 @@
     "name": "server",
     "version": "1.0.0",
     "description": "",
-    "main": "server.ts",
+    "main": "src/server.ts",
     "scripts": {
         "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
-        "build": "npx tsc",
+        "build": "npm run install-client && npm run build-client && npm install && npx tsc",
         "preview": "node dist/server.js",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
         "app": "concurrently \"npm run dev\" \"cd.. && cd client && npm run dev\"",
-        "build-client": "cd .. && cd client && npm run build",
+        "build-client": "cd .. && cd client && npx tsc",
         "install-client": "cd .. && cd client && npm install",
         "setup-production": "npm run install-client && npm run build-client && npm install && npm run build"
     },
