@@ -2,10 +2,15 @@
 
 Welcome to TechPortal, a job portal designed exclusively for developers! Connect with exciting career opportunities and embark on your next coding adventure. TechPortal provides a user-friendly interface and an extensive database of tech-centric jobs to help talented tech professionals like you find their dream positions.
 
+For detailed information on the API endpoints, please refer to our [API Documentation](https://margusliinev.github.io/techportal/). This documentation provides comprehensive guidance on making API requests and understanding the response formats.
+
+Site is live at [https://techportal.onrender.com](https://techportal.onrender.com)
+
+NB! This website may experience a brief delay upon initial access due to a cold start process.
+
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [API Documentation](https://your-api-docs-url.com)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
@@ -16,10 +21,6 @@ Welcome to TechPortal, a job portal designed exclusively for developers! Connect
 ## Introduction
 
 TechPortal is a powerful job portal that focuses on connecting developers with a wide range of career opportunities. Whether you are a seasoned professional or just starting your coding journey, TechPortal is designed to cater to your needs. Browse through a diverse selection of tech jobs, discover new opportunities, and take the next step in your career.
-
-## API Documentation
-
-For detailed information on the API endpoints, please refer to our [API Documentation](https://margusliinev.github.io/techportal/). This documentation provides comprehensive guidance on making API requests and understanding the response formats.
 
 ## Features
 
@@ -69,7 +70,7 @@ To run TechPortal locally, follow these steps:
 
    cd server & run command npm run app
    
-4. Open your web browser and access TechPortal at 'http://localhost:5173'.
+4. Open your web browser and access TechPortal at http://localhost:5173.
 
 ## Usage
 
