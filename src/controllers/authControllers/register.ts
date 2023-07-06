@@ -62,7 +62,7 @@ export const register = async (req: Request, res: Response) => {
     });
 
     if (process.env.NODE_ENV === 'production') {
-        const origin = 'https://techportal.onrender.com';
+        const origin = 'https://techportal.up.railway.app';
         sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((error) => console.log(error));
     } else {
         const origin = 'http://localhost:5173';
