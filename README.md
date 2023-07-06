@@ -53,7 +53,7 @@ TechPortal is built using the following technologies:
   
 ## Usage
 
-Once you have TechPortal running locally, you can start exploring the available job opportunities, searching based on your preferences, and creating your developer profile. Customize your profile, browse through the jobs, and apply seamlessly within the platform.
+Start exploring the available job opportunities, searching based on your preferences, and creating your developer profile. Customize your profile, browse through the jobs, and apply seamlessly within the platform.
 
 ## License
 TechPortal is released under the ISC License. Feel free to use, modify, and distribute the code as per the terms and conditions of the license.
