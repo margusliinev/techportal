@@ -4,16 +4,13 @@ Welcome to TechPortal, a job portal designed exclusively for developers! Connect
 
 For detailed information on the API endpoints, please refer to our [API Documentation](https://margusliinev.github.io/techportal/). This documentation provides comprehensive guidance on making API requests and understanding the response formats.
 
-Site is live at [https://techportal.onrender.com](https://techportal.onrender.com)
-
-NB! This website may experience a brief delay upon initial access due to a cold start process.
+Site is live at [https://techportal.up.railway.app](https://techportal.up.railway.app)
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
+- [Technologies](#technologies)
 - [Usage](#usage)
 - [License](#license)
 - [Closing Notes](#closing-notes)
@@ -34,7 +31,7 @@ TechPortal is a powerful job portal that focuses on connecting developers with a
 
 - **Developer Profiles**: Showcase your skills and experience with a developer profile. Highlight your projects, certifications, and expertise to attract potential employers and increase your visibility in the job market.
 
-## Technologies Used
+## Technologies
 
 TechPortal is built using the following technologies:
 
@@ -53,25 +50,7 @@ TechPortal is built using the following technologies:
 - **Node.js + Express**: A robust and flexible server-side framework for building scalable and performant web applications.
 
 - **PostgreSQL**: A powerful relational database management system that efficiently stores and retrieves data for TechPortal.
-
-## Installation
-
-To run TechPortal locally, follow these steps:
-
-1. Clone the repository to your local machine:
-
-   git clone https://github.com/margusliinev/techportal.git
-   
-2. Install the dependencies for both server and client:
-
-   run command npm install in both directories
-
-3. Start the development server and client
-
-   cd server & run command npm run app
-   
-4. Open your web browser and access TechPortal at http://localhost:5173.
-
+  
 ## Usage
 
 Once you have TechPortal running locally, you can start exploring the available job opportunities, searching based on your preferences, and creating your developer profile. Customize your profile, browse through the jobs, and apply seamlessly within the platform.
