@@ -54,6 +54,7 @@ const RegisterPage = () => {
                         name={'username'}
                         value={values.username}
                         labelText={'username'}
+                        required={true}
                         handleChange={handleChange}
                         handleValidation={(e) => handleValidation(e, values.username, values.email, values.password)}
                     />
@@ -62,6 +63,7 @@ const RegisterPage = () => {
                         name={'email'}
                         value={values.email}
                         labelText={'email'}
+                        required={true}
                         handleChange={handleChange}
                         handleValidation={(e) => handleValidation(e, values.username, values.email, values.password)}
                     />
@@ -71,6 +73,7 @@ const RegisterPage = () => {
                         value={values.password}
                         labelText={'password'}
                         forgot={false}
+                        required={true}
                         handleChange={handleChange}
                         handleValidation={(e) => handleValidation(e, values.username, values.email, values.password)}
                     />

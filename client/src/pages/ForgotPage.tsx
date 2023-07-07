@@ -37,7 +37,7 @@ const ForgotPage = () => {
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email to reset your password'}
                     </p>
-                    <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
+                    <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} required={true} />
                     <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
                         Continue
                     </button>

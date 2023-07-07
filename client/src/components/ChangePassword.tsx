@@ -51,15 +51,15 @@ const ChangePassword = () => {
             <div className='change-password'>
                 <div className='change-password-header'>
                     <h6>Change password</h6>
-                    <p>Update your password associated with your account.</p>
+                    <p>Update the password associated with your account.</p>
                 </div>
                 <form className='change-password-form' onSubmit={handleSubmit}>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your password has been updated'}
                     </p>
-                    <FormRow type={'password'} name={'currentPassword'} value={values.currentPassword} labelText={'Current Password'} handleChange={handleChange} />
-                    <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} />
-                    <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} />
+                    <FormRow type={'password'} name={'currentPassword'} value={values.currentPassword} labelText={'Current Password'} handleChange={handleChange} required={true} />
+                    <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} required={true} />
+                    <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} required={true} />
                     <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
                         Save
                     </button>

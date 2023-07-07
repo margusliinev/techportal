@@ -56,14 +56,14 @@ const PersonalInformation = () => {
             <div className='personal-information'>
                 <div className='personal-information-header'>
                     <h6>Personal Information</h6>
-                    <p>Use a permanent address where you can receive mail.</p>
+                    <p>You can choose a new username for your account.</p>
                 </div>
                 <form className='personal-information-form' onSubmit={handleSubmit}>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your profile has been updated'}
                     </p>
-                    <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} />
-                    <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} handleChange={handleChange} />
+                    <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} required={true} />
+                    <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} required={false} disabled={true} />
                     <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
                         Save
                     </button>

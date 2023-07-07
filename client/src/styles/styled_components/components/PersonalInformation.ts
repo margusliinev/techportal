@@ -23,6 +23,9 @@ const Wrapper = styled.div`
             margin-top: 1rem;
             color: #f3f4f6;
         }
+        #email {
+            opacity: 0.7;
+        }
     }
     .form-btn-disabled {
         background-color: var(--colorPrimary4);

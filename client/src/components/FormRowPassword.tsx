@@ -8,6 +8,7 @@ interface Props {
     value: string;
     labelText: string;
     forgot: boolean;
+    required: boolean;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleValidation?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }

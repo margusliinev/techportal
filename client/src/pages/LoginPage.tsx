@@ -27,7 +27,6 @@ const LoginPage = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Submit only if all fields are filled and if login is successful navigate to dashboard.
-
         if (values.email && values.password) {
             login(values)
                 .unwrap()
@@ -52,8 +51,8 @@ const LoginPage = () => {
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Login Successful'}
                     </p>
-                    <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} />
-                    <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} forgot={true} handleChange={handleChange} />
+                    <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} required={true} />
+                    <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} forgot={true} handleChange={handleChange} required={true} />
                     <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
                         Sign In
                     </button>

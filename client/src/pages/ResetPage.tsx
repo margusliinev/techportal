@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { FormRow } from '../components';
 import { useResetMutation } from '../features/api/apiSlice';
@@ -22,11 +22,18 @@ const ResetPage = () => {
     const [values, setValues] = useState<UserReset>(initialState);
     const errorRef = useRef<HTMLParagraphElement | null>(null);
     const query = useQuery();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Grab params from URL and update the state.
+        // Grab params from URL and update the state. If params are missing redirect to login.
+        const token = query.get('token');
+        const email = query.get('email');
 
-        setValues({ ...values, token: query.get('token') as string, email: query.get('email') as string });
+        if (!token || !email) {
+            return navigate('/login');
+        }
+
+        setValues({ ...values, token: token, email: email });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -54,8 +61,8 @@ const ResetPage = () => {
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your password has been updated'}
                     </p>
-                    <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} />
-                    <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} />{' '}
+                    <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} required={true} />
+                    <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} required={true} />
                     <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
                         Continue
                     </button>
