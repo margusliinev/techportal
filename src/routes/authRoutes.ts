@@ -6,14 +6,15 @@ import { logout } from '../controllers/authControllers/logout';
 import { register } from '../controllers/authControllers/register';
 import { resetPassword } from '../controllers/authControllers/reset';
 import { verify } from '../controllers/authControllers/verify';
+import { forgotLimiter, loginLimiter, logoutLimiter, registerLimiter, resetLimiter, verifyLimiter } from '../utils/rateLimits';
 
 const router = express.Router();
 
-router.route('/api/v1/register').post(register);
-router.route('/api/v1/login').post(login);
-router.route('/api/v1/logout').get(logout);
-router.route('/api/v1/verify').post(verify);
-router.route('/api/v1/forgot').post(forgotPassword);
-router.route('/api/v1/reset').post(resetPassword);
+router.route('/api/v1/register').post(registerLimiter, register);
+router.route('/api/v1/login').post(loginLimiter, login);
+router.route('/api/v1/logout').get(logoutLimiter, logout);
+router.route('/api/v1/verify').post(verifyLimiter, verify);
+router.route('/api/v1/forgot').post(forgotLimiter, forgotPassword);
+router.route('/api/v1/reset').post(resetLimiter, resetPassword);
 
 export default router;
