@@ -84,7 +84,6 @@ export interface Job {
     salary: number;
     expire_date: Date;
     technologies: string[];
-    company_logo: string;
     company_post: string;
 }
 

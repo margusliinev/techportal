@@ -41,7 +41,7 @@ const Job = () => {
         <Wrapper>
             <div className='job-container'>
                 <div className='job-header'>
-                    <img src={data?.job.company_logo} alt='company logo' className='job-company-logo' />
+                    <div className='main-icon'>{data?.job.company.charAt(0)}</div>
                     <div>
                         <h4 className='job-position'>{data?.job.position}</h4>
                         <h6 className='job-company'>{data?.job.company}</h6>

@@ -26,10 +26,17 @@ const Wrapper = styled.article`
         column-gap: 1rem;
         align-items: center;
         justify-content: center;
-        .company-logo {
+        .main-icon {
+            width: 70px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            background: var(--colorPrimary5);
             border-radius: var(--radius-md);
-            height: 80px;
-            width: 80px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--colorWhite);
             justify-self: center;
         }
     }

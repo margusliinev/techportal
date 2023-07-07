@@ -18,21 +18,15 @@ import { apiLimiter } from './utils/rateLimits';
 dotenv.config();
 const app = express();
 
-app.use(
-    helmet.contentSecurityPolicy({
-        useDefaults: true,
-        directives: {
-            'img-src': ["'self'", 'https: data:'],
-        },
-    })
-);
+app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
+app.use(apiLimiter);
+app.use('/', userRouter);
+app.use('/', jobsRouter);
+app.use('/', statsRouter);
+app.use('/', skillsRouter);
 app.use('/', authRouter);
-app.use('/', apiLimiter, userRouter);
-app.use('/', apiLimiter, jobsRouter);
-app.use('/', apiLimiter, statsRouter);
-app.use('/', apiLimiter, skillsRouter);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../client/dist')));

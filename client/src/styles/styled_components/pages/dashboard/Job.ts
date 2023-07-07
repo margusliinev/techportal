@@ -21,11 +21,19 @@ const Wrapper = styled.section`
         gap: 1.5rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid var(--colorGray3);
-    }
-    .job-company-logo {
-        height: 80px;
-        width: 80px;
-        border-radius: var(--radius-md);
+        .main-icon {
+            width: 70px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            background: var(--colorPrimary5);
+            border-radius: var(--radius-md);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--colorWhite);
+            justify-self: center;
+        }
     }
     .job-position {
         margin-bottom: 0.25rem;
