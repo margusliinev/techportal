@@ -53,6 +53,12 @@ const ResetPage = () => {
         }
     };
 
+    if (isSuccess) {
+        setTimeout(() => {
+            navigate('/login');
+        }, 3000);
+    }
+
     return (
         <Wrapper>
             <div className='container'>
@@ -63,8 +69,8 @@ const ResetPage = () => {
                     </p>
                     <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} required={true} />
                     <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} required={true} />
-                    <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
-                        Continue
+                    <button type='submit' className={isLoading || isSuccess ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading || isSuccess}>
+                        {isSuccess ? 'Redirecting...' : 'continue'}
                     </button>
                     <Link to={'/login'} className='return-btn'>
                         Return to Login
