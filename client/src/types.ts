@@ -101,7 +101,6 @@ export interface GetJobsParams {
     location?: string;
     sort?: string;
     page?: number;
-    limit?: number;
 }
 
 export interface GetRecommendedJobsParams {

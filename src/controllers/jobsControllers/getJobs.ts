@@ -8,11 +8,10 @@ interface QueryParams {
     location?: string;
     sort?: string;
     page?: number;
-    limit?: number;
 }
 
 export const getJobs = async (req: Request, res: Response) => {
-    const { search, employment, location, sort, page, limit }: QueryParams = req.query;
+    const { search, employment, location, sort, page }: QueryParams = req.query;
 
     let sqlQuery = 'SELECT * FROM jobs';
     const params = [];
@@ -63,7 +62,7 @@ export const getJobs = async (req: Request, res: Response) => {
     }
 
     const pageNumber = page || 1;
-    const limitNumber = limit || 10;
+    const limitNumber = 10;
 
     const skip = (pageNumber - 1) * limitNumber;
 

@@ -6,7 +6,6 @@ import { Job } from '../types';
 
 const JobsContainer = () => {
     const { search, employment, location, sort, page } = useAppSelector((store) => store.search);
-    // Set the number of jobs per page by adjusting the limit
 
     const { data, isLoading, isError, isFetching } = useGetJobsQuery({
         search: search,
@@ -14,7 +13,6 @@ const JobsContainer = () => {
         location: location,
         sort: sort,
         page: page,
-        limit: 10,
     });
 
     if (isLoading || isFetching) {
