@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { FormRow, FormRowPassword, Logo, MemberCheck } from '../components';
 import { useRegisterMutation } from '../features/api/apiSlice';
@@ -16,6 +17,7 @@ const RegisterPage = () => {
     const [values, setValues] = useState<UserRegister>(initialState);
     const [register, { isLoading, isError, error, isSuccess }] = useRegisterMutation();
     const errorRef = useRef<HTMLParagraphElement>(null);
+    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const nextElementSibling = e.currentTarget.nextElementSibling as HTMLElement;
@@ -33,9 +35,16 @@ const RegisterPage = () => {
         // Validate inputs with regEx and only submit if all inputs are valid.
 
         if (validateUsername(username) && validateEmail(email) && validatePassword(password)) {
-            register({ username, email, password }).catch(() => {
-                return;
-            });
+            register({ username, email, password })
+                .unwrap()
+                .then((response) => {
+                    if (response.success) {
+                        navigate('/');
+                    }
+                })
+                .catch(() => {
+                    return;
+                });
         }
     };
 
@@ -47,7 +56,7 @@ const RegisterPage = () => {
                         <Logo />
                     </div>
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
-                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Please check your email to verify your account'}
+                        {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your account has been created'}
                     </p>
                     <FormRow
                         type={'text'}
@@ -72,7 +81,6 @@ const RegisterPage = () => {
                         name={'password'}
                         value={values.password}
                         labelText={'password'}
-                        forgot={false}
                         required={true}
                         handleChange={handleChange}
                         handleValidation={(e) => handleValidation(e, values.username, values.email, values.password)}

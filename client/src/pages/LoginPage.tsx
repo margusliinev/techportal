@@ -52,7 +52,14 @@ const LoginPage = () => {
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Login Successful'}
                     </p>
                     <FormRow type={'email'} name={'email'} value={values.email} handleChange={handleChange} labelText={'email'} required={true} />
-                    <FormRowPassword type={'password'} name={'password'} value={values.password} labelText={'password'} forgot={true} handleChange={handleChange} required={true} />
+                    <FormRowPassword
+                        type={'password'}
+                        name={'password'}
+                        value={values.password}
+                        labelText={'password'}
+                        handleChange={handleChange}
+                        required={true}
+                    />
                     <button type='submit' className={isLoading ? 'btn form-btn form-btn-disabled' : 'btn form-btn'} disabled={isLoading}>
                         Sign In
                     </button>

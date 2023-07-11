@@ -1,10 +1,10 @@
 import bcrypt from 'bcryptjs';
-import crypto from 'crypto';
 import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 
 import { query } from '../../db';
 import { BadRequestError } from '../../errors';
-import { sendVerificationEmail } from '../../utils/sendVerificationEmail';
+import { createCookie } from '../../utils/createCookie';
 
 const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -54,23 +54,20 @@ export const register = async (req: Request, res: Response) => {
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
+    const normalizedEmail = email.toLowerCase().trim();
 
-    const verificationToken = crypto.randomBytes(40).toString('hex');
+    const result = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [username, normalizedEmail, hash]);
 
-    query('insert into users (username, email, password, verification_token) values ($1, $2, $3, $4) returning *', [username, email, hash, verificationToken]).catch(() => {
-        throw new BadRequestError('Failed to register user');
+    const user = result[0];
+
+    const token = jwt.sign({ userId: user.id as string }, process.env.JWT_SECRET as string, {
+        expiresIn: process.env.JWT_LIFETIME,
     });
 
-    if (process.env.NODE_ENV === 'production') {
-        const origin = 'https://techportal.up.railway.app';
-        sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((error) => console.log(error));
-    } else {
-        const origin = 'http://localhost:5173';
-        sendVerificationEmail({ username: username, email: email, verification_token: verificationToken, origin: origin }).catch((error) => console.log(error));
-    }
+    createCookie({ res, token });
 
     res.status(201).json({
         success: true,
-        msg: 'Please check your email to verify your account',
+        msg: 'Your account has been created',
     });
 };

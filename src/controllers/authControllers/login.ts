@@ -11,9 +11,6 @@ interface User {
     username: string;
     email: string;
     password: string;
-    verification_token: string;
-    verified: boolean;
-    verification_date: string;
 }
 
 interface UserLogin {
@@ -28,7 +25,9 @@ export const login = async (req: Request, res: Response) => {
         throw new BadRequestError('Missing email or password');
     }
 
-    const result = await query('SELECT * FROM users WHERE email = $1', [email]);
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const result = await query('SELECT * FROM users WHERE email = $1', [normalizedEmail]);
     const user = result[0] as User;
 
     if (!user) {
@@ -41,10 +40,6 @@ export const login = async (req: Request, res: Response) => {
 
     if (!isPasswordCorrect) {
         throw new UnAuthenticatedError('Incorrect email or password');
-    }
-
-    if (!user.verified) {
-        throw new UnAuthenticatedError('Please verify your email');
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET as string, {

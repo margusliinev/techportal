@@ -11,13 +11,10 @@ import {
     SkillsAPIResponse,
     StatsAPIResponse,
     UserAPIResponse,
-    UserForgot,
     UserLogin,
     UserRegister,
-    UserReset,
     UserUpdatePassword,
     UserUpdateProfile,
-    UserVerify,
 } from '../../types';
 
 export const apiSlice = createApi({
@@ -33,32 +30,11 @@ export const apiSlice = createApi({
                 body: user,
             }),
         }),
-        verify: builder.mutation<DefaultAPIResponse, UserVerify>({
-            query: (verificationParams) => ({
-                url: '/verify',
-                method: 'POST',
-                body: verificationParams,
-            }),
-        }),
         login: builder.mutation<DefaultAPIResponse, UserLogin>({
             query: (user) => ({
                 url: '/login',
                 method: 'POST',
                 body: user,
-            }),
-        }),
-        forgot: builder.mutation<DefaultAPIResponse, UserForgot>({
-            query: (email) => ({
-                url: '/forgot',
-                method: 'POST',
-                body: email,
-            }),
-        }),
-        reset: builder.mutation<DefaultAPIResponse, UserReset>({
-            query: (password) => ({
-                url: '/reset',
-                method: 'POST',
-                body: password,
             }),
         }),
         updateUserProfile: builder.mutation<UserAPIResponse, UserUpdateProfile>({
@@ -135,7 +111,6 @@ export const apiSlice = createApi({
 
 export const {
     useRegisterMutation,
-    useVerifyMutation,
     useLoginMutation,
     useUpdateUserProfileMutation,
     useUpdateUserPasswordMutation,
@@ -146,6 +121,4 @@ export const {
     useGetSkillsQuery,
     useDeleteSkillMutation,
     useGetRecommendedJobsQuery,
-    useForgotMutation,
-    useResetMutation,
 } = apiSlice;

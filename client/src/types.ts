@@ -16,22 +16,6 @@ export interface UserLogin {
     password: string;
 }
 
-export interface UserVerify {
-    verificationToken: string | null;
-    email: string | null;
-}
-
-export interface UserForgot {
-    email: string;
-}
-
-export interface UserReset {
-    newPassword: string;
-    confirmNewPassword: string;
-    token: string;
-    email: string;
-}
-
 export interface UserUpdateProfile {
     username: string;
     email: string;
