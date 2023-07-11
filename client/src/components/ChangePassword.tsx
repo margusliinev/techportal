@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 
 import { FormRow } from '../components';
-import { useUpdateUserPasswordMutation } from '../features/api/apiSlice';
-import { logoutUser, setUser } from '../features/user/userSlice';
+import { useLogoutMutation, useUpdateUserPasswordMutation } from '../features/api/apiSlice';
+import { setUser } from '../features/user/userSlice';
 import { useAppDispatch } from '../hooks';
 import Wrapper from '../styles/styled_components/components/ChangePassword';
 import { CustomAPIError, UserUpdatePassword } from '../types';
@@ -16,6 +16,7 @@ const initialState: UserUpdatePassword = {
 const ChangePassword = () => {
     const [values, setValues] = useState<UserUpdatePassword>(initialState);
     const [updateUserPassword, { isLoading, isError, error, isSuccess }] = useUpdateUserPasswordMutation();
+    const [logout] = useLogoutMutation();
     const dispatch = useAppDispatch();
     const errorRef = useRef<HTMLParagraphElement | null>(null);
 
@@ -40,7 +41,7 @@ const ChangePassword = () => {
             })
             .catch(async (error) => {
                 if ((error as CustomAPIError).status === 401) {
-                    await dispatch(logoutUser());
+                    await logout(null);
                     dispatch(setUser(null));
                 }
             });
@@ -57,9 +58,30 @@ const ChangePassword = () => {
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your password has been updated'}
                     </p>
-                    <FormRow type={'password'} name={'currentPassword'} value={values.currentPassword} labelText={'Current Password'} handleChange={handleChange} required={true} />
-                    <FormRow type={'password'} name={'newPassword'} value={values.newPassword} labelText={'New Password'} handleChange={handleChange} required={true} />
-                    <FormRow type={'password'} name={'confirmNewPassword'} value={values.confirmNewPassword} labelText={'Confirm Password'} handleChange={handleChange} required={true} />
+                    <FormRow
+                        type={'password'}
+                        name={'currentPassword'}
+                        value={values.currentPassword}
+                        labelText={'Current Password'}
+                        handleChange={handleChange}
+                        required={true}
+                    />
+                    <FormRow
+                        type={'password'}
+                        name={'newPassword'}
+                        value={values.newPassword}
+                        labelText={'New Password'}
+                        handleChange={handleChange}
+                        required={true}
+                    />
+                    <FormRow
+                        type={'password'}
+                        name={'confirmNewPassword'}
+                        value={values.confirmNewPassword}
+                        labelText={'Confirm Password'}
+                        handleChange={handleChange}
+                        required={true}
+                    />
                     <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
                         Save
                     </button>

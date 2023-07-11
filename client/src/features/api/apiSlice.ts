@@ -37,6 +37,12 @@ export const apiSlice = createApi({
                 body: user,
             }),
         }),
+        logout: builder.mutation<DefaultAPIResponse, null>({
+            query: () => ({
+                url: '/logout',
+                method: 'POST',
+            }),
+        }),
         updateUserProfile: builder.mutation<UserAPIResponse, UserUpdateProfile>({
             query: (profile) => ({
                 url: '/users/me',
@@ -112,6 +118,7 @@ export const apiSlice = createApi({
 export const {
     useRegisterMutation,
     useLoginMutation,
+    useLogoutMutation,
     useUpdateUserProfileMutation,
     useUpdateUserPasswordMutation,
     useGetJobsQuery,

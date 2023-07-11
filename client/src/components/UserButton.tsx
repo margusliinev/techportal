@@ -2,19 +2,21 @@ import { useState } from 'react';
 import { FaCaretDown, FaCaretUp, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import { logoutUser, setUser } from '../features/user/userSlice';
+import { useLogoutMutation } from '../features/api/apiSlice';
+import { setUser } from '../features/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/UserButton';
 
 const UserButton = () => {
     const [showLogout, setShowLogout] = useState<boolean>(false);
+    const [logout] = useLogoutMutation();
     const { user } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();
 
     // Clear cookie and set user to null
 
     const handleLogout = () => {
-        dispatch(logoutUser()).finally(() => {
+        logout(null).finally(() => {
             return;
         });
         dispatch(setUser(null));

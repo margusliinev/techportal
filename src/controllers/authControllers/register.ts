@@ -23,11 +23,6 @@ export const register = async (req: Request, res: Response) => {
         throw new BadRequestError('Missing username, email or password');
     }
 
-    const uniqueEmail = await query('select * from users where email = $1', [email]);
-    if (uniqueEmail.length >= 1) {
-        throw new BadRequestError('Email address is already registered');
-    }
-
     if (!usernameRegex.test(username)) {
         if (username.length < 3 || username.length > 16) {
             throw new BadRequestError('Invalid username, username must be between 3-16 characters');
@@ -52,9 +47,15 @@ export const register = async (req: Request, res: Response) => {
         }
     }
 
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const uniqueEmail = await query('select * from users where email = $1', [normalizedEmail]);
+    if (uniqueEmail.length >= 1) {
+        throw new BadRequestError('Email address is already registered');
+    }
+
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const normalizedEmail = email.toLowerCase().trim();
 
     const result = await query('insert into users (username, email, password) values ($1, $2, $3) returning *', [username, normalizedEmail, hash]);
 

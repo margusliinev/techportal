@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { FormRow } from '../components';
-import { useUpdateUserProfileMutation } from '../features/api/apiSlice';
-import { logoutUser, setUser } from '../features/user/userSlice';
+import { useLogoutMutation, useUpdateUserProfileMutation } from '../features/api/apiSlice';
+import { setUser } from '../features/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/PersonalInformation';
 import { CustomAPIError, UserUpdateProfile } from '../types';
@@ -15,6 +15,7 @@ const initialState: UserUpdateProfile = {
 const PersonalInformation = () => {
     const [values, setValues] = useState<UserUpdateProfile>(initialState);
     const [updateUser, { isLoading, isError, error, isSuccess }] = useUpdateUserProfileMutation();
+    const [logout] = useLogoutMutation();
     const { user, userLoading } = useAppSelector((store) => store.user);
     const dispatch = useAppDispatch();
     const errorRef = useRef<HTMLParagraphElement | null>(null);
@@ -39,7 +40,7 @@ const PersonalInformation = () => {
             })
             .catch(async (error) => {
                 if ((error as CustomAPIError).status === 401) {
-                    await dispatch(logoutUser());
+                    await logout(null);
                     dispatch(setUser(null));
                 }
             });
@@ -62,7 +63,14 @@ const PersonalInformation = () => {
                     <p ref={errorRef} className={isSuccess ? 'server-message server-message-success' : 'server-message server-message-error'}>
                         {isError ? (error as CustomAPIError).data.msg : isSuccess && 'Your profile has been updated'}
                     </p>
-                    <FormRow type={'text'} name={'username'} value={values.username} labelText={'username'} handleChange={handleChange} required={true} />
+                    <FormRow
+                        type={'text'}
+                        name={'username'}
+                        value={values.username}
+                        labelText={'username'}
+                        handleChange={handleChange}
+                        required={true}
+                    />
                     <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} required={false} disabled={true} />
                     <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
                         Save

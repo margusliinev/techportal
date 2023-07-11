@@ -32,16 +32,6 @@ const deleteUser = createAsyncThunk<DefaultAPIResponse>('user/deleteUser', async
     return data;
 });
 
-// Remove user from state and reset token
-
-const logoutUser = createAsyncThunk<DefaultAPIResponse>('user/logoutUser', async () => {
-    const response = await fetch('/api/v1/logout', {
-        method: 'GET',
-    });
-    const data = response.json();
-    return data;
-});
-
 const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -69,6 +59,6 @@ const userSlice = createSlice({
     },
 });
 
-export { deleteUser, getUser, logoutUser };
+export { deleteUser, getUser };
 export const { setUser } = userSlice.actions;
 export default userSlice.reducer;
