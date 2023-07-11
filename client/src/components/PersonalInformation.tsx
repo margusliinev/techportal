@@ -71,7 +71,15 @@ const PersonalInformation = () => {
                         handleChange={handleChange}
                         required={true}
                     />
-                    <FormRow type={'email'} name={'email'} value={values.email} labelText={'email'} required={false} disabled={true} />
+                    <FormRow
+                        type={'email'}
+                        name={'email'}
+                        value={values.email}
+                        labelText={'email'}
+                        required={true}
+                        disabled={false}
+                        handleChange={handleChange}
+                    />
                     <button type='submit' className={isLoading ? 'btn form-btn-disabled' : 'btn'} disabled={isLoading}>
                         Save
                     </button>
