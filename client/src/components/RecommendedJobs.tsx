@@ -2,18 +2,31 @@ import { useGetRecommendedJobsQuery } from '../features/api/apiSlice';
 import { useAppSelector } from '../hooks';
 import Wrapper from '../styles/styled_components/components/RecommendedJobs';
 import { JobCard } from '.';
+import { Loader } from '.';
 
 const RecommendedJobs = () => {
     const { user } = useAppSelector((store) => store.user);
 
     // Fetch recommended jobs for the user using the user id.
 
-    const { data } = useGetRecommendedJobsQuery({ userId: user?.id });
+    const { data, isFetching } = useGetRecommendedJobsQuery({ userId: user?.id });
 
     if (!data) {
         return (
             <Wrapper>
                 <h5>No Jobs found</h5>
+            </Wrapper>
+        );
+    }
+
+    if (isFetching) {
+        return (
+            <Wrapper>
+                <div className='recommended-center'>
+                    <div className='loader-center'>
+                        <Loader />
+                    </div>
+                </div>
             </Wrapper>
         );
     }

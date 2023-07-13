@@ -87,7 +87,15 @@ const Skills = () => {
                             </label>
                             <div className='skills-input-container'>
                                 <div className='skills-search-container'>
-                                    <input type='text' name='skills' value={value.skill} className='form-input' id='skills' onChange={handleChange} required />
+                                    <input
+                                        type='text'
+                                        name='skills'
+                                        value={value.skill}
+                                        className='form-input'
+                                        id='skills'
+                                        onChange={handleChange}
+                                        required
+                                    />
                                     <button type='submit' className='btn'>
                                         Add
                                     </button>

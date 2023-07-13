@@ -47,6 +47,7 @@ const Wrapper = styled.div`
         box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
         border-radius: var(--radius-md);
         margin-top: 0.5rem;
+        z-index: 1;
     }
     .show-dropdown {
         visibility: visible;
