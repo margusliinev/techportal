@@ -20,7 +20,7 @@ const PaginationContainer = ({ numOfPages }: Props) => {
     const getPageNumbers = () => {
         const pages = [];
 
-        let start = Math.max(1, page - Math.ceil(range / 2));
+        let start = Math.max(1, page - Math.ceil(range / 3));
         let end = start + range - 1;
 
         // Adjust the range if it exceeds the total number of pages

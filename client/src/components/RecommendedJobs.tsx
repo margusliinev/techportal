@@ -9,15 +9,7 @@ const RecommendedJobs = () => {
 
     // Fetch recommended jobs for the user using the user id.
 
-    const { data, isFetching } = useGetRecommendedJobsQuery({ userId: user?.id });
-
-    if (!data) {
-        return (
-            <Wrapper>
-                <h5>No Jobs found</h5>
-            </Wrapper>
-        );
-    }
+    const { data, isFetching, isError } = useGetRecommendedJobsQuery({ userId: user?.id });
 
     if (isFetching) {
         return (
@@ -31,9 +23,17 @@ const RecommendedJobs = () => {
         );
     }
 
+    if (isError) {
+        return (
+            <Wrapper>
+                <h5>No Jobs found</h5>
+            </Wrapper>
+        );
+    }
+
     return (
         <Wrapper>
-            {data.recommendedJobs.length > 0 ? (
+            {data && data.recommendedJobs.length > 0 ? (
                 data.recommendedJobs.map((job) => {
                     return <JobCard key={job.id} {...job} />;
                 })
